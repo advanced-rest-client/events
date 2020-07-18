@@ -1,7 +1,7 @@
 export { ArcNavigationEventTypes } from './src/ArcNavigationEventTypes.js';
 export { ArcNavigationEvents } from './src/ArcNavigationEvents.js';
 export {
-  ARCNavigationBaseEvent,
+  ARCNavigationRouteEvent,
   ARCNavigationEvent,
   ARCMenuPopupEvent,
   ARCRequestNavigationEvent,

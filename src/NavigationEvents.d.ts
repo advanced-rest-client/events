@@ -9,22 +9,21 @@ export declare const REQUESTROUTE: string;
 export declare const RESTAPIROUTE: string;
 export declare const PROJECTROUTE: string;
 
-
 /**
  * An event to be dispatched to trigger a navigation in Advanced REST Client.
  * It is the base for other events
  */
-export declare class ARCNavigationBaseEvent extends CustomEvent<void> {
+export declare class ARCNavigationRouteEvent extends CustomEvent<void> {
   /**
    * The base route to navigate to used to initialize this event.
    */
-  readonly base: string;
+  readonly route: string;
 
   /**
    * @param type Event type
-   * @param base The base route to navigate to.
+   * @param route The base route to navigate to.
    */
-  constructor(type: string, base: string);
+  constructor(type: string, route: string);
 }
 
 /**
@@ -37,13 +36,13 @@ export declare class ARCNavigationEvent extends CustomEvent<any> {
   /**
    * The base route to navigate to used to initialize this event.
    */
-  readonly base: string;
+  readonly route: string;
 
   /**
-   * @param base The base route to navigate to.
+   * @param route The base route to navigate to.
    * @param opts Additional route parameters
    */
-  constructor(base: string, opts?: any);
+  constructor(route: string, opts?: any);
 }
 
 /**
@@ -64,7 +63,7 @@ export declare class ARCMenuPopupEvent extends CustomEvent<void> {
 /**
  * An event to be dispatched to trigger a navigation for an ARCRequest object in Advanced REST Client
  */
-export declare class ARCRequestNavigationEvent extends ARCNavigationBaseEvent {
+export declare class ARCRequestNavigationEvent extends ARCNavigationRouteEvent {
   /**
    * The id of the ARCRequest entity used to initialized this object.
    */
@@ -84,7 +83,7 @@ export declare class ARCRequestNavigationEvent extends ARCNavigationBaseEvent {
 /**
  * An event to be dispatched to trigger a navigation for a REST API in Advanced REST Client
  */
-export declare class ARCRestApiNavigationEvent extends ARCNavigationBaseEvent {
+export declare class ARCRestApiNavigationEvent extends ARCNavigationRouteEvent {
   /**
    * The id of the ARCRestApiIndex entity used to initialized this object.
    */
@@ -109,7 +108,7 @@ export declare class ARCRestApiNavigationEvent extends ARCNavigationBaseEvent {
 /**
  * An event to be dispatched to trigger a navigation for an ARCProject in Advanced REST Client
  */
-export declare class ARCProjectNavigationEvent extends ARCNavigationBaseEvent {
+export declare class ARCProjectNavigationEvent extends ARCNavigationRouteEvent {
   /**
    * The ID of the ARCProject entity used to initialized this object.
    */

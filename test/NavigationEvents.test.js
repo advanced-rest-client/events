@@ -14,25 +14,25 @@ import {
 
 describe('NavigationEvents', () => {
   describe('ARCNavigationEvent', () => {
-    const base = 'test-base';
+    const route = 'test-route';
     const opts = { id: 'test-id' };
 
     it('has the correct type', () => {
-      const e = new ARCNavigationEvent(base);
+      const e = new ARCNavigationEvent(route);
       assert.equal(e.type, ArcNavigationEventTypes.navigate);
     });
 
-    it('has readonly base property', () => {
-      const e = new ARCNavigationEvent(base);
-      assert.equal(e.base, base);
+    it('has readonly route property', () => {
+      const e = new ARCNavigationEvent(route);
+      assert.equal(e.route, route);
       assert.throws(() => {
         // @ts-ignore
-        e.base = 'test';
+        e.route = 'test';
       });
     });
 
     it('has opts as the detail', () => {
-      const e = new ARCNavigationEvent(base, opts);
+      const e = new ARCNavigationEvent(route, opts);
       assert.deepEqual(e.detail, opts);
     });
   });
@@ -64,12 +64,12 @@ describe('NavigationEvents', () => {
       assert.equal(e.type, ArcNavigationEventTypes.navigateRequest);
     });
 
-    it('has readonly base property', () => {
+    it('has readonly route property', () => {
       const e = new ARCRequestNavigationEvent(requestId, requestType);
-      assert.equal(e.base, REQUESTROUTE);
+      assert.equal(e.route, REQUESTROUTE);
       assert.throws(() => {
         // @ts-ignore
-        e.base = 'test';
+        e.route = 'test';
       });
     });
 
@@ -102,12 +102,12 @@ describe('NavigationEvents', () => {
       assert.equal(e.type, ArcNavigationEventTypes.navigateRestApi);
     });
 
-    it('has readonly base property', () => {
+    it('has readonly route property', () => {
       const e = new ARCRestApiNavigationEvent(api, version, action);
-      assert.equal(e.base, RESTAPIROUTE);
+      assert.equal(e.route, RESTAPIROUTE);
       assert.throws(() => {
         // @ts-ignore
-        e.base = 'test';
+        e.route = 'test';
       });
     });
 
@@ -148,12 +148,12 @@ describe('NavigationEvents', () => {
       assert.equal(e.type, ArcNavigationEventTypes.navigateProject);
     });
 
-    it('has readonly base property', () => {
+    it('has readonly route property', () => {
       const e = new ARCProjectNavigationEvent(id, action);
-      assert.equal(e.base, PROJECTROUTE);
+      assert.equal(e.route, PROJECTROUTE);
       assert.throws(() => {
         // @ts-ignore
-        e.base = 'test';
+        e.route = 'test';
       });
     });
 

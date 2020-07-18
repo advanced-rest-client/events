@@ -6,10 +6,10 @@ declare interface ArcNavigationEvents {
    * if unnescesary.
    *
    * @param target A node on which to dispatch the event.
-   * @param base The base route to navigate to.
+   * @param route The base route to navigate to.
    * @param opts Additional route parameters
    */
-  navigate(target: EventTarget, base: string, opts?: any): void;
+  navigate(target: EventTarget, route: string, opts?: any): void;
 
   /**
    * An event to be dispatched to trigger a navigation in Advanced REST Client
