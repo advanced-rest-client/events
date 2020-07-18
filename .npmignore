@@ -1,0 +1,7 @@
+coverage/
+test/
+demo/
+CONTRIBUTING.md
+.travis.yml
+karma.*
+.*
