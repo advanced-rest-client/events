@@ -8,11 +8,15 @@ export const ArcNavigationEvents = {
    * if unnescesary.
    *
    * @param {EventTarget} target A node on which to dispatch the event.
-   * @param {string} base The base route to navigate to.
+   * @param {string} route The base route to navigate to.
    * @param {any=} opts Additional route parameters
    */
-  navigate: (target, base, opts) => {
-    const e = new NavigationEvents.ARCNavigationEvent(base, opts);
+  navigate: (target, route, opts) => {
+    const e = new NavigationEvents.ARCNavigationEvent(route, opts);
+    // if (!e.route) {
+    //   // @ts-ignore
+    //   e.route = route;
+    // }
     target.dispatchEvent(e);
   },
   /**

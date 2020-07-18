@@ -1,7 +1,7 @@
 /* eslint-disable max-classes-per-file */
 import { ArcNavigationEventTypes } from './ArcNavigationEventTypes.js';
 
-export const baseValue = Symbol('baseValue');
+export const routeValue = Symbol('routeValue');
 export const optsValue = Symbol('optsValue');
 export const menuValue = Symbol('menuValue');
 export const idValue = Symbol('idValue');
@@ -15,25 +15,25 @@ export const PROJECTROUTE = 'project';
 /**
  * An event to be dispatched to trigger a navigation in Advanced REST Client
  */
-export class ARCNavigationBaseEvent extends CustomEvent {
+export class ARCNavigationRouteEvent extends CustomEvent {
   /**
    * The base route to navigate to used to initialize this event.
    */
-  get base() {
-    return this[baseValue];
+  get route() {
+    return this[routeValue];
   }
 
   /**
    * @param {string} type Event type
-   * @param {string} base The base route to navigate to.
+   * @param {string} route The base route to navigate to.
    */
-  constructor(type, base) {
+  constructor(type, route) {
     super(type, {
       bubbles: true,
       composed: true,
       cancelable: true,
     });
-    this[baseValue] = base;
+    this[routeValue] = route;
   }
 }
 
@@ -44,22 +44,22 @@ export class ARCNavigationEvent extends CustomEvent {
   /**
    * The base route to navigate to used to initialize this event.
    */
-  get base() {
-    return this[baseValue];
+  get route() {
+    return this[routeValue];
   }
 
   /**
-   * @param {string} base The base route to navigate to.
+   * @param {string} route The base route to navigate to.
    * @param {any=} opts Additional route parameters
    */
-  constructor(base, opts) {
+  constructor(route, opts) {
     super(ArcNavigationEventTypes.navigate, {
       bubbles: true,
       composed: true,
       cancelable: true,
       detail: opts,
     });
-    this[baseValue] = base;
+    this[routeValue] = route;
   }
 }
 
@@ -90,7 +90,7 @@ export class ARCMenuPopupEvent extends CustomEvent {
 /**
  * An event to be dispatched to trigger a navigation for an ARCRequest object in Advanced REST Client
  */
-export class ARCRequestNavigationEvent extends ARCNavigationBaseEvent {
+export class ARCRequestNavigationEvent extends ARCNavigationRouteEvent {
   /**
    * @returns {string} The id of the ARCRequest entity used to initialized this object.
    */
@@ -119,7 +119,7 @@ export class ARCRequestNavigationEvent extends ARCNavigationBaseEvent {
 /**
  * An event to be dispatched to trigger a navigation for a REST API in Advanced REST Client
  */
-export class ARCRestApiNavigationEvent extends ARCNavigationBaseEvent {
+export class ARCRestApiNavigationEvent extends ARCNavigationRouteEvent {
   /**
    * @returns {string} The id of the ARCRestApiIndex entity
    */
@@ -157,7 +157,7 @@ export class ARCRestApiNavigationEvent extends ARCNavigationBaseEvent {
 /**
  * An event to be dispatched to trigger a navigation for an ARCProject in Advanced REST Client
  */
-export class ARCProjectNavigationEvent extends ARCNavigationBaseEvent {
+export class ARCProjectNavigationEvent extends ARCNavigationRouteEvent {
   /**
    * @returns {string} The ID of the ARCProject entity
    */

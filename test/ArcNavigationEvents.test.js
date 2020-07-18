@@ -17,7 +17,7 @@ describe('ArcNavigationEvents', () => {
   }
 
   describe('navigate()', () => {
-    const base = 'test-base';
+    const route = 'test-route';
     const opts = { id: 'test-id' };
 
     it('is frozen', () => {
@@ -31,24 +31,24 @@ describe('ArcNavigationEvents', () => {
       const et = await etFixture();
       const spy = sinon.spy();
       et.addEventListener(ArcNavigationEventTypes.navigate, spy);
-      ArcNavigationEvents.navigate(et, base);
+      ArcNavigationEvents.navigate(et, route);
       assert.isTrue(spy.calledOnce);
     });
 
-    it('has the base on the event', async () => {
+    it('has the route on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
       et.addEventListener(ArcNavigationEventTypes.navigate, spy);
-      ArcNavigationEvents.navigate(et, base);
+      ArcNavigationEvents.navigate(et, route);
       const e = spy.args[0][0];
-      assert.equal(e.base, base);
+      assert.equal(e.route, route);
     });
 
     it('has the opts on the detail', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
       et.addEventListener(ArcNavigationEventTypes.navigate, spy);
-      ArcNavigationEvents.navigate(et, base, opts);
+      ArcNavigationEvents.navigate(et, route, opts);
       const e = spy.args[0][0];
       assert.deepEqual(e.detail, opts);
     });
@@ -101,13 +101,13 @@ describe('ArcNavigationEvents', () => {
       assert.isTrue(spy.calledOnce);
     });
 
-    it('has the base on the event', async () => {
+    it('has the route on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
       et.addEventListener(ArcNavigationEventTypes.navigateRequest, spy);
       ArcNavigationEvents.navigateRequest(et, rid, tr);
       const e = spy.args[0][0];
-      assert.equal(e.base, REQUESTROUTE);
+      assert.equal(e.route, REQUESTROUTE);
     });
 
     it('has the requestId on the event', async () => {
@@ -149,13 +149,13 @@ describe('ArcNavigationEvents', () => {
       assert.isTrue(spy.calledOnce);
     });
 
-    it('has the base on the event', async () => {
+    it('has the route on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
       et.addEventListener(ArcNavigationEventTypes.navigateRestApi, spy);
       ArcNavigationEvents.navigateRestApi(et, api, version, action);
       const e = spy.args[0][0];
-      assert.equal(e.base, RESTAPIROUTE);
+      assert.equal(e.route, RESTAPIROUTE);
     });
 
     it('has the api on the event', async () => {
@@ -205,13 +205,13 @@ describe('ArcNavigationEvents', () => {
       assert.isTrue(spy.calledOnce);
     });
 
-    it('has the base on the event', async () => {
+    it('has the route on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
       et.addEventListener(ArcNavigationEventTypes.navigateProject, spy);
       ArcNavigationEvents.navigateProject(et, id, action);
       const e = spy.args[0][0];
-      assert.equal(e.base, PROJECTROUTE);
+      assert.equal(e.route, PROJECTROUTE);
     });
 
     it('has the id on the event', async () => {
