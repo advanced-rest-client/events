@@ -6,7 +6,7 @@ import {
   REQUESTROUTE,
   RESTAPIROUTE,
   PROJECTROUTE,
-} from  '../index.js';
+} from  '../../index.js';
 
 describe('ArcNavigationEvents', () => {
   /**

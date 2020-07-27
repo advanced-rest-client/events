@@ -1,5 +1,6 @@
 import { assert } from '@open-wc/testing';
-import { ArcNavigationEventTypes } from  '../index.js';
+import { ArcNavigationEventTypes } from  '../../index.js';
+import { ensureUnique } from '../helpers/EventHelper.js';
 
 describe('ArcModelEventTypes', () => {
   it('is frozen', () => {
@@ -22,17 +23,6 @@ describe('ArcModelEventTypes', () => {
   });
 
   describe('unique events', () => {
-    const names = [];
-
-    function ensureUnique(namespace, src) {
-      for (const [key, value] of Object.entries(src)) {
-        if (names.includes(value)) {
-          throw new Error(`${namespace}.${key} has duplicated event name ${value}`);
-        }
-        names.push(value);
-      }
-    }
-
     it('has unique events for root properties', () => {
       ensureUnique('ArcNavigationEventTypes', ArcNavigationEventTypes);
     });

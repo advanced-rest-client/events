@@ -1,5 +1,5 @@
 {
-  "name": "@advanced-rest-client/arc-navigation-events",
+  "name": "@advanced-rest-client/arc-events",
   "description": "A library adding navigation events definitions to Advanced REST Client",
   "version": "0.1.0",
   "license": "Apache-2.0",
@@ -13,27 +13,29 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/advanced-rest-client/arc-navigation-events.git"
+    "url": "git://github.com/advanced-rest-client/arc-events.git"
   },
   "bugs": {
-    "url": "https://github.com/advanced-rest-client/arc-navigation-events/issues",
+    "url": "https://github.com/advanced-rest-client/arc-events/issues",
     "email": "arc@mulesoft.com"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@advanced-rest-client/arc-types": "^0.1.4"
+  },
   "devDependencies": {
     "@advanced-rest-client/arc-demo-helper": "^2.1.4",
-    "@advanced-rest-client/testing-karma-sl": "^1.3.1",
+    "@advanced-rest-client/testing-karma-sl": "^1.4.0",
     "@open-wc/eslint-config": "^2.0.0",
     "@open-wc/testing": "^2.0.0",
-    "@open-wc/testing-karma": "^3.0.0",
+    "@open-wc/testing-karma": "^4.0.0",
     "deepmerge": "^4.2.2",
-    "es-dev-server": "^1.56.1",
+    "es-dev-server": "^1.57.0",
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
-    "lit-html": "^1.1.2",
     "lit-element": "^2.2.1",
+    "lit-html": "^1.1.2",
     "prettier": "^2.0.5",
     "sinon": "^9.0.2",
     "typescript": "^3.9.6",

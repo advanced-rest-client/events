@@ -1,17 +1,17 @@
-[![Published on NPM](https://img.shields.io/npm/v/@advanced-rest-client/arc-navigation-events.svg)](https://www.npmjs.com/package/@advanced-rest-client/arc-navigation-events)
+[![Published on NPM](https://img.shields.io/npm/v/@advanced-rest-client/arc-events.svg)](https://www.npmjs.com/package/@advanced-rest-client/arc-events)
 
-[![Build Status](https://travis-ci.com/advanced-rest-client/arc-navigation-events.svg)](https://travis-ci.com/advanced-rest-client/arc-navigation-events)
+[![Build Status](https://travis-ci.com/advanced-rest-client/arc-events.svg)](https://travis-ci.com/advanced-rest-client/arc-events)
 
-# arc-navigation-events
+# arc-events
 
-A library adding navigation events definitions to Advanced REST Client.
+A library adding events definitions to Advanced REST Client.
 Use this library when building a component that triggers the navigation via DOM events.
 
 ## Usage
 
 ### Installation
 ```
-npm install --save @advanced-rest-client/arc-navigation-events
+npm install --save @advanced-rest-client/arc-events
 ```
 
 ### ARC request navigate event
@@ -60,8 +60,8 @@ ARCNavigationEvent.navigate(document.body, 'request', {
 ## Development
 
 ```sh
-git clone https://github.com/advanced-rest-client/arc-navigation-events
-cd arc-navigation-events
+git clone https://github.com/advanced-rest-client/arc-events
+cd arc-events
 npm install
 ```
 
