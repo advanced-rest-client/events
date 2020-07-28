@@ -123,34 +123,4 @@ describe('DataExport', () => {
     });
   });
 
-  describe('googleDiveSave()', () => {
-    const data = 'export data';
-    const providerOptions = { file: 'test.json' };
-
-    it('dispatches navigation event', async () => {
-      const et = await etFixture();
-      const spy = sinon.spy();
-      et.addEventListener(DataExportEventTypes.googleDiveSave, spy);
-      ExportEvents.googleDiveSave(et, data, providerOptions);
-      assert.isTrue(spy.calledOnce);
-    });
-
-    it('has the data on the event', async () => {
-      const et = await etFixture();
-      const spy = sinon.spy();
-      et.addEventListener(DataExportEventTypes.googleDiveSave, spy);
-      ExportEvents.googleDiveSave(et, data, providerOptions);
-      const e = spy.args[0][0];
-      assert.equal(e.data, data);
-    });
-
-    it('has the providerOptions on the event', async () => {
-      const et = await etFixture();
-      const spy = sinon.spy();
-      et.addEventListener(DataExportEventTypes.googleDiveSave, spy);
-      ExportEvents.googleDiveSave(et, data, providerOptions);
-      const e = spy.args[0][0];
-      assert.deepEqual(e.providerOptions, providerOptions);
-    });
-  });
 });

@@ -29,15 +29,6 @@ declare interface ExportEvents {
    * @returns Promise resolved to the export result
    */
   fileSave(target: EventTarget, data: any, options: DataExport.ProviderOptions): Promise<DataExport.ArcExportResult>;
-  /**
-   * Dispatches an event handled by the Google Drive provider to store data on the drive.
-   *
-   * @param target A node on which to dispatch the event.
-   * @param data The data to export
-   * @param options Options passed to the export provider
-   * @returns Promise resolved to the export result
-   */
-  googleDiveSave(target: EventTarget, data: any, options: DataExport.ProviderOptions): Promise<DataExport.ArcExportResult>;
 }
 
 export const ExportEvents: ExportEvents;

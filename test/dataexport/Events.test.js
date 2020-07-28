@@ -5,7 +5,6 @@ import {
   ArcExportEvent,
   ArcExportProviderEvent,
   ArcExportFilesystemEvent,
-  ArcExportGoogleDriveEvent,
   DataExportEventTypes,
 } from  '../../index.js';
 
@@ -136,34 +135,6 @@ describe('DataExport', () => {
 
       it('has readonly providerOptions property', () => {
         const e = new ArcExportFilesystemEvent(data, providerOptions);
-        assert.deepEqual(e.providerOptions, providerOptions);
-        assert.throws(() => {
-          // @ts-ignore
-          e.providerOptions = 'test';
-        });
-      });
-    });
-
-    describe('ArcExportGoogleDriveEvent', () => {
-      const data = 'export data';
-      const providerOptions = { file: 'test.json' };
-
-      it('has the correct type', () => {
-        const e = new ArcExportGoogleDriveEvent(data, providerOptions);
-        assert.equal(e.type, DataExportEventTypes.googleDiveSave);
-      });
-
-      it('has readonly data property', () => {
-        const e = new ArcExportGoogleDriveEvent(data, providerOptions);
-        assert.deepEqual(e.data, data);
-        assert.throws(() => {
-          // @ts-ignore
-          e.data = 'test';
-        });
-      });
-
-      it('has readonly providerOptions property', () => {
-        const e = new ArcExportGoogleDriveEvent(data, providerOptions);
         assert.deepEqual(e.providerOptions, providerOptions);
         assert.throws(() => {
           // @ts-ignore

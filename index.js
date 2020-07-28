@@ -26,10 +26,16 @@ export { ExportEvents } from './src/dataexport/ExportEvents.js';
 export {
   ArcDataExportEvent,
   ArcExportFilesystemEvent,
-  ArcExportGoogleDriveEvent,
   ArcExportEvent,
   ArcExportProviderEvent,
 } from './src/dataexport/Events.js';
 export { EncryptionEvents } from './src/encryption/EncryptionEvents.js';
 export { EncryptionEventTypes } from './src/encryption/EncryptionEventTypes.js';
 export { ArcEncryptEvent, ArcDecryptEvent } from './src/encryption/Events.js';
+export { GoogleDriveEventTypes } from './src/googledrive/GoogleDriveEventTypes.js';
+export { GoogleDriveEvents } from './src/googledrive/GoogleDriveEvents.js';
+export {
+  GoogleDriveSaveEvent,
+  GoogleDriveListFolderEvent,
+  GoogleDriveReadEvent,
+} from './src/googledrive/Events.js';

@@ -12,7 +12,6 @@ describe('DataExport', () => {
       ['customData', 'arccustomdataexport'],
       ['nativeData', 'arcnativeexport'],
       ['fileSave', 'filedatasave'],
-      ['googleDiveSave', 'googledrivedatasave'],
     ].forEach(([prop, value]) => {
       it(`has ${prop} property`, () => {
         assert.equal(DataExportEventTypes[prop], value);

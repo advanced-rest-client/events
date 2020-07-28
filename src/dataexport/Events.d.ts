@@ -101,17 +101,6 @@ export class ArcExportFilesystemEvent extends ArcExportProviderEvent {
 }
 
 /**
- * An event to be dispatched to stored the data by the Google Drive provider.
- */
-export class ArcExportGoogleDriveEvent extends ArcExportProviderEvent {
-  /**
-   * @param {ArcNativeDataExport} data The data to export
-   * @param {ProviderOptions} providerOptions Options passed to the export provider
-   */
-  constructor(data: any, providerOptions: DataExport.ProviderOptions);
-}
-
-/**
  * Dispatches an event handled by the export factory to export ARC's native data.
  *
  * @param target A node on which to dispatch the event.
@@ -142,13 +131,3 @@ export declare function customDataExportAction(target: EventTarget, data: any, e
  * @returns Promise resolved to the export result
  */
 export declare function storeFilesystemAction(target: EventTarget, data: any, options: DataExport.ProviderOptions): Promise<DataExport.ArcExportResult>;
-
-/**
- * Dispatches an event handled by the Google Drive provider to store data on the drive.
- *
- * @param target A node on which to dispatch the event.
- * @param data The data to export
- * @param options Options passed to the export provider
- * @returns Promise resolved to the export result
- */
-export declare function storeGoogleDriveAction(target: EventTarget, data: any, options: DataExport.ProviderOptions): Promise<DataExport.ArcExportResult>;
