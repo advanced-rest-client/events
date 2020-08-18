@@ -61,3 +61,27 @@
 * updated Travis configuration to connect to Sauce Labs [5e1dbdd](https://github.com/advanced-rest-client/arc-events/commit/5e1dbdd0baf7faa841081f72acb15baa272bd435) by Pawel
 
 
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/advanced-rest-client/arc-events/compare/0.1.1...0.1.3) (2020-08-18)
+
+### Build
+
+* bumping version [6320c5b](https://github.com/advanced-rest-client/arc-events/commit/6320c5ba888fef6156b6170dc23a2b7cd992d563) by Pawel
+
+
+### Update
+
+* updating dependencies [8730541](https://github.com/advanced-rest-client/arc-events/commit/873054145cef7d1ce5c105861c421249feeb0065) by Pawel
+* [ci skip] automated merge master->stage. syncing main branches [ec12835](https://github.com/advanced-rest-client/arc-events/commit/ec128356e44e7251ec49cb829128267e9adc6437) by Ci agent
+* [ci skip] automated merge master->stage. syncing main branches [d25b975](https://github.com/advanced-rest-client/arc-events/commit/d25b975e78da7fb6971bfbc2368b7e5256e16b6c) by Ci agent
+
+
+### Features
+
+* adding basic REST API processing events [4648fab](https://github.com/advanced-rest-client/arc-events/commit/4648fab40b9d257a5e202384797c500a1b4066ae) by Pawel
+* adding basic workspace events [76ce78b](https://github.com/advanced-rest-client/arc-events/commit/76ce78bd5142856bebf784bddb176b98b314ea58) by Pawel
+* adding process events [54d512f](https://github.com/advanced-rest-client/arc-events/commit/54d512fd66b7f81db41f3f35688d51fd6f42df05) by Pawel
+* adding import events [87e3152](https://github.com/advanced-rest-client/arc-events/commit/87e31526de2aee4c1ea5c065d13b79ee24bbab38) by Pawel
+* adding Google Drive events [2c16009](https://github.com/advanced-rest-client/arc-events/commit/2c160095eaf769faa8fc32668beac85f26ba76b8) by Pawel
+
+
