@@ -50,3 +50,10 @@ export {
   GoogleDriveListFolderEvent,
   GoogleDriveReadEvent,
 } from './src/googledrive/Events.js';
+export {
+  ProcessStartEvent,
+  ProcessStopEvent,
+  ProcessErrorEvent,
+} from './src/process/Events.js';
+export { ProcessEvents } from './src/process/ProcessEvents.js';
+export { ProcessEventTypes } from './src/process/ProcessEventTypes.js';
