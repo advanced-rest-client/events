@@ -13,7 +13,10 @@ export {
 } from './src/navigation/NavigationEvents.js';
 export { SessionCookieEventTypes } from './src/cookies/SessionCookieEventTypes.js';
 export { SessionCookieEvents } from './src/cookies/SessionCookieEvents.js';
-export { DataExportEventTypes } from './src/dataexport/DataExportEventTypes.js';
+export {
+  DataExportEventTypes,
+  DataImportEventTypes,
+} from './src/dataexport/DataExportEventTypes.js';
 export {
   SessionCookiesListEvent,
   SessionCookiesListDomainEvent,
@@ -22,12 +25,20 @@ export {
   SessionCookieUpdatedEvent,
   SessionCookieDeletedEvent,
 } from './src/cookies/Events.js';
-export { ExportEvents } from './src/dataexport/ExportEvents.js';
+export {
+  ExportEvents,
+  ImportEvents,
+} from './src/dataexport/ExportEvents.js';
 export {
   ArcDataExportEvent,
   ArcExportFilesystemEvent,
   ArcExportEvent,
   ArcExportProviderEvent,
+  ArcImportNormalizeEvent,
+  ArcImportEvent,
+  ArcImportFileEvent,
+  ArcImportDataEvent,
+  ArcImportInspectEvent,
 } from './src/dataexport/Events.js';
 export { EncryptionEvents } from './src/encryption/EncryptionEvents.js';
 export { EncryptionEventTypes } from './src/encryption/EncryptionEventTypes.js';

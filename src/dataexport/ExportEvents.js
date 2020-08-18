@@ -5,3 +5,12 @@ export const ExportEvents = {
   nativeData: Events.nativeExportAction,
   fileSave: Events.storeFilesystemAction,
 }
+
+export const ImportEvents = {
+  normalize: Events.normalizeAction,
+  dataimport: Events.importAction,
+  processfile: Events.importFileAction,
+  processdata: Events.importDataAction,
+  inspect: Events.importInspectAction,
+  dataimported: Events.stateActionImported,
+}

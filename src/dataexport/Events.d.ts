@@ -1,21 +1,25 @@
 import { DataExport } from '@advanced-rest-client/arc-types';
-import {ResultEventDetail} from '../BaseEvents';
+import {ResultEventDetail, VoidEventDetail} from '../BaseEvents';
 
 /** @typedef {import('@advanced-rest-client/arc-types').DataExport.ArcNativeDataExport} ArcNativeDataExport */
 /** @typedef {import('@advanced-rest-client/arc-types').DataExport.ExportOptions} ExportOptions */
 /** @typedef {import('@advanced-rest-client/arc-types').DataExport.ProviderOptions} ProviderOptions */
 
-export const dataValue: symbol;
-export const exportOptionsValue: symbol;
-export const providerOptionsValue: symbol;
-export const fileValue: symbol;
-export const passphraseValue: symbol;
-export const methodValue: symbol;
+export const dataValue: unique symbol;
+export const exportOptionsValue: unique symbol;
+export const importOptionsValue: unique symbol;
+export const providerOptionsValue: unique symbol;
+export const fileValue: unique symbol;
+export const passphraseValue: unique symbol;
+export const methodValue: unique symbol;
 
 /**
  * An event to be dispatched when requesting ARC native data export.
  */
 export class ArcDataExportEvent extends CustomEvent<ResultEventDetail<DataExport.ArcExportResult>> {
+  [dataValue]: DataExport.ArcNativeDataExport;
+  [exportOptionsValue]: DataExport.ExportOptions;
+  [providerOptionsValue]: DataExport.ProviderOptions;
   /**
    * The data to export
    */
@@ -43,6 +47,9 @@ export class ArcDataExportEvent extends CustomEvent<ResultEventDetail<DataExport
  * An event to be dispatched when requesting any data export
  */
 export class ArcExportEvent extends CustomEvent<ResultEventDetail<DataExport.ArcExportResult>> {
+  [dataValue]: any;
+  [exportOptionsValue]: DataExport.ExportOptions;
+  [providerOptionsValue]: DataExport.ProviderOptions;
   /**
    * The data to export
    */
@@ -71,6 +78,8 @@ export class ArcExportEvent extends CustomEvent<ResultEventDetail<DataExport.Arc
  * This includes `filesystem` and `google drive` file providers.
  */
 export class ArcExportProviderEvent extends CustomEvent<ResultEventDetail<DataExport.ArcExportResult>> {
+  [dataValue]: any;
+  [providerOptionsValue]: DataExport.ProviderOptions;
   /**
    * The data to export
    */
@@ -131,3 +140,149 @@ export declare function customDataExportAction(target: EventTarget, data: any, e
  * @returns Promise resolved to the export result
  */
 export declare function storeFilesystemAction(target: EventTarget, data: any, options: DataExport.ProviderOptions): Promise<DataExport.ArcExportResult>;
+
+
+/**
+ * An event to be dispatched when requesting to normalize imported data.
+ */
+export declare class ArcImportNormalizeEvent extends CustomEvent<ResultEventDetail<DataExport.ArcExportObject>> {
+  [dataValue]: string|object;
+  /**
+   * The data to normalize
+   */
+  readonly data: string|object;
+
+  /**
+   * @param {string|object} data The data to normalize
+   */
+  constructor(data: string|object);
+}
+
+/**
+ * An event to be dispatched when requesting to import ARC data.
+ */
+export declare class ArcImportEvent extends CustomEvent<ResultEventDetail<string[]|undefined>> {
+  [dataValue]: DataExport.ArcExportObject;
+  /**
+   * The data to import
+   */
+  readonly data: DataExport.ArcExportObject;
+
+  /**
+   * @param {} data The data to import
+   */
+  constructor(data: DataExport.ArcExportObject);
+}
+
+/**
+ * Options interface for file import
+ */
+export declare interface FileImportOptions {
+  driveId?: string;
+}
+
+/**
+ * An event to be dispatched when requesting to import a file.
+ */
+export class ArcImportFileEvent extends CustomEvent<VoidEventDetail> {
+  [fileValue]: File;
+  [importOptionsValue]?: FileImportOptions;
+  /**
+   * The file to import
+   */
+  readonly file: File;
+
+  /**
+   * Optional import options.
+   */
+  readonly options?: FileImportOptions;
+
+  /**
+   * @param file The file to import
+   * @param options Optional import options.
+   */
+  constructor(file: File, options?: FileImportOptions);
+}
+
+/**
+ * An event to be dispatched when requesting to normalize and import data.
+ */
+export class ArcImportDataEvent extends CustomEvent<VoidEventDetail> {
+  [dataValue]: string|object;
+  /**
+   * The data to normalize and import
+   */
+  readonly data: string|object;
+
+  /**
+   * @param data The data to normalize and import
+   */
+  constructor(data: string|object);
+}
+
+export interface ArcImportInspectEventDetail {
+  data: DataExport.ArcExportObject;
+}
+
+/**
+ * An event to be dispatched when requesting to inspect processed import data.
+ */
+export class ArcImportInspectEvent extends CustomEvent<ArcImportInspectEventDetail> {
+  /**
+   * @param data Normalized import data
+   */
+  constructor(data: DataExport.ArcExportObject);
+}
+
+/**
+ * Dispatches an event handled by the import factory to normalize import data to ARC export object.
+ *
+ * @param target A node on which to dispatch the event.
+ * @param data The data to normalize
+ * @returns Promise resolved to the export object
+ */
+export declare function normalizeAction(target: EventTarget, data: string|object): Promise<DataExport.ArcExportObject>;
+
+/**
+ * Dispatches an event handled by the import factory to normalize import data to ARC export object.
+ *
+ * @param target A node on which to dispatch the event.
+ * @param data The data to import
+ * @returns Promise resolved to list of error messages, if any.
+ */
+export declare function importAction(target: EventTarget, data: DataExport.ArcExportObject): Promise<string[]|undefined>;
+
+/**
+ * Dispatches an event handled by the import factory to process an import file data.
+ *
+ * @param target A node on which to dispatch the event.
+ * @param file The file to import
+ * @param options Optional import options.
+ * @returns Promise resolved when import data has been processed
+ */
+export declare function importFileAction(target: EventTarget, file: File, options?: FileImportOptions): Promise<void>;
+
+/**
+ * Dispatches an event handled by the import factory to process an import file data.
+ *
+ * @param target A node on which to dispatch the event.
+ * @param data The data to normalize and import
+ * @returns Promise resolved when a file was processed
+ */
+export declare function importDataAction(target: EventTarget, data: string|object): Promise<void>;
+
+/**
+ * Dispatches an event handled by the application to render import data view.
+ *
+ * @param target A node on which to dispatch the event.
+ * @param data The data to normalize and import
+ * @returns This event has no side effects.
+ */
+export declare function importInspectAction(target: EventTarget, data: DataExport.ArcExportObject): void;
+
+/**
+ * Dispatches an event not notify that the data has been imported.
+ *
+ * @param target A node on which to dispatch the event.
+ */
+export declare function stateActionImported(target: EventTarget): void;
