@@ -10,7 +10,7 @@ describe('Process', () => {
     return fixture(html`<div></div>`);
   }
 
-  describe('ProcessEventTypes', () => {
+  describe('ProcessEvents', () => {
     describe('loadingstart()', () => {
       const pid = 'process-id-1';
       const message = 'test-message';

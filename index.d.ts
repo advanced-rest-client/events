@@ -62,3 +62,11 @@ export {
 } from './src/process/Events';
 export { ProcessEvents } from './src/process/ProcessEvents';
 export { ProcessEventTypes } from './src/process/ProcessEventTypes';
+export {
+  WorkspaceAppendExportEvent,
+  WorkspaceAppendRequestEvent,
+  WorkspaceAppendExportEventDetail,
+  WorkspaceAppendRequestEventDetail,
+} from './src/workspace/Events';
+export { WorkspaceEvents } from './src/workspace/WorkspaceEvents';
+export { WorkspaceEventTypes } from './src/workspace/WorkspaceEventTypes';
