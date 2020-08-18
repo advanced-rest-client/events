@@ -70,3 +70,10 @@ export {
 } from './src/workspace/Events';
 export { WorkspaceEvents } from './src/workspace/WorkspaceEvents';
 export { WorkspaceEventTypes } from './src/workspace/WorkspaceEventTypes';
+export {
+  RestApiProcessFileEvent,
+  RestApiReadyEvent,
+  RestApiFileProcessingResult,
+} from './src/reastapi/Events';
+export { RestApiEvents } from './src/reastapi/RestApiEvents';
+export { RestApiEventTypes } from './src/reastapi/RestApiEventTypes';

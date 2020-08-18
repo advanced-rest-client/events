@@ -63,3 +63,9 @@ export {
 } from './src/workspace/Events.js';
 export { WorkspaceEvents } from './src/workspace/WorkspaceEvents.js';
 export { WorkspaceEventTypes } from './src/workspace/WorkspaceEventTypes.js';
+export {
+  RestApiProcessFileEvent,
+  RestApiReadyEvent,
+} from './src/reastapi/Events.js';
+export { RestApiEvents } from './src/reastapi/RestApiEvents.js';
+export { RestApiEventTypes } from './src/reastapi/RestApiEventTypes.js';
