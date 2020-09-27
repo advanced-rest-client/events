@@ -29,8 +29,8 @@ export declare class ARCNavigationRouteEvent extends CustomEvent<void> {
 /**
  * An event to be dispatched to trigger a navigation in Advanced REST Client.
  * Use other events matching the navigation type before using this event.
- * This mean to be a general purpose event to limit number of event definitionns
- * if unnescesary.
+ * This mean to be a general purpose event to limit number of event definitions
+ * if unnecessary.
  */
 export declare class ARCNavigationEvent extends CustomEvent<any> {
   /**
@@ -61,6 +61,15 @@ export declare class ARCMenuPopupEvent extends CustomEvent<void> {
 }
 
 /**
+ * - open: open request in the current workspace
+ * - edit: edit request meta data
+ */
+export declare interface RequestActions {
+  open: string;
+  edit: string;
+}
+
+/**
  * An event to be dispatched to trigger a navigation for an ARCRequest object in Advanced REST Client
  */
 export declare class ARCRequestNavigationEvent extends ARCNavigationRouteEvent {
@@ -74,10 +83,16 @@ export declare class ARCRequestNavigationEvent extends ARCNavigationRouteEvent {
   readonly requestType: string;
 
   /**
+   * The action to perform when navigation is being handled.
+   */
+  readonly action: string;
+
+  /**
    * @param requestId The id of the ARCRequest entity
    * @param requestType The type of the request
+   * @param action Optional navigation action. Default to "open" action.
    */
-  constructor(requestId: string, requestType: string);
+  constructor(requestId: string, requestType: string, action?: string);
 }
 
 /**
@@ -105,6 +120,11 @@ export declare class ARCRestApiNavigationEvent extends ARCNavigationRouteEvent {
   constructor(api: string, version: string, action: string);
 }
 
+export declare interface ProjectActions {
+  open: string; 
+  edit: string;
+}
+
 /**
  * An event to be dispatched to trigger a navigation for an ARCProject in Advanced REST Client
  */
@@ -120,7 +140,7 @@ export declare class ARCProjectNavigationEvent extends ARCNavigationRouteEvent {
 
   /**
    * @param id The ID of the ARCProject entity
-   * @param action The action type: `detail`, `edit`
+   * @param action The action type: `open`, `edit`. Default to `open`.
    */
-  constructor(id: string, action: string);
+  constructor(id: string, action?: string);
 }

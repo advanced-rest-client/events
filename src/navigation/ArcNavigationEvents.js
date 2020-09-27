@@ -4,8 +4,8 @@ export const ArcNavigationEvents = {
   /**
    * Dispatches an event to trigger a navigation in Advanced REST Client.
    * Use other events matching the navigation type before using this event.
-   * This mean to be a general purpose event to limit number of event definitionns
-   * if unnescesary.
+   * This mean to be a general purpose event to limit number of event definitions
+   * if unnecessary.
    *
    * @param {EventTarget} target A node on which to dispatch the event.
    * @param {string} route The base route to navigate to.
@@ -13,10 +13,6 @@ export const ArcNavigationEvents = {
    */
   navigate: (target, route, opts) => {
     const e = new NavigationEvents.ARCNavigationEvent(route, opts);
-    // if (!e.route) {
-    //   // @ts-ignore
-    //   e.route = route;
-    // }
     target.dispatchEvent(e);
   },
   /**
@@ -26,9 +22,10 @@ export const ArcNavigationEvents = {
    * @param {EventTarget} target A node on which to dispatch the event.
    * @param {string} requestId The id of the ARCRequest entity
    * @param {string} requestType The type of the request
+   * @param {string=} action Optional navigation action. Default to "open" action.
    */
-  navigateRequest: (target, requestId, requestType) => {
-    const e = new NavigationEvents.ARCRequestNavigationEvent(requestId, requestType);
+  navigateRequest: (target, requestId, requestType, action) => {
+    const e = new NavigationEvents.ARCRequestNavigationEvent(requestId, requestType, action);
     target.dispatchEvent(e);
   },
   /**
@@ -51,7 +48,7 @@ export const ArcNavigationEvents = {
    *
    * @param {EventTarget} target A node on which to dispatch the event.
    * @param {string} id The id of the ARCProject entity
-   * @param {string} action The action type: `detail`, `edit`
+   * @param {string=} action The action type: `open`, `edit`. Default to `open`.
    */
   navigateProject: (target, id, action) => {
     const e = new NavigationEvents.ARCProjectNavigationEvent(id, action);

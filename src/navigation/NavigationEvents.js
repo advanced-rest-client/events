@@ -7,6 +7,7 @@ export const menuValue = Symbol('menuValue');
 export const idValue = Symbol('idValue');
 export const typeValue = Symbol('typeValue');
 export const versionValue = Symbol('versionValue');
+export const actionValue = Symbol('actionValue');
 
 export const REQUESTROUTE = 'request';
 export const RESTAPIROUTE = 'rest-api';
@@ -87,6 +88,12 @@ export class ARCMenuPopupEvent extends CustomEvent {
   }
 }
 
+export const RequestActions = {
+  open: 'open',
+  edit: 'edit',
+};
+Object.freeze(RequestActions);
+
 /**
  * An event to be dispatched to trigger a navigation for an ARCRequest object in Advanced REST Client
  */
@@ -106,13 +113,22 @@ export class ARCRequestNavigationEvent extends ARCNavigationRouteEvent {
   }
 
   /**
+   * @returns {string} The action type used to initialize this event.
+   */
+  get action() {
+    return this[actionValue];
+  }
+
+  /**
    * @param {string} requestId The id of the ARCRequest entity
    * @param {string} requestType The type of the request
+   * @param {string=} action Optional navigation action. Default to "open" action.
    */
-  constructor(requestId, requestType) {
+  constructor(requestId, requestType, action) {
     super(ArcNavigationEventTypes.navigateRequest, REQUESTROUTE);
     this[idValue] = requestId;
     this[typeValue] = requestType;
+    this[actionValue] = action || RequestActions.open;
   }
 }
 
@@ -154,6 +170,26 @@ export class ARCRestApiNavigationEvent extends ARCNavigationRouteEvent {
   }
 }
 
+export const ProjectActions = {
+  /** 
+   * Opens project screen
+   */
+  open: 'open',
+  /** 
+   * Edits project meta
+   */
+  edit: 'edit',
+  /** 
+   * Clears the workspace and adds project requests to it
+   */
+  replaceWorkspace: 'replaceWorkspace',
+  /** 
+   * Adds project requests to the current workspace
+   */
+  addWorkspace: 'addWorkspace',
+};
+Object.freeze(ProjectActions);
+
 /**
  * An event to be dispatched to trigger a navigation for an ARCProject in Advanced REST Client
  */
@@ -169,16 +205,16 @@ export class ARCProjectNavigationEvent extends ARCNavigationRouteEvent {
    * @returns {string} The action type used to initialize this event.
    */
   get action() {
-    return this[typeValue];
+    return this[actionValue];
   }
 
   /**
    * @param {string} id The id of the ARCProject entity
-   * @param {string} action The action type: `detail`, `edit`
+   * @param {string=} action The action type: `open`, `edit`. Default to `open`.
    */
   constructor(id, action) {
     super(ArcNavigationEventTypes.navigateProject, PROJECTROUTE);
     this[idValue] = id;
-    this[typeValue] = action;
+    this[actionValue] = action || ProjectActions.open;
   }
 }

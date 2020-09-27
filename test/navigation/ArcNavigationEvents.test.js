@@ -116,7 +116,7 @@ describe('ArcNavigationEvents', () => {
       et.addEventListener(ArcNavigationEventTypes.navigateRequest, spy);
       ArcNavigationEvents.navigateRequest(et, rid, tr);
       const e = spy.args[0][0];
-      assert.deepEqual(e.requestId, rid);
+      assert.equal(e.requestId, rid);
     });
 
     it('has the requestType on the event', async () => {
@@ -125,7 +125,16 @@ describe('ArcNavigationEvents', () => {
       et.addEventListener(ArcNavigationEventTypes.navigateRequest, spy);
       ArcNavigationEvents.navigateRequest(et, rid, tr);
       const e = spy.args[0][0];
-      assert.deepEqual(e.requestType, tr);
+      assert.equal(e.requestType, tr);
+    });
+
+    it('has the action property on the event', async () => {
+      const et = await etFixture();
+      const spy = sinon.spy();
+      et.addEventListener(ArcNavigationEventTypes.navigateRequest, spy);
+      ArcNavigationEvents.navigateRequest(et, rid, tr, 'open');
+      const e = spy.args[0][0];
+      assert.equal(e.action, 'open');
     });
   });
 

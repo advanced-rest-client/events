@@ -10,9 +10,11 @@ export {
   REQUESTROUTE,
   RESTAPIROUTE,
   PROJECTROUTE,
+  ProjectActions,
+  RequestActions,
 } from './src/navigation/NavigationEvents';
 export { SessionCookieEventTypes } from './src/cookies/SessionCookieEventTypes';
-export { SessionCookieEvents } from './src/cookies/SessionCookieEvents.js';
+export { SessionCookieEvents } from './src/cookies/SessionCookieEvents';
 export {
   DataExportEventTypes,
   DataImportEventTypes,
