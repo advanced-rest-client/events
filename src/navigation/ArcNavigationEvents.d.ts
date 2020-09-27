@@ -41,7 +41,7 @@ declare interface ArcNavigationEvents {
    * @param id The id of the project
    * @param action The action type: `detail`, `edit`
    */
-  navigateProject(target: EventTarget, id: string, action: string): void;
+  navigateProject(target: EventTarget, id: string, action?: string): void;
 
   /**
    * Dispatches the menu popup event.

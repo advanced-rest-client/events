@@ -6,6 +6,8 @@ import {
   REQUESTROUTE,
   RESTAPIROUTE,
   PROJECTROUTE,
+  ProjectActions,
+  RequestActions,
 } from  '../../index.js';
 
 describe('ArcNavigationEvents', () => {
@@ -132,9 +134,18 @@ describe('ArcNavigationEvents', () => {
       const et = await etFixture();
       const spy = sinon.spy();
       et.addEventListener(ArcNavigationEventTypes.navigateRequest, spy);
-      ArcNavigationEvents.navigateRequest(et, rid, tr, 'open');
+      ArcNavigationEvents.navigateRequest(et, rid, tr, RequestActions.edit);
       const e = spy.args[0][0];
-      assert.equal(e.action, 'open');
+      assert.equal(e.action, RequestActions.edit);
+    });
+
+    it('has the default action', async () => {
+      const et = await etFixture();
+      const spy = sinon.spy();
+      et.addEventListener(ArcNavigationEventTypes.navigateRequest, spy);
+      ArcNavigationEvents.navigateRequest(et, rid, tr);
+      const e = spy.args[0][0];
+      assert.equal(e.action, RequestActions.open);
     });
   });
 
@@ -197,7 +208,6 @@ describe('ArcNavigationEvents', () => {
 
   describe('navigateProject()', () => {
     const id = 'project-id';
-    const action = 'detail';
 
     it('is frozen', () => {
       assert.throws(() => {
@@ -210,7 +220,7 @@ describe('ArcNavigationEvents', () => {
       const et = await etFixture();
       const spy = sinon.spy();
       et.addEventListener(ArcNavigationEventTypes.navigateProject, spy);
-      ArcNavigationEvents.navigateProject(et, id, action);
+      ArcNavigationEvents.navigateProject(et, id);
       assert.isTrue(spy.calledOnce);
     });
 
@@ -218,7 +228,7 @@ describe('ArcNavigationEvents', () => {
       const et = await etFixture();
       const spy = sinon.spy();
       et.addEventListener(ArcNavigationEventTypes.navigateProject, spy);
-      ArcNavigationEvents.navigateProject(et, id, action);
+      ArcNavigationEvents.navigateProject(et, id);
       const e = spy.args[0][0];
       assert.equal(e.route, PROJECTROUTE);
     });
@@ -227,7 +237,7 @@ describe('ArcNavigationEvents', () => {
       const et = await etFixture();
       const spy = sinon.spy();
       et.addEventListener(ArcNavigationEventTypes.navigateProject, spy);
-      ArcNavigationEvents.navigateProject(et, id, action);
+      ArcNavigationEvents.navigateProject(et, id);
       const e = spy.args[0][0];
       assert.deepEqual(e.id, id);
     });
@@ -236,9 +246,18 @@ describe('ArcNavigationEvents', () => {
       const et = await etFixture();
       const spy = sinon.spy();
       et.addEventListener(ArcNavigationEventTypes.navigateProject, spy);
-      ArcNavigationEvents.navigateProject(et, id, action);
+      ArcNavigationEvents.navigateProject(et, id, ProjectActions.edit);
       const e = spy.args[0][0];
-      assert.deepEqual(e.action, action);
+      assert.deepEqual(e.action, ProjectActions.edit);
+    });
+
+    it('has the default action', async () => {
+      const et = await etFixture();
+      const spy = sinon.spy();
+      et.addEventListener(ArcNavigationEventTypes.navigateProject, spy);
+      ArcNavigationEvents.navigateProject(et, id);
+      const e = spy.args[0][0];
+      assert.deepEqual(e.action, ProjectActions.open);
     });
   });
 });

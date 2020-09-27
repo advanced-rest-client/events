@@ -64,10 +64,11 @@ export declare class ARCMenuPopupEvent extends CustomEvent<void> {
  * - open: open request in the current workspace
  * - edit: edit request meta data
  */
-export declare interface RequestActions {
+declare interface RequestActions {
   open: string;
   edit: string;
 }
+export declare const RequestActions: RequestActions;
 
 /**
  * An event to be dispatched to trigger a navigation for an ARCRequest object in Advanced REST Client
@@ -120,10 +121,26 @@ export declare class ARCRestApiNavigationEvent extends ARCNavigationRouteEvent {
   constructor(api: string, version: string, action: string);
 }
 
-export declare interface ProjectActions {
-  open: string; 
-  edit: string;
+declare interface ProjectActions {
+  /** 
+   * Opens project screen
+   */
+  open: string
+  /** 
+   * Edits project meta
+   */
+  edit: string
+  /** 
+   * Clears the workspace and adds project requests to it
+   */
+  replaceWorkspace: string
+  /** 
+   * Adds project requests to the current workspace
+   */
+  addWorkspace: string
 }
+
+export declare const ProjectActions: ProjectActions;
 
 /**
  * An event to be dispatched to trigger a navigation for an ARCProject in Advanced REST Client

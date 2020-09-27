@@ -10,6 +10,8 @@ import {
   REQUESTROUTE,
   RESTAPIROUTE,
   PROJECTROUTE,
+  ProjectActions,
+  RequestActions,
 } from  '../../index.js';
 
 describe('NavigationEvents', () => {
@@ -90,6 +92,20 @@ describe('NavigationEvents', () => {
         e.requestType = 'test';
       });
     });
+
+    it('has readonly action property', () => {
+      const e = new ARCRequestNavigationEvent(requestId, requestType, RequestActions.edit);
+      assert.equal(e.action, RequestActions.edit);
+      assert.throws(() => {
+        // @ts-ignore
+        e.requestType = RequestActions.edit;
+      });
+    });
+
+    it('has default action', () => {
+      const e = new ARCRequestNavigationEvent(requestId, requestType);
+      assert.equal(e.action, RequestActions.open);
+    });
   });
 
   describe('ARCRestApiNavigationEvent', () => {
@@ -141,15 +157,14 @@ describe('NavigationEvents', () => {
 
   describe('ARCProjectNavigationEvent', () => {
     const id = 'project-id';
-    const action = 'detail';
 
     it('has the correct type', () => {
-      const e = new ARCProjectNavigationEvent(id, action);
+      const e = new ARCProjectNavigationEvent(id);
       assert.equal(e.type, ArcNavigationEventTypes.navigateProject);
     });
 
     it('has readonly route property', () => {
-      const e = new ARCProjectNavigationEvent(id, action);
+      const e = new ARCProjectNavigationEvent(id);
       assert.equal(e.route, PROJECTROUTE);
       assert.throws(() => {
         // @ts-ignore
@@ -158,7 +173,7 @@ describe('NavigationEvents', () => {
     });
 
     it('has readonly id property', () => {
-      const e = new ARCProjectNavigationEvent(id, action);
+      const e = new ARCProjectNavigationEvent(id);
       assert.equal(e.id, id);
       assert.throws(() => {
         // @ts-ignore
@@ -167,12 +182,17 @@ describe('NavigationEvents', () => {
     });
 
     it('has readonly action property', () => {
-      const e = new ARCProjectNavigationEvent(id, action);
-      assert.equal(e.action, action);
+      const e = new ARCProjectNavigationEvent(id, ProjectActions.open);
+      assert.equal(e.action, ProjectActions.open);
       assert.throws(() => {
         // @ts-ignore
         e.action = 'test';
       });
+    });
+
+    it('has default action', () => {
+      const e = new ARCProjectNavigationEvent(id);
+      assert.equal(e.action, ProjectActions.open);
     });
   });
 });
