@@ -85,3 +85,21 @@
 * adding Google Drive events [2c16009](https://github.com/advanced-rest-client/arc-events/commit/2c160095eaf769faa8fc32668beac85f26ba76b8) by Pawel
 
 
+<a name="0.1.5"></a>
+## [0.1.5](https://github.com/advanced-rest-client/arc-events/compare/0.1.3...0.1.5) (2020-09-27)
+
+### Update
+
+* [ci skip] automated merge master->stage. syncing main branches [a3d147e](https://github.com/advanced-rest-client/arc-events/commit/a3d147ee0ed1cea6bf5899fc421c1064ce6030be) by Ci agent
+
+
+### Features
+
+* adding project and request actions [3943bd6](https://github.com/advanced-rest-client/arc-events/commit/3943bd6a13e8156f6cf84e8eb7eed8687dfcaa4f) by Pawel
+
+
+### Bug Fixes
+
+* fixing types definition [30a680d](https://github.com/advanced-rest-client/arc-events/commit/30a680d93784393dcd748d61e4f1ca2a001789ab) by Pawel
+
+
