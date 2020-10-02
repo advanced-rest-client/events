@@ -103,3 +103,21 @@
 * fixing types definition [30a680d](https://github.com/advanced-rest-client/arc-events/commit/30a680d93784393dcd748d61e4f1ca2a001789ab) by Pawel
 
 
+<a name="0.1.6"></a>
+## [0.1.6](https://github.com/advanced-rest-client/arc-events/compare/0.1.4...0.1.6) (2020-10-02)
+
+### Update
+
+* [ci skip] automated merge master->stage. syncing main branches [985b799](https://github.com/advanced-rest-client/arc-events/commit/985b7994ede57acf3a8ce3da38a13c69de8edd1b) by Ci agent
+
+
+### Features
+
+* adding external navigation event [52fc2ef](https://github.com/advanced-rest-client/arc-events/commit/52fc2efec49726ccf1c7e5f2f3f686d4cde4dfe1) by Pawel
+
+
+### Bug Fixes
+
+* fixing types definition [30a680d](https://github.com/advanced-rest-client/arc-events/commit/30a680d93784393dcd748d61e4f1ca2a001789ab) by Pawel
+
+
