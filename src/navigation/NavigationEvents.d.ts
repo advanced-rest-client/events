@@ -161,3 +161,28 @@ export declare class ARCProjectNavigationEvent extends ARCNavigationRouteEvent {
    */
   constructor(id: string, action?: string);
 }
+
+export declare interface ExternalNavigationOptions {
+  /**
+   * The purpose of the navigation. This can be used
+   * to differentiate different kind of requests.
+   */
+  purpose?: string;
+}
+
+/**
+ * An event to be dispatched when an external navigation is requested.
+ * The event contains the `url` property that describes the URL to navigate to
+ * and the `detail` with additional navigation options.
+ */
+export declare class ARCExternalNavigationEvent extends CustomEvent<ExternalNavigationOptions> {
+  /**
+   * The URL to navigate to used to initialize this event.
+   */
+  readonly url: string;
+  /**
+   * @param url The URL to open
+   * @param detail Additional request parameters
+   */
+  constructor(url: string, detail?: ExternalNavigationOptions);
+}

@@ -7,6 +7,8 @@ export {
   ARCRequestNavigationEvent,
   ARCRestApiNavigationEvent,
   ARCProjectNavigationEvent,
+  ARCExternalNavigationEvent,
+  ExternalNavigationOptions,
   REQUESTROUTE,
   RESTAPIROUTE,
   PROJECTROUTE,

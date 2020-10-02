@@ -1,3 +1,5 @@
+import { ExternalNavigationOptions } from "./NavigationEvents";
+
 declare interface ArcNavigationEvents {
   /**
    * Dispatches an event to trigger a navigation in Advanced REST Client.
@@ -10,6 +12,17 @@ declare interface ArcNavigationEvents {
    * @param opts Additional route parameters
    */
   navigate(target: EventTarget, route: string, opts?: any): void;
+
+  /**
+   * Dispatches an event to inform the application to open a browser window.
+   * This is a general purpose action. It has the `detail` object with optional
+   * `purpose` property which can be used to support different kind of external navigation.
+   * 
+   * @param {EventTarget} target A node on which to dispatch the event.
+   * @param {string} url The URL to open
+   * @param {ExternalNavigationOptions=} opts  Additional request parameters
+   */
+  navigateExternal(target: EventTarget, url: string, opts?: ExternalNavigationOptions): void;
 
   /**
    * An event to be dispatched to trigger a navigation in Advanced REST Client

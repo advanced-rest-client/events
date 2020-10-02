@@ -260,4 +260,51 @@ describe('ArcNavigationEvents', () => {
       assert.deepEqual(e.action, ProjectActions.open);
     });
   });
+
+  describe('navigateExternal()', () => {
+    const url = 'test-url';
+
+    it('is frozen', () => {
+      assert.throws(() => {
+        // @ts-ignore
+        ArcNavigationEvents.navigateExternal = 'test';
+      });
+    });
+
+    it('dispatches the navigation event', async () => {
+      const et = await etFixture();
+      const spy = sinon.spy();
+      et.addEventListener(ArcNavigationEventTypes.navigateExternal, spy);
+      ArcNavigationEvents.navigateExternal(et, url);
+      assert.isTrue(spy.calledOnce);
+    });
+
+    it('has the url property on the event', async () => {
+      const et = await etFixture();
+      const spy = sinon.spy();
+      et.addEventListener(ArcNavigationEventTypes.navigateExternal, spy);
+      ArcNavigationEvents.navigateExternal(et, url);
+      const e = spy.args[0][0];
+      assert.equal(e.url, url);
+    });
+
+    it('has the default detail object', async () => {
+      const et = await etFixture();
+      const spy = sinon.spy();
+      et.addEventListener(ArcNavigationEventTypes.navigateExternal, spy);
+      ArcNavigationEvents.navigateExternal(et, url);
+      const e = spy.args[0][0];
+      assert.deepEqual(e.detail, {});
+    });
+
+    it('has the passed detail object', async () => {
+      const et = await etFixture();
+      const spy = sinon.spy();
+      et.addEventListener(ArcNavigationEventTypes.navigateExternal, spy);
+      const cnf = { purpose: 'test' };
+      ArcNavigationEvents.navigateExternal(et, url, cnf);
+      const e = spy.args[0][0];
+      assert.deepEqual(e.detail, cnf);
+    });
+  });
 });

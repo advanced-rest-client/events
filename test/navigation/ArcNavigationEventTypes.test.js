@@ -12,6 +12,7 @@ describe('ArcModelEventTypes', () => {
 
   [
     ['navigate', 'arcnavigate'],
+    ['navigateExternal', 'arcnavigateexternal'],
     ['navigateRequest', 'arcnavigaterequest'],
     ['navigateRestApi', 'arcnavigaterestapi'],
     ['navigateProject', 'arcnavigateproject'],

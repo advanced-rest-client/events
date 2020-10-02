@@ -7,6 +7,7 @@ import {
   ARCRequestNavigationEvent,
   ARCRestApiNavigationEvent,
   ARCProjectNavigationEvent,
+  ARCExternalNavigationEvent,
   REQUESTROUTE,
   RESTAPIROUTE,
   PROJECTROUTE,
@@ -193,6 +194,35 @@ describe('NavigationEvents', () => {
     it('has default action', () => {
       const e = new ARCProjectNavigationEvent(id);
       assert.equal(e.action, ProjectActions.open);
+    });
+  });
+
+  describe('ARCExternalNavigationEvent', () => {
+    const url = 'test-url';
+
+    it('has the correct type', () => {
+      const e = new ARCExternalNavigationEvent(url);
+      assert.equal(e.type, ArcNavigationEventTypes.navigateExternal);
+    });
+
+    it('has readonly url property', () => {
+      const e = new ARCExternalNavigationEvent(url);
+      assert.equal(e.url, url);
+      assert.throws(() => {
+        // @ts-ignore
+        e.url = 'test';
+      });
+    });
+
+    it('has the detail object', () => {
+      const cnf = { purpose: 'test' };
+      const e = new ARCExternalNavigationEvent(url, cnf);
+      assert.deepEqual(e.detail, cnf);
+    });
+
+    it('has the default detail', () => {
+      const e = new ARCExternalNavigationEvent(url);
+      assert.deepEqual(e.detail, {});
     });
   });
 });

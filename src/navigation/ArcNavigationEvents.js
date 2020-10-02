@@ -1,4 +1,5 @@
 import * as NavigationEvents from './NavigationEvents.js';
+/** @typedef {import('./NavigationEvents').ExternalNavigationOptions} ExternalNavigationOptions */
 
 export const ArcNavigationEvents = {
   /**
@@ -13,6 +14,19 @@ export const ArcNavigationEvents = {
    */
   navigate: (target, route, opts) => {
     const e = new NavigationEvents.ARCNavigationEvent(route, opts);
+    target.dispatchEvent(e);
+  },
+  /**
+   * Dispatches an event to inform the application to open a browser window.
+   * This is a general purpose action. It has the `detail` object with optional
+   * `purpose` property which can be used to support different kind of external navigation.
+   * 
+   * @param {EventTarget} target A node on which to dispatch the event.
+   * @param {string} url The URL to open
+   * @param {ExternalNavigationOptions=} opts  Additional request parameters
+   */
+  navigateExternal: (target, url, opts) => {
+    const e = new NavigationEvents.ARCExternalNavigationEvent(url, opts);
     target.dispatchEvent(e);
   },
   /**

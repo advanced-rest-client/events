@@ -1,6 +1,8 @@
 /* eslint-disable max-classes-per-file */
 import { ArcNavigationEventTypes } from './ArcNavigationEventTypes.js';
 
+/** @typedef {import('./NavigationEvents').ExternalNavigationOptions} ExternalNavigationOptions */
+
 export const routeValue = Symbol('routeValue');
 export const optsValue = Symbol('optsValue');
 export const menuValue = Symbol('menuValue');
@@ -8,6 +10,7 @@ export const idValue = Symbol('idValue');
 export const typeValue = Symbol('typeValue');
 export const versionValue = Symbol('versionValue');
 export const actionValue = Symbol('actionValue');
+export const urlValue = Symbol('urlValue');
 
 export const REQUESTROUTE = 'request';
 export const RESTAPIROUTE = 'rest-api';
@@ -216,5 +219,33 @@ export class ARCProjectNavigationEvent extends ARCNavigationRouteEvent {
     super(ArcNavigationEventTypes.navigateProject, PROJECTROUTE);
     this[idValue] = id;
     this[actionValue] = action || ProjectActions.open;
+  }
+}
+
+/**
+ * An event to be dispatched when an external navigation is requested.
+ * The event contains the `url` property that describes the URL to navigate to
+ * and the `detail` with additional navigation options.
+ */
+export class ARCExternalNavigationEvent extends CustomEvent {
+  /**
+   * @returns {string} The URL to navigate to used to initialize this event.
+   */
+  get url() {
+    return this[urlValue];
+  }
+
+  /**
+   * @param {string} url The URL to open
+   * @param {ExternalNavigationOptions=} detail Additional request parameters
+   */
+  constructor(url, detail={}) {
+    super(ArcNavigationEventTypes.navigateExternal, {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail,
+    });
+    this[urlValue] = url;
   }
 }

@@ -4,6 +4,7 @@
     "REQUESTROUTE",
     "RESTAPIROUTE",
     "arcnavigate",
+    "arcnavigateexternal",
     "arcnavigateproject",
     "arcnavigaterequest",
     "arcnavigaterestapi",
