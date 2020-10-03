@@ -14,6 +14,11 @@
     "dataexport",
     "googledrive",
     "popupmenu",
-    "reastapi"
+    "reastapi",
+    "telemetryevent",
+    "telemetryexception",
+    "telemetryscreenview",
+    "telemetrysocial",
+    "telemetrytiming"
   ]
 }
