@@ -9,6 +9,8 @@
     "arcnavigaterequest",
     "arcnavigaterestapi",
     "arcpopupmenu",
+    "arcrequeststatecontenttypechange",
+    "arcrequeststateurlchange",
     "dataexport",
     "googledrive",
     "popupmenu",

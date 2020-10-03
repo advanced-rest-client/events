@@ -81,3 +81,6 @@ export {
 } from './src/reastapi/Events';
 export { RestApiEvents } from './src/reastapi/RestApiEvents';
 export { RestApiEventTypes } from './src/reastapi/RestApiEventTypes';
+export { RequestEventTypes } from './src/request/RequestEventTypes';
+export { RequestChangeEvent } from './src/request/Events';
+export { RequestEvents } from './src/request/RequestEvents';

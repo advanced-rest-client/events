@@ -72,3 +72,6 @@ export {
 } from './src/reastapi/Events.js';
 export { RestApiEvents } from './src/reastapi/RestApiEvents.js';
 export { RestApiEventTypes } from './src/reastapi/RestApiEventTypes.js';
+export { RequestEventTypes } from './src/request/RequestEventTypes.js';
+export { RequestChangeEvent } from './src/request/Events.js';
+export { RequestEvents } from './src/request/RequestEvents.js';
