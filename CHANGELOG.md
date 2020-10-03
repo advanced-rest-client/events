@@ -121,3 +121,24 @@
 * fixing types definition [30a680d](https://github.com/advanced-rest-client/arc-events/commit/30a680d93784393dcd748d61e4f1ca2a001789ab) by Pawel
 
 
+<a name="0.1.7"></a>
+## [0.1.7](https://github.com/advanced-rest-client/arc-events/compare/0.1.5...0.1.7) (2020-10-03)
+
+### Build
+
+* bumping version [efcb7fe](https://github.com/advanced-rest-client/arc-events/commit/efcb7fe8cf1d3de4770593c31b7f43a888a5bdee) by Pawel
+
+
+### Update
+
+* [ci skip] automated merge master->stage. syncing main branches [8e71793](https://github.com/advanced-rest-client/arc-events/commit/8e71793a981270b2120bf9c89bacc5c0051aa8ac) by Ci agent
+* [ci skip] automated merge master->stage. syncing main branches [985b799](https://github.com/advanced-rest-client/arc-events/commit/985b7994ede57acf3a8ce3da38a13c69de8edd1b) by Ci agent
+
+
+### Features
+
+* adding telemetry events [cd822c0](https://github.com/advanced-rest-client/arc-events/commit/cd822c0e4bfcfe3505479a0fcd31719b596d9592) by Pawel
+* adding request events [c29f831](https://github.com/advanced-rest-client/arc-events/commit/c29f8319609a25952e2eb6a0a921c9e43c9e9045) by Pawel
+* adding external navigation event [52fc2ef](https://github.com/advanced-rest-client/arc-events/commit/52fc2efec49726ccf1c7e5f2f3f686d4cde4dfe1) by Pawel
+
+
