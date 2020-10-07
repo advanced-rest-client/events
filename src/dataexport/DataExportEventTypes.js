@@ -8,9 +8,9 @@ export const DataExportEventTypes = {
 };
 export const DataImportEventTypes = {
   normalize: 'arcdataimportnormalize',
-  dataimport: 'arcdataimport',
-  processfile: 'arcdataimportprocessfile',
-  processdata: 'arcdataimportprocessdata',
+  dataImport: 'arcdataimport',
+  processFile: 'arcdataimportprocessfile',
+  processData: 'arcdataimportprocessdata',
   inspect: 'arcdataimportinspect',
-  dataimported: 'arcdataimported',
+  dataImported: 'arcdataimported',
 };

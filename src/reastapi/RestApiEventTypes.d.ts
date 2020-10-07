@@ -1,6 +1,6 @@
 declare interface RestApiEventTypes {
-  processfile: string;
-  dataready: string;
+  processFile: string;
+  dataReady: string;
 }
 
 export const RestApiEventTypes: RestApiEventTypes;

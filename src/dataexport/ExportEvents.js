@@ -8,9 +8,9 @@ export const ExportEvents = {
 
 export const ImportEvents = {
   normalize: Events.normalizeAction,
-  dataimport: Events.importAction,
-  processfile: Events.importFileAction,
-  processdata: Events.importDataAction,
+  dataImport: Events.importAction,
+  processFile: Events.importFileAction,
+  processData: Events.importDataAction,
   inspect: Events.importInspectAction,
-  dataimported: Events.stateActionImported,
+  dataImported: Events.stateActionImported,
 }

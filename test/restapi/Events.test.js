@@ -12,7 +12,7 @@ describe('RestAPI', () => {
 
       it('has the correct type', () => {
         const e = new RestApiProcessFileEvent(file);
-        assert.equal(e.type, RestApiEventTypes.processfile);
+        assert.equal(e.type, RestApiEventTypes.processFile);
       });
 
       it('has the file property', () => {
@@ -42,7 +42,7 @@ describe('RestAPI', () => {
 
       it('has the correct type', () => {
         const e = new RestApiReadyEvent(model, type);
-        assert.equal(e.type, RestApiEventTypes.dataready);
+        assert.equal(e.type, RestApiEventTypes.dataReady);
       });
 
       it('has the model property on the detail', () => {

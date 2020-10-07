@@ -235,7 +235,7 @@ export class ArcImportEvent extends CustomEvent {
    * @param {ArcExportObject} data The data to import
    */
   constructor(data) {
-    super(DataImportEventTypes.dataimport, {
+    super(DataImportEventTypes.dataImport, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -268,7 +268,7 @@ export class ArcImportFileEvent extends CustomEvent {
    * @param {FileImportOptions=} options Optional import options.
    */
   constructor(file, options) {
-    super(DataImportEventTypes.processfile, {
+    super(DataImportEventTypes.processFile, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -294,7 +294,7 @@ export class ArcImportDataEvent extends CustomEvent {
    * @param {string|object} data The data to normalize and import
    */
   constructor(data) {
-    super(DataImportEventTypes.processdata, {
+    super(DataImportEventTypes.processData, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -393,7 +393,7 @@ export function importInspectAction(target, data) {
  * @param {EventTarget} target A node on which to dispatch the event.
  */
 export function stateActionImported(target) {
-  const e = new Event(DataImportEventTypes.dataimported, {
+  const e = new Event(DataImportEventTypes.dataImported, {
     bubbles: true,
     composed: true,
   });

@@ -27,7 +27,7 @@ export declare interface ProcessErrorDetail extends ProcessEventDetail {
 export declare class ProcessStartEvent extends CustomEvent<ProcessStartDetail> {
   /**
    * @param pid The id of the process. The same id has to be passed to the stop event.
-   * @param message Optioonal message rendered in the UI.
+   * @param message Optional message rendered in the UI.
    */
   constructor(pid: string, message?: string);
 }

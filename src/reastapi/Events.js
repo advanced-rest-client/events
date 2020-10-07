@@ -18,7 +18,7 @@ export class RestApiProcessFileEvent extends CustomEvent {
    * @param {File} file The file to process
    */
   constructor(file) {
-    super(RestApiEventTypes.processfile, {
+    super(RestApiEventTypes.processFile, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -37,7 +37,7 @@ export class RestApiReadyEvent extends CustomEvent {
    * @param {string} type API type (RAML 1.0, OAS 3.0, etc)
    */
   constructor(model, type) {
-    super(RestApiEventTypes.dataready, {
+    super(RestApiEventTypes.dataReady, {
       bubbles: true,
       composed: true,
       detail: {

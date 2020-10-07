@@ -9,7 +9,7 @@ import { ProcessEventTypes } from './ProcessEventTypes.js';
 export class ProcessStartEvent extends CustomEvent {
   /**
    * @param {string} pid The id of the process. The same id has to be passed to the stop event.
-   * @param {string=} message Optioonal message rendered in the UI.
+   * @param {string=} message Optional message rendered in the UI.
    */
   constructor(pid, message) {
     super(ProcessEventTypes.loadingstart, {

@@ -17,7 +17,7 @@ import {
 describe('DataExport', () => {
   describe('Export Events', () => {
     describe('ArcDataExportEvent', () => {
-      const data = { saved: true };
+      const data = { requests: true };
       const exportOptions = { provider: 'file' };
       const providerOptions = { file: 'test.json' };
 
@@ -193,7 +193,7 @@ describe('DataExport', () => {
 
       it('has the correct type', () => {
         const e = new ArcImportEvent(data);
-        assert.equal(e.type, DataImportEventTypes.dataimport);
+        assert.equal(e.type, DataImportEventTypes.dataImport);
       });
 
       it('has readonly data property', () => {
@@ -227,7 +227,7 @@ describe('DataExport', () => {
 
       it('has the correct type', () => {
         const e = new ArcImportFileEvent(file);
-        assert.equal(e.type, DataImportEventTypes.processfile);
+        assert.equal(e.type, DataImportEventTypes.processFile);
       });
 
       it('has readonly data property', () => {
@@ -269,7 +269,7 @@ describe('DataExport', () => {
 
       it('has the correct type', () => {
         const e = new ArcImportDataEvent(data);
-        assert.equal(e.type, DataImportEventTypes.processdata);
+        assert.equal(e.type, DataImportEventTypes.processData);
       });
 
       it('has readonly data property', () => {

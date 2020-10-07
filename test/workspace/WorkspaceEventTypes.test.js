@@ -9,8 +9,8 @@ describe('Workspace', () => {
     });
 
     [
-      ['appendexport', 'requestworkspaceappendexport'],
-      ['appendrequest', 'requestworkspaceappendrequest'],
+      ['appendExport', 'requestworkspaceappendexport'],
+      ['appendRequest', 'requestworkspaceappendrequest'],
     ].forEach(([prop, value]) => {
       it(`has ${prop} property`, () => {
         assert.equal(WorkspaceEventTypes[prop], value);

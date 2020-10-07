@@ -1,19 +1,19 @@
 /* eslint-disable max-classes-per-file */
 import { WorkspaceEventTypes } from './WorkspaceEventTypes.js';
 /** @typedef {import('@advanced-rest-client/arc-types').DataExport.ArcExportObject} ArcExportObject */
-/** @typedef {import('@advanced-rest-client/arc-models').ARCSavedRequest} ARCSavedRequest */
-/** @typedef {import('@advanced-rest-client/arc-models').ARCHistoryRequest} ARCHistoryRequest */
+/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ARCSavedRequest} ARCSavedRequest */
+/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ARCHistoryRequest} ARCHistoryRequest */
 
 /**
  * An event to be dispatched to inform the requests workspace to append request data
- * fron the export object.
+ * from the export object.
  */
 export class WorkspaceAppendExportEvent extends CustomEvent {
   /**
    * @param {ArcExportObject} data The ARC export object
    */
   constructor(data) {
-    super(WorkspaceEventTypes.appendexport, {
+    super(WorkspaceEventTypes.appendExport, {
       bubbles: true,
       composed: true,
       detail: {
@@ -31,7 +31,7 @@ export class WorkspaceAppendRequestEvent extends CustomEvent {
    * @param {ARCSavedRequest|ARCHistoryRequest} request The request to append
    */
   constructor(request) {
-    super(WorkspaceEventTypes.appendrequest, {
+    super(WorkspaceEventTypes.appendRequest, {
       bubbles: true,
       composed: true,
       detail: {

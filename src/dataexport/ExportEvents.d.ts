@@ -51,7 +51,7 @@ declare interface ImportEvents {
    * @param data The data to import
    * @returns Promise resolved to list of error messages, if any.
    */
-  dataimport(target: EventTarget, data: DataExport.ArcExportObject): Promise<string[]|undefined>;
+  dataImport(target: EventTarget, data: DataExport.ArcExportObject): Promise<string[]|undefined>;
   /**
    * Dispatches an event handled by the import factory to process an import file data.
    *
@@ -60,7 +60,7 @@ declare interface ImportEvents {
    * @param options Optional import options.
    * @returns Promise resolved when import data has been processed
    */
-  processfile(target: EventTarget, file: File, options?: FileImportOptions): Promise<void>;
+  processFile(target: EventTarget, file: File, options?: FileImportOptions): Promise<void>;
   /**
    * Dispatches an event handled by the import factory to process an import file data.
    *
@@ -68,7 +68,7 @@ declare interface ImportEvents {
    * @param data The data to normalize and import
    * @returns Promise resolved when a file was processed
    */
-  processdata(target: EventTarget, data: string|object): Promise<void>;
+  processData(target: EventTarget, data: string|object): Promise<void>;
 
   /**
    * Dispatches an event handled by the application to render import data view.
@@ -83,7 +83,7 @@ declare interface ImportEvents {
    *
    * @param target A node on which to dispatch the event.
    */
-  dataimported(target: EventTarget): void;
+  dataImported(target: EventTarget): void;
 }
 
 export const ImportEvents: ImportEvents;

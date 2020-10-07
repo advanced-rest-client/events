@@ -1,5 +1,4 @@
-import { DataExport } from '@advanced-rest-client/arc-types';
-import { ARCSavedRequest, ARCHistoryRequest } from '@advanced-rest-client/arc-models';
+import { DataExport, ArcRequest } from '@advanced-rest-client/arc-types';
 
 export declare interface WorkspaceAppendExportEventDetail {
   /**
@@ -12,12 +11,12 @@ export declare interface WorkspaceAppendRequestEventDetail {
   /**
    * The request to append
    */
-  request: ARCSavedRequest|ARCHistoryRequest;
+  request: ArcRequest.ARCSavedRequest|ArcRequest.ARCHistoryRequest;
 }
 
 /**
  * An event to be dispatched to inform the requests workspace to append request data
- * fron the export object.
+ * from the export object.
  */
 export declare class WorkspaceAppendExportEvent extends CustomEvent<WorkspaceAppendExportEventDetail> {
   /**
@@ -33,9 +32,9 @@ export declare class WorkspaceAppendRequestEvent extends CustomEvent<WorkspaceAp
   /**
    * @param request The request to append
    */
-  constructor(request: ARCSavedRequest|ARCHistoryRequest);
+  constructor(request: ArcRequest.ARCSavedRequest|ArcRequest.ARCHistoryRequest);
 }
 
 export declare function appendExportAction(target: EventTarget, data: DataExport.ArcExportObject): void;
 
-export declare function appendRequestAction(target: EventTarget, request: ARCSavedRequest|ARCHistoryRequest): void;
+export declare function appendRequestAction(target: EventTarget, request: ArcRequest.ARCSavedRequest|ArcRequest.ARCHistoryRequest): void;

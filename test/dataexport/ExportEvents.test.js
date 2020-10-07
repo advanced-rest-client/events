@@ -52,7 +52,7 @@ describe('DataExport', () => {
   });
 
   describe('nativeData()', () => {
-    const data = { saved: true };
+    const data = { requests: true };
     const exportOptions = { provider: 'file' };
     const providerOptions = { file: 'test.json' };
 
@@ -144,7 +144,7 @@ describe('DataExport', () => {
     });
   });
 
-  describe('dataimport()', () => {
+  describe('dataImport()', () => {
     const data = {
       createdAt: new Date().toISOString(),
       version: 'test',
@@ -154,38 +154,38 @@ describe('DataExport', () => {
     it('dispatches the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(DataImportEventTypes.dataimport, spy);
-      ImportEvents.dataimport(et, data);
+      et.addEventListener(DataImportEventTypes.dataImport, spy);
+      ImportEvents.dataImport(et, data);
       assert.isTrue(spy.calledOnce);
     });
 
     it('has the data on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(DataImportEventTypes.dataimport, spy);
-      ImportEvents.dataimport(et, data);
+      et.addEventListener(DataImportEventTypes.dataImport, spy);
+      ImportEvents.dataImport(et, data);
       const e = spy.args[0][0];
       assert.deepEqual(e.data, data);
     });
   });
 
-  describe('processfile()', () => {
+  describe('processFile()', () => {
     const file = /** @type File */ (new Blob(['test'], { type: 'text/plain' }));
     const options = { driveId: 'test-id' };
 
     it('dispatches the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(DataImportEventTypes.processfile, spy);
-      ImportEvents.processfile(et, file);
+      et.addEventListener(DataImportEventTypes.processFile, spy);
+      ImportEvents.processFile(et, file);
       assert.isTrue(spy.calledOnce);
     });
 
     it('has the data on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(DataImportEventTypes.processfile, spy);
-      ImportEvents.processfile(et, file);
+      et.addEventListener(DataImportEventTypes.processFile, spy);
+      ImportEvents.processFile(et, file);
       const e = spy.args[0][0];
       assert.deepEqual(e.file, file);
     });
@@ -193,29 +193,29 @@ describe('DataExport', () => {
     it('has the options on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(DataImportEventTypes.processfile, spy);
-      ImportEvents.processfile(et, file, options);
+      et.addEventListener(DataImportEventTypes.processFile, spy);
+      ImportEvents.processFile(et, file, options);
       const e = spy.args[0][0];
       assert.deepEqual(e.options, options);
     });
   });
 
-  describe('processdata()', () => {
+  describe('processData()', () => {
     const data = 'test';
 
     it('dispatches the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(DataImportEventTypes.processdata, spy);
-      ImportEvents.processdata(et, data);
+      et.addEventListener(DataImportEventTypes.processData, spy);
+      ImportEvents.processData(et, data);
       assert.isTrue(spy.calledOnce);
     });
 
     it('has the data on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(DataImportEventTypes.processdata, spy);
-      ImportEvents.processdata(et, data);
+      et.addEventListener(DataImportEventTypes.processData, spy);
+      ImportEvents.processData(et, data);
       const e = spy.args[0][0];
       assert.deepEqual(e.data, data);
     });
@@ -246,12 +246,12 @@ describe('DataExport', () => {
     });
   });
 
-  describe('dataimported()', () => {
+  describe('dataImported()', () => {
     it('dispatches the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(DataImportEventTypes.dataimported, spy);
-      ImportEvents.dataimported(et);
+      et.addEventListener(DataImportEventTypes.dataImported, spy);
+      ImportEvents.dataImported(et);
       assert.isTrue(spy.calledOnce);
     });
   });

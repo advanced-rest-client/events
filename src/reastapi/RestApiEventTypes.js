@@ -1,4 +1,4 @@
 export const RestApiEventTypes = {
-  processfile: 'restapiprocessfile',
-  dataready: 'restapidataready',
+  processFile: 'restapiprocessfile',
+  dataReady: 'restapidataready',
 };

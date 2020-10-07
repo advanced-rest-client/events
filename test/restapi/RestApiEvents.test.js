@@ -11,44 +11,44 @@ describe('RestAPI', () => {
   }
 
   describe('RestApiEvents', () => {
-    describe('processfile()', () => {
+    describe('processFile()', () => {
       const file = /** @type File */ (new Blob(['test'], { type: 'text/plain' }));
 
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(RestApiEventTypes.processfile, spy);
-        RestApiEvents.processfile(et, file);
+        et.addEventListener(RestApiEventTypes.processFile, spy);
+        RestApiEvents.processFile(et, file);
         assert.isTrue(spy.calledOnce);
       });
 
       it('has the file on the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(RestApiEventTypes.processfile, spy);
-        RestApiEvents.processfile(et, file);
+        et.addEventListener(RestApiEventTypes.processFile, spy);
+        RestApiEvents.processFile(et, file);
         const e = spy.args[0][0];
         assert.deepEqual(e.file, file);
       });
     });
 
-    describe('dataready()', () => {
+    describe('dataReady()', () => {
       const model = { '@type': ['test'] };
       const type = 'RAML 1.0';
 
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(RestApiEventTypes.dataready, spy);
-        RestApiEvents.dataready(et, model, type);
+        et.addEventListener(RestApiEventTypes.dataReady, spy);
+        RestApiEvents.dataReady(et, model, type);
         assert.isTrue(spy.calledOnce);
       });
 
       it('has the model on the detail', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(RestApiEventTypes.dataready, spy);
-        RestApiEvents.dataready(et, model, type);
+        et.addEventListener(RestApiEventTypes.dataReady, spy);
+        RestApiEvents.dataReady(et, model, type);
         const e = spy.args[0][0];
         assert.deepEqual(e.detail.model, model);
       });
@@ -56,8 +56,8 @@ describe('RestAPI', () => {
       it('has the type on the detail', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(RestApiEventTypes.dataready, spy);
-        RestApiEvents.dataready(et, model, type);
+        et.addEventListener(RestApiEventTypes.dataReady, spy);
+        RestApiEvents.dataReady(et, model, type);
         const e = spy.args[0][0];
         assert.equal(e.detail.type, type);
       });

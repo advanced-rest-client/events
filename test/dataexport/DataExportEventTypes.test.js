@@ -33,11 +33,11 @@ describe('DataExport', () => {
 
     [
       ['normalize', 'arcdataimportnormalize'],
-      ['dataimport', 'arcdataimport'],
-      ['processfile', 'arcdataimportprocessfile'],
-      ['processdata', 'arcdataimportprocessdata'],
+      ['dataImport', 'arcdataimport'],
+      ['processFile', 'arcdataimportprocessfile'],
+      ['processData', 'arcdataimportprocessdata'],
       ['inspect', 'arcdataimportinspect'],
-      ['dataimported', 'arcdataimported'],
+      ['dataImported', 'arcdataimported'],
     ].forEach(([prop, value]) => {
       it(`has ${prop} property`, () => {
         assert.equal(DataImportEventTypes[prop], value);

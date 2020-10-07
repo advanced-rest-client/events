@@ -1,4 +1,4 @@
 export const WorkspaceEventTypes = {
-  appendexport: 'requestworkspaceappendexport',
-  appendrequest: 'requestworkspaceappendrequest',
+  appendExport: 'requestworkspaceappendexport',
+  appendRequest: 'requestworkspaceappendrequest',
 };

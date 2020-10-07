@@ -8,11 +8,11 @@ export const DataExportEventTypes: DataExportEventTypes;
 
 declare interface DataImportEventTypes {
   normalize: string;
-  dataimport: string;
-  processfile: string;
-  processdata: string;
+  dataImport: string;
+  processFile: string;
+  processData: string;
   inspect: string;
-  dataimported: string;
+  dataImported: string;
 }
 
 export const DataImportEventTypes: DataImportEventTypes;

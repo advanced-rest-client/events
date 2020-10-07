@@ -11,7 +11,7 @@ describe('Workspace', () => {
   }
 
   describe('WorkspaceEvents', () => {
-    describe('appendexport()', () => {
+    describe('appendExport()', () => {
       const data = {
         createdAt: new Date().toISOString(),
         version: 'test',
@@ -21,22 +21,22 @@ describe('Workspace', () => {
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(WorkspaceEventTypes.appendexport, spy);
-        WorkspaceEvents.appendexport(et, data);
+        et.addEventListener(WorkspaceEventTypes.appendExport, spy);
+        WorkspaceEvents.appendExport(et, data);
         assert.isTrue(spy.calledOnce);
       });
 
       it('has the pid on the detail', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(WorkspaceEventTypes.appendexport, spy);
-        WorkspaceEvents.appendexport(et, data);
+        et.addEventListener(WorkspaceEventTypes.appendExport, spy);
+        WorkspaceEvents.appendExport(et, data);
         const e = spy.args[0][0];
         assert.deepEqual(e.detail.data, data);
       });
     });
 
-    describe('appendrequest()', () => {
+    describe('appendRequest()', () => {
       const request = {
         type: 'saved',
         url: 'https://api.domain.com',
@@ -46,16 +46,16 @@ describe('Workspace', () => {
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(WorkspaceEventTypes.appendrequest, spy);
-        WorkspaceEvents.appendrequest(et, request);
+        et.addEventListener(WorkspaceEventTypes.appendRequest, spy);
+        WorkspaceEvents.appendRequest(et, request);
         assert.isTrue(spy.calledOnce);
       });
 
       it('has the pid on the detail', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(WorkspaceEventTypes.appendrequest, spy);
-        WorkspaceEvents.appendrequest(et, request);
+        et.addEventListener(WorkspaceEventTypes.appendRequest, spy);
+        WorkspaceEvents.appendRequest(et, request);
         const e = spy.args[0][0];
         assert.equal(e.detail.request, request);
       });

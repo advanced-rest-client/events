@@ -17,7 +17,7 @@ export declare interface RestApiFileProcessingResult {
 
 /**
  * An event to be dispatched to inform the requests workspace to append request data
- * fron the export object.
+ * from the export object.
  */
 export declare class RestApiProcessFileEvent extends CustomEvent<ResultEventDetail<RestApiFileProcessingResult>> {
   [fileValue]: File;

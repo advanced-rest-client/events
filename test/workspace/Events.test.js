@@ -16,7 +16,7 @@ describe('Workspace', () => {
 
       it('has the correct type', () => {
         const e = new WorkspaceAppendExportEvent(data);
-        assert.equal(e.type, WorkspaceEventTypes.appendexport);
+        assert.equal(e.type, WorkspaceEventTypes.appendExport);
       });
 
       it('has the data property', () => {
@@ -44,7 +44,7 @@ describe('Workspace', () => {
 
       it('has the correct type', () => {
         const e = new WorkspaceAppendRequestEvent(request);
-        assert.equal(e.type, WorkspaceEventTypes.appendrequest);
+        assert.equal(e.type, WorkspaceEventTypes.appendRequest);
       });
 
       it('has the request property on the detail', () => {

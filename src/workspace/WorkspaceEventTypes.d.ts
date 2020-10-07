@@ -1,6 +1,6 @@
 declare interface WorkspaceEventTypes {
-  appendexport: string;
-  appendrequest: string;
+  appendExport: string;
+  appendRequest: string;
 }
 
 export const WorkspaceEventTypes: WorkspaceEventTypes;

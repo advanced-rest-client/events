@@ -1,9 +1,8 @@
-import { DataExport } from '@advanced-rest-client/arc-types';
-import { ARCSavedRequest, ARCHistoryRequest } from '@advanced-rest-client/arc-models';
+import { DataExport, ArcRequest } from '@advanced-rest-client/arc-types';
 
 declare interface WorkspaceEvents {
-  appendexport(target: EventTarget, data: DataExport.ArcExportObject): void;
-  appendrequest(target: EventTarget, request: ARCSavedRequest|ARCHistoryRequest): void;
+  appendExport(target: EventTarget, data: DataExport.ArcExportObject): void;
+  appendRequest(target: EventTarget, request: ArcRequest.ARCSavedRequest|ArcRequest.ARCHistoryRequest): void;
 }
 
 export const WorkspaceEvents: WorkspaceEvents;

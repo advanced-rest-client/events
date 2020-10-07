@@ -9,8 +9,8 @@ describe('RestAPI', () => {
     });
 
     [
-      ['processfile', 'restapiprocessfile'],
-      ['dataready', 'restapidataready'],
+      ['processFile', 'restapiprocessfile'],
+      ['dataReady', 'restapidataready'],
     ].forEach(([prop, value]) => {
       it(`has ${prop} property`, () => {
         assert.equal(RestApiEventTypes[prop], value);
