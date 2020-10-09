@@ -84,8 +84,8 @@ export { RestApiEventTypes } from './src/reastapi/RestApiEventTypes';
 export { RequestEventTypes } from './src/request/RequestEventTypes';
 export { RequestChangeEvent } from './src/request/Events';
 export { RequestEvents } from './src/request/RequestEvents';
-export { TelemetryEventTypes } from './src/telemetry/TelemetryEventTypes'
-export { TelemetryEvents } from './src/telemetry/TelemetryEvents'
+export { TelemetryEventTypes } from './src/telemetry/TelemetryEventTypes';
+export { TelemetryEvents } from './src/telemetry/TelemetryEvents';
 export {
   TelemetryEvent,
   TelemetryScreenEvent,
@@ -101,4 +101,7 @@ export {
   TelemetryExceptionDetail,
   TelemetrySocialDetail,
   TelemetryTimingDetail,
-} from './src/telemetry/Events'
+} from './src/telemetry/Events';
+export { TransportEventTypes } from './src/transport/TransportEventTypes';
+export { TransportEvents } from './src/transport/TransportEvents';
+export { ApiRequestEvent, ApiResponseEvent, ApiTransportEvent, ApiProcessResponseEvent, ApiTransportEventDetail, ApiResponseEventDetail } from './src/transport/Events';

@@ -85,3 +85,6 @@ export {
   TelemetrySocialEvent,
   TelemetryTimingEvent,
 } from './src/telemetry/Events.js';
+export { TransportEventTypes } from './src/transport/TransportEventTypes.js';
+export { TransportEvents } from './src/transport/TransportEvents.js';
+export { ApiRequestEvent, ApiResponseEvent, ApiTransportEvent, ApiProcessResponseEvent } from './src/transport/Events.js';
