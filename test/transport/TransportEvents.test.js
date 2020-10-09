@@ -36,6 +36,7 @@ describe('Transport', () => {
     });
 
     describe('response()', () => {
+      const source = generator.generateHistoryObject();
       const response = generator.generateResponse();
       const request = generateTransportRequest();
       const id = generator.chance.guid();
@@ -44,7 +45,7 @@ describe('Transport', () => {
         const et = await etFixture();
         const spy = sinon.spy();
         et.addEventListener(TransportEventTypes.response, spy);
-        TransportEvents.response(et, id, request, response);
+        TransportEvents.response(et, id, source, request, response);
         assert.isTrue(spy.calledOnce);
       });
 
@@ -52,7 +53,7 @@ describe('Transport', () => {
         const et = await etFixture();
         const spy = sinon.spy();
         et.addEventListener(TransportEventTypes.response, spy);
-        TransportEvents.response(et, id, request, response);
+        TransportEvents.response(et, id, source, request, response);
         const e = spy.args[0][0];
         assert.deepEqual(e.detail.request, request);
         assert.deepEqual(e.detail.response, response);
@@ -86,6 +87,7 @@ describe('Transport', () => {
     });
 
     describe('processResponse()', () => {
+      const source = generator.generateHistoryObject();
       const response = generator.generateResponse();
       const request = generateTransportRequest();
       const id = generator.chance.guid();
@@ -94,7 +96,7 @@ describe('Transport', () => {
         const et = await etFixture();
         const spy = sinon.spy();
         et.addEventListener(TransportEventTypes.processResponse, spy);
-        TransportEvents.processResponse(et, id, request, response);
+        TransportEvents.processResponse(et, id, source, request, response);
         assert.isTrue(spy.calledOnce);
       });
 
@@ -102,7 +104,7 @@ describe('Transport', () => {
         const et = await etFixture();
         const spy = sinon.spy();
         et.addEventListener(TransportEventTypes.processResponse, spy);
-        TransportEvents.processResponse(et, id, request, response);
+        TransportEvents.processResponse(et, id, source, request, response);
         const e = spy.args[0][0];
         assert.deepEqual(e.detail.request, request);
         assert.deepEqual(e.detail.response, response);

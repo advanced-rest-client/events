@@ -49,54 +49,28 @@ export class ApiTransportEvent extends CustomEvent {
   }
 }
 
-class ResponseEvent extends CustomEvent {
+
+/**
+ * Base event for API response events
+ */
+export class ApiResponseEvent extends CustomEvent {
   /**
    * @param {string} type The event type
    * @param {string} id The id of the request
+   * @param {ArcBaseRequest} source The source request from the request editor
    * @param {TransportRequest} request Information about the request that has been transported
    * @param {Response|ErrorResponse} response The response object
    * @param {boolean=} [cancelable=true] Whether the event is cancelable
    */
-  constructor(type, id, request, response, cancelable=true) {
+  constructor(type, id, source, request, response, cancelable=true) {
     super(type, {
       bubbles: true,
       composed: true,
       cancelable,
       detail: {
-        id, request, response,
+        id, source, request, response,
       },
     });
-  }
-}
-
-/**
- * An event dispatched when the response is ready to be processed by the UI.
- * 
- * All properties are located in the detail object.
- */
-export class ApiResponseEvent extends ResponseEvent {
-  /**
-   * @param {string} id The id of the request
-   * @param {TransportRequest} request Information about the request that has been transported
-   * @param {Response|ErrorResponse} response The response object
-   */
-  constructor(id, request, response) {
-    super(TransportEventTypes.response, id, request, response);
-  }
-}
-
-/**
- * An event dispatched by the HTTP transport to be handler by the request 
- * logic to run actions and then dispatch response event.
- */
-export class ApiProcessResponseEvent extends ResponseEvent {
-  /**
-   * @param {string} id The id of the request
-   * @param {TransportRequest} request Information about the request that has been transported
-   * @param {Response|ErrorResponse} response The response object
-   */
-  constructor(id, request, response) {
-    super(TransportEventTypes.processResponse, id, request, response, false);
   }
 }
 
@@ -112,11 +86,12 @@ export function sendAction(target, request) {
 /**
  * @param {EventTarget} target A target on which to dispatch the event
  * @param {string} id The id of the request
+ * @param {ArcBaseRequest} source The source request from the request editor
  * @param {TransportRequest} request Information about the request that has been transported
  * @param {Response|ErrorResponse} response The response object
  */
-export function responseAction(target, id, request, response) {
-  const e = new ApiResponseEvent(id, request, response);
+export function responseAction(target, id, source, request, response) {
+  const e = new ApiResponseEvent(TransportEventTypes.response, id, source, request, response);
   target.dispatchEvent(e);
 }
 
@@ -134,10 +109,11 @@ export function transportAction(target, id, request, config) {
 /**
  * @param {EventTarget} target A target on which to dispatch the event
  * @param {string} id The id of the request
+ * @param {ArcBaseRequest} source The source request from the request editor
  * @param {TransportRequest} request Information about the request that has been transported
  * @param {Response|ErrorResponse} response The response object
  */
-export function processResponseAction(target, id, request, response) {
-  const e = new ApiProcessResponseEvent(id, request, response);
+export function processResponseAction(target, id, source, request, response) {
+  const e = new ApiResponseEvent(TransportEventTypes.processResponse, id, source, request, response);
   target.dispatchEvent(e);
 }

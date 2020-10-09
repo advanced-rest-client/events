@@ -9,10 +9,11 @@ declare interface TransportEvents {
   /**
    * @param target A target on which to dispatch the event
    * @param id The id of the request
+   * @param source The source request from the request editor
    * @param request Information about the request that has been transported
    * @param response The response object
    */
-  response(target: EventTarget, id: string, request: ArcRequest.TransportRequest, response: ArcResponse.Response|ArcResponse.ErrorResponse): void;
+  response(target: EventTarget, id: string, source: ArcRequest.ArcBaseRequest, request: ArcRequest.TransportRequest, response: ArcResponse.Response|ArcResponse.ErrorResponse): void;
   /**
    * @param target A target on which to dispatch the event
    * @param id The id of the request
@@ -23,10 +24,11 @@ declare interface TransportEvents {
   /**
    * @param target A target on which to dispatch the event
    * @param id The id of the request
+   * @param source The source request from the request editor
    * @param request Information about the request that has been transported
    * @param response The response object
    */
-  processResponse(target: EventTarget, id: string, request: ArcRequest.TransportRequest, response: ArcResponse.Response|ArcResponse.ErrorResponse): void;
+  processResponse(target: EventTarget, id: string, source: ArcRequest.ArcBaseRequest, request: ArcRequest.TransportRequest, response: ArcResponse.Response|ArcResponse.ErrorResponse): void;
 }
 
 export const TransportEvents: TransportEvents;
