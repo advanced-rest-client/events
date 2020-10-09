@@ -35,17 +35,7 @@ export declare interface ApiResponseEventDetail {
   id: string;
   request: ArcRequest.TransportRequest;
   response: ArcResponse.Response|ArcResponse.ErrorResponse;
-}
-
-declare class ResponseEvent extends CustomEvent<ApiResponseEventDetail> {
-  /**
-   * @param type The event type
-   * @param id The id of the request
-   * @param request Information about the request that has been transported
-   * @param response The response object
-   * @param cancelable Whether the event is cancelable
-   */
-  constructor(type: string, id: string, request: ArcRequest.TransportRequest, response: ArcResponse.Response|ArcResponse.ErrorResponse, cancelable?: boolean);
+  source: ArcRequest.ArcBaseRequest;
 }
 
 /**
@@ -53,26 +43,15 @@ declare class ResponseEvent extends CustomEvent<ApiResponseEventDetail> {
  * 
  * All properties are located in the detail object.
  */
-export declare class ApiResponseEvent extends ResponseEvent {
+export declare class ApiResponseEvent extends CustomEvent<ApiResponseEventDetail> {
   /**
+   * @param type The event type
    * @param id The id of the request
+   * @param source The source request from the request editor
    * @param request Information about the request that has been transported
    * @param response The response object
    */
-  constructor(id: string, request: ArcRequest.TransportRequest, response: ArcResponse.Response|ArcResponse.ErrorResponse);
-}
-
-/**
- * An event dispatched by the HTTP transport to be handler by the request 
- * logic to run actions and then dispatch response event.
- */
-export declare class ApiProcessResponseEvent extends ResponseEvent {
-  /**
-   * @param id The id of the request
-   * @param request Information about the request that has been transported
-   * @param response The response object
-   */
-  constructor(id: string, request: ArcRequest.TransportRequest, response: ArcResponse.Response|ArcResponse.ErrorResponse);
+  constructor(type: string, id: string, source: ArcRequest.ArcBaseRequest, request: ArcRequest.TransportRequest, response: ArcResponse.Response|ArcResponse.ErrorResponse);
 }
 
 /**
@@ -84,10 +63,11 @@ export declare function sendAction(target: EventTarget, request: ArcRequest.ArcE
 /**
  * @param target A target on which to dispatch the event
  * @param id The id of the request
+ * @param source The source request from the request editor
  * @param request Information about the request that has been transported
  * @param response The response object
  */
-export declare function responseAction(target: EventTarget, id: string, request: ArcRequest.TransportRequest, response: ArcResponse.Response|ArcResponse.ErrorResponse): void;
+export declare function responseAction(target: EventTarget, id: string, source: ArcRequest.ArcBaseRequest, request: ArcRequest.TransportRequest, response: ArcResponse.Response|ArcResponse.ErrorResponse): void;
 
 /**
  * @param target A target on which to dispatch the event
@@ -100,7 +80,8 @@ export declare function transportAction(target: EventTarget, id: string, request
 /**
  * @param target A target on which to dispatch the event
  * @param id The id of the request
+ * @param source The source request from the request editor
  * @param request Information about the request that has been transported
  * @param response The response object
  */
-export declare function processResponseAction(target: EventTarget, id: string, request: ArcRequest.TransportRequest, response: ArcResponse.Response|ArcResponse.ErrorResponse): void;
+export declare function processResponseAction(target: EventTarget, id: string, source: ArcRequest.ArcBaseRequest, request: ArcRequest.TransportRequest, response: ArcResponse.Response|ArcResponse.ErrorResponse): void;
