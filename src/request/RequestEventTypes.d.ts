@@ -10,4 +10,4 @@ declare interface RequestEventTypes {
   State: RequestStateEventTypes;
 }
 
-export declare const RequestEventTypes: RequestEventTypes;
+export declare const RequestEventTypes: Readonly<RequestEventTypes>;

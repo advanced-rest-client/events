@@ -4,4 +4,4 @@ declare interface GoogleDriveEventTypes {
   read: string;
 }
 
-export const GoogleDriveEventTypes: GoogleDriveEventTypes;
+export const GoogleDriveEventTypes: Readonly<GoogleDriveEventTypes>;

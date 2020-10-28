@@ -88,3 +88,6 @@ export {
 export { TransportEventTypes } from './src/transport/TransportEventTypes.js';
 export { TransportEvents } from './src/transport/TransportEvents.js';
 export { ApiRequestEvent, ApiResponseEvent, ApiTransportEvent } from './src/transport/Events.js';
+export { OAuth2AuthorizeEvent, OAuth2RemoveTokenEvent } from './src/authorization/Events.js';
+export { AuthorizationEventTypes } from './src/authorization/AuthorizationEventTypes.js';
+export { AuthorizationEvents } from './src/authorization/AuthorizationEvents.js';

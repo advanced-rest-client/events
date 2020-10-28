@@ -4,7 +4,7 @@ declare interface DataExportEventTypes {
   fileSave: string;
 }
 
-export const DataExportEventTypes: DataExportEventTypes;
+export const DataExportEventTypes: Readonly<DataExportEventTypes>;
 
 declare interface DataImportEventTypes {
   normalize: string;
@@ -15,4 +15,4 @@ declare interface DataImportEventTypes {
   dataImported: string;
 }
 
-export const DataImportEventTypes: DataImportEventTypes;
+export const DataImportEventTypes: Readonly<DataImportEventTypes>;

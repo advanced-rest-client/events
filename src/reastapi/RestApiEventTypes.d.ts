@@ -3,4 +3,4 @@ declare interface RestApiEventTypes {
   dataReady: string;
 }
 
-export const RestApiEventTypes: RestApiEventTypes;
+export const RestApiEventTypes: Readonly<RestApiEventTypes>;

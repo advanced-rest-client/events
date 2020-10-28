@@ -9,4 +9,4 @@ declare interface TelemetryEventTypes {
   timing: string;
 }
 
-export declare const TelemetryEventTypes: TelemetryEventTypes;
+export declare const TelemetryEventTypes: Readonly<TelemetryEventTypes>;

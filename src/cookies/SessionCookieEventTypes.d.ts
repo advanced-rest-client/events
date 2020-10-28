@@ -13,4 +13,4 @@ declare interface SessionCookieEventTypes {
   State: SessionCookieStateEventTypes;
 }
 
-export declare const SessionCookieEventTypes: SessionCookieEventTypes;
+export declare const SessionCookieEventTypes: Readonly<SessionCookieEventTypes>;

@@ -3,4 +3,4 @@ declare interface WorkspaceEventTypes {
   appendRequest: string;
 }
 
-export const WorkspaceEventTypes: WorkspaceEventTypes;
+export const WorkspaceEventTypes: Readonly<WorkspaceEventTypes>;

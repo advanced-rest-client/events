@@ -7,4 +7,4 @@ declare interface ArcNavigationEventTypes {
   popupMenu: string;
 }
 
-export const ArcNavigationEventTypes: ArcNavigationEventTypes;
+export const ArcNavigationEventTypes: Readonly<ArcNavigationEventTypes>;

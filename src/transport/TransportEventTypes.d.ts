@@ -19,4 +19,4 @@ declare interface TransportEventTypes {
   processResponse: string;
 }
 
-export declare const TransportEventTypes: TransportEventTypes;
+export declare const TransportEventTypes: Readonly<TransportEventTypes>;

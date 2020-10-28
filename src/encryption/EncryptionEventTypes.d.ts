@@ -3,4 +3,4 @@ declare interface EncryptionEventTypes {
   decrypt: string;
 }
 
-export declare const EncryptionEventTypes: EncryptionEventTypes;
+export declare const EncryptionEventTypes: Readonly<EncryptionEventTypes>;

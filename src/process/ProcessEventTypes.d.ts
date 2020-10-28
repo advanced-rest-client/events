@@ -4,4 +4,4 @@ declare interface ProcessEventTypes {
   loadingerror: string;
 }
 
-export const ProcessEventTypes: ProcessEventTypes;
+export const ProcessEventTypes: Readonly<ProcessEventTypes>;
