@@ -167,3 +167,22 @@
 * refactoring methods [cf3c496](https://github.com/advanced-rest-client/arc-events/commit/cf3c4968ff829f821bf4405329971717cfe4218c) by Pawel
 
 
+<a name="0.2.4"></a>
+## [0.2.4](https://github.com/advanced-rest-client/arc-events/compare/0.2.1...0.2.4) (2020-11-15)
+
+### Update
+
+* upgrading testing framework [520e3a1](https://github.com/advanced-rest-client/arc-events/commit/520e3a1bce704b56620e3c6c8fa91e4f3a8d7c37) by Pawel
+
+
+### Features
+
+* adding configuration events [1c93316](https://github.com/advanced-rest-client/arc-events/commit/1c93316cafb80ec654145a1bb6359497090bc85c) by Pawel
+* adding authorization events [d9fc453](https://github.com/advanced-rest-client/arc-events/commit/d9fc453401efdc896d27cc662b739f45abd65519) by Pawel
+
+
+### Refactor
+
+* refactoring transport events [156fe7e](https://github.com/advanced-rest-client/arc-events/commit/156fe7eea486661eab87278a0044d8d001c81086) by Pawel
+
+
