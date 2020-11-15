@@ -91,3 +91,11 @@ export { ApiRequestEvent, ApiResponseEvent, ApiTransportEvent } from './src/tran
 export { OAuth2AuthorizeEvent, OAuth2RemoveTokenEvent } from './src/authorization/Events.js';
 export { AuthorizationEventTypes } from './src/authorization/AuthorizationEventTypes.js';
 export { AuthorizationEvents } from './src/authorization/AuthorizationEvents.js';
+export {
+  ConfigPropertyReadEvent,
+  ConfigReadEvent,
+  ConfigStateUpdateEvent,
+  ConfigUpdateEvent,
+} from './src/config/Events.js';
+export { ConfigEventTypes } from './src/config/ConfigEventTypes.js';
+export { ConfigEvents } from './src/config/ConfigEvents.js';

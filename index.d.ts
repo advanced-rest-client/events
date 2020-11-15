@@ -108,3 +108,13 @@ export { ApiRequestEvent, ApiResponseEvent, ApiTransportEvent, ApiTransportEvent
 export { OAuth2AuthorizeEvent, OAuth2RemoveTokenEvent } from './src/authorization/Events';
 export { AuthorizationEventTypes } from './src/authorization/AuthorizationEventTypes';
 export { AuthorizationEvents } from './src/authorization/AuthorizationEvents';
+export {
+  ConfigPropertyReadEvent,
+  ConfigReadEvent,
+  ConfigStateUpdateEvent,
+  ConfigUpdateEvent,
+  ConfigKeyEventDetail,
+  ConfigPropertyEventDetail,
+} from './src/config/Events';
+export { ConfigEventTypes } from './src/config/ConfigEventTypes';
+export { ConfigEvents } from './src/config/ConfigEvents';

@@ -1,4 +1,4 @@
-// The event names should be unique accross all events in all modules.
+// The event names should be unique across all events in all modules.
 const names = [];
 
 export function ensureUnique(namespace, src) {
