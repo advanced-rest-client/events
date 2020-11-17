@@ -6,6 +6,8 @@ import { SessionCookieEventTypes } from './SessionCookieEventTypes.js';
 export const domainValue = Symbol('domainValue');
 export const cookieValue = Symbol('cookieValue');
 export const cookiesValue = Symbol('cookiesValue');
+export const urlValue = Symbol('urlValue');
+export const nameValue = Symbol('nameValue');
 
 /**
  * An event to be dispatched when requesting list of session cookies
@@ -100,6 +102,53 @@ export class SessionCookiesRemoveEvent extends CustomEvent {
  */
 export async function deleteAction(target, cookies) {
   const e = new SessionCookiesRemoveEvent(cookies);
+  target.dispatchEvent(e);
+  return e.detail.result;
+}
+
+
+/**
+ * An event to be dispatched when deleting cookies by the domain and path
+ */
+export class SessionCookiesRemoveDomainEvent extends CustomEvent {
+  /**
+   * @returns {string} The URL value used to initialize this event
+   */
+  get url() {
+    return this[urlValue];
+  }
+
+  /**
+   * @returns {string|undefined} The name value used to initialize this event
+   */
+  get name() {
+    return this[nameValue];
+  }
+
+  /**
+   * @param {string} url The url associated with the cookie. Depending on the session mechanism the URL or the domain and the path is used.
+   * @param {string=} name The name of the cookie to remove. When not set all cookies are removed for the given URL.
+   */
+  constructor(url, name) {
+    super(SessionCookieEventTypes.deleteUrl, {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {},
+    });
+    this[urlValue] = url;
+    this[nameValue] = name;
+  }
+}
+
+/**
+ * @param {EventTarget} target A node on which to dispatch the event.
+ * @param {string} url The url associated with the cookie. Depending on the session mechanism the URL or the domain and the path is used.
+ * @param {string=} name The name of the cookie to remove. When not set all cookies are removed for the given URL.
+ * @return {Promise<void>} Promise resolved when the cookies has been removed
+ */
+export async function deleteUrlAction(target, url, name) {
+  const e = new SessionCookiesRemoveDomainEvent(url, name);
   target.dispatchEvent(e);
   return e.detail.result;
 }

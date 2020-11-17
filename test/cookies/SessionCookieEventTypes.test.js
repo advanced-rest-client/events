@@ -12,6 +12,7 @@ describe('Cookies', () => {
       ['listAll', 'sessioncookielistall'],
       ['listDomain', 'sessioncookielistdomain'],
       ['delete', 'sessioncookiedelete'],
+      ['deleteUrl', 'sessioncookiedeleteurl'],
       ['update', 'sessioncookieupdate'],
     ].forEach(([prop, value]) => {
       it(`has ${prop} property`, () => {

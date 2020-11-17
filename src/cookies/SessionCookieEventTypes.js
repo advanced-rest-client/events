@@ -6,6 +6,7 @@ export const SessionCookieEventTypes = {
   listAll: 'sessioncookielistall',
   listDomain: 'sessioncookielistdomain',
   delete: 'sessioncookiedelete',
+  deleteUrl: 'sessioncookiedeleteurl',
   update: 'sessioncookieupdate',
   State: {
     delete: 'sessioncookiestatedelete',

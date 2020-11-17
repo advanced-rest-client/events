@@ -51,7 +51,7 @@ export declare class SessionCookiesRemoveEvent extends CustomEvent<VoidResponseD
   /**
    * The list of cookies to remove
    */
-  readonly cookies: Cookies.ARCCookie[];
+  get cookies(): Cookies.ARCCookie[];
 
   /**
    * @param cookies The list of cookies to remove
@@ -65,6 +65,36 @@ export declare class SessionCookiesRemoveEvent extends CustomEvent<VoidResponseD
  * @returns Promise resolved when the cookies has been removed
  */
 export declare function deleteAction(target: EventTarget, cookies: Cookies.ARCCookie[]): Promise<void>;
+
+/**
+ * An event to be dispatched when deleting cookies by the domain and path
+ */
+export declare class SessionCookiesRemoveDomainEvent extends CustomEvent<VoidResponseDetail> {
+  /**
+   * @returns The URL value used to initialize this event
+   */
+  get url(): string;
+
+  /**
+   * @returns The name value used to initialize this event
+   */
+  get name(): string|undefined;
+
+  /**
+   * @param url The url associated with the cookie. Depending on the session mechanism the URL or the domain and the path is used.
+   * @param name The name of the cookie to remove. When not set all cookies are removed for the given URL.
+   */
+  constructor(url: string, name?: string);
+}
+
+/**
+ * @param target A node on which to dispatch the event.
+ * @param url The url associated with the cookie. Depending on the session mechanism the URL or the domain and the path is used.
+ * @param name The name of the cookie to remove. When not set all cookies are removed for the given URL.
+ * @returns Promise resolved when the cookies has been removed
+ */
+export declare function deleteUrlAction(target: EventTarget, url: string, name?: string): Promise<void>;
+
 
 /**
  * An event to be dispatched when updating a session cookie

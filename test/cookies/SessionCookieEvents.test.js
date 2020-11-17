@@ -66,6 +66,37 @@ describe('Cookies', () => {
       });
     });
 
+    describe('deleteUrl()', () => {
+      const url = 'https://api.domain.com';
+      const name = 'cName';
+
+      it('dispatches the delete event', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(SessionCookieEventTypes.deleteUrl, spy);
+        SessionCookieEvents.deleteUrl(et, url);
+        assert.isTrue(spy.calledOnce);
+      });
+
+      it('has the url on the event', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(SessionCookieEventTypes.deleteUrl, spy);
+        SessionCookieEvents.deleteUrl(et, url);
+        const e = spy.args[0][0];
+        assert.equal(e.url, url);
+      });
+
+      it('has the name on the event', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(SessionCookieEventTypes.deleteUrl, spy);
+        SessionCookieEvents.deleteUrl(et, url, name);
+        const e = spy.args[0][0];
+        assert.equal(e.name, name);
+      });
+    });
+
     describe('update()', () => {
       const cookie = { name: 'cname', value: 'cvalue', domain: 'cdomain', path: 'cpath' };
 

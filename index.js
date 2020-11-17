@@ -27,6 +27,7 @@ export {
   SessionCookieUpdateEvent,
   SessionCookieUpdatedEvent,
   SessionCookieDeletedEvent,
+  SessionCookiesRemoveDomainEvent,
 } from './src/cookies/Events.js';
 export {
   ExportEvents,

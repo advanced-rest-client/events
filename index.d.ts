@@ -28,6 +28,8 @@ export {
   SessionCookieUpdateEvent,
   SessionCookieUpdatedEvent,
   SessionCookieDeletedEvent,
+  SessionCookiesRemoveDomainEvent,
+  CookieListResponseDetail,
 } from './src/cookies/Events.js';
 export {
   ExportEvents,

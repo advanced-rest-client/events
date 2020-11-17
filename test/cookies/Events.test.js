@@ -7,6 +7,7 @@ import {
   SessionCookieUpdateEvent,
   SessionCookieUpdatedEvent,
   SessionCookieDeletedEvent,
+  SessionCookiesRemoveDomainEvent,
 } from  '../../index.js';
 
 describe('Cookies', () => {
@@ -48,6 +49,34 @@ describe('Cookies', () => {
         assert.throws(() => {
           // @ts-ignore
           e.cookies = 'test';
+        });
+      });
+    });
+
+    describe('SessionCookiesRemoveDomainEvent', () => {
+      const url = 'https://api.domain.com';
+      const name = 'cName';
+
+      it('has the correct type', () => {
+        const e = new SessionCookiesRemoveDomainEvent(url);
+        assert.equal(e.type, SessionCookieEventTypes.deleteUrl);
+      });
+
+      it('has readonly url property', () => {
+        const e = new SessionCookiesRemoveDomainEvent(url);
+        assert.equal(e.url, url);
+        assert.throws(() => {
+          // @ts-ignore
+          e.url = 'test';
+        });
+      });
+
+      it('has readonly name property', () => {
+        const e = new SessionCookiesRemoveDomainEvent(url, name);
+        assert.equal(e.name, name);
+        assert.throws(() => {
+          // @ts-ignore
+          e.name = 'test';
         });
       });
     });
