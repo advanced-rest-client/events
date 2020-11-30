@@ -186,3 +186,25 @@
 * refactoring transport events [156fe7e](https://github.com/advanced-rest-client/arc-events/commit/156fe7eea486661eab87278a0044d8d001c81086) by Pawel
 
 
+<a name="0.2.6"></a>
+## [0.2.6](https://github.com/advanced-rest-client/arc-events/compare/0.2.2...0.2.6) (2020-11-30)
+
+### Update
+
+* [ci skip] automated merge master->stage. syncing main branches [370621d](https://github.com/advanced-rest-client/arc-events/commit/370621dff0176282b1df5c0e3f5e9a7ba8b811ad) by Ci agent
+* upgrading testing framework [520e3a1](https://github.com/advanced-rest-client/arc-events/commit/520e3a1bce704b56620e3c6c8fa91e4f3a8d7c37) by Pawel
+
+
+### Features
+
+* adding request abort event [c28259c](https://github.com/advanced-rest-client/arc-events/commit/c28259cfd16daeb9ef64f9183e93b6386d4bf60c) by Pawel Psztyc
+* adding cookie delete by URL event [da6720d](https://github.com/advanced-rest-client/arc-events/commit/da6720d320b1ac42d6666ff31a1423c8ee737571) by Pawel
+* adding configuration events [1c93316](https://github.com/advanced-rest-client/arc-events/commit/1c93316cafb80ec654145a1bb6359497090bc85c) by Pawel
+* adding authorization events [d9fc453](https://github.com/advanced-rest-client/arc-events/commit/d9fc453401efdc896d27cc662b739f45abd65519) by Pawel
+
+
+### Testing
+
+* removing old Karma files [9c42348](https://github.com/advanced-rest-client/arc-events/commit/9c42348dfcf1696d8366e88bae74b578265cd378) by Pawel
+
+
