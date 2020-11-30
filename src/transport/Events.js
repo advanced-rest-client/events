@@ -29,7 +29,7 @@ export class ApiRequestEvent extends CustomEvent {
 }
 
 /**
- * An event dispatched by when the request is ready to be send by the HTTP transport.
+ * An event dispatched when the request is ready to be send by the HTTP transport.
  */
 export class ApiTransportEvent extends CustomEvent {
   /**
@@ -49,6 +49,24 @@ export class ApiTransportEvent extends CustomEvent {
   }
 }
 
+/**
+ * An event dispatched when the processor should abort making the request.
+ */
+export class ApiAbortEvent extends CustomEvent {
+  /**
+   * @param {string} id The id of the request to abort
+   */
+  constructor(id) {
+    super(TransportEventTypes.abort, {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        id
+      },
+    });
+  }
+}
 
 /**
  * Base event for API response events
@@ -115,5 +133,14 @@ export function transportAction(target, id, request, config) {
  */
 export function processResponseAction(target, id, source, request, response) {
   const e = new ApiResponseEvent(TransportEventTypes.processResponse, id, source, request, response);
+  target.dispatchEvent(e);
+}
+
+/**
+ * @param {EventTarget} target A target on which to dispatch the event
+ * @param {string} id The id of the request to abort
+ */
+export function abortAction(target, id) {
+  const e = new ApiAbortEvent(id);
   target.dispatchEvent(e);
 }

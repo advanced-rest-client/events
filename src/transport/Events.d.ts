@@ -30,6 +30,20 @@ export declare class ApiTransportEvent extends CustomEvent<ApiTransportEventDeta
   constructor(id: string, request: ArcRequest.ArcBaseRequest, config?: ArcRequest.RequestConfig);
 }
 
+export declare interface ApiAbortEventDetail {
+  id: string;
+}
+
+/**
+ * An event dispatched when the processor should abort making the request.
+ */
+export class ApiAbortEvent extends CustomEvent<ApiAbortEventDetail> {
+  /**
+   * @param id The id of the request to abort
+   */
+  constructor(id: string);
+}
+
 
 export declare interface ApiResponseEventDetail {
   id: string;
@@ -85,3 +99,9 @@ export declare function transportAction(target: EventTarget, id: string, request
  * @param response The response object
  */
 export declare function processResponseAction(target: EventTarget, id: string, source: ArcRequest.ArcBaseRequest, request: ArcRequest.TransportRequest, response: ArcResponse.Response|ArcResponse.ErrorResponse): void;
+
+/**
+ * @param target A target on which to dispatch the event
+ * @param id The id of the request to abort
+ */
+export declare function abortAction(target: EventTarget, id: string): void;

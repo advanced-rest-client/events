@@ -29,6 +29,11 @@ declare interface TransportEvents {
    * @param response The response object
    */
   processResponse(target: EventTarget, id: string, source: ArcRequest.ArcBaseRequest, request: ArcRequest.TransportRequest, response: ArcResponse.Response|ArcResponse.ErrorResponse): void;
+  /**
+   * @param target A target on which to dispatch the event
+   * @param id The id of the request to abort
+   */
+  abort(target: EventTarget, id: string): void;
 }
 
 export const TransportEvents: TransportEvents;

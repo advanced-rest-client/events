@@ -5,4 +5,5 @@ export const TransportEvents = {
   response: Events.responseAction,
   transport: Events.transportAction,
   processResponse: Events.processResponseAction,
+  abort: Events.abortAction,
 }

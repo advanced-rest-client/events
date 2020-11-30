@@ -1,6 +1,6 @@
 import { assert } from '@open-wc/testing';
 import { DataGenerator } from '@advanced-rest-client/arc-data-generator';
-import { TransportEventTypes, ApiRequestEvent, ApiResponseEvent, ApiTransportEvent } from  '../../index.js';
+import { TransportEventTypes, ApiRequestEvent, ApiResponseEvent, ApiTransportEvent, ApiAbortEvent } from  '../../index.js';
 import { generateEditorRequest, generateTransportRequest } from './Utils.js';
 
 describe('Transport', () => {
@@ -101,6 +101,35 @@ describe('Transport', () => {
 
       it('is cancelable', () => {
         const e = new ApiTransportEvent(id, request);
+        assert.isTrue(e.cancelable);
+      });
+    });
+
+    describe('ApiAbortEvent', () => {
+      const id = generator.chance.guid();
+
+      it('has the correct type', () => {
+        const e = new ApiAbortEvent(id);
+        assert.equal(e.type, TransportEventTypes.abort);
+      });
+
+      it('has the detail property', () => {
+        const e = new ApiAbortEvent(id);
+        assert.equal(e.detail.id, id);
+      });
+
+      it('bubbles', () => {
+        const e = new ApiAbortEvent(id);
+        assert.isTrue(e.bubbles);
+      });
+
+      it('is composed', () => {
+        const e = new ApiAbortEvent(id);
+        assert.isTrue(e.composed);
+      });
+
+      it('is cancelable', () => {
+        const e = new ApiAbortEvent(id);
         assert.isTrue(e.cancelable);
       });
     });

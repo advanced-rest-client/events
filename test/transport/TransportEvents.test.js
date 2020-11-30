@@ -112,5 +112,25 @@ describe('Transport', () => {
       });
     });
 
+    describe('abort()', () => {
+      const id = generator.chance.guid();
+
+      it('dispatches the event', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(TransportEventTypes.abort, spy);
+        TransportEvents.abort(et, id);
+        assert.isTrue(spy.calledOnce);
+      });
+
+      it('has the detail property', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(TransportEventTypes.abort, spy);
+        TransportEvents.abort(et, id);
+        const e = spy.args[0][0];
+        assert.deepEqual(e.detail.id, id);
+      });
+    });
   });
 });

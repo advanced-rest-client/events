@@ -20,5 +20,6 @@ export const TransportEventTypes = {
   // performs operations before the request is reported back to the UI
   // like authorization and actions.
   processResponse: 'apiprocessresponse',
+  abort: 'apiabort',
 };
 Object.freeze(TransportEventTypes);

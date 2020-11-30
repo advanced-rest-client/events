@@ -17,6 +17,7 @@ declare interface TransportEventTypes {
   // performs operations before the request is reported back to the UI
   // like authorization and actions.
   processResponse: string;
+  abort: string;
 }
 
 export declare const TransportEventTypes: Readonly<TransportEventTypes>;
