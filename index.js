@@ -64,6 +64,8 @@ export { ProcessEventTypes } from './src/process/ProcessEventTypes.js';
 export {
   WorkspaceAppendExportEvent,
   WorkspaceAppendRequestEvent,
+  WorkspaceReadEvent,
+  WorkspaceWriteEvent,
 } from './src/workspace/Events.js';
 export { WorkspaceEvents } from './src/workspace/WorkspaceEvents.js';
 export { WorkspaceEventTypes } from './src/workspace/WorkspaceEventTypes.js';

@@ -73,6 +73,10 @@ export {
   WorkspaceAppendRequestEvent,
   WorkspaceAppendExportEventDetail,
   WorkspaceAppendRequestEventDetail,
+  WorkspaceReadEvent,
+  WorkspaceWriteEvent,
+  WorkspaceReadEventDetail,
+  WorkspaceWriteEventDetail,
 } from './src/workspace/Events';
 export { WorkspaceEvents } from './src/workspace/WorkspaceEvents';
 export { WorkspaceEventTypes } from './src/workspace/WorkspaceEventTypes';
