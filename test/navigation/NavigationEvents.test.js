@@ -8,6 +8,7 @@ import {
   ARCRestApiNavigationEvent,
   ARCProjectNavigationEvent,
   ARCExternalNavigationEvent,
+  ARCHelpTopicEvent,
   REQUESTROUTE,
   RESTAPIROUTE,
   PROJECTROUTE,
@@ -223,6 +224,34 @@ describe('NavigationEvents', () => {
     it('has the default detail', () => {
       const e = new ARCExternalNavigationEvent(url);
       assert.deepEqual(e.detail, {});
+    });
+  });
+
+  describe('ARCHelpTopicEvent', () => {
+    const topic = 'test-topic';
+
+    it('has the correct type', () => {
+      const e = new ARCHelpTopicEvent(topic);
+      assert.equal(e.type, ArcNavigationEventTypes.helpTopic);
+    });
+
+    it('has the read only topic property', () => {
+      const e = new ARCHelpTopicEvent(topic);
+      assert.equal(e.topic, topic);
+      assert.throws(() => {
+        // @ts-ignore
+        e.topic = 'test';
+      });
+    });
+
+    it('is cancelable', () => {
+      const e = new ARCHelpTopicEvent(topic);
+      assert.isTrue(e.cancelable);
+    });
+
+    it('bubbles', () => {
+      const e = new ARCHelpTopicEvent(topic);
+      assert.isTrue(e.bubbles);
     });
   });
 });

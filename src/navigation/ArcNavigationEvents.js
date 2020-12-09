@@ -79,6 +79,17 @@ export const ArcNavigationEvents = {
     const e = new NavigationEvents.ARCMenuPopupEvent(menu);
     target.dispatchEvent(e);
   },
+
+  /**
+   * Dispatches the navigate help event
+   *
+   * @param {EventTarget} target A node on which to dispatch the event.
+   * @param {string} topic The help topic name
+   */
+  helpTopic: (target, topic) => {
+    const e = new NavigationEvents.ARCHelpTopicEvent(topic);
+    target.dispatchEvent(e);
+  },
 };
 
 Object.freeze(ArcNavigationEvents);

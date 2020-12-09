@@ -63,6 +63,14 @@ declare interface ArcNavigationEvents {
    * @param action The action type: `detail`, `edit`
    */
   popupMenu(target: EventTarget, menu: string): void;
+
+  /**
+   * Dispatches the navigate help event
+   *
+   * @param target A node on which to dispatch the event.
+   * @param topic The help topic name
+   */
+  helpTopic(target: EventTarget, topic: string): void;
 }
 
 export declare const ArcNavigationEvents: ArcNavigationEvents;

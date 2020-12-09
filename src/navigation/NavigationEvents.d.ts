@@ -1,9 +1,10 @@
-export const baseValue: symbol;
-export const optsValue: symbol;
-export const menuValue: symbol;
-export const idValue: symbol;
-export const typeValue: symbol;
-export const versionValue: symbol;
+export const baseValue: unique symbol;
+export const optsValue: unique symbol;
+export const menuValue: unique symbol;
+export const idValue: unique symbol;
+export const typeValue: unique symbol;
+export const versionValue: unique symbol;
+export const topicValue: unique symbol;
 
 export declare const REQUESTROUTE: string;
 export declare const RESTAPIROUTE: string;
@@ -17,7 +18,7 @@ export declare class ARCNavigationRouteEvent extends CustomEvent<void> {
   /**
    * The base route to navigate to used to initialize this event.
    */
-  readonly route: string;
+  get route(): string;
 
   /**
    * @param type Event type
@@ -36,7 +37,7 @@ export declare class ARCNavigationEvent extends CustomEvent<any> {
   /**
    * The base route to navigate to used to initialize this event.
    */
-  readonly route: string;
+  get route(): string;
 
   /**
    * @param route The base route to navigate to.
@@ -52,7 +53,7 @@ export declare class ARCMenuPopupEvent extends CustomEvent<void> {
   /**
    * The name of the menu used to initialize this event.
    */
-  readonly menu: string;
+  get menu(): string;
 
   /**
    * @param menu The name of the menu
@@ -77,16 +78,16 @@ export declare class ARCRequestNavigationEvent extends ARCNavigationRouteEvent {
   /**
    * The id of the ARCRequest entity used to initialized this object.
    */
-  readonly requestId: string;
+  get requestId(): string;
   /**
    * The type of the request used to initialize this event.
    */
-  readonly requestType: string;
+  get requestType(): string;
 
   /**
    * The action to perform when navigation is being handled.
    */
-  readonly action: string;
+  get action(): string;
 
   /**
    * @param requestId The id of the ARCRequest entity
@@ -103,15 +104,15 @@ export declare class ARCRestApiNavigationEvent extends ARCNavigationRouteEvent {
   /**
    * The id of the ARCRestApiIndex entity used to initialized this object.
    */
-  readonly api: string;
+  get api(): string;
   /**
    * The requested API version used to initialize this event.
    */
-  readonly version: string;
+  get version(): string;
   /**
    * The action type used to initialize this event.
    */
-  readonly action: string;
+  get action(): string;
 
   /**
    * @param api The id of the ARCRestApiIndex entity
@@ -149,11 +150,11 @@ export declare class ARCProjectNavigationEvent extends ARCNavigationRouteEvent {
   /**
    * The ID of the ARCProject entity used to initialized this object.
    */
-  readonly id: string;
+  get id(): string;
   /**
    * The action type used to initialize this event.
    */
-  readonly action: string;
+  get action(): string;
 
   /**
    * @param id The ID of the ARCProject entity
@@ -179,10 +180,27 @@ export declare class ARCExternalNavigationEvent extends CustomEvent<ExternalNavi
   /**
    * The URL to navigate to used to initialize this event.
    */
-  readonly url: string;
+  get url(): string;
   /**
    * @param url The URL to open
    * @param detail Additional request parameters
    */
   constructor(url: string, detail?: ExternalNavigationOptions);
+}
+
+/**
+ * An event to be dispatched when a help topic is being requested by the user.
+ */
+export declare class ARCHelpTopicEvent extends Event {
+  /**
+   * The help topic used to initialize this event.
+   */
+  get topic(): string;
+
+  [topicValue]: string;
+
+  /**
+   * @param topic The help topic to open.
+   */
+  constructor(topic: string);
 }

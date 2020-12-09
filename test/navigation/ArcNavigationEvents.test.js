@@ -307,4 +307,32 @@ describe('ArcNavigationEvents', () => {
       assert.deepEqual(e.detail, cnf);
     });
   });
+
+  describe('helpTopic()', () => {
+    const topic = 'test-topic';
+
+    it('is frozen', () => {
+      assert.throws(() => {
+        // @ts-ignore
+        ArcNavigationEvents.helpTopic = 'test';
+      });
+    });
+
+    it('dispatches the help navigation event', async () => {
+      const et = await etFixture();
+      const spy = sinon.spy();
+      et.addEventListener(ArcNavigationEventTypes.helpTopic, spy);
+      ArcNavigationEvents.helpTopic(et, topic);
+      assert.isTrue(spy.calledOnce);
+    });
+
+    it('has the topic property on the event', async () => {
+      const et = await etFixture();
+      const spy = sinon.spy();
+      et.addEventListener(ArcNavigationEventTypes.helpTopic, spy);
+      ArcNavigationEvents.helpTopic(et, topic);
+      const e = spy.args[0][0];
+      assert.equal(e.topic, topic);
+    });
+  });
 });

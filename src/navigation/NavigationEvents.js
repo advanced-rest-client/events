@@ -11,6 +11,7 @@ export const typeValue = Symbol('typeValue');
 export const versionValue = Symbol('versionValue');
 export const actionValue = Symbol('actionValue');
 export const urlValue = Symbol('urlValue');
+export const topicValue = Symbol('topicValue');
 
 export const REQUESTROUTE = 'request';
 export const RESTAPIROUTE = 'rest-api';
@@ -247,5 +248,29 @@ export class ARCExternalNavigationEvent extends CustomEvent {
       detail,
     });
     this[urlValue] = url;
+  }
+}
+
+/**
+ * An event to be dispatched when a help topic is being requested by the user.
+ */
+export class ARCHelpTopicEvent extends Event {
+  /**
+   * @returns {string} The help topic used to initialize this event.
+   */
+  get topic() {
+    return this[topicValue];
+  }
+
+  /**
+   * @param {string} topic The help topic to open.
+   */
+  constructor(topic) {
+    super(ArcNavigationEventTypes.helpTopic, {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+    });
+    this[topicValue] = topic;
   }
 }

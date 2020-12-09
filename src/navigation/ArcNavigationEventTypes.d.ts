@@ -5,6 +5,7 @@ declare interface ArcNavigationEventTypes {
   navigateRestApi: string;
   navigateProject: string;
   popupMenu: string;
+  helpTopic: string;
 }
 
 export const ArcNavigationEventTypes: Readonly<ArcNavigationEventTypes>;

@@ -17,6 +17,7 @@ describe('ArcModelEventTypes', () => {
     ['navigateRestApi', 'arcnavigaterestapi'],
     ['navigateProject', 'arcnavigateproject'],
     ['popupMenu', 'arcpopupmenu'],
+    ['helpTopic', 'arcnavigatehelptopic'],
   ].forEach(([prop, value]) => {
     it(`has ${prop} property`, () => {
       assert.equal(ArcNavigationEventTypes[prop], value);

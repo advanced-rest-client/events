@@ -5,5 +5,6 @@ export const ArcNavigationEventTypes = {
   navigateRestApi: 'arcnavigaterestapi',
   navigateProject: 'arcnavigateproject',
   popupMenu: 'arcpopupmenu',
+  helpTopic: 'arcnavigatehelptopic'
 };
 Object.freeze(ArcNavigationEventTypes);

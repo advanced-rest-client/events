@@ -13,6 +13,7 @@ export {
   PROJECTROUTE,
   ProjectActions,
   RequestActions,
+  ARCHelpTopicEvent,
 } from './src/navigation/NavigationEvents.js';
 export { SessionCookieEventTypes } from './src/cookies/SessionCookieEventTypes.js';
 export { SessionCookieEvents } from './src/cookies/SessionCookieEvents.js';
