@@ -13,8 +13,6 @@ export const nameValue = Symbol('nameValue');
  * An event to be dispatched when requesting list of session cookies
  */
 export class SessionCookiesListEvent extends CustomEvent {
-  /**
-   */
   constructor() {
     super(SessionCookieEventTypes.listAll, {
       bubbles: true,
@@ -40,7 +38,7 @@ export async function listAllAction(target) {
  */
 export class SessionCookiesListDomainEvent extends CustomEvent {
   /**
-   * @return {string} The cookies domain
+   * @returns {string} The cookie domain
    */
   get domain() {
     return this[domainValue];
@@ -59,6 +57,7 @@ export class SessionCookiesListDomainEvent extends CustomEvent {
     this[domainValue] = domain;
   }
 }
+
 /**
  * @param {EventTarget} target A node on which to dispatch the event.
  * @param {string} domain The cookie domain
@@ -66,6 +65,42 @@ export class SessionCookiesListDomainEvent extends CustomEvent {
  */
 export async function listDomainAction(target, domain) {
   const e = new SessionCookiesListDomainEvent(domain);
+  target.dispatchEvent(e);
+  return e.detail.result;
+}
+
+/**
+ * An event to be dispatched when requesting list of session cookies for a specific URL
+ */
+export class SessionCookiesListUrlEvent extends CustomEvent {
+  /**
+   * @returns {string} The cookie URL used to initialize this event.
+   */
+  get url() {
+    return this[urlValue];
+  }
+
+  /**
+   * @param {string} domain The cookies domain
+   */
+  constructor(domain) {
+    super(SessionCookieEventTypes.listUrl, {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {},
+    });
+    this[urlValue] = domain;
+  }
+}
+
+/**
+ * @param {EventTarget} target A node on which to dispatch the event.
+ * @param {string} url The cookie URL
+ * @return {Promise<ARCCookie[]>} Promise resolved to the export result
+ */
+export async function listUrlAction(target, url) {
+  const e = new SessionCookiesListUrlEvent(url);
   target.dispatchEvent(e);
   return e.detail.result;
 }

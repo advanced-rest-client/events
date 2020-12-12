@@ -8,6 +8,7 @@ declare interface SessionCookieStateEventTypes {
 declare interface SessionCookieEventTypes {
   listAll: string;
   listDomain: string;
+  listUrl: string;
   delete: string;
   deleteUrl: string;
   update: string;

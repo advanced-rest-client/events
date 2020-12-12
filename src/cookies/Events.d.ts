@@ -1,14 +1,9 @@
 import { Cookies } from '@advanced-rest-client/arc-types';
+import { VoidEventDetail, ResultEventDetail } from '../BaseEvents';
 
-declare interface ResponseDetail<T> {
-  /**
-   * Property set by the store when handling the event.
-   */
-  result?: Promise<T>;
-}
+export declare const urlValue: unique symbol;
 
-declare interface VoidResponseDetail extends ResponseDetail<void> {}
-declare interface CookieListResponseDetail extends ResponseDetail<Cookies.ARCCookie[]> {}
+declare interface CookieListResponseDetail extends ResultEventDetail<Cookies.ARCCookie[]> {}
 
 /**
  * An event to be dispatched when requesting list of session cookies
@@ -45,9 +40,32 @@ export declare class SessionCookiesListDomainEvent extends CustomEvent<CookieLis
 export declare function listDomainAction(target: EventTarget, domain: string): Promise<Cookies.ARCCookie[]>;
 
 /**
+ * An event to be dispatched when requesting list of session cookies for a specific URL
+ */
+export declare class SessionCookiesListUrlEvent extends CustomEvent<CookieListResponseDetail> {
+  /**
+   * The cookie URL used to initialize this event.
+   */
+  get url(): string;
+  [urlValue]: string;
+
+  /**
+   * @param {string} domain The cookies domain
+   */
+  constructor(domain: string);
+}
+
+/**
+ * @param target A node on which to dispatch the event.
+ * @param url The cookie URL
+ * @returns Promise resolved to the export result
+ */
+export declare function listUrlAction(target: EventTarget, url: string): Promise<Cookies.ARCCookie[]>;
+
+/**
  * An event to be dispatched when deleting a list of session cookies
  */
-export declare class SessionCookiesRemoveEvent extends CustomEvent<VoidResponseDetail> {
+export declare class SessionCookiesRemoveEvent extends CustomEvent<VoidEventDetail> {
   /**
    * The list of cookies to remove
    */
@@ -69,7 +87,7 @@ export declare function deleteAction(target: EventTarget, cookies: Cookies.ARCCo
 /**
  * An event to be dispatched when deleting cookies by the domain and path
  */
-export declare class SessionCookiesRemoveDomainEvent extends CustomEvent<VoidResponseDetail> {
+export declare class SessionCookiesRemoveDomainEvent extends CustomEvent<VoidEventDetail> {
   /**
    * @returns The URL value used to initialize this event
    */
@@ -99,7 +117,7 @@ export declare function deleteUrlAction(target: EventTarget, url: string, name?:
 /**
  * An event to be dispatched when updating a session cookie
  */
-export declare class SessionCookieUpdateEvent extends CustomEvent<VoidResponseDetail> {
+export declare class SessionCookieUpdateEvent extends CustomEvent<VoidEventDetail> {
   /**
    * The cookie to update
    */

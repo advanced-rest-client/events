@@ -11,6 +11,7 @@ describe('Cookies', () => {
     [
       ['listAll', 'sessioncookielistall'],
       ['listDomain', 'sessioncookielistdomain'],
+      ['listUrl', 'sessioncookielisturl'],
       ['delete', 'sessioncookiedelete'],
       ['deleteUrl', 'sessioncookiedeleteurl'],
       ['update', 'sessioncookieupdate'],

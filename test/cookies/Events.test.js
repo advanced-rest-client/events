@@ -3,6 +3,7 @@ import {
   SessionCookieEventTypes,
   SessionCookiesListEvent,
   SessionCookiesListDomainEvent,
+  SessionCookiesListUrlEvent,
   SessionCookiesRemoveEvent,
   SessionCookieUpdateEvent,
   SessionCookieUpdatedEvent,
@@ -32,6 +33,24 @@ describe('Cookies', () => {
         assert.throws(() => {
           // @ts-ignore
           e.domain = 'test';
+        });
+      });
+    });
+
+    describe('SessionCookiesListUrlEvent', () => {
+      const url = 'https://domain.com/path';
+
+      it('has the correct type', () => {
+        const e = new SessionCookiesListUrlEvent(url);
+        assert.equal(e.type, SessionCookieEventTypes.listUrl);
+      });
+
+      it('has readonly domain property', () => {
+        const e = new SessionCookiesListUrlEvent(url);
+        assert.equal(e.url, url);
+        assert.throws(() => {
+          // @ts-ignore
+          e.url = 'test';
         });
       });
     });

@@ -45,6 +45,27 @@ describe('Cookies', () => {
       });
     });
 
+    describe('listUrl()', () => {
+      const url = 'https://domain.com/path';
+
+      it('dispatches the list event', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(SessionCookieEventTypes.listUrl, spy);
+        SessionCookieEvents.listUrl(et, url);
+        assert.isTrue(spy.calledOnce);
+      });
+
+      it('has the url on the event', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(SessionCookieEventTypes.listUrl, spy);
+        SessionCookieEvents.listUrl(et, url);
+        const e = spy.args[0][0];
+        assert.deepEqual(e.url, url);
+      });
+    });
+
     describe('delete()', () => {
       const cookie = { name: 'cname', value: 'cvalue', domain: 'cdomain', path: 'cpath' };
 

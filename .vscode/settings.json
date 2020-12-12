@@ -57,6 +57,7 @@
     "sessioncookiedeleteurl",
     "sessioncookielistall",
     "sessioncookielistdomain",
+    "sessioncookielisturl",
     "sessioncookiestatedelete",
     "sessioncookiestateupdate",
     "sessioncookieupdate",

@@ -27,6 +27,12 @@ declare interface SessionCookieEvents {
   listDomain(target: EventTarget, domain: string): Promise<Cookies.ARCCookie[]>;
   /**
    * @param target A node on which to dispatch the event.
+   * @param url The cookie URL
+   * @returns Promise resolved to the export result
+   */
+  listUrl(target: EventTarget, url: string): Promise<Cookies.ARCCookie[]>;
+  /**
+   * @param target A node on which to dispatch the event.
    * @param cookies The list of cookies to remove
    * @returns Promise resolved when the cookies has been removed
    */
