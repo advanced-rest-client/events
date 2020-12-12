@@ -9,6 +9,7 @@ export const SessionCookieEventTypes = {
   delete: 'sessioncookiedelete',
   deleteUrl: 'sessioncookiedeleteurl',
   update: 'sessioncookieupdate',
+  updateBulk: 'sessioncookieupdatebulk',
   State: {
     delete: 'sessioncookiestatedelete',
     update: 'sessioncookiestateupdate',

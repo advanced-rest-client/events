@@ -50,6 +50,12 @@ declare interface SessionCookieEvents {
    * @return {Promise<void>} Promise resolved when the cookies is updated.
    */
   update(target: EventTarget, cookie: Cookies.ARCCookie): Promise<void>;
+  /**
+   * @param target A node on which to dispatch the event.
+   * @param cookies The list of cookies to update
+   * @returns Promise resolved when the cookies are updated.
+   */
+  updateBulk(target: EventTarget, cookies: Cookies.ARCCookie[]): Promise<void>;
   State: SessionStateEvents;
 }
 

@@ -61,6 +61,7 @@
     "sessioncookiestatedelete",
     "sessioncookiestateupdate",
     "sessioncookieupdate",
+    "sessioncookieupdatebulk",
     "telemetryevent",
     "telemetryexception",
     "telemetryscreenview",

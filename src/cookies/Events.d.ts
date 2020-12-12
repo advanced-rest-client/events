@@ -2,6 +2,7 @@ import { Cookies } from '@advanced-rest-client/arc-types';
 import { VoidEventDetail, ResultEventDetail } from '../BaseEvents';
 
 export declare const urlValue: unique symbol;
+export declare const cookieValue: unique symbol;
 
 declare interface CookieListResponseDetail extends ResultEventDetail<Cookies.ARCCookie[]> {}
 
@@ -134,6 +135,28 @@ export declare class SessionCookieUpdateEvent extends CustomEvent<VoidEventDetai
  * @returns Promise resolved when the cookies is updated.
  */
 export declare function updateAction(target: EventTarget, cookie: Cookies.ARCCookie): Promise<void>;
+
+/**
+ * An event to be dispatched when updating a number of session cookies
+ */
+export declare class SessionCookieUpdateBulkEvent extends CustomEvent<VoidEventDetail> {
+  /**
+   * The cookies to update used to initialize this event
+   */
+  get cookies(): Cookies.ARCCookie[];
+  [cookieValue]: Cookies.ARCCookie[];
+
+  /**
+   * @param cookies The cookies to update
+   */
+  constructor(cookies: Cookies.ARCCookie[]);
+}
+/**
+ * @param target A node on which to dispatch the event.
+ * @param cookies The list of cookies to update
+ * @returns Promise resolved when the cookies are updated.
+ */
+export declare function updateBulkAction(target: EventTarget, cookies: Cookies.ARCCookie[]): Promise<void>;
 
 /**
  * An event dispatched by the store when a session cookie was updated

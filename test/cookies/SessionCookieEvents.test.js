@@ -121,7 +121,7 @@ describe('Cookies', () => {
     describe('update()', () => {
       const cookie = { name: 'cname', value: 'cvalue', domain: 'cdomain', path: 'cpath' };
 
-      it('dispatches the list event', async () => {
+      it('dispatches the update event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
         et.addEventListener(SessionCookieEventTypes.update, spy);
@@ -129,13 +129,34 @@ describe('Cookies', () => {
         assert.isTrue(spy.calledOnce);
       });
 
-      it('has the cookies on the event', async () => {
+      it('has the cookie on the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
         et.addEventListener(SessionCookieEventTypes.update, spy);
         SessionCookieEvents.update(et, cookie);
         const e = spy.args[0][0];
         assert.deepEqual(e.cookie, cookie);
+      });
+    });
+
+    describe('updateBulk()', () => {
+      const cookies = [{ name: 'cname', value: 'cvalue', domain: 'cdomain', path: 'cpath' }];
+
+      it('dispatches the update event', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(SessionCookieEventTypes.updateBulk, spy);
+        SessionCookieEvents.updateBulk(et, cookies);
+        assert.isTrue(spy.calledOnce);
+      });
+
+      it('has the list of cookies on the event', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(SessionCookieEventTypes.updateBulk, spy);
+        SessionCookieEvents.updateBulk(et, cookies);
+        const e = spy.args[0][0];
+        assert.deepEqual(e.cookies, cookies);
       });
     });
 

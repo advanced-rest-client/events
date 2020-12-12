@@ -12,6 +12,7 @@ declare interface SessionCookieEventTypes {
   delete: string;
   deleteUrl: string;
   update: string;
+  updateBulk: string;
   State: SessionCookieStateEventTypes;
 }
 

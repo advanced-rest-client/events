@@ -28,6 +28,7 @@ export {
   SessionCookiesListUrlEvent,
   SessionCookiesRemoveEvent,
   SessionCookieUpdateEvent,
+  SessionCookieUpdateBulkEvent,
   SessionCookieUpdatedEvent,
   SessionCookieDeletedEvent,
   SessionCookiesRemoveDomainEvent,

@@ -15,6 +15,7 @@ describe('Cookies', () => {
       ['delete', 'sessioncookiedelete'],
       ['deleteUrl', 'sessioncookiedeleteurl'],
       ['update', 'sessioncookieupdate'],
+      ['updateBulk', 'sessioncookieupdatebulk'],
     ].forEach(([prop, value]) => {
       it(`has ${prop} property`, () => {
         assert.equal(SessionCookieEventTypes[prop], value);

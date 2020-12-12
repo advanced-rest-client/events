@@ -215,10 +215,45 @@ export class SessionCookieUpdateEvent extends CustomEvent {
 /**
  * @param {EventTarget} target A node on which to dispatch the event.
  * @param {ARCCookie} cookie A cookie to update
- * @return {Promise<void>} Promise resolved when the cookies is updated.
+ * @return {Promise<void>} Promise resolved when the cookie is updated.
  */
 export async function updateAction(target, cookie) {
   const e = new SessionCookieUpdateEvent(cookie);
+  target.dispatchEvent(e);
+  return e.detail.result;
+}
+
+/**
+ * An event to be dispatched when updating a number of session cookies
+ */
+export class SessionCookieUpdateBulkEvent extends CustomEvent {
+  /**
+   * @return {ARCCookie[]} The cookies to update used to initialize this event
+   */
+  get cookies() {
+    return this[cookieValue];
+  }
+
+  /**
+   * @param {ARCCookie[]} cookies The cookies to update
+   */
+  constructor(cookies) {
+    super(SessionCookieEventTypes.updateBulk, {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {},
+    });
+    this[cookieValue] = cookies;
+  }
+}
+/**
+ * @param {EventTarget} target A node on which to dispatch the event.
+ * @param {ARCCookie[]} cookies The list of cookies to update
+ * @return {Promise<void>} Promise resolved when the cookies are updated.
+ */
+export async function updateBulkAction(target, cookies) {
+  const e = new SessionCookieUpdateBulkEvent(cookies);
   target.dispatchEvent(e);
   return e.detail.result;
 }

@@ -6,6 +6,7 @@ import {
   SessionCookiesListUrlEvent,
   SessionCookiesRemoveEvent,
   SessionCookieUpdateEvent,
+  SessionCookieUpdateBulkEvent,
   SessionCookieUpdatedEvent,
   SessionCookieDeletedEvent,
   SessionCookiesRemoveDomainEvent,
@@ -107,12 +108,29 @@ describe('Cookies', () => {
         assert.equal(e.type, SessionCookieEventTypes.update);
       });
 
-      it('has readonly cookies property', () => {
+      it('has readonly cookie property', () => {
         const e = new SessionCookieUpdateEvent(cookie);
         assert.deepEqual(e.cookie, cookie);
         assert.throws(() => {
           // @ts-ignore
           e.cookie = 'test';
+        });
+      });
+    });
+
+    describe('SessionCookieUpdateBulkEvent', () => {
+      const cookies = [{ name: 'cname', value: 'cvalue', domain: 'cdomain', path: 'cpath' }];
+      it('has the correct type', () => {
+        const e = new SessionCookieUpdateBulkEvent(cookies);
+        assert.equal(e.type, SessionCookieEventTypes.updateBulk);
+      });
+
+      it('has readonly cookies property', () => {
+        const e = new SessionCookieUpdateBulkEvent(cookies);
+        assert.deepEqual(e.cookies, cookies);
+        assert.throws(() => {
+          // @ts-ignore
+          e.cookies = 'test';
         });
       });
     });
