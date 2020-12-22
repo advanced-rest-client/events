@@ -15,6 +15,8 @@ export {
   ProjectActions,
   RequestActions,
   ARCHelpTopicEvent,
+  ProjectActionType,
+  RequestActionType,
 } from './src/navigation/NavigationEvents';
 export { SessionCookieEventTypes } from './src/cookies/SessionCookieEventTypes';
 export { SessionCookieEvents } from './src/cookies/SessionCookieEvents';

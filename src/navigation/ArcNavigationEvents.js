@@ -1,5 +1,7 @@
 import * as NavigationEvents from './NavigationEvents.js';
 /** @typedef {import('./NavigationEvents').ExternalNavigationOptions} ExternalNavigationOptions */
+/** @typedef {import('./NavigationEvents').RequestActionType} RequestActionType */
+/** @typedef {import('./NavigationEvents').ProjectActionType} ProjectActionType */
 
 export const ArcNavigationEvents = {
   /**
@@ -36,7 +38,7 @@ export const ArcNavigationEvents = {
    * @param {EventTarget} target A node on which to dispatch the event.
    * @param {string} requestId The id of the ARCRequest entity
    * @param {string} requestType The type of the request
-   * @param {string=} action Optional navigation action. Default to "open" action.
+   * @param {RequestActionType=} action Optional navigation action. Default to "open" action.
    */
   navigateRequest: (target, requestId, requestType, action) => {
     const e = new NavigationEvents.ARCRequestNavigationEvent(requestId, requestType, action);
@@ -62,7 +64,7 @@ export const ArcNavigationEvents = {
    *
    * @param {EventTarget} target A node on which to dispatch the event.
    * @param {string} id The id of the ARCProject entity
-   * @param {string=} action The action type: `open`, `edit`. Default to `open`.
+   * @param {ProjectActionType=} action The action type: `open`, `edit`. Default to `open`.
    */
   navigateProject: (target, id, action) => {
     const e = new NavigationEvents.ARCProjectNavigationEvent(id, action);

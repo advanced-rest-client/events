@@ -1,4 +1,4 @@
-import { ExternalNavigationOptions } from "./NavigationEvents";
+import { ExternalNavigationOptions, ProjectActionType, RequestActionType } from "./NavigationEvents";
 
 declare interface ArcNavigationEvents {
   /**
@@ -33,7 +33,7 @@ declare interface ArcNavigationEvents {
    * @param requestType The type of the request
    * @param action Optional navigation action. Default to "open" action.
    */
-  navigateRequest(target: EventTarget, requestId: string, requestType: string, action?: string): void;
+  navigateRequest(target: EventTarget, requestId: string, requestType: string, action?: RequestActionType): void;
 
   /**
    * An event to be dispatched to trigger a navigation in Advanced REST Client
@@ -54,7 +54,7 @@ declare interface ArcNavigationEvents {
    * @param id The id of the project
    * @param action The action type: `detail`, `edit`
    */
-  navigateProject(target: EventTarget, id: string, action?: string): void;
+  navigateProject(target: EventTarget, id: string, action?: ProjectActionType): void;
 
   /**
    * Dispatches the menu popup event.

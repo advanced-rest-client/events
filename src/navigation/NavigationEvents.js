@@ -2,6 +2,8 @@
 import { ArcNavigationEventTypes } from './ArcNavigationEventTypes.js';
 
 /** @typedef {import('./NavigationEvents').ExternalNavigationOptions} ExternalNavigationOptions */
+/** @typedef {import('./NavigationEvents').RequestActionType} RequestActionType */
+/** @typedef {import('./NavigationEvents').ProjectActionType} ProjectActionType */
 
 export const routeValue = Symbol('routeValue');
 export const optsValue = Symbol('optsValue');
@@ -95,6 +97,7 @@ export class ARCMenuPopupEvent extends CustomEvent {
 export const RequestActions = {
   open: 'open',
   edit: 'edit',
+  detail: 'detail',
 };
 Object.freeze(RequestActions);
 
@@ -126,13 +129,13 @@ export class ARCRequestNavigationEvent extends ARCNavigationRouteEvent {
   /**
    * @param {string} requestId The id of the ARCRequest entity
    * @param {string} requestType The type of the request
-   * @param {string=} action Optional navigation action. Default to "open" action.
+   * @param {RequestActionType=} action Optional navigation action. Default to "open" action.
    */
   constructor(requestId, requestType, action) {
     super(ArcNavigationEventTypes.navigateRequest, REQUESTROUTE);
     this[idValue] = requestId;
     this[typeValue] = requestType;
-    this[actionValue] = action || RequestActions.open;
+    this[actionValue] = action || 'open';
   }
 }
 
@@ -151,7 +154,7 @@ export class ARCRestApiNavigationEvent extends ARCNavigationRouteEvent {
    * @returns {string} The action type used to initialize this event.
    */
   get action() {
-    return this[typeValue];
+    return this[actionValue];
   }
 
   /**
@@ -169,7 +172,7 @@ export class ARCRestApiNavigationEvent extends ARCNavigationRouteEvent {
   constructor(api, version, action) {
     super(ArcNavigationEventTypes.navigateRestApi, RESTAPIROUTE);
     this[idValue] = api;
-    this[typeValue] = action;
+    this[actionValue] = action;
     this[versionValue] = version;
   }
 }
@@ -214,12 +217,12 @@ export class ARCProjectNavigationEvent extends ARCNavigationRouteEvent {
 
   /**
    * @param {string} id The id of the ARCProject entity
-   * @param {string=} action The action type: `open`, `edit`. Default to `open`.
+   * @param {ProjectActionType=} action The action type: `open`, `edit`. Default to `open`.
    */
   constructor(id, action) {
     super(ArcNavigationEventTypes.navigateProject, PROJECTROUTE);
     this[idValue] = id;
-    this[actionValue] = action || ProjectActions.open;
+    this[actionValue] = action || 'open';
   }
 }
 

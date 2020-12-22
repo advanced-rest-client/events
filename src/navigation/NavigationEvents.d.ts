@@ -10,6 +10,9 @@ export declare const REQUESTROUTE: string;
 export declare const RESTAPIROUTE: string;
 export declare const PROJECTROUTE: string;
 
+export declare type RequestActionType = 'open' | 'detail' | 'edit';
+export declare type ProjectActionType = 'open' | 'edit' | 'replaceWorkspace' | 'addWorkspace';
+
 /**
  * An event to be dispatched to trigger a navigation in Advanced REST Client.
  * It is the base for other events
@@ -64,10 +67,13 @@ export declare class ARCMenuPopupEvent extends CustomEvent<void> {
 /**
  * - open: open request in the current workspace
  * - edit: edit request meta data
+ * 
+ * @deprecated Use types declaration instead.
  */
 declare interface RequestActions {
   open: string;
   edit: string;
+  detail: string;
 }
 export declare const RequestActions: RequestActions;
 
@@ -122,6 +128,9 @@ export declare class ARCRestApiNavigationEvent extends ARCNavigationRouteEvent {
   constructor(api: string, version: string, action: string);
 }
 
+/**
+ * @deprecated Use types declaration instead.
+ */
 declare interface ProjectActions {
   /** 
    * Opens project screen
