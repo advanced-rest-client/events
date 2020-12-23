@@ -1,5 +1,3 @@
-import { WebsocketEditorRequest } from "@advanced-rest-client/arc-types/src/request/WebSocket";
-
 declare interface RequestStateEvents {
   /**
    * Dispatches an invent to inform about request URL change
@@ -21,24 +19,6 @@ declare interface RequestEvents {
  * @param {EventTarget} target A node on which to dispatch the event
  */
   send(target: EventTarget): void;
-  /**
-   * Dispatches an event to make a web socket connection
-   * @param target A node on which to dispatch the event
-   * @param editorRequest The editor web socket request associated with the event
-   */
-  connect(target: EventTarget, editorRequest: WebsocketEditorRequest): void;
-  /**
-   * Dispatches an event to close a web socket connection
-   * @param target A node on which to dispatch the event
-   * @param editorRequest The editor web socket request associated with the event
-   */
-  disconnect(target: EventTarget, editorRequest: WebsocketEditorRequest): void;
-  /**
-   * Dispatches an event to close a web socket connection
-   * @param target A node on which to dispatch the event
-   * @param editorRequest The editor web socket request associated with the event
-   */
-  sendWebSocket(target: EventTarget, editorRequest: WebsocketEditorRequest): void;
   State: RequestStateEvents;
 }
 

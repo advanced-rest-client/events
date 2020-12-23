@@ -19,6 +19,9 @@ describe('Transport', () => {
       ['resendAuth', 'apiresendauth'],
       ['processResponse', 'apiprocessresponse'],
       ['abort', 'apiabort'],
+      ['connect', 'transportconnect'],
+      ['disconnect', 'transportdisconnect'],
+      ['connectionSend', 'transportconnectionsend'],
     ].forEach(([prop, value]) => {
       it(`has ${prop} property`, () => {
         assert.equal(TransportEventTypes[prop], value);

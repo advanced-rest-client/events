@@ -18,6 +18,18 @@ declare interface TransportEventTypes {
   // like authorization and actions.
   processResponse: string;
   abort: string;
+  /** 
+   * Informs to make a connection. Used by web sockets.
+   */
+  connect: string;
+  /** 
+   * Informs to close the current connection. Used by web sockets.
+   */
+  disconnect: string;
+  /** 
+   * Informs to send a data on the current connection. Used by web sockets.
+   */
+  connectionSend: string;
 }
 
 export declare const TransportEventTypes: Readonly<TransportEventTypes>;

@@ -1,4 +1,5 @@
 import { ArcRequest, ArcResponse } from '@advanced-rest-client/arc-types';
+import { WebsocketEditorRequest } from "@advanced-rest-client/arc-types/src/request/WebSocket";
 
 declare interface TransportEvents {
   /**
@@ -34,6 +35,25 @@ declare interface TransportEvents {
    * @param id The id of the request to abort
    */
   abort(target: EventTarget, id: string): void;
+
+  /**
+   * Dispatches an event to make a web socket connection
+   * @param target A node on which to dispatch the event
+   * @param editorRequest The editor web socket request associated with the event
+   */
+  connect(target: EventTarget, editorRequest: WebsocketEditorRequest): void;
+  /**
+   * Dispatches an event to close a web socket connection
+   * @param target A node on which to dispatch the event
+   * @param editorRequest The editor web socket request associated with the event
+   */
+  disconnect(target: EventTarget, editorRequest: WebsocketEditorRequest): void;
+  /**
+   * Dispatches an event to close a web socket connection
+   * @param target A node on which to dispatch the event
+   * @param editorRequest The editor web socket request associated with the event
+   */
+  connectionSend(target: EventTarget, editorRequest: WebsocketEditorRequest): void;
 }
 
 export const TransportEvents: TransportEvents;

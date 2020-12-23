@@ -1,8 +1,6 @@
 /* eslint-disable max-classes-per-file */
 import { RequestEventTypes } from './RequestEventTypes.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').WebSocket.WebsocketEditorRequest} WebsocketEditorRequest */
-
 export const propertyValue = Symbol('propertyValue');
 export const valueValue = Symbol('valueValue');
 
@@ -44,24 +42,6 @@ export class RequestChangeEvent extends Event {
 }
 
 /**
- * Events used by the web socket transport. Used to initialize the connection, to inform to send the data, and to close the connection.
- */
-export class WebsocketRequestEvent extends CustomEvent {
-  /**
-   * @param {string} type The type of the event
-   * @param {WebsocketEditorRequest} editorRequest The editor web socket request associated with the event
-   */
-  constructor(type, editorRequest) {
-    super(type, {
-      bubbles: true,
-      cancelable: true,
-      composed: true,
-      detail: editorRequest,
-    });
-  }
-}
-
-/**
  * Dispatches an event to inform the request logic to send current request.
  * @param {EventTarget} target A node on which to dispatch the event
  */
@@ -71,36 +51,6 @@ export function informSendAction(target) {
     cancelable: true,
     composed: true,
   });
-  target.dispatchEvent(e);
-}
-
-/**
- * Dispatches an event to make a web socket connection
- * @param {EventTarget} target A node on which to dispatch the event
- * @param {WebsocketEditorRequest} editorRequest The editor web socket request associated with the event
- */
-export function informConnectAction(target, editorRequest) {
-  const e = new WebsocketRequestEvent(RequestEventTypes.connect, editorRequest);
-  target.dispatchEvent(e);
-}
-
-/**
- * Dispatches an event to close a web socket connection
- * @param {EventTarget} target A node on which to dispatch the event
- * @param {WebsocketEditorRequest} editorRequest The editor web socket request associated with the event
- */
-export function informDisconnectAction(target, editorRequest) {
-  const e = new WebsocketRequestEvent(RequestEventTypes.disconnect, editorRequest);
-  target.dispatchEvent(e);
-}
-
-/**
- * Dispatches an event to close a web socket connection
- * @param {EventTarget} target A node on which to dispatch the event
- * @param {WebsocketEditorRequest} editorRequest The editor web socket request associated with the event
- */
-export function informWebSocketSendAction(target, editorRequest) {
-  const e = new WebsocketRequestEvent(RequestEventTypes.send, editorRequest);
   target.dispatchEvent(e);
 }
 

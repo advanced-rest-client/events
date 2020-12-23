@@ -7,8 +7,6 @@ declare interface RequestStateEventTypes {
  */
 declare interface RequestEventTypes {
   send: string;
-  connect: string;
-  disconnect: string;
   State: RequestStateEventTypes;
 }
 

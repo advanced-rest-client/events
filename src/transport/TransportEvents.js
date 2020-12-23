@@ -6,4 +6,8 @@ export const TransportEvents = {
   transport: Events.transportAction,
   processResponse: Events.processResponseAction,
   abort: Events.abortAction,
+
+  connect: Events.informConnectAction,
+  disconnect: Events.informDisconnectAction,
+  connectionSend: Events.informWebSocketSendAction,
 }

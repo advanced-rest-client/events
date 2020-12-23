@@ -1,7 +1,9 @@
 import { assert } from '@open-wc/testing';
 import { DataGenerator } from '@advanced-rest-client/arc-data-generator';
-import { TransportEventTypes, ApiRequestEvent, ApiResponseEvent, ApiTransportEvent, ApiAbortEvent } from  '../../index.js';
+import { TransportEventTypes, ApiRequestEvent, ApiResponseEvent, ApiTransportEvent, ApiAbortEvent, WebsocketRequestEvent } from  '../../index.js';
 import { generateEditorRequest, generateTransportRequest } from './Utils.js';
+
+/** @typedef {import('@advanced-rest-client/arc-types').WebSocket.WebsocketRequest} WebsocketRequest */
 
 describe('Transport', () => {
   const generator = new DataGenerator();
@@ -130,6 +132,41 @@ describe('Transport', () => {
 
       it('is cancelable', () => {
         const e = new ApiAbortEvent(id);
+        assert.isTrue(e.cancelable);
+      });
+    });
+
+    describe('WebsocketRequestEvent', () => {
+      const type = 'a';
+      const editorRequest = {
+        id: 'test1',
+        request: /** @type WebsocketRequest */ ({
+          kind: "ARC#WebsocketRequest",
+        }),
+      };
+
+      it('has the passed type', () => {
+        const e = new WebsocketRequestEvent(type, editorRequest);
+        assert.equal(e.type, type);
+      });
+
+      it('has the passed request', () => {
+        const e = new WebsocketRequestEvent(type, editorRequest);
+        assert.deepEqual(e.detail, editorRequest);
+      });
+
+      it('bubbles', () => {
+        const e = new WebsocketRequestEvent(type, editorRequest);
+        assert.isTrue(e.bubbles);
+      });
+
+      it('is composed', () => {
+        const e = new WebsocketRequestEvent(type, editorRequest);
+        assert.isTrue(e.composed);
+      });
+
+      it('is cancelable', () => {
+        const e = new WebsocketRequestEvent(type, editorRequest);
         assert.isTrue(e.cancelable);
       });
     });

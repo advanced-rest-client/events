@@ -7,6 +7,7 @@ import { TransportEventTypes } from './TransportEventTypes.js';
 /** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.RequestConfig} RequestConfig */
 /** @typedef {import('@advanced-rest-client/arc-types').ArcResponse.Response} Response */
 /** @typedef {import('@advanced-rest-client/arc-types').ArcResponse.Response} ErrorResponse */
+/** @typedef {import('@advanced-rest-client/arc-types').WebSocket.WebsocketEditorRequest} WebsocketEditorRequest */
 
 /**
  * An event dispatched by the UI when requesting to make a HTTP request
@@ -93,6 +94,24 @@ export class ApiResponseEvent extends CustomEvent {
 }
 
 /**
+ * Events used by the web socket transport. Used to initialize the connection, to inform to send the data, and to close the connection.
+ */
+export class WebsocketRequestEvent extends CustomEvent {
+  /**
+   * @param {string} type The type of the event
+   * @param {WebsocketEditorRequest} editorRequest The editor web socket request associated with the event
+   */
+  constructor(type, editorRequest) {
+    super(type, {
+      bubbles: true,
+      cancelable: true,
+      composed: true,
+      detail: editorRequest,
+    });
+  }
+}
+
+/**
  * @param {EventTarget} target A target on which to dispatch the event
  * @param {ArcEditorRequest} request The request configuration to transport.
  */
@@ -142,5 +161,35 @@ export function processResponseAction(target, id, source, request, response) {
  */
 export function abortAction(target, id) {
   const e = new ApiAbortEvent(id);
+  target.dispatchEvent(e);
+}
+
+/**
+ * Dispatches an event to make a web socket connection
+ * @param {EventTarget} target A node on which to dispatch the event
+ * @param {WebsocketEditorRequest} editorRequest The editor web socket request associated with the event
+ */
+export function informConnectAction(target, editorRequest) {
+  const e = new WebsocketRequestEvent(TransportEventTypes.connect, editorRequest);
+  target.dispatchEvent(e);
+}
+
+/**
+ * Dispatches an event to close a web socket connection
+ * @param {EventTarget} target A node on which to dispatch the event
+ * @param {WebsocketEditorRequest} editorRequest The editor web socket request associated with the event
+ */
+export function informDisconnectAction(target, editorRequest) {
+  const e = new WebsocketRequestEvent(TransportEventTypes.disconnect, editorRequest);
+  target.dispatchEvent(e);
+}
+
+/**
+ * Dispatches an event to close a web socket connection
+ * @param {EventTarget} target A node on which to dispatch the event
+ * @param {WebsocketEditorRequest} editorRequest The editor web socket request associated with the event
+ */
+export function informWebSocketSendAction(target, editorRequest) {
+  const e = new WebsocketRequestEvent(TransportEventTypes.connectionSend, editorRequest);
   target.dispatchEvent(e);
 }

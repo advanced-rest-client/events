@@ -21,5 +21,18 @@ export const TransportEventTypes = {
   // like authorization and actions.
   processResponse: 'apiprocessresponse',
   abort: 'apiabort',
+
+  /** 
+   * Informs to make a connection. Used by web sockets.
+   */
+  connect: 'transportconnect',
+  /** 
+   * Informs to close the current connection. Used by web sockets.
+   */
+  disconnect: 'transportdisconnect',
+  /** 
+   * Informs to send a data on the current connection. Used by web sockets.
+   */
+  connectionSend: 'transportconnectionsend',
 };
 Object.freeze(TransportEventTypes);

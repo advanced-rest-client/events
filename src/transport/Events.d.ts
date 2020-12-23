@@ -1,4 +1,6 @@
 import { ArcRequest, ArcResponse } from '@advanced-rest-client/arc-types';
+import { WebsocketEditorRequest } from "@advanced-rest-client/arc-types/src/request/WebSocket";
+
 /**
  * An event dispatched when requesting to make a HTTP request
  * with the current data.
@@ -69,6 +71,17 @@ export declare class ApiResponseEvent extends CustomEvent<ApiResponseEventDetail
 }
 
 /**
+ * Events used by the web socket transport. Used to initialize the connection, to inform to send the data, and to close the connection.
+ */
+export declare class WebsocketRequestEvent extends CustomEvent<WebsocketEditorRequest> {
+  /**
+   * @param type The type of the event
+   * @param editorRequest The editor web socket request associated with the event
+   */
+  constructor(type: string, editorRequest: WebsocketEditorRequest);
+}
+
+/**
  * @param target A target on which to dispatch the event
  * @param request The request configuration to transport.
  */
@@ -105,3 +118,24 @@ export declare function processResponseAction(target: EventTarget, id: string, s
  * @param id The id of the request to abort
  */
 export declare function abortAction(target: EventTarget, id: string): void;
+
+/**
+ * Dispatches an event to make a web socket connection
+ * @param target A node on which to dispatch the event
+ * @param editorRequest The editor web socket request associated with the event
+ */
+export function informConnectAction(target: EventTarget, editorRequest: WebsocketEditorRequest): void;
+
+/**
+ * Dispatches an event to close a web socket connection
+ * @param target A node on which to dispatch the event
+ * @param editorRequest The editor web socket request associated with the event
+ */
+export function informDisconnectAction(target: EventTarget, editorRequest: WebsocketEditorRequest): void;
+
+/**
+ * Dispatches an event to close a web socket connection
+ * @param target A node on which to dispatch the event
+ * @param editorRequest The editor web socket request associated with the event
+ */
+export function informWebSocketSendAction(target: EventTarget, editorRequest: WebsocketEditorRequest): void;

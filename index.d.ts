@@ -93,7 +93,7 @@ export {
 export { RestApiEvents } from './src/reastapi/RestApiEvents';
 export { RestApiEventTypes } from './src/reastapi/RestApiEventTypes';
 export { RequestEventTypes } from './src/request/RequestEventTypes';
-export { RequestChangeEvent, WebsocketRequestEvent } from './src/request/Events';
+export { RequestChangeEvent } from './src/request/Events';
 export { RequestEvents } from './src/request/RequestEvents';
 export { TelemetryEventTypes } from './src/telemetry/TelemetryEventTypes';
 export { TelemetryEvents } from './src/telemetry/TelemetryEvents';
@@ -115,7 +115,7 @@ export {
 } from './src/telemetry/Events';
 export { TransportEventTypes } from './src/transport/TransportEventTypes';
 export { TransportEvents } from './src/transport/TransportEvents';
-export { ApiRequestEvent, ApiResponseEvent, ApiTransportEvent, ApiTransportEventDetail, ApiResponseEventDetail, ApiAbortEvent, ApiAbortEventDetail } from './src/transport/Events';
+export { ApiRequestEvent, ApiResponseEvent, ApiTransportEvent, ApiTransportEventDetail, ApiResponseEventDetail, ApiAbortEvent, ApiAbortEventDetail, WebsocketRequestEvent } from './src/transport/Events';
 export { OAuth2AuthorizeEvent, OAuth2RemoveTokenEvent } from './src/authorization/Events';
 export { AuthorizationEventTypes } from './src/authorization/AuthorizationEventTypes';
 export { AuthorizationEvents } from './src/authorization/AuthorizationEvents';
