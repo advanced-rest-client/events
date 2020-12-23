@@ -93,7 +93,7 @@ export {
 export { RestApiEvents } from './src/reastapi/RestApiEvents';
 export { RestApiEventTypes } from './src/reastapi/RestApiEventTypes';
 export { RequestEventTypes } from './src/request/RequestEventTypes';
-export { RequestChangeEvent } from './src/request/Events';
+export { RequestChangeEvent, WebsocketRequestEvent } from './src/request/Events';
 export { RequestEvents } from './src/request/RequestEvents';
 export { TelemetryEventTypes } from './src/telemetry/TelemetryEventTypes';
 export { TelemetryEvents } from './src/telemetry/TelemetryEvents';

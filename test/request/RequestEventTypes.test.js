@@ -10,8 +10,10 @@ describe('Request', () => {
 
     [
       ['send', 'arcrequestsend'],
+      ['connect', 'arcrequestconnect'],
+      ['disconnect', 'arcrequestdisconnect'],
     ].forEach(([prop, value]) => {
-      it(`has ${prop} property`, () => {
+      it(`has ${prop} property`, () => {``
         assert.equal(RequestEventTypes[prop], value);
       });
     });

@@ -79,7 +79,7 @@ export {
 export { RestApiEvents } from './src/reastapi/RestApiEvents.js';
 export { RestApiEventTypes } from './src/reastapi/RestApiEventTypes.js';
 export { RequestEventTypes } from './src/request/RequestEventTypes.js';
-export { RequestChangeEvent } from './src/request/Events.js';
+export { RequestChangeEvent, WebsocketRequestEvent, } from './src/request/Events.js';
 export { RequestEvents } from './src/request/RequestEvents.js';
 export { TelemetryEventTypes } from './src/telemetry/TelemetryEventTypes.js';
 export { TelemetryEvents } from './src/telemetry/TelemetryEvents.js';

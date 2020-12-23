@@ -34,6 +34,8 @@
     "arcnavigaterequest",
     "arcnavigaterestapi",
     "arcpopupmenu",
+    "arcrequestconnect",
+    "arcrequestdisconnect",
     "arcrequeststatecontenttypechange",
     "arcrequeststateurlchange",
     "dataexport",
