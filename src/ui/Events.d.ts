@@ -12,6 +12,10 @@ export declare interface ContextMenuActionDetail {
    * Default to event target.
    */
   target?: HTMLElement|SVGElement;
+  /**
+   * Any argument to be passed to the context menu "execute" function.
+   */
+  args?: any;
 }
 
 /**
