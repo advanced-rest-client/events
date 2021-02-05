@@ -129,3 +129,6 @@ export {
 } from './src/config/Events';
 export { ConfigEventTypes } from './src/config/ConfigEventTypes';
 export { ConfigEvents } from './src/config/ConfigEvents';
+export { ContextMenuActionDetail } from './src/ui/Events';
+export { UiEventTypes } from './src/ui/UiEventTypes';
+export { UiEvents } from './src/ui/UiEvents';

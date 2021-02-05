@@ -105,3 +105,5 @@ export {
 } from './src/config/Events.js';
 export { ConfigEventTypes } from './src/config/ConfigEventTypes.js';
 export { ConfigEvents } from './src/config/ConfigEvents.js';
+export { UiEventTypes } from './src/ui/UiEventTypes.js';
+export { UiEvents } from './src/ui/UiEvents.js';

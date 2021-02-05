@@ -19,6 +19,7 @@
     "arcconfigreadall",
     "arcconfigstateupdate",
     "arcconfigupdate",
+    "arccontextmenu",
     "arccustomdataexport",
     "arcdataimport",
     "arcdataimported",
