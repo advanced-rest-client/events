@@ -107,3 +107,113 @@ export { ConfigEventTypes } from './src/config/ConfigEventTypes.js';
 export { ConfigEvents } from './src/config/ConfigEvents.js';
 export { UiEventTypes } from './src/ui/UiEventTypes.js';
 export { UiEvents } from './src/ui/UiEvents.js';
+export { ArcModelEventTypes } from './src/models/ArcModelEventTypes.js';
+export { ArcModelEvents } from './src/models/ArcModelEvents.js';
+export {
+  ARCProjectReadEvent,
+  ARCProjectUpdateEvent,
+  ARCProjectUpdateBulkEvent,
+  ARCProjectUpdatedEvent,
+  ARCProjectDeleteEvent,
+  ARCProjectDeletedEvent,
+  ARCProjectListEvent,
+  ARCProjectReadBulkEvent,
+  ARCProjectListAllEvent,
+  ARCProjectMoveEvent,
+} from './src/models/ProjectEvents.js';
+export {
+  ARCRequestReadEvent,
+  ARCRequestReadBulkEvent,
+  ARCRequestUpdateEvent,
+  ARCRequestStoreEvent,
+  ARCRequestUpdateBulkEvent,
+  ARCRequestUpdatedEvent,
+  ARCRequestDeleteEvent,
+  ARCRequestDeleteBulkEvent,
+  ARCRequestUndeleteBulkEvent,
+  ARCRequestDeletedEvent,
+  ARCRequestListEvent,
+  ARCRequestQueryEvent,
+  ARCRequestListProjectRequestsEvent,
+} from './src/models/RequestEvents.js';
+export {
+  ARCEntityDeletedEvent,
+  ARCEntityListEvent,
+  ARCModelDeleteEvent,
+  ARCModelStateDeleteEvent,
+} from './src/models/BaseEvents.js';
+export {
+  ARCUrlIndexUpdateEvent,
+  ARCUrlIndexQueryEvent,
+} from './src/models/UrlIndexerEvents.js';
+export {
+  ARCHostRuleUpdateEvent,
+  ARCHostRuleUpdateBulkEvent,
+  ARCHostRuleUpdatedEvent,
+  ARCHostRuleDeleteEvent,
+  ARCHostRuleDeletedEvent,
+  ARCHostRulesListEvent,
+} from './src/models/HostRuleEvents.js';
+
+export {
+  ARCAuthDataUpdateEvent,
+  ARCAuthDataQueryEvent,
+  ARCAuthDataUpdatedEvent,
+} from './src/models/AuthDataEvents.js';
+
+export {
+  ARCClientCertificateReadEvent,
+  ARCClientCertificateInsertEvent,
+  ARCClientCertificateUpdateEvent,
+  ARCClientCertificateUpdatedEvent,
+  ARCClientCertificateDeleteEvent,
+  ARCClientCertificateDeletedEvent,
+  ARCClientCertificateListEvent,
+} from './src/models/CertificatesEvents.js';
+
+export {
+  ARCRestApiReadEvent,
+  ARCRestApiUpdateEvent,
+  ARCRestApiUpdateBulkEvent,
+  ARCRestApiUpdatedEvent,
+  ARCRestApiDeleteEvent,
+  ARCRestApiDeletedEvent,
+  ARCRestApiListEvent,
+  ARCRestApiDataReadEvent,
+  ARCRestApiDataUpdateEvent,
+  ARCRestApiDataUpdatedEvent,
+  ARCRestApiVersionDeleteEvent,
+  ARCRestApiVersionDeletedEvent,
+} from './src/models/RestApiEvents.js';
+
+export {
+  ARCHistoryUrlInsertEvent,
+  ARCHistoryUrlUpdatedEvent,
+  ARCHistoryUrlListEvent,
+  ARCHistoryUrlQueryEvent,
+} from './src/models/UrlHistoryEvents.js';
+
+export {
+  ARCWSUrlInsertEvent,
+  ARCWSUrlUpdatedEvent,
+  ARCWSUrlListEvent,
+  ARCWSUrlQueryEvent,
+} from './src/models/WSUrlHistoryEvents.js';
+
+export {
+  ARCEnvironmentReadEvent,
+  ARCEnvironmentUpdateEvent,
+  ARCEnvironmentUpdatedEvent,
+  ARCEnvironmentDeleteEvent,
+  ARCEnvironmentDeletedEvent,
+  ARCEnvironmentListEvent,
+  ARCVariableUpdateEvent,
+  ARCVariableSetEvent,
+  ARCVariableUpdatedEvent,
+  ARCVariableDeleteEvent,
+  ARCVariableDeletedEvent,
+  ARCVariableListEvent,
+  ARCEnvironmentCurrentEvent,
+  ARCEnvironmentSelectEvent,
+  ARCEnvironmentStateSelectEvent,
+} from './src/models/VariableEvents.js';
