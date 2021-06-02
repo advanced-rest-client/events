@@ -389,7 +389,7 @@ export declare interface ClientCertificateStateFunctions {
    * @param target A node on which to dispatch the event.
    * @param record Change record
    */
-  update(target: EventTarget, record: Model.ARCEntityChangeRecord<ClientCertificate.ARCClientCertificate>): void;
+  update(target: EventTarget, record: Model.ARCEntityChangeRecord<ClientCertificate.ARCCertificateIndex>): void;
   /**
    * Dispatches an event after a client certificate was deleted
    *

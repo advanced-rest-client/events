@@ -70,11 +70,11 @@ export declare class ARCClientCertificateUpdatedEvent extends Event {
   /**
    * The change record
    */
-  readonly changeRecord: Model.ARCEntityChangeRecord<ClientCertificate.ARCClientCertificate>;
+  readonly changeRecord: Model.ARCEntityChangeRecord<ClientCertificate.ARCCertificateIndex>;
   /**
    * @param record The client certificate change record.
    */
-  constructor(record: Model.ARCEntityChangeRecord<ClientCertificate.ARCClientCertificate>);
+  constructor(record: Model.ARCEntityChangeRecord<ClientCertificate.ARCCertificateIndex>);
 }
 
 /**
@@ -171,7 +171,7 @@ export declare function listAction(target: EventTarget, opts?: Model.ARCModelLis
  * @param target A node on which to dispatch the event.
  * @param record Change record
  */
-export declare function updatedState(target: EventTarget, record: Model.ARCEntityChangeRecord<ClientCertificate.ARCClientCertificate>): void;
+export declare function updatedState(target: EventTarget, record: Model.ARCEntityChangeRecord<ClientCertificate.ARCCertificateIndex>): void;
 
 /**
  * Dispatches an event after a client certificate was deleted
