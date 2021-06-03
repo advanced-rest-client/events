@@ -15,16 +15,16 @@ export const changeRecordValue: symbol;
 /**
  * An event to be dispatched to read an client certificate from the data store.
  */
-export declare class ARCClientCertificateReadEvent extends CustomEvent<ARCModelReadEventDetail<ClientCertificate.ARCClientCertificate>> {
+export declare class ARCClientCertificateReadEvent extends CustomEvent<ARCModelReadEventDetail<ClientCertificate.ClientCertificate>> {
   /**
    * Client certificate revision ID used to initialize the event.
    */
-  readonly rev?: string;
+  get rev(): string|undefined;
 
   /**
    * Client certificate id used to initialize the event.
    */
-  readonly id: string;
+  get id(): string;
 
   /**
    * @param id The client certificate ID
@@ -36,31 +36,16 @@ export declare class ARCClientCertificateReadEvent extends CustomEvent<ARCModelR
 /**
  * An event dispatched to insert a new client certificate
  */
-export declare class ARCClientCertificateInsertEvent extends CustomEvent<ARCModelUpdateEventDetail<ClientCertificate.ARCClientCertificate>> {
+export declare class ARCClientCertificateInsertEvent extends CustomEvent<ARCModelUpdateEventDetail<ClientCertificate.ARCCertificateIndex>> {
   /**
    * @return The certificate to create.
    */
-  readonly certificate: ClientCertificate.ARCClientCertificate;
+  get certificate(): ClientCertificate.ClientCertificate;
 
   /**
    * @param certificate The certificate to create.
    */
-  constructor(certificate: ClientCertificate.ARCClientCertificate);
-}
-
-/**
- * An event dispatched to update a certificate metadata
- */
-export declare class ARCClientCertificateUpdateEvent extends CustomEvent<ARCModelUpdateEventDetail<ClientCertificate.ARCClientCertificate>> {
-  /**
-   * @return The certificate to update.
-   */
-  readonly certificate: ClientCertificate.ARCClientCertificate;
-
-  /**
-   * @param certificate The certificate to update.
-   */
-  constructor(certificate: ClientCertificate.ARCClientCertificate);
+  constructor(certificate: ClientCertificate.ClientCertificate);
 }
 
 /**
@@ -70,7 +55,7 @@ export declare class ARCClientCertificateUpdatedEvent extends Event {
   /**
    * The change record
    */
-  readonly changeRecord: Model.ARCEntityChangeRecord<ClientCertificate.ARCCertificateIndex>;
+  get changeRecord(): Model.ARCEntityChangeRecord<ClientCertificate.ARCCertificateIndex>;
   /**
    * @param record The client certificate change record.
    */
@@ -84,11 +69,11 @@ export declare class ARCClientCertificateDeleteEvent extends CustomEvent<ARCMode
   /**
    * The client certificate id used to initialize the event.
    */
-  readonly id: string;
+  get id(): string;
   /**
    * The client certificate's revision used to initialize the event.
    */
-  readonly rev?: string;
+  get rev(): string|undefined;
 
   /**
    * @param id Client certificate id
@@ -111,7 +96,7 @@ export declare class ARCClientCertificateDeletedEvent extends ARCEntityDeletedEv
 /**
  * An event to be dispatched to list client certificate data in the data store.
  */
-export declare class ARCClientCertificateListEvent extends ARCEntityListEvent<ClientCertificate.ARCClientCertificate> {
+export declare class ARCClientCertificateListEvent extends ARCEntityListEvent<ClientCertificate.ARCCertificateIndex> {
   /**
    * @param opts Query options.
    */
@@ -126,7 +111,7 @@ export declare class ARCClientCertificateListEvent extends ARCEntityListEvent<Cl
  * @param rev The revision of the client certificate. If not set then the latest revision is used.
  * @returns Promise resolved to a client certificate model.
  */
-export declare function readAction(target: EventTarget, id: string, rev?: string): Promise<ClientCertificate.ARCClientCertificate>;
+export declare function readAction(target: EventTarget, id: string, rev?: string): Promise<ClientCertificate.ClientCertificate>;
 
 /**
  * Dispatches an event handled by the data store to insert a new client certificate.
@@ -135,16 +120,7 @@ export declare function readAction(target: EventTarget, id: string, rev?: string
  * @param item The certificate object.
  * @returns Promise resolved to the change record
  */
-export declare function insertAction(target: EventTarget, item: ClientCertificate.ARCClientCertificate): Promise<Model.ARCEntityChangeRecord<ClientCertificate.ARCClientCertificate>>;
-
-/**
- * Dispatches an event handled by the data store to update a client certificate metadata
- *
- * @param target A node on which to dispatch the event.
- * @param item The certificate object.
- * @returns Promise resolved to the change record
- */
-export declare function updateAction(target: EventTarget, item: ClientCertificate.ARCClientCertificate): Promise<Model.ARCEntityChangeRecord<ClientCertificate.ARCClientCertificate>>;
+export declare function insertAction(target: EventTarget, item: ClientCertificate.ClientCertificate): Promise<Model.ARCEntityChangeRecord<ClientCertificate.ARCCertificateIndex>>;
 
 /**
  * Dispatches an event handled by the data store to delete a client certificate
@@ -163,7 +139,7 @@ export declare function deleteAction(target: EventTarget, id: string, rev?: stri
  * @param opts Query options.
  * @returns The list result.
  */
-export declare function listAction(target: EventTarget, opts?: Model.ARCModelListOptions): Promise<Model.ARCModelListResult<ClientCertificate.ARCClientCertificate>>;
+export declare function listAction(target: EventTarget, opts?: Model.ARCModelListOptions): Promise<Model.ARCModelListResult<ClientCertificate.ARCCertificateIndex>>;
 
 /**
  * Dispatches an event after a client certificate was updated

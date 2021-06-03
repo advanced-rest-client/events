@@ -409,7 +409,7 @@ export declare interface ClientCertificateFunctions {
    * @param rev The revision of the client certificate. If not set then the latest revision is used.
    * @returns Promise resolved to a client certificate model.
    */
-  read(target: EventTarget, id: string, rev?: string): Promise<ClientCertificate.ARCClientCertificate>;
+  read(target: EventTarget, id: string, rev?: string): Promise<ClientCertificate.ClientCertificate>;
   /**
    * Dispatches an event to list the client certificates data.
    *
@@ -417,7 +417,7 @@ export declare interface ClientCertificateFunctions {
    * @param opts Query options.
    * @returns The list result.
    */
-  list(target: EventTarget, opts?: Model.ARCModelListOptions): Promise<Model.ARCModelListResult<ClientCertificate.ARCClientCertificate>>;
+  list(target: EventTarget, opts?: Model.ARCModelListOptions): Promise<Model.ARCModelListResult<ClientCertificate.ARCCertificateIndex>>;
   /**
    * Dispatches an event handled by the data store to delete a client certificate
    *
@@ -434,7 +434,7 @@ export declare interface ClientCertificateFunctions {
    * @param item The certificate object.
    * @returns Promise resolved to the change record
    */
-  insert(target: EventTarget, item: ClientCertificate.ARCClientCertificate): Promise<Model.ARCEntityChangeRecord<ClientCertificate.ARCClientCertificate>>;
+  insert(target: EventTarget, item: ClientCertificate.ClientCertificate): Promise<Model.ARCEntityChangeRecord<ClientCertificate.ARCCertificateIndex>>;
 
 
   State: ClientCertificateStateFunctions;

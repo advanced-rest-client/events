@@ -2,7 +2,8 @@
 import { ArcModelEventTypes } from './ArcModelEventTypes.js';
 import { ARCEntityDeletedEvent, ARCEntityListEvent } from './BaseEvents.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').ClientCertificate.ARCClientCertificate} ARCClientCertificate */
+/** @typedef {import('@advanced-rest-client/arc-types').ClientCertificate.ClientCertificate} ClientCertificate */
+/** @typedef {import('@advanced-rest-client/arc-types').ClientCertificate.ARCCertificateIndex} ARCCertificateIndex */
 /** @typedef {import('@advanced-rest-client/arc-types').Model.ARCEntityChangeRecord} ARCEntityChangeRecord */
 /** @typedef {import('@advanced-rest-client/arc-types').Model.ARCModelListOptions} ARCModelListOptions */
 /** @typedef {import('@advanced-rest-client/arc-types').Model.ARCModelListResult} ARCModelListResult */
@@ -52,7 +53,7 @@ export class ARCClientCertificateReadEvent extends CustomEvent {
  */
 export class ARCClientCertificateInsertEvent extends CustomEvent {
   /**
-   * @param {ARCClientCertificate} certificate The certificate to create.
+   * @param {ClientCertificate} certificate The certificate to create.
    */
   constructor(certificate) {
     super(ArcModelEventTypes.ClientCertificate.insert, {
@@ -65,32 +66,7 @@ export class ARCClientCertificateInsertEvent extends CustomEvent {
   }
 
   /**
-   * @return {ARCClientCertificate} The certificate to update.
-   */
-  get certificate() {
-    return this[certificateValue];
-  }
-}
-
-/**
- * An event dispatched to update a certificate metadata
- */
-export class ARCClientCertificateUpdateEvent extends CustomEvent {
-  /**
-   * @param {ARCClientCertificate} certificate The certificate to update.
-   */
-  constructor(certificate) {
-    super(ArcModelEventTypes.ClientCertificate.update, {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {}
-    });
-    this[certificateValue] = certificate;
-  }
-
-  /**
-   * @return {ARCClientCertificate} The certificate to update.
+   * @return {ClientCertificate} The certificate to update.
    */
   get certificate() {
     return this[certificateValue];
@@ -185,7 +161,7 @@ export class ARCClientCertificateListEvent extends ARCEntityListEvent {
  * @param {EventTarget} target A node on which to dispatch the event.
  * @param {string} id The id of the client certificate
  * @param {string=} rev The revision of the client certificate. If not set then the latest revision is used.
- * @return {Promise<ARCClientCertificate>} Promise resolved to a client certificate model.
+ * @return {Promise<ClientCertificate>} Promise resolved to a client certificate model.
  */
 export async function readAction(target, id, rev) {
   const e = new ARCClientCertificateReadEvent(id, rev);
@@ -197,24 +173,11 @@ export async function readAction(target, id, rev) {
  * Dispatches an event handled by the data store to insert a new client certificate.
  *
  * @param {EventTarget} target A node on which to dispatch the event.
- * @param {ARCClientCertificate} item The certificate object.
+ * @param {ClientCertificate} item The certificate object.
  * @return {Promise<ARCEntityChangeRecord>} Promise resolved to the change record
  */
 export async function insertAction(target, item) {
   const e = new ARCClientCertificateInsertEvent(item);
-  target.dispatchEvent(e);
-  return e.detail.result;
-}
-
-/**
- * Dispatches an event handled by the data store to update a client certificate metadata
- *
- * @param {EventTarget} target A node on which to dispatch the event.
- * @param {ARCClientCertificate} item The certificate object.
- * @return {Promise<ARCEntityChangeRecord>} Promise resolved to the change record
- */
-export async function updateAction(target, item) {
-  const e = new ARCClientCertificateUpdateEvent(item);
   target.dispatchEvent(e);
   return e.detail.result;
 }

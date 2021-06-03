@@ -3,7 +3,6 @@ import { DataGenerator } from '@advanced-rest-client/arc-data-generator';
 import {
   ARCClientCertificateReadEvent,
   ARCClientCertificateInsertEvent,
-  ARCClientCertificateUpdateEvent,
   ARCClientCertificateUpdatedEvent,
   ARCClientCertificateDeleteEvent,
   ARCClientCertificateDeletedEvent,
@@ -44,7 +43,7 @@ describe('CertificatesEvents', () => {
 
   describe('ARCClientCertificateInsertEvent', () => {
     it('has readonly certificate property', () => {
-      const item = /** @type any */ (generator.generateClientCertificate());
+      const item = generator.generateClientCertificate();
       const e = new ARCClientCertificateInsertEvent(item);
       assert.deepEqual(e.certificate, item);
       assert.throws(() => {
@@ -54,27 +53,9 @@ describe('CertificatesEvents', () => {
     });
 
     it('has the correct type', () => {
-      const item = /** @type any */ (generator.generateClientCertificate());
+      const item = (generator.generateClientCertificate());
       const e = new ARCClientCertificateInsertEvent(item);
       assert.equal(e.type, ArcModelEventTypes.ClientCertificate.insert);
-    });
-  });
-
-  describe('ARCClientCertificateUpdateEvent', () => {
-    it('has readonly certificate property', () => {
-      const item = /** @type any */ (generator.generateClientCertificate());
-      const e = new ARCClientCertificateUpdateEvent(item);
-      assert.deepEqual(e.certificate, item);
-      assert.throws(() => {
-        // @ts-ignore
-        e.certificate = 'test';
-      });
-    });
-
-    it('has the correct type', () => {
-      const item = /** @type any */ (generator.generateClientCertificate());
-      const e = new ARCClientCertificateUpdateEvent(item);
-      assert.equal(e.type, ArcModelEventTypes.ClientCertificate.update);
     });
   });
 
@@ -82,7 +63,7 @@ describe('CertificatesEvents', () => {
     const record = {
       id: 'cc-id',
       rev: 'cc-rev',
-      item: /** @type any */ (generator.generateClientCertificate()),
+      item: generator.generateClientCertificate(),
     };
 
     it('has readonly changeRecord property', () => {

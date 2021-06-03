@@ -199,7 +199,6 @@ export {
 export {
   ARCClientCertificateReadEvent,
   ARCClientCertificateInsertEvent,
-  ARCClientCertificateUpdateEvent,
   ARCClientCertificateUpdatedEvent,
   ARCClientCertificateDeleteEvent,
   ARCClientCertificateDeletedEvent,
