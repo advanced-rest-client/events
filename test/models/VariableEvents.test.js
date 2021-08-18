@@ -1,5 +1,5 @@
 import { assert } from '@open-wc/testing';
-import { DataGenerator } from '@advanced-rest-client/arc-data-generator';
+import { ArcMock } from '@advanced-rest-client/arc-data-generator';
 import {
   ARCEnvironmentReadEvent,
   ARCEnvironmentUpdateEvent,
@@ -22,7 +22,7 @@ import { ArcModelEventTypes } from '../../src/models/ArcModelEventTypes.js';
 /** @typedef {import('@advanced-rest-client/arc-types').Variable.ARCVariable} ARCVariable */
 
 describe('VariableEvents', () => {
-  const generator = new DataGenerator();
+  const generator = new ArcMock();
 
   describe('ARCEnvironmentReadEvent', () => {
     const name = 'test name';
@@ -204,7 +204,7 @@ describe('VariableEvents', () => {
   });
 
   describe('ARCVariableUpdateEvent', () => {
-    const entity = /** @type ARCVariable */ (generator.generateVariableObject());
+    const entity = /** @type ARCVariable */ (generator.variables.variable());
 
     it('has readonly environment property', () => {
       const e = new ARCVariableUpdateEvent(entity);
@@ -225,7 +225,7 @@ describe('VariableEvents', () => {
     const record = {
       id: 'cc-id',
       rev: 'cc-rev',
-      item: /** @type ARCVariable */ (generator.generateVariableObject()),
+      item: /** @type ARCVariable */ (generator.variables.variable()),
     };
 
     it('has readonly changeRecord property', () => {

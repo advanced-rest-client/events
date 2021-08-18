@@ -1,12 +1,12 @@
 import { assert } from '@open-wc/testing';
-import { DataGenerator } from '@advanced-rest-client/arc-data-generator';
+import { ArcMock } from '@advanced-rest-client/arc-data-generator';
 import { TransportEventTypes, ApiRequestEvent, ApiResponseEvent, ApiTransportEvent, ApiAbortEvent, WebsocketRequestEvent } from  '../../index.js';
 import { generateEditorRequest, generateTransportRequest } from './Utils.js';
 
 /** @typedef {import('@advanced-rest-client/arc-types').WebSocket.WebsocketRequest} WebsocketRequest */
 
 describe('Transport', () => {
-  const generator = new DataGenerator();
+  const generator = new ArcMock();
 
   describe('Events', () => {
     describe('ApiRequestEvent', () => {
@@ -39,10 +39,10 @@ describe('Transport', () => {
     });
 
     describe('ApiResponseEvent', () => {
-      const source = generator.generateHistoryObject();
-      const response = generator.generateResponse();
+      const source = generator.http.history();
+      const response = generator.http.response.arcResponse();
       const request = generateTransportRequest();
-      const id = generator.chance.guid();
+      const id = generator.types.uuid();
       const type = TransportEventTypes.response;
 
       it('has the correct type', () => {
@@ -75,8 +75,8 @@ describe('Transport', () => {
     });
 
     describe('ApiTransportEvent', () => {
-      const request = generator.generateSavedItem();
-      const id = generator.chance.guid();
+      const request = generator.http.saved();
+      const id = generator.types.uuid();
       const config = { enabled: false };
 
       it('has the correct type', () => {
@@ -108,7 +108,7 @@ describe('Transport', () => {
     });
 
     describe('ApiAbortEvent', () => {
-      const id = generator.chance.guid();
+      const id = generator.types.uuid();
 
       it('has the correct type', () => {
         const e = new ApiAbortEvent(id);

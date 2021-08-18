@@ -1,5 +1,5 @@
 import { assert } from '@open-wc/testing';
-import { DataGenerator } from '@advanced-rest-client/arc-data-generator';
+import { ArcMock } from '@advanced-rest-client/arc-data-generator';
 import {
   ARCRestApiReadEvent,
   ARCRestApiUpdateEvent,
@@ -20,7 +20,7 @@ import { ArcModelEventTypes } from '../../src/models/ArcModelEventTypes.js';
 /** @typedef {import('@advanced-rest-client/arc-types').RestApi.ARCRestApi} ARCRestApi */
 
 describe('RestApiEvents', () => {
-  const generator = new DataGenerator();
+  const generator = new ArcMock();
 
   describe('ARCRestApiReadEvent', () => {
     const id = 'api-id';
@@ -51,7 +51,7 @@ describe('RestApiEvents', () => {
   });
 
   describe('ARCRestApiUpdateEvent', () => {
-    const entity = /** @type ARCRestApiIndex */ (generator.generateApiIndex());
+    const entity = /** @type ARCRestApiIndex */ (generator.restApi.apiIndex());
 
     it('has readonly id property', () => {
       const e = new ARCRestApiUpdateEvent(entity);
@@ -70,7 +70,7 @@ describe('RestApiEvents', () => {
   });
 
   describe('ARCRestApiUpdateBulkEvent', () => {
-    const entity = /** @type ARCRestApiIndex */ (generator.generateApiIndex());
+    const entity = /** @type ARCRestApiIndex */ (generator.restApi.apiIndex());
 
     it('has readonly entities property', () => {
       const e = new ARCRestApiUpdateBulkEvent([entity]);
@@ -92,7 +92,7 @@ describe('RestApiEvents', () => {
     const record = {
       id: 'cc-id',
       rev: 'cc-rev',
-      item: /** @type ARCRestApiIndex */ (generator.generateApiIndex()),
+      item: /** @type ARCRestApiIndex */ (generator.restApi.apiIndex()),
     };
 
     it('has readonly entities property', () => {
@@ -223,8 +223,8 @@ describe('RestApiEvents', () => {
   });
 
   describe('ARCRestApiDataUpdateEvent', () => {
-    const index = /** @type any */ (generator.generateApiIndex());
-    const entity = /** @type ARCRestApi */ (generator.generateApiData(index)[0]);
+    const index = /** @type any */ (generator.restApi.apiIndex());
+    const entity = /** @type ARCRestApi */ (generator.restApi.apiData(index)[0]);
 
     it('has readonly id property', () => {
       const e = new ARCRestApiDataUpdateEvent(entity);
@@ -243,11 +243,11 @@ describe('RestApiEvents', () => {
   });
 
   describe('ARCRestApiDataUpdatedEvent', () => {
-    const index = /** @type any */ (generator.generateApiIndex());
+    const index = /** @type any */ (generator.restApi.apiIndex());
     const record = {
       id: 'cc-id',
       rev: 'cc-rev',
-      item: /** @type ARCRestApi */ (generator.generateApiData(index)[0]),
+      item: /** @type ARCRestApi */ (generator.restApi.apiData(index)[0]),
     };
 
     it('has readonly entities property', () => {

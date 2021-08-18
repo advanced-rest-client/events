@@ -1,5 +1,5 @@
 import { assert } from '@open-wc/testing';
-import { DataGenerator } from '@advanced-rest-client/arc-data-generator';
+import { ArcMock } from '@advanced-rest-client/arc-data-generator';
 import {
   ARCHostRuleUpdateEvent,
   ARCHostRuleUpdateBulkEvent,
@@ -13,11 +13,11 @@ import { ArcModelEventTypes } from '../../src/models/ArcModelEventTypes.js';
 /** @typedef {import('@advanced-rest-client/arc-types').HostRule.ARCHostRule} ARCHostRule */
 
 describe('HostRuleEvents', () => {
-  const generator = new DataGenerator();
+  const generator = new ArcMock();
 
   describe('ARCHostRuleUpdateEvent', () => {
     it('has readonly rule property', () => {
-      const rule = /** @type ARCHostRule */ (generator.generateHostRuleObject());
+      const rule = /** @type ARCHostRule */ (generator.hostRules.rule());
       const e = new ARCHostRuleUpdateEvent(rule);
       assert.deepEqual(e.rule, rule, 'has the rule');
       assert.throws(() => {
@@ -35,7 +35,7 @@ describe('HostRuleEvents', () => {
     });
 
     it('has the correct type', () => {
-      const rule = /** @type ARCHostRule */ (generator.generateHostRuleObject());
+      const rule = /** @type ARCHostRule */ (generator.hostRules.rule());
       const e = new ARCHostRuleUpdateEvent(rule);
       assert.equal(e.type, ArcModelEventTypes.HostRules.update);
     });
@@ -43,7 +43,7 @@ describe('HostRuleEvents', () => {
 
   describe('ARCHostRuleUpdateBulkEvent', () => {
     it('has readonly rules property', () => {
-      const rule = /** @type ARCHostRule */ (generator.generateHostRuleObject());
+      const rule = /** @type ARCHostRule */ (generator.hostRules.rule());
       const e = new ARCHostRuleUpdateBulkEvent([rule]);
       assert.deepEqual(e.rules, [rule], 'has the rules');
       assert.throws(() => {
@@ -61,7 +61,7 @@ describe('HostRuleEvents', () => {
     });
 
     it('has the correct type', () => {
-      const rule = /** @type ARCHostRule */ (generator.generateHostRuleObject());
+      const rule = /** @type ARCHostRule */ (generator.hostRules.rule());
       const e = new ARCHostRuleUpdateBulkEvent([rule]);
       assert.equal(e.type, ArcModelEventTypes.HostRules.updateBulk);
     });
@@ -71,7 +71,7 @@ describe('HostRuleEvents', () => {
     const record = {
       id: 'cc-id',
       rev: 'cc-rev',
-      item: /** @type ARCHostRule */ (generator.generateHostRuleObject()),
+      item: /** @type ARCHostRule */ (generator.hostRules.rule()),
     };
 
     it('has readonly changeRecord property', () => {

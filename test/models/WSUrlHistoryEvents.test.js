@@ -1,5 +1,5 @@
 import { assert } from '@open-wc/testing';
-import { DataGenerator } from '@advanced-rest-client/arc-data-generator';
+import { ArcMock } from '@advanced-rest-client/arc-data-generator';
 import {
   ARCWSUrlInsertEvent,
   ARCWSUrlUpdatedEvent,
@@ -9,7 +9,7 @@ import {
 import { ArcModelEventTypes } from '../../src/models/ArcModelEventTypes.js';
 
 describe('WSUrlHistoryEvents', () => {
-  const generator = new DataGenerator();
+  const generator = new ArcMock();
 
   describe('ARCWSUrlInsertEvent', () => {
     const url = 'https://test.com';
@@ -33,7 +33,7 @@ describe('WSUrlHistoryEvents', () => {
     const record = {
       id: 'cc-id',
       rev: 'cc-rev',
-      item: /** @type any */ (generator.generateUrlObject()),
+      item: /** @type any */ (generator.urls.url()),
     };
 
     it('has readonly changeRecord property', () => {

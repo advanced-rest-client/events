@@ -1,13 +1,13 @@
 import { assert, fixture, html } from '@open-wc/testing';
 import * as sinon from 'sinon';
-import { DataGenerator } from '@advanced-rest-client/arc-data-generator';
+import { ArcMock } from '@advanced-rest-client/arc-data-generator';
 import { TransportEvents, TransportEventTypes } from  '../../index.js';
 import { generateEditorRequest, generateTransportRequest } from './Utils.js';
 
 /** @typedef {import('@advanced-rest-client/arc-types').WebSocket.WebsocketRequest} WebsocketRequest */
 
 describe('Transport', () => {
-  const generator = new DataGenerator();
+  const generator = new ArcMock();
 
   /**
    * @return {Promise<HTMLDivElement>}
@@ -38,10 +38,10 @@ describe('Transport', () => {
     });
 
     describe('response()', () => {
-      const source = generator.generateHistoryObject();
-      const response = generator.generateResponse();
+      const source = generator.http.history();
+      const response = generator.http.response.arcResponse();
       const request = generateTransportRequest();
-      const id = generator.chance.guid();
+      const id = generator.types.uuid();
 
       it('dispatches the event', async () => {
         const et = await etFixture();
@@ -64,8 +64,8 @@ describe('Transport', () => {
     });
 
     describe('transport()', () => {
-      const request = generator.generateSavedItem();
-      const id = generator.chance.guid();
+      const request = generator.http.saved();
+      const id = generator.types.uuid();
       const config = { enabled: false };
 
       it('dispatches the event', async () => {
@@ -89,10 +89,10 @@ describe('Transport', () => {
     });
 
     describe('processResponse()', () => {
-      const source = generator.generateHistoryObject();
-      const response = generator.generateResponse();
+      const source = generator.http.history();
+      const response = generator.http.response.arcResponse();
       const request = generateTransportRequest();
-      const id = generator.chance.guid();
+      const id = generator.types.uuid();
 
       it('dispatches the event', async () => {
         const et = await etFixture();
@@ -115,7 +115,7 @@ describe('Transport', () => {
     });
 
     describe('abort()', () => {
-      const id = generator.chance.guid();
+      const id = generator.types.uuid();
 
       it('dispatches the event', async () => {
         const et = await etFixture();

@@ -1,15 +1,17 @@
 /* eslint-disable max-classes-per-file */
 import { ArcModelEventTypes } from './ArcModelEventTypes.js';
-import { ARCEntityListEvent } from './BaseEvents.js';
+import { ARCEntityDeletedEvent, ARCEntityListEvent } from './BaseEvents.js';
 
 /** @typedef {import('@advanced-rest-client/arc-types').UrlHistory.ARCUrlHistory} ARCUrlHistory */
 /** @typedef {import('@advanced-rest-client/arc-types').Model.ARCEntityChangeRecord} ARCEntityChangeRecord */
 /** @typedef {import('@advanced-rest-client/arc-types').Model.ARCModelListOptions} ARCModelListOptions */
 /** @typedef {import('@advanced-rest-client/arc-types').Model.ARCModelListResult} ARCModelListResult */
+/** @typedef {import('@advanced-rest-client/arc-types').Model.DeletedEntity} DeletedEntity */
 
 export const urlValue = Symbol('urlValue');
 export const changeRecordValue = Symbol('changeRecordValue');
 export const termValue = Symbol('termValue');
+export const idValue = Symbol('idValue');
 
 /**
  * An event dispatched to the store an url in the history
@@ -97,6 +99,50 @@ export class ARCHistoryUrlQueryEvent extends CustomEvent {
 }
 
 /**
+ * An event dispatched by the UI to remove an object from the history URLs
+ */
+export class ARCHistoryUrlDeleteEvent extends CustomEvent {
+  /**
+   * @return {string} The URL to store used to initialize this event
+   */
+  get id() {
+    return this[idValue];
+  }
+
+  /**
+   * @param {string} id The store object id to remove.
+   */
+  constructor(id) {
+    if (typeof id !== 'string') {
+      throw new Error('Expected id argument to be a string.');
+    }
+    super(ArcModelEventTypes.UrlHistory.delete, {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {},
+    });
+    this[idValue] = id;
+  }
+}
+
+/**
+ * An event dispatched by the data store when a host rule entity was deleted.
+ */
+export class ARCHistoryUrlDeletedEvent extends ARCEntityDeletedEvent {
+  /**
+   * @param {string} id The id of the deleted object
+   * @param {string} rev An updated revision ID of the deleted object.
+   */
+  constructor(id, rev) {
+    if (typeof id !== 'string') {
+      throw new Error('Expected id argument to be a string.');
+    }
+    super(ArcModelEventTypes.UrlHistory.State.delete, id, rev);
+  }
+}
+
+/**
  * Dispatches an event handled by the data store to add a WS URL to the history
  *
  * @param {EventTarget} target A node on which to dispatch the event.
@@ -126,11 +172,24 @@ export async function listAction(target, opts) {
  * Dispatches an event handled by the data store to list a page of the results
  *
  * @param {EventTarget} target A node on which to dispatch the event.
- * @param {string} term THe query term
+ * @param {string} term The query term
  * @return {Promise<ARCUrlHistory[]>} Promise resolved to the change record for the URL
  */
 export async function queryAction(target, term) {
   const e = new ARCHistoryUrlQueryEvent(term);
+  target.dispatchEvent(e);
+  return e.detail.result;
+}
+
+/**
+ * Dispatches an event handled by the data store to list a page of the results
+ *
+ * @param {EventTarget} target A node on which to dispatch the event.
+ * @param {string} id The store object id to remove.
+ * @return {Promise<DeletedEntity>} Delete record
+ */
+export async function deleteAction(target, id) {
+  const e = new ARCHistoryUrlDeleteEvent(id);
   target.dispatchEvent(e);
   return e.detail.result;
 }
@@ -147,5 +206,17 @@ export async function queryAction(target, term) {
  */
 export function updatedState(target, record) {
   const e = new ARCHistoryUrlUpdatedEvent(record);
+  target.dispatchEvent(e);
+}
+
+/**
+ * Dispatches an event after a host rule was deleted
+ *
+ * @param {EventTarget} target A node on which to dispatch the event.
+ * @param {string} id Deleted host rule id.
+ * @param {string} rev Updated revision of the deleted entity.
+ */
+export function deletedState(target, id, rev) {
+  const e = new ARCHistoryUrlDeletedEvent(id, rev);
   target.dispatchEvent(e);
 }

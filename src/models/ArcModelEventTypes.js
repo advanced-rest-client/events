@@ -85,8 +85,10 @@ export const ArcModelEventTypes = {
     list: 'modelurlhistorylist',
     insert: 'modelurlhistoryinsert',
     query: 'modelurlhistoryquery',
+    delete: 'modelurlhistorydelete',
     State: {
       update: 'modelstateurlhistoryupdate',
+      delete: 'modelstateurlhistorydelete',
     },
   },
   Environment: {

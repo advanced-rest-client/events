@@ -1,17 +1,19 @@
 import { assert } from '@open-wc/testing';
-import { DataGenerator } from '@advanced-rest-client/arc-data-generator';
+import { ArcMock } from '@advanced-rest-client/arc-data-generator';
 import {
   ARCHistoryUrlInsertEvent,
   ARCHistoryUrlUpdatedEvent,
   ARCHistoryUrlListEvent,
   ARCHistoryUrlQueryEvent,
+  ARCHistoryUrlDeleteEvent,
+  ARCHistoryUrlDeletedEvent,
 } from '../../src/models/UrlHistoryEvents.js';
 import { ArcModelEventTypes } from '../../src/models/ArcModelEventTypes.js';
 
 /** @typedef {import('@advanced-rest-client/arc-types').UrlHistory.ARCUrlHistory} ARCUrlHistory */
 
 describe('UrlHistoryEvents', () => {
-  const generator = new DataGenerator();
+  const generator = new ArcMock();
 
   describe('ARCHistoryUrlInsertEvent', () => {
     const url = 'https://test.com';
@@ -35,7 +37,7 @@ describe('UrlHistoryEvents', () => {
     const record = {
       id: 'cc-id',
       rev: 'cc-rev',
-      item: /** @type ARCUrlHistory */ (generator.generateUrlObject()),
+      item: /** @type ARCUrlHistory */ (generator.urls.url()),
     };
 
     it('has readonly rev property', () => {
@@ -53,7 +55,7 @@ describe('UrlHistoryEvents', () => {
     });
   });
 
-  describe('ARCWSUrlListEvent', () => {
+  describe('ARCHistoryUrlListEvent', () => {
     const opts = { limit: 5, nextPageToken: 'test-page-token' };
 
     it('has readonly limit property', () => {
@@ -95,6 +97,52 @@ describe('UrlHistoryEvents', () => {
     it('has the correct type', () => {
       const e = new ARCHistoryUrlQueryEvent(term);
       assert.equal(e.type, ArcModelEventTypes.UrlHistory.query);
+    });
+  });
+
+  describe('ARCHistoryUrlDeleteEvent', () => {
+    const id = 'test-id';
+
+    it('has readonly term property', () => {
+      const e = new ARCHistoryUrlDeleteEvent(id);
+      assert.deepEqual(e.id, id);
+      assert.throws(() => {
+        // @ts-ignore
+        e.id = 'test';
+      });
+    });
+
+    it('has the correct type', () => {
+      const e = new ARCHistoryUrlDeleteEvent(id);
+      assert.equal(e.type, ArcModelEventTypes.UrlHistory.delete);
+    });
+  });
+
+  describe('ARCHistoryUrlDeletedEvent', () => {
+    const id = 'db-id';
+    const rev = 'db-rev';
+
+    it('has readonly id property', () => {
+      const e = new ARCHistoryUrlDeletedEvent(id, rev);
+      assert.equal(e.id, id);
+      assert.throws(() => {
+        // @ts-ignore
+        e.id = 'test';
+      });
+    });
+
+    it('has readonly rev property', () => {
+      const e = new ARCHistoryUrlDeletedEvent(id, rev);
+      assert.equal(e.rev, rev);
+      assert.throws(() => {
+        // @ts-ignore
+        e.rev = 'test';
+      });
+    });
+
+    it('has the correct type', () => {
+      const e = new ARCHistoryUrlDeletedEvent(id, rev);
+      assert.equal(e.type, ArcModelEventTypes.UrlHistory.State.delete);
     });
   });
 });

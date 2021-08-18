@@ -190,6 +190,8 @@ export {
   ARCHistoryUrlUpdatedEvent,
   ARCHistoryUrlListEvent,
   ARCHistoryUrlQueryEvent,
+  ARCHistoryUrlDeleteEvent,
+  ARCHistoryUrlDeletedEvent,
 } from './src/models/UrlHistoryEvents.js';
 
 export {

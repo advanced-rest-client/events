@@ -1,16 +1,16 @@
-import { DataGenerator } from "@advanced-rest-client/arc-data-generator";
+import { ArcMock } from '@advanced-rest-client/arc-data-generator';
 
 /** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ArcEditorRequest} ArcEditorRequest */
 /** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.TransportRequest} TransportRequest */
 
-const generator = new DataGenerator();
+const generator = new ArcMock();
 
 /**
  * @returns {ArcEditorRequest}
  */
 export function generateEditorRequest() {
-  const request = generator.generateSavedItem();
-  const id = generator.chance.guid();
+  const request = generator.http.saved();
+  const id = generator.types.uuid();
   return {
     id,
     request,
@@ -20,10 +20,10 @@ export function generateEditorRequest() {
  * @returns {TransportRequest}
  */
 export function generateTransportRequest() {
-  const request = generator.generateSavedItem();
+  const request = generator.http.saved();
   return {
     endTime: Date.now(),
-    httpMessage: generator.chance.paragraph(),
+    httpMessage: generator.lorem.paragraph(),
     startTime: Date.now() - 100,
     method: request.method,
     url: request.url,

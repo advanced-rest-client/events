@@ -332,6 +332,7 @@ describe('ArcModelEventTypes', () => {
       ['list', 'modelurlhistorylist'],
       ['insert', 'modelurlhistoryinsert'],
       ['query', 'modelurlhistoryquery'],
+      ['delete', 'modelurlhistorydelete'],
     ].forEach(([prop, value]) => {
       it(`has ${prop} property`, () => {
         assert.equal(ArcModelEventTypes.UrlHistory[prop], value);
@@ -351,6 +352,7 @@ describe('ArcModelEventTypes', () => {
 
     [
       ['update', 'modelstateurlhistoryupdate'],
+      ['delete', 'modelstateurlhistorydelete'],
     ].forEach(([prop, value]) => {
       it(`has ${prop} property`, () => {
         assert.equal(ArcModelEventTypes.UrlHistory.State[prop], value);

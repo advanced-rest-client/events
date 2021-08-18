@@ -114,8 +114,10 @@ export const ArcModelEvents = {
     list: UrlHistoryEvents.listAction,
     insert: UrlHistoryEvents.insertAction,
     query: UrlHistoryEvents.queryAction,
+    delete: UrlHistoryEvents.deleteAction,
     State: {
       update: UrlHistoryEvents.updatedState,
+      delete: UrlHistoryEvents.deletedState,
     },
   },
   Environment: {

@@ -1,4 +1,5 @@
 import { Model, ArcRequest, Indexer, AuthData, HostRule, ClientCertificate, UrlHistory, Variable, RestApi, Project } from "@advanced-rest-client/arc-types";
+import { DeletedEntity } from "@advanced-rest-client/arc-types/src/models/base";
 import { ARCRequestEventRequestOptions } from './RequestEvents';
 import { ARCVariablesListOptions, EnvironmentStateDetail } from './VariableEvents';
 
@@ -487,6 +488,14 @@ export declare interface UrlHistoryStateFunctions {
    * @param record The change record
    */
   update(target: EventTarget, record: Model.ARCEntityChangeRecord<UrlHistory.ARCUrlHistory>): void;
+  /**
+   * Dispatches an event after a host rule was deleted
+   *
+   * @param {EventTarget} target A node on which to dispatch the event.
+   * @param {string} id Deleted host rule id.
+   * @param {string} rev Updated revision of the deleted entity.
+   */
+  delete(target: EventTarget, id: string, rev: string): void;
 }
 
 export declare interface UrlHistoryFunctions {
@@ -514,7 +523,14 @@ export declare interface UrlHistoryFunctions {
    * @returns Promise resolved to the change record for the URL
    */
   query(target: EventTarget, term: string): Promise<UrlHistory.ARCUrlHistory[]>;
-
+  /**
+   * Dispatches an event handled by the data store to list a page of the results
+   *
+   * @param target A node on which to dispatch the event.
+   * @param id The store object id to remove.
+   * @returns Delete record
+   */
+  delete(target: EventTarget, id: string): Promise<DeletedEntity>;
   State: UrlHistoryStateFunctions;
 }
 

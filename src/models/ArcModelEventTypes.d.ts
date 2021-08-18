@@ -98,6 +98,7 @@ declare interface WSUrlHistoryEvents {
 
 declare interface UrlHistoryStateEvents {
   update: string;
+  delete: string;
 }
 
 declare interface UrlHistoryEvents {
@@ -105,6 +106,7 @@ declare interface UrlHistoryEvents {
   list: string;
   insert: string;
   query: string;
+  delete: string;
   State: UrlHistoryStateEvents;
 }
 

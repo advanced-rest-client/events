@@ -1,13 +1,17 @@
 import { UrlHistory, Model } from '@advanced-rest-client/arc-types';
+import { DeletedEntity } from '@advanced-rest-client/arc-types/src/models/base';
 import {
   ARCModelReadBulkEventDetail,
   ARCModelUpdateEventDetail,
   ARCEntityListEvent,
+  ARCModelDeleteEventDetail,
+  ARCEntityDeletedEvent,
 } from './BaseEvents';
 
 export declare const urlValue: symbol;
 export declare const changeRecordValue: symbol;
 export declare const termValue: symbol;
+export declare const idValue: symbol;
 
 /**
  * An event dispatched to the store an url in the history
@@ -65,6 +69,32 @@ export declare class ARCHistoryUrlQueryEvent extends CustomEvent<ARCModelReadBul
 }
 
 /**
+ * An event dispatched by the UI to remove an object from the history URLs
+ */
+export class ARCHistoryUrlDeleteEvent extends CustomEvent<ARCModelDeleteEventDetail> {
+  /**
+   * @return The URL to store used to initialize this event
+   */
+  get id(): string;
+
+  /**
+   * @param id The store object id to remove.
+   */
+  constructor(id: string);
+}
+
+/**
+ * An event dispatched by the data store when a host rule entity was deleted.
+ */
+export class ARCHistoryUrlDeletedEvent extends ARCEntityDeletedEvent {
+  /**
+   * @param id The id of the deleted object
+   * @param rev Updated revision
+   */
+   constructor(id: string, rev: string);
+}
+
+/**
  * Dispatches an event handled by the data store to add an URL to the history
  *
  * @param target A node on which to dispatch the event.
@@ -91,6 +121,15 @@ export declare function listAction(target: EventTarget, opts?: Model.ARCModelLis
  */
 export declare function queryAction(target: EventTarget, term: string): Promise<UrlHistory.ARCUrlHistory[]>;
 
+/**
+ * Dispatches an event handled by the data store to list a page of the results
+ *
+ * @param target A node on which to dispatch the event.
+ * @param id The store object id to remove.
+ * @return Delete record
+ */
+export declare function deleteAction(target: EventTarget, id: string): Promise<DeletedEntity>;
+
 //
 // State events
 //
@@ -102,3 +141,12 @@ export declare function queryAction(target: EventTarget, term: string): Promise<
  * @param record The change record
  */
 export declare function updatedState(target: EventTarget, record: Model.ARCEntityChangeRecord<UrlHistory.ARCUrlHistory>): void;
+
+/**
+ * Dispatches an event after a host rule was deleted
+ *
+ * @param {EventTarget} target A node on which to dispatch the event.
+ * @param {string} id Deleted host rule id.
+ * @param {string} rev Updated revision of the deleted entity.
+ */
+export declare function deletedState(target: EventTarget, id: string, rev: string): void;
