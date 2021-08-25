@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "ARCWS",
+    "Oidc",
     "PROJECTROUTE",
     "REQUESTROUTE",
     "RESTAPIROUTE",
@@ -135,6 +136,8 @@
     "modelwsurlhistorylist",
     "modelwsurlhistoryquery",
     "modelwsurlhistoryread",
+    "oidcauthorize",
+    "oidcremovetokens",
     "popupmenu",
     "projectlist",
     "reassing",

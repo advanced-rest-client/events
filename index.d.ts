@@ -116,7 +116,7 @@ export {
 export { TransportEventTypes } from './src/transport/TransportEventTypes';
 export { TransportEvents } from './src/transport/TransportEvents';
 export { ApiRequestEvent, ApiResponseEvent, ApiTransportEvent, ApiTransportEventDetail, ApiResponseEventDetail, ApiAbortEvent, ApiAbortEventDetail, WebsocketRequestEvent } from './src/transport/Events';
-export { OAuth2AuthorizeEvent, OAuth2RemoveTokenEvent } from './src/authorization/Events';
+export { OAuth2AuthorizeEvent, OAuth2RemoveTokenEvent, OidcAuthorizeEvent, OidcRemoveTokensEvent, } from './src/authorization/Events';
 export { AuthorizationEventTypes } from './src/authorization/AuthorizationEventTypes';
 export { AuthorizationEvents } from './src/authorization/AuthorizationEvents';
 export {

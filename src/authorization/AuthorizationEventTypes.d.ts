@@ -8,9 +8,20 @@ declare interface OAuth2EventTypes {
    */
   removeToken: string;
 }
+declare interface OidcEventTypes {
+  /** 
+   * Authorization the user with the provided configuration.
+   */
+  authorize: string;
+  /** 
+   * Removes cached tokens for the provider
+   */
+  removeTokens: string;
+}
 
 declare interface AuthorizationEventTypes {
   OAuth2: OAuth2EventTypes;
+  Oidc: OidcEventTypes;
 }
 
 export declare const AuthorizationEventTypes: Readonly<AuthorizationEventTypes>;

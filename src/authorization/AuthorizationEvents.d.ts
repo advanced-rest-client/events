@@ -1,5 +1,4 @@
-import { OAuth2Authorization } from '@advanced-rest-client/arc-types/src/authorization/Authorization';
-import { TokenInfo, TokenRemoveOptions } from '@advanced-rest-client/arc-types/src/oauth2/OAuth2';
+import { OAuth2Authorization, TokenInfo, TokenRemoveOptions, OidcTokenError, OidcTokenInfo } from '@advanced-rest-client/arc-types/src/authorization/Authorization';
 
 declare interface OAuth2Events {
   /**
@@ -16,8 +15,24 @@ declare interface OAuth2Events {
   removeToken(target: EventTarget, config: TokenRemoveOptions): Promise<void>;
 }
 
+declare interface OidcEvents {
+  /**
+   * @param target A node on which to dispatch the event.
+   * @param config Authorization options.
+   * @return Promise resolved with authorization result
+   */
+  authorize(target: EventTarget, config: OAuth2Authorization): Promise<(OidcTokenInfo|OidcTokenError)[]>;
+  /**
+   * @param target A node on which to dispatch the event.
+   * @param config Authorization options.
+   * @returns Promise resolved when the token is removed
+   */
+  removeTokens(target: EventTarget, config: TokenRemoveOptions): Promise<void>;
+}
+
 declare interface AuthorizationEvents {
-  OAuth2: OAuth2Events
+  OAuth2: OAuth2Events;
+  Oidc: OidcEvents;
 }
 
 export declare const AuthorizationEvents: Readonly<AuthorizationEvents>;
