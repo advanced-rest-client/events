@@ -50,6 +50,7 @@
     "eventtype",
     "filedatasave",
     "googledrive",
+    "httptransport",
     "launchwebflow",
     "modelauthdataquery",
     "modelauthdataupdate",

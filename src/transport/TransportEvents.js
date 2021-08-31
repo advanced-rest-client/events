@@ -10,4 +10,7 @@ export const TransportEvents = {
   connect: Events.informConnectAction,
   disconnect: Events.informDisconnectAction,
   connectionSend: Events.informWebSocketSendAction,
+
+  // http, outside ARC's engine
+  httpTransport: Events.httpTransportAction,
 }

@@ -22,6 +22,7 @@ describe('Transport', () => {
       ['connect', 'transportconnect'],
       ['disconnect', 'transportdisconnect'],
       ['connectionSend', 'transportconnectionsend'],
+      ['httpTransport', 'httptransport'],
     ].forEach(([prop, value]) => {
       it(`has ${prop} property`, () => {
         assert.equal(TransportEventTypes[prop], value);

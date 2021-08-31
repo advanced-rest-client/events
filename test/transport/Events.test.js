@@ -1,9 +1,18 @@
 import { assert } from '@open-wc/testing';
 import { ArcMock } from '@advanced-rest-client/arc-data-generator';
-import { TransportEventTypes, ApiRequestEvent, ApiResponseEvent, ApiTransportEvent, ApiAbortEvent, WebsocketRequestEvent } from  '../../index.js';
 import { generateEditorRequest, generateTransportRequest } from './Utils.js';
+import { 
+  TransportEventTypes, 
+  ApiRequestEvent, 
+  ApiResponseEvent, 
+  ApiTransportEvent, 
+  ApiAbortEvent, 
+  WebsocketRequestEvent,
+  HttpTransportEvent,
+} from  '../../index.js';
 
 /** @typedef {import('@advanced-rest-client/arc-types').WebSocket.WebsocketRequest} WebsocketRequest */
+/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ArcBaseRequest} ArcBaseRequest */
 
 describe('Transport', () => {
   const generator = new ArcMock();
@@ -167,6 +176,38 @@ describe('Transport', () => {
 
       it('is cancelable', () => {
         const e = new WebsocketRequestEvent(type, editorRequest);
+        assert.isTrue(e.cancelable);
+      });
+    });
+
+    describe('HttpTransportEvent', () => {
+      const request = /** @type ArcBaseRequest */ ({
+        url: 'https://api.domain.com',
+        method: 'GET',
+      });
+
+      it('has the type', () => {
+        const e = new HttpTransportEvent(request);
+        assert.equal(e.type, TransportEventTypes.httpTransport);
+      });
+
+      it('has the passed request', () => {
+        const e = new HttpTransportEvent(request);
+        assert.deepEqual(e.detail.request, request);
+      });
+
+      it('bubbles', () => {
+        const e = new HttpTransportEvent(request);
+        assert.isTrue(e.bubbles);
+      });
+
+      it('is composed', () => {
+        const e = new HttpTransportEvent(request);
+        assert.isTrue(e.composed);
+      });
+
+      it('is cancelable', () => {
+        const e = new HttpTransportEvent(request);
         assert.isTrue(e.cancelable);
       });
     });

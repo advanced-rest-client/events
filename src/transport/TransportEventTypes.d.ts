@@ -30,6 +30,11 @@ declare interface TransportEventTypes {
    * Informs to send a data on the current connection. Used by web sockets.
    */
   connectionSend: string;
+  /** 
+   * When a component / module requests a CORS free HTTP request
+   * outside the ARC's HTTP engine.
+   */
+  httpTransport: string;
 }
 
 export declare const TransportEventTypes: Readonly<TransportEventTypes>;

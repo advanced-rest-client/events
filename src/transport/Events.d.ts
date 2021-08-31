@@ -81,6 +81,30 @@ export declare class WebsocketRequestEvent extends CustomEvent<WebsocketEditorRe
   constructor(type: string, editorRequest: WebsocketEditorRequest);
 }
 
+export interface HttpTransportEventDetail {
+  /**
+   * The request configuration to make.
+   */
+  request: ArcRequest.ArcBaseRequest;
+  /**
+   * When handled the event returns the response object.
+   */
+  result?: Promise<ArcResponse.HTTPResponse>;
+}
+
+/**
+ * An event dispatched when requesting an HTTP transport from the backend
+ * to mitigate CORS restrictions. This request is made outside ARC's HTTP processing engine.
+ * Also, unlike other ARC's transport events, this event returns the response on the detail, 
+ * via the `detail.result` property.
+ */
+export class HttpTransportEvent extends CustomEvent<HttpTransportEventDetail> {
+  /**
+   * @param request The request configuration to transport.
+   */
+  constructor(request: ArcRequest.ArcBaseRequest);
+}
+
 /**
  * @param target A target on which to dispatch the event
  * @param request The request configuration to transport.
@@ -139,3 +163,11 @@ export function informDisconnectAction(target: EventTarget, editorRequest: Webso
  * @param editorRequest The editor web socket request associated with the event
  */
 export function informWebSocketSendAction(target: EventTarget, editorRequest: WebsocketEditorRequest): void;
+
+/**
+ * Performs an HTTP request on the backend to mitigate CORS restrictions.
+ * 
+ * @param target A target on which to dispatch the event
+ * @param request The request configuration to transport.
+ */
+export function httpTransportAction(target: EventTarget, request: ArcRequest.ArcBaseRequest): Promise<ArcResponse.HTTPResponse>;

@@ -54,6 +54,13 @@ declare interface TransportEvents {
    * @param editorRequest The editor web socket request associated with the event
    */
   connectionSend(target: EventTarget, editorRequest: WebsocketEditorRequest): void;
+  /**
+   * Performs an HTTP request on the backend to mitigate CORS restrictions.
+   * 
+   * @param target A target on which to dispatch the event
+   * @param request The request configuration to transport.
+   */
+  httpTransport(target: EventTarget, request: ArcRequest.ArcBaseRequest): Promise<ArcResponse.HTTPResponse>;
 }
 
 export const TransportEvents: TransportEvents;

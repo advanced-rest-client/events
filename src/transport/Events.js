@@ -6,7 +6,8 @@ import { TransportEventTypes } from './TransportEventTypes.js';
 /** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ArcBaseRequest} ArcBaseRequest */
 /** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.RequestConfig} RequestConfig */
 /** @typedef {import('@advanced-rest-client/arc-types').ArcResponse.Response} Response */
-/** @typedef {import('@advanced-rest-client/arc-types').ArcResponse.Response} ErrorResponse */
+/** @typedef {import('@advanced-rest-client/arc-types').ArcResponse.ErrorResponse} ErrorResponse */
+/** @typedef {import('@advanced-rest-client/arc-types').ArcResponse.HTTPResponse} HTTPResponse */
 /** @typedef {import('@advanced-rest-client/arc-types').WebSocket.WebsocketEditorRequest} WebsocketEditorRequest */
 
 /**
@@ -112,6 +113,29 @@ export class WebsocketRequestEvent extends CustomEvent {
 }
 
 /**
+ * An event dispatched when requesting an HTTP transport from the backend
+ * to mitigate CORS restrictions. This request is made outside ARC's HTTP processing engine.
+ * Also, unlike other ARC's transport events, this event returns the response on the detail, 
+ * via the `detail.result` property.
+ */
+export class HttpTransportEvent extends CustomEvent {
+  /**
+   * @param {ArcBaseRequest} request The request configuration to transport.
+   */
+  constructor(request) {
+    super(TransportEventTypes.httpTransport, {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        request,
+        result: undefined,
+      },
+    });
+  }
+}
+
+/**
  * @param {EventTarget} target A target on which to dispatch the event
  * @param {ArcEditorRequest} request The request configuration to transport.
  */
@@ -192,4 +216,17 @@ export function informDisconnectAction(target, editorRequest) {
 export function informWebSocketSendAction(target, editorRequest) {
   const e = new WebsocketRequestEvent(TransportEventTypes.connectionSend, editorRequest);
   target.dispatchEvent(e);
+}
+
+/**
+ * Performs an HTTP request on the backend to mitigate CORS restrictions.
+ * 
+ * @param {EventTarget} target A target on which to dispatch the event
+ * @param {ArcBaseRequest} request The request configuration to transport.
+ * @returns {Promise<HTTPResponse>}
+ */
+export async function httpTransportAction(target, request) {
+  const e = new HttpTransportEvent(request);
+  target.dispatchEvent(e);
+  return e.detail.result;
 }

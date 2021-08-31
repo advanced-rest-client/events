@@ -5,6 +5,7 @@ import { TransportEvents, TransportEventTypes } from  '../../index.js';
 import { generateEditorRequest, generateTransportRequest } from './Utils.js';
 
 /** @typedef {import('@advanced-rest-client/arc-types').WebSocket.WebsocketRequest} WebsocketRequest */
+/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ArcBaseRequest} ArcBaseRequest */
 
 describe('Transport', () => {
   const generator = new ArcMock();
@@ -264,6 +265,48 @@ describe('Transport', () => {
         TransportEvents.connectionSend(et, editorRequest);
         const e = spy.args[0][0];
         assert.deepEqual(e.detail, editorRequest);
+      });
+    });
+
+    describe('httpTransport()', () => {
+      const request = /** @type ArcBaseRequest */ ({
+        url: 'https://api.domain.com',
+        method: 'GET',
+      });
+
+      it('dispatches the event', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(TransportEventTypes.httpTransport, spy);
+        TransportEvents.httpTransport(et, request);
+        assert.isTrue(spy.calledOnce);
+      });
+
+      it('the event bubbles', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(TransportEventTypes.httpTransport, spy);
+        TransportEvents.httpTransport(et, request);
+        const e = spy.args[0][0];
+        assert.isTrue(e.bubbles);
+      });
+
+      it('the event is cancelable', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(TransportEventTypes.httpTransport, spy);
+        TransportEvents.httpTransport(et, request);
+        const e = spy.args[0][0];
+        assert.isTrue(e.cancelable);
+      });
+
+      it('the event has the detail', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(TransportEventTypes.httpTransport, spy);
+        TransportEvents.httpTransport(et, request);
+        const e = spy.args[0][0];
+        assert.deepEqual(e.detail.request, request);
       });
     });
   });

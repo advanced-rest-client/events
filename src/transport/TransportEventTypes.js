@@ -34,5 +34,10 @@ export const TransportEventTypes = {
    * Informs to send a data on the current connection. Used by web sockets.
    */
   connectionSend: 'transportconnectionsend',
+  /** 
+   * When a component / module requests a CORS free HTTP request
+   * outside the ARC's HTTP engine.
+   */
+  httpTransport: 'httptransport',
 };
 Object.freeze(TransportEventTypes);

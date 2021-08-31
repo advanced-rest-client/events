@@ -93,7 +93,7 @@ export {
 } from './src/telemetry/Events.js';
 export { TransportEventTypes } from './src/transport/TransportEventTypes.js';
 export { TransportEvents } from './src/transport/TransportEvents.js';
-export { ApiRequestEvent, ApiResponseEvent, ApiTransportEvent, ApiAbortEvent, WebsocketRequestEvent } from './src/transport/Events.js';
+export { ApiRequestEvent, ApiResponseEvent, ApiTransportEvent, ApiAbortEvent, WebsocketRequestEvent, HttpTransportEvent } from './src/transport/Events.js';
 export { OAuth2AuthorizeEvent, OAuth2RemoveTokenEvent, OidcAuthorizeEvent, OidcRemoveTokensEvent, } from './src/authorization/Events.js';
 export { AuthorizationEventTypes } from './src/authorization/AuthorizationEventTypes.js';
 export { AuthorizationEvents } from './src/authorization/AuthorizationEvents.js';
