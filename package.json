@@ -1,7 +1,7 @@
 {
   "name": "@advanced-rest-client/arc-events",
   "description": "A library adding navigation events definitions to Advanced REST Client",
-  "version": "0.2.20",
+  "version": "0.2.21",
   "license": "Apache-2.0",
   "main": "index.js",
   "module": "index.js",
@@ -21,14 +21,14 @@
     "email": "arc@mulesoft.com"
   },
   "dependencies": {
-    "@advanced-rest-client/arc-types": "^0.2.57"
+    "@advanced-rest-client/arc-types": "^0.2.61"
   },
   "devDependencies": {
     "@advanced-rest-client/arc-data-generator": "^4.0.1",
-    "@advanced-rest-client/arc-demo-helper": "^3.0.2",
+    "@advanced-rest-client/arc-demo-helper": "^3.0.3",
     "@open-wc/eslint-config": "^4.3.0",
     "@open-wc/testing": "^2.5.33",
-    "@web/test-runner": "^0.13.16",
+    "@web/test-runner": "^0.13.18",
     "@web/test-runner-playwright": "^0.8.8",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
@@ -37,7 +37,7 @@
     "lit-element": "^2.5.1",
     "lit-html": "^1.4.1",
     "sinon": "^11.1.2",
-    "typescript": "^4.4.2",
+    "typescript": "^4.4.3",
     "typescript-lit-html-plugin": "^0.9.0"
   },
   "scripts": {

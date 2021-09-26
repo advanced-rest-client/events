@@ -81,6 +81,8 @@ export { RestApiEventTypes } from './src/reastapi/RestApiEventTypes.js';
 export { RequestEventTypes } from './src/request/RequestEventTypes.js';
 export { RequestChangeEvent, } from './src/request/Events.js';
 export { RequestEvents } from './src/request/RequestEvents.js';
+export { ReportingEventTypes } from './src/reporting/ReportingEventTypes.js';
+export { ReportingEvents, ApiErrorEvent } from './src/reporting/ReportingEvents.js';
 export { TelemetryEventTypes } from './src/telemetry/TelemetryEventTypes.js';
 export { TelemetryEvents } from './src/telemetry/TelemetryEvents.js';
 export {
