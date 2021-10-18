@@ -3,13 +3,13 @@ import { ArcModelEventTypes } from './ArcModelEventTypes.js';
 import { ARCEntityDeletedEvent, ARCEntityListEvent } from './BaseEvents.js';
 
 /** @typedef {import('./RequestEvents').ARCRequestEventRequestOptions} ARCRequestEventRequestOptions */
-/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ARCSavedRequest} ARCSavedRequest */
-/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ARCHistoryRequest} ARCHistoryRequest */
-/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ARCRequestRestoreOptions} ARCRequestRestoreOptions */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCEntityChangeRecord} ARCEntityChangeRecord */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.DeletedEntity} DeletedEntity */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCModelListOptions} ARCModelListOptions */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCModelListResult} ARCModelListResult */
+/** @typedef {import('../../').ArcRequest.ARCSavedRequest} ARCSavedRequest */
+/** @typedef {import('../../').ArcRequest.ARCHistoryRequest} ARCHistoryRequest */
+/** @typedef {import('../../').ArcRequest.ARCRequestRestoreOptions} ARCRequestRestoreOptions */
+/** @typedef {import('../../').Model.ARCEntityChangeRecord} ARCEntityChangeRecord */
+/** @typedef {import('../../').Model.DeletedEntity} DeletedEntity */
+/** @typedef {import('../../').Model.ARCModelListOptions} ARCModelListOptions */
+/** @typedef {import('../../').Model.ARCModelListResult} ARCModelListResult */
 
 export const requestValue = Symbol('requestValue');
 export const requestsValue = Symbol('requestsValue');

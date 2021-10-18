@@ -1,4 +1,4 @@
-import { DataExport } from '@advanced-rest-client/arc-types';
+import { DataExport } from '../../';
 import { FileImportOptions } from './Events';
 
 declare interface ExportEvents {

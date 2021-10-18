@@ -1,4 +1,4 @@
-import { Cookies } from '@advanced-rest-client/arc-types';
+import { Cookies } from '../../';
 
 declare interface SessionStateEvents {
   /**

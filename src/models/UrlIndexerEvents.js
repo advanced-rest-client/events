@@ -6,8 +6,8 @@ export const typeValue = Symbol('typeValue');
 export const detailedValue = Symbol('detailedValue');
 export const termValue = Symbol('termValue');
 
-/** @typedef {import('@advanced-rest-client/arc-types').Indexer.IndexableRequest} IndexableRequest */
-/** @typedef {import('@advanced-rest-client/arc-types').Indexer.IndexQueryResult} IndexQueryResult */
+/** @typedef {import('../../').Indexer.IndexableRequest} IndexableRequest */
+/** @typedef {import('../../').Indexer.IndexQueryResult} IndexQueryResult */
 
 /**
  * An event dispatched to the store to update an URL index data

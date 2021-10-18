@@ -1,4 +1,4 @@
-import { HostRule, Model } from '@advanced-rest-client/arc-types';
+import { HostRule, Model } from '../../';
 import {
   ARCEntityDeletedEvent,
   ARCEntityListEvent,

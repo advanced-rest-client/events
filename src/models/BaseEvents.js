@@ -8,7 +8,7 @@ export const limitValue = Symbol('limitValue');
 export const nextPageTokenValue = Symbol('nextPageTokenValue');
 export const storesValue = Symbol('storesValue');
 
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCModelListOptions} ARCModelListOptions */
+/** @typedef {import('../../').Model.ARCModelListOptions} ARCModelListOptions */
 
 /**
  * An event dispatched by the store after deleting an entity.

@@ -1,11 +1,11 @@
 /* eslint-disable max-classes-per-file */
 import { DataExportEventTypes, DataImportEventTypes } from './DataExportEventTypes.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').DataExport.ArcNativeDataExport} ArcNativeDataExport */
-/** @typedef {import('@advanced-rest-client/arc-types').DataExport.ArcExportObject} ArcExportObject */
-/** @typedef {import('@advanced-rest-client/arc-types').DataExport.ExportOptions} ExportOptions */
-/** @typedef {import('@advanced-rest-client/arc-types').DataExport.ProviderOptions} ProviderOptions */
-/** @typedef {import('@advanced-rest-client/arc-types').DataExport.ArcExportResult} ArcExportResult */
+/** @typedef {import('../../').DataExport.ArcNativeDataExport} ArcNativeDataExport */
+/** @typedef {import('../../').DataExport.ArcExportObject} ArcExportObject */
+/** @typedef {import('../../').DataExport.ExportOptions} ExportOptions */
+/** @typedef {import('../../').DataExport.ProviderOptions} ProviderOptions */
+/** @typedef {import('../../').DataExport.ArcExportResult} ArcExportResult */
 /** @typedef {import('./Events').FileImportOptions} FileImportOptions */
 
 export const dataValue = Symbol('dataValue');

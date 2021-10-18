@@ -1,5 +1,5 @@
 import { assert, fixture, html } from '@open-wc/testing';
-import * as sinon from 'sinon';
+import sinon from 'sinon';
 import { ConfigEvents, ConfigEventTypes } from  '../../index.js';
 
 describe('Config', () => {

@@ -7,7 +7,7 @@ import {
   WorkspaceEventTypes,
 } from  '../../index.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').Workspace.DomainWorkspace} DomainWorkspace */
+/** @typedef {import('../../').Workspace.DomainWorkspace} DomainWorkspace */
 
 describe('Workspace', () => {
   describe('Events', () => {

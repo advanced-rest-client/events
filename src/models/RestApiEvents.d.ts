@@ -1,4 +1,4 @@
-import { RestApi, Model } from '@advanced-rest-client/arc-types';
+import { RestApi, Model } from '../../';
 import {
   ARCModelReadEventDetail,
   ARCModelUpdateEventDetail,

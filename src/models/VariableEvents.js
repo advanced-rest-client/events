@@ -2,11 +2,11 @@
 import { ArcModelEventTypes } from './ArcModelEventTypes.js';
 import { ARCEntityDeletedEvent, ARCEntityListEvent } from './BaseEvents.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCModelListResult} ARCModelListResult */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCEntityChangeRecord} ARCEntityChangeRecord */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.DeletedEntity} DeletedEntity */
-/** @typedef {import('@advanced-rest-client/arc-types').Variable.ARCVariable} ARCVariable */
-/** @typedef {import('@advanced-rest-client/arc-types').Variable.ARCEnvironment} ARCEnvironment */
+/** @typedef {import('../../').Model.ARCModelListResult} ARCModelListResult */
+/** @typedef {import('../../').Model.ARCEntityChangeRecord} ARCEntityChangeRecord */
+/** @typedef {import('../../').Model.DeletedEntity} DeletedEntity */
+/** @typedef {import('../../').Variable.ARCVariable} ARCVariable */
+/** @typedef {import('../../').Variable.ARCEnvironment} ARCEnvironment */
 /** @typedef {import('./VariableEvents').ARCVariablesListOptions} ARCVariablesListOptions */
 /** @typedef {import('./VariableEvents').EnvironmentStateDetail} EnvironmentStateDetail */
 

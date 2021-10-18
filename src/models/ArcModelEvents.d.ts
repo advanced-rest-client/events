@@ -1,5 +1,5 @@
-import { Model, ArcRequest, Indexer, AuthData, HostRule, ClientCertificate, UrlHistory, Variable, RestApi, Project } from "@advanced-rest-client/arc-types";
-import { DeletedEntity } from "@advanced-rest-client/arc-types/src/models/base";
+import { Model, ArcRequest, Indexer, AuthData, HostRule, ClientCertificate, UrlHistory, Variable, RestApi, Project } from "../../";
+import { DeletedEntity } from "../models/base";
 import { ARCRequestEventRequestOptions } from './RequestEvents';
 import { ARCVariablesListOptions, EnvironmentStateDetail } from './VariableEvents';
 

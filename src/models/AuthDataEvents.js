@@ -1,8 +1,8 @@
 /* eslint-disable max-classes-per-file */
 import { ArcModelEventTypes } from './ArcModelEventTypes.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').AuthData.ARCAuthData} ARCAuthData */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCEntityChangeRecord} ARCEntityChangeRecord */
+/** @typedef {import('../../').AuthData.ARCAuthData} ARCAuthData */
+/** @typedef {import('../../').Model.ARCEntityChangeRecord} ARCEntityChangeRecord */
 
 export const urlValue = Symbol('urlValue');
 export const methodValue = Symbol('methodValue');

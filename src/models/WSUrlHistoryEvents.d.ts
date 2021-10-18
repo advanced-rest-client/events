@@ -1,4 +1,4 @@
-import { UrlHistory, Model } from '@advanced-rest-client/arc-types';
+import { UrlHistory, Model } from '../../';
 import {
   ARCModelReadBulkEventDetail,
   ARCModelUpdateEventDetail,

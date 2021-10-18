@@ -1,6 +1,5 @@
 /**
  * Event types for session cookies store.
- * The actual event definitions that uses this dictionary are in `@advanced-rest-client/arc-cookies`
  */
 export const SessionCookieEventTypes = {
   listAll: 'sessioncookielistall',

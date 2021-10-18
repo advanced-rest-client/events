@@ -1,5 +1,5 @@
 import { assert, fixture, html } from '@open-wc/testing';
-import * as sinon from 'sinon';
+import sinon from 'sinon';
 import { ExportEvents, DataExportEventTypes, ImportEvents, DataImportEventTypes } from  '../../index.js';
 
 describe('DataExport', () => {

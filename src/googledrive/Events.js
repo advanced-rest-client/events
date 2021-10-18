@@ -2,9 +2,9 @@
 import { ArcExportProviderEvent } from '../dataexport/Events.js';
 import { GoogleDriveEventTypes } from './GoogleDriveEventTypes.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').DataExport.ProviderOptions} ProviderOptions */
-/** @typedef {import('@advanced-rest-client/arc-types').DataExport.ArcExportResult} ArcExportResult */
-/** @typedef {import('@advanced-rest-client/arc-types').GoogleDrive.AppFolder} AppFolder */
+/** @typedef {import('../../').DataExport.ProviderOptions} ProviderOptions */
+/** @typedef {import('../../').DataExport.ArcExportResult} ArcExportResult */
+/** @typedef {import('../../').GoogleDrive.AppFolder} AppFolder */
 
 export const idValue = Symbol('idValue');
 

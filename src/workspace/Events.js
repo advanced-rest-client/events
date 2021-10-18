@@ -1,9 +1,9 @@
 /* eslint-disable max-classes-per-file */
 import { WorkspaceEventTypes } from './WorkspaceEventTypes.js';
-/** @typedef {import('@advanced-rest-client/arc-types').DataExport.ArcExportObject} ArcExportObject */
-/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ARCSavedRequest} ARCSavedRequest */
-/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ARCHistoryRequest} ARCHistoryRequest */
-/** @typedef {import('@advanced-rest-client/arc-types').Workspace.DomainWorkspace} DomainWorkspace */
+/** @typedef {import('../../').DataExport.ArcExportObject} ArcExportObject */
+/** @typedef {import('../../').ArcRequest.ARCSavedRequest} ARCSavedRequest */
+/** @typedef {import('../../').ArcRequest.ARCHistoryRequest} ARCHistoryRequest */
+/** @typedef {import('../../').Workspace.DomainWorkspace} DomainWorkspace */
 
 /**
  * An event to be dispatched to inform the requests workspace to append request data

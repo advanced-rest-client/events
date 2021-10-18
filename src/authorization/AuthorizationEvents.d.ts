@@ -1,4 +1,4 @@
-import { OAuth2Authorization, TokenInfo, TokenRemoveOptions, OidcTokenError, OidcTokenInfo } from '@advanced-rest-client/arc-types/src/authorization/Authorization';
+import { OAuth2Authorization, TokenInfo, TokenRemoveOptions, OidcTokenError, OidcTokenInfo } from '../authorization/Authorization';
 
 declare interface OAuth2Events {
   /**

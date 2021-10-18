@@ -16,8 +16,8 @@ import {
 } from '../../src/models/RestApiEvents.js';
 import { ArcModelEventTypes } from '../../src/models/ArcModelEventTypes.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').RestApi.ARCRestApiIndex} ARCRestApiIndex */
-/** @typedef {import('@advanced-rest-client/arc-types').RestApi.ARCRestApi} ARCRestApi */
+/** @typedef {import('../../').RestApi.ARCRestApiIndex} ARCRestApiIndex */
+/** @typedef {import('../../').RestApi.ARCRestApi} ARCRestApi */
 
 describe('RestApiEvents', () => {
   const generator = new ArcMock();

@@ -1,4 +1,4 @@
-import { Variable, Model } from '@advanced-rest-client/arc-types';
+import { Variable, Model } from '../../';
 import {
   ARCModelReadEventDetail,
   ARCModelUpdateEventDetail,

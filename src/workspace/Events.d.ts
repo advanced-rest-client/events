@@ -1,5 +1,5 @@
-import { DataExport, ArcRequest } from '@advanced-rest-client/arc-types';
-import { DomainWorkspace } from '@advanced-rest-client/arc-types/src/domain/Workspace';
+import { DataExport, ArcRequest } from '../../';
+import { DomainWorkspace } from '../domain/Workspace';
 import { ResultEventDetail, VoidEventDetail } from '../BaseEvents';
 
 

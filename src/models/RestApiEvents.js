@@ -2,12 +2,12 @@
 import { ArcModelEventTypes } from './ArcModelEventTypes.js';
 import { ARCEntityDeletedEvent, ARCEntityListEvent } from './BaseEvents.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').RestApi.ARCRestApiIndex} ARCRestApiIndex */
-/** @typedef {import('@advanced-rest-client/arc-types').RestApi.ARCRestApi} ARCRestApi */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.DeletedEntity} DeletedEntity */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCModelListResult} ARCModelListResult */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCModelListOptions} ARCModelListOptions */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCEntityChangeRecord} ARCEntityChangeRecord */
+/** @typedef {import('../../').RestApi.ARCRestApiIndex} ARCRestApiIndex */
+/** @typedef {import('../../').RestApi.ARCRestApi} ARCRestApi */
+/** @typedef {import('../../').Model.DeletedEntity} DeletedEntity */
+/** @typedef {import('../../').Model.ARCModelListResult} ARCModelListResult */
+/** @typedef {import('../../').Model.ARCModelListOptions} ARCModelListOptions */
+/** @typedef {import('../../').Model.ARCEntityChangeRecord} ARCEntityChangeRecord */
 
 export const entityValue = Symbol('entityValue');
 export const dataValue = Symbol('dataValue');

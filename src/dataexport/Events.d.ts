@@ -1,9 +1,9 @@
-import { DataExport } from '@advanced-rest-client/arc-types';
+import { DataExport } from '../../';
 import {ResultEventDetail, VoidEventDetail} from '../BaseEvents';
 
-/** @typedef {import('@advanced-rest-client/arc-types').DataExport.ArcNativeDataExport} ArcNativeDataExport */
-/** @typedef {import('@advanced-rest-client/arc-types').DataExport.ExportOptions} ExportOptions */
-/** @typedef {import('@advanced-rest-client/arc-types').DataExport.ProviderOptions} ProviderOptions */
+/** @typedef {import('../../').DataExport.ArcNativeDataExport} ArcNativeDataExport */
+/** @typedef {import('../../').DataExport.ExportOptions} ExportOptions */
+/** @typedef {import('../../').DataExport.ProviderOptions} ProviderOptions */
 
 export const dataValue: unique symbol;
 export const exportOptionsValue: unique symbol;

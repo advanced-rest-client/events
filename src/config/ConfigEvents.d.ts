@@ -1,4 +1,4 @@
-import { Config } from '@advanced-rest-client/arc-types';
+import { Config } from '../../';
 
 declare interface ConfigStateEvents {
   /**

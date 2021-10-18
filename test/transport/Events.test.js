@@ -11,8 +11,8 @@ import {
   HttpTransportEvent,
 } from  '../../index.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').WebSocket.WebsocketRequest} WebsocketRequest */
-/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ArcBaseRequest} ArcBaseRequest */
+/** @typedef {import('../../').WebSocket.WebsocketRequest} WebsocketRequest */
+/** @typedef {import('../../').ArcRequest.ArcBaseRequest} ArcBaseRequest */
 
 describe('Transport', () => {
   const generator = new ArcMock();

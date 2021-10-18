@@ -1,4 +1,4 @@
-# arc-events
+# Advanced REST Client events
 
 A library adding events definitions to Advanced REST Client.
 Use this library when building a component that triggers the navigation via DOM events.

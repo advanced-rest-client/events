@@ -1,4 +1,4 @@
-import { Project, Model } from '@advanced-rest-client/arc-types';
+import { Project, Model } from '../../';
 import {
   ARCModelReadEventDetail,
   ARCModelUpdateEventDetail,

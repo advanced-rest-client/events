@@ -1,43 +1,39 @@
 {
-  "name": "@advanced-rest-client/arc-events",
+  "name": "@advanced-rest-client/events",
   "description": "A library adding navigation events definitions to Advanced REST Client",
-  "version": "0.2.21",
+  "version": "0.1.0",
   "license": "Apache-2.0",
   "main": "index.js",
   "module": "index.js",
   "author": {
     "name": "Pawel Uchida-Psztyc",
-    "email": "arc@mulesoft.com"
+    "email": "pawel.psztyc@gmail.com"
   },
   "contributors": [
     "Your name can be here!"
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/advanced-rest-client/arc-events.git"
+    "url": "git://github.com/advanced-rest-client/events.git"
   },
   "bugs": {
-    "url": "https://github.com/advanced-rest-client/arc-events/issues",
+    "url": "https://github.com/advanced-rest-client/events/issues",
     "email": "arc@mulesoft.com"
-  },
-  "dependencies": {
-    "@advanced-rest-client/arc-types": "^0.2.61"
   },
   "devDependencies": {
     "@advanced-rest-client/arc-data-generator": "^4.0.1",
-    "@advanced-rest-client/arc-demo-helper": "^3.0.3",
-    "@open-wc/eslint-config": "^4.3.0",
-    "@open-wc/testing": "^2.5.33",
-    "@web/test-runner": "^0.13.18",
+    "@open-wc/eslint-config": "^6.0.0",
+    "@open-wc/testing": "^3.0.1",
+    "@web/test-runner": "^0.13.20",
     "@web/test-runner-playwright": "^0.8.8",
-    "eslint": "^7.32.0",
+    "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.2",
-    "lint-staged": "^11.1.2",
+    "lint-staged": "^11.2.3",
     "lit-element": "^2.5.1",
     "lit-html": "^1.4.1",
     "sinon": "^11.1.2",
-    "typescript": "^4.4.3",
+    "typescript": "^4.4.4",
     "typescript-lit-html-plugin": "^0.9.0"
   },
   "scripts": {

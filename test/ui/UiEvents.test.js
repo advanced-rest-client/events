@@ -1,8 +1,8 @@
 import { assert, fixture, html } from '@open-wc/testing';
-import * as sinon from 'sinon';
+import sinon from 'sinon';
 import { UiEvents, UiEventTypes } from  '../../index.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').WebSocket.WebsocketRequest} WebsocketRequest */
+/** @typedef {import('../../').WebSocket.WebsocketRequest} WebsocketRequest */
 
 describe('UI events', () => {
   /**

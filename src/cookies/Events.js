@@ -1,7 +1,7 @@
 /* eslint-disable max-classes-per-file */
 import { SessionCookieEventTypes } from './SessionCookieEventTypes.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').Cookies.ARCCookie} ARCCookie */
+/** @typedef {import('../../').Cookies.ARCCookie} ARCCookie */
 
 export const domainValue = Symbol('domainValue');
 export const cookieValue = Symbol('cookieValue');

@@ -1,4 +1,4 @@
-import { Indexer } from '@advanced-rest-client/arc-types';
+import { Indexer } from '../../';
 import {
   ARCModelVoidResultEventDetail,
   ARCModelReadEventDetail,

@@ -1,4 +1,4 @@
-import { Cookies } from '@advanced-rest-client/arc-types';
+import { Cookies } from '../../';
 import { VoidEventDetail, ResultEventDetail } from '../BaseEvents';
 
 export declare const urlValue: unique symbol;

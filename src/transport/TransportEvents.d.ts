@@ -1,5 +1,5 @@
-import { ArcRequest, ArcResponse } from '@advanced-rest-client/arc-types';
-import { WebsocketEditorRequest } from "@advanced-rest-client/arc-types/src/request/WebSocket";
+import { ArcRequest, ArcResponse } from '../../';
+import { WebsocketEditorRequest } from "../request/WebSocket";
 
 declare interface TransportEvents {
   /**

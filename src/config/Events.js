@@ -1,7 +1,7 @@
 /* eslint-disable max-classes-per-file */
 import { ConfigEventTypes } from './ConfigEventTypes.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').Config.ARCConfig} ARCConfig */
+/** @typedef {import('../../').Config.ARCConfig} ARCConfig */
 
 /**
  * An event dispatched to read the application config.

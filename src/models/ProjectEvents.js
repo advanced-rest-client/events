@@ -2,11 +2,11 @@
 import { ArcModelEventTypes } from './ArcModelEventTypes.js';
 import { ARCEntityDeletedEvent, ARCEntityListEvent } from './BaseEvents.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').Project.ARCProject} ARCProject */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCModelListResult} ARCModelListResult */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCModelListOptions} ARCModelListOptions */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCEntityChangeRecord} ARCEntityChangeRecord */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.DeletedEntity} DeletedEntity */
+/** @typedef {import('../../').Project.ARCProject} ARCProject */
+/** @typedef {import('../../').Model.ARCModelListResult} ARCModelListResult */
+/** @typedef {import('../../').Model.ARCModelListOptions} ARCModelListOptions */
+/** @typedef {import('../../').Model.ARCEntityChangeRecord} ARCEntityChangeRecord */
+/** @typedef {import('../../').Model.DeletedEntity} DeletedEntity */
 
 export const projectValue = Symbol('projectValue');
 export const projectIdValue = Symbol('projectIdValue');

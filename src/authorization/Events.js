@@ -1,12 +1,12 @@
 /* eslint-disable max-classes-per-file */
 import { AuthorizationEventTypes } from './AuthorizationEventTypes.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').Authorization.OAuth2Authorization} OAuth2Authorization */
-/** @typedef {import('@advanced-rest-client/arc-types').Authorization.TokenRemoveOptions} TokenRemoveOptions */
-/** @typedef {import('@advanced-rest-client/arc-types').Authorization.TokenInfo} TokenInfo */
-/** @typedef {import('@advanced-rest-client/arc-types').Authorization.TokenError} TokenError */
-/** @typedef {import('@advanced-rest-client/arc-types').Authorization.OidcTokenInfo} OidcTokenInfo */
-/** @typedef {import('@advanced-rest-client/arc-types').Authorization.OidcTokenError} OidcTokenError */
+/** @typedef {import('../../').Authorization.OAuth2Authorization} OAuth2Authorization */
+/** @typedef {import('../../').Authorization.TokenRemoveOptions} TokenRemoveOptions */
+/** @typedef {import('../../').Authorization.TokenInfo} TokenInfo */
+/** @typedef {import('../../').Authorization.TokenError} TokenError */
+/** @typedef {import('../../').Authorization.OidcTokenInfo} OidcTokenInfo */
+/** @typedef {import('../../').Authorization.OidcTokenError} OidcTokenError */
 
 /**
  * An event dispatched to request OAuth2 authorization.

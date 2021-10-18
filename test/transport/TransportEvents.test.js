@@ -1,11 +1,11 @@
 import { assert, fixture, html } from '@open-wc/testing';
-import * as sinon from 'sinon';
+import sinon from 'sinon';
 import { ArcMock } from '@advanced-rest-client/arc-data-generator';
 import { TransportEvents, TransportEventTypes } from  '../../index.js';
 import { generateEditorRequest, generateTransportRequest } from './Utils.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').WebSocket.WebsocketRequest} WebsocketRequest */
-/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ArcBaseRequest} ArcBaseRequest */
+/** @typedef {import('../../').WebSocket.WebsocketRequest} WebsocketRequest */
+/** @typedef {import('../../').ArcRequest.ArcBaseRequest} ArcBaseRequest */
 
 describe('Transport', () => {
   const generator = new ArcMock();

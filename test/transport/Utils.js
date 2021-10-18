@@ -1,7 +1,7 @@
 import { ArcMock } from '@advanced-rest-client/arc-data-generator';
 
-/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ArcEditorRequest} ArcEditorRequest */
-/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.TransportRequest} TransportRequest */
+/** @typedef {import('../../').ArcRequest.ArcEditorRequest} ArcEditorRequest */
+/** @typedef {import('../../').ArcRequest.TransportRequest} TransportRequest */
 
 const generator = new ArcMock();
 

@@ -1,4 +1,4 @@
-import { OAuth2Authorization, OidcTokenError, OidcTokenInfo, TokenInfo, TokenRemoveOptions } from '@advanced-rest-client/arc-types/src/authorization/Authorization';
+import { OAuth2Authorization, OidcTokenError, OidcTokenInfo, TokenInfo, TokenRemoveOptions } from '../authorization/Authorization';
 import { ResultEventDetail } from '../BaseEvents.js';
 
 /**

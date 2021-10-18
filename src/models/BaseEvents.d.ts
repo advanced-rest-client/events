@@ -1,4 +1,4 @@
-import { Model } from "@advanced-rest-client/arc-types";
+import { Model } from "../../";
 
 
 /**

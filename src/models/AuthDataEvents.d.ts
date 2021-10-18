@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { AuthData, Model } from '@advanced-rest-client/arc-types';
+import { AuthData, Model } from '../../';
 import { ARCModelReadEventDetail, ARCModelUpdateEventDetail } from './BaseEvents';
 
 /**

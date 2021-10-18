@@ -1,8 +1,8 @@
 import { assert, fixture, html } from '@open-wc/testing';
-import * as sinon from 'sinon';
+import sinon from 'sinon';
 import { WorkspaceEvents, WorkspaceEventTypes } from  '../../index.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').Workspace.DomainWorkspace} DomainWorkspace */
+/** @typedef {import('../../').Workspace.DomainWorkspace} DomainWorkspace */
 
 describe('Workspace', () => {
   /**

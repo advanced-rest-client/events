@@ -1,5 +1,5 @@
-import { UrlHistory, Model } from '@advanced-rest-client/arc-types';
-import { DeletedEntity } from '@advanced-rest-client/arc-types/src/models/base';
+import { UrlHistory, Model } from '../../';
+import { DeletedEntity } from '../models/base';
 import {
   ARCModelReadBulkEventDetail,
   ARCModelUpdateEventDetail,

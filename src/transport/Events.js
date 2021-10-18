@@ -1,14 +1,14 @@
 /* eslint-disable max-classes-per-file */
 import { TransportEventTypes } from './TransportEventTypes.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ArcEditorRequest} ArcEditorRequest */
-/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.TransportRequest} TransportRequest */
-/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.ArcBaseRequest} ArcBaseRequest */
-/** @typedef {import('@advanced-rest-client/arc-types').ArcRequest.RequestConfig} RequestConfig */
-/** @typedef {import('@advanced-rest-client/arc-types').ArcResponse.Response} Response */
-/** @typedef {import('@advanced-rest-client/arc-types').ArcResponse.ErrorResponse} ErrorResponse */
-/** @typedef {import('@advanced-rest-client/arc-types').ArcResponse.HTTPResponse} HTTPResponse */
-/** @typedef {import('@advanced-rest-client/arc-types').WebSocket.WebsocketEditorRequest} WebsocketEditorRequest */
+/** @typedef {import('../../').ArcRequest.ArcEditorRequest} ArcEditorRequest */
+/** @typedef {import('../../').ArcRequest.TransportRequest} TransportRequest */
+/** @typedef {import('../../').ArcRequest.ArcBaseRequest} ArcBaseRequest */
+/** @typedef {import('../../').ArcRequest.RequestConfig} RequestConfig */
+/** @typedef {import('../../').ArcResponse.Response} Response */
+/** @typedef {import('../../').ArcResponse.ErrorResponse} ErrorResponse */
+/** @typedef {import('../../').ArcResponse.HTTPResponse} HTTPResponse */
+/** @typedef {import('../../').WebSocket.WebsocketEditorRequest} WebsocketEditorRequest */
 
 /**
  * An event dispatched by the UI when requesting to make a HTTP request

@@ -10,7 +10,7 @@ import {
 } from '../../src/models/UrlHistoryEvents.js';
 import { ArcModelEventTypes } from '../../src/models/ArcModelEventTypes.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').UrlHistory.ARCUrlHistory} ARCUrlHistory */
+/** @typedef {import('../../').UrlHistory.ARCUrlHistory} ARCUrlHistory */
 
 describe('UrlHistoryEvents', () => {
   const generator = new ArcMock();

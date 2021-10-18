@@ -2,12 +2,12 @@
 import { ArcModelEventTypes } from './ArcModelEventTypes.js';
 import { ARCEntityDeletedEvent, ARCEntityListEvent } from './BaseEvents.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').ClientCertificate.ClientCertificate} ClientCertificate */
-/** @typedef {import('@advanced-rest-client/arc-types').ClientCertificate.ARCCertificateIndex} ARCCertificateIndex */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCEntityChangeRecord} ARCEntityChangeRecord */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCModelListOptions} ARCModelListOptions */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.ARCModelListResult} ARCModelListResult */
-/** @typedef {import('@advanced-rest-client/arc-types').Model.DeletedEntity} DeletedEntity */
+/** @typedef {import('../../').ClientCertificate.ClientCertificate} ClientCertificate */
+/** @typedef {import('../../').ClientCertificate.ARCCertificateIndex} ARCCertificateIndex */
+/** @typedef {import('../../').Model.ARCEntityChangeRecord} ARCEntityChangeRecord */
+/** @typedef {import('../../').Model.ARCModelListOptions} ARCModelListOptions */
+/** @typedef {import('../../').Model.ARCModelListResult} ARCModelListResult */
+/** @typedef {import('../../').Model.DeletedEntity} DeletedEntity */
 
 export const certificateValue = Symbol('projectValue');
 export const idValue = Symbol('idValue');

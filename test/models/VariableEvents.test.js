@@ -19,7 +19,7 @@ import {
 } from '../../src/models/VariableEvents.js';
 import { ArcModelEventTypes } from '../../src/models/ArcModelEventTypes.js';
 
-/** @typedef {import('@advanced-rest-client/arc-types').Variable.ARCVariable} ARCVariable */
+/** @typedef {import('../../').Variable.ARCVariable} ARCVariable */
 
 describe('VariableEvents', () => {
   const generator = new ArcMock();

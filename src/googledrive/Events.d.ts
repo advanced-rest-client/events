@@ -1,6 +1,6 @@
 import { ArcExportProviderEvent } from '../dataexport/Events';
-import { DataExport, GoogleDrive } from '@advanced-rest-client/arc-types';
-import {ResultEventDetail} from '../BaseEvents';
+import { DataExport, GoogleDrive } from '../../';
+import { ResultEventDetail } from '../BaseEvents';
 
 export const idValue: symbol;
 

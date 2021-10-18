@@ -1,4 +1,4 @@
-import { ArcRequest, Model } from '@advanced-rest-client/arc-types';
+import { ArcRequest, Model } from '../../';
 import {
   ARCModelReadEventDetail,
   ARCModelReadBulkEventDetail,

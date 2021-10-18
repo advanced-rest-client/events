@@ -1,4 +1,4 @@
-import { DataExport, GoogleDrive } from '@advanced-rest-client/arc-types';
+import { DataExport, GoogleDrive } from '../../';
 
 declare interface GoogleDriveEvents {
   /**
