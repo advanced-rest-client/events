@@ -1,18 +1,18 @@
 # Advanced REST Client events
 
-A library adding events definitions to Advanced REST Client.
+A library adding events and type definitions to Advanced REST Client.
 Use this library when building a component that triggers the navigation via DOM events.
 
-[![Published on NPM](https://img.shields.io/npm/v/@advanced-rest-client/arc-events.svg)](https://www.npmjs.com/package/@advanced-rest-client/arc-events)
+[![Published on NPM](https://img.shields.io/npm/v/@advanced-rest-client/events.svg)](https://www.npmjs.com/package/@advanced-rest-client/events)
 
-[![tests](https://github.com/advanced-rest-client/arc-events/actions/workflows/deployment.yml/badge.svg)](https://github.com/advanced-rest-client/arc-events/actions/workflows/deployment.yml)
+[![tests](https://github.com/advanced-rest-client/events/actions/workflows/deployment.yml/badge.svg)](https://github.com/advanced-rest-client/events/actions/workflows/deployment.yml)
 
 ## Usage
 
 ### Installation
 
 ```sh
-npm install --save @advanced-rest-client/arc-events
+npm install --save @advanced-rest-client/events
 ```
 
 ### ARC request navigate event
@@ -20,7 +20,7 @@ npm install --save @advanced-rest-client/arc-events
 Dispatched to navigate to a request screen and open a request
 
 ```js
-import { ARCNavigationEvent } from '@advanced-rest-client/arc-events';
+import { ARCNavigationEvent } from '@advanced-rest-client/events';
 
 ARCNavigationEvent.navigateRequest(document.body, 'request id', 'saved');
 ```
@@ -30,7 +30,7 @@ ARCNavigationEvent.navigateRequest(document.body, 'request id', 'saved');
 Dispatched to navigate to a REST API either as the API Console or to project metadata screen.
 
 ```js
-import { ARCNavigationEvent } from '@advanced-rest-client/arc-events';
+import { ARCNavigationEvent } from '@advanced-rest-client/events';
 
 ARCNavigationEvent.navigateRestApi(document.body, 'api id', '1.0.0', 'documentation or detail');
 ```
@@ -40,7 +40,7 @@ ARCNavigationEvent.navigateRestApi(document.body, 'api id', '1.0.0', 'documentat
 Dispatched to navigate to an ARC project screen.
 
 ```js
-import { ARCNavigationEvent } from '@advanced-rest-client/arc-events';
+import { ARCNavigationEvent } from '@advanced-rest-client/events';
 
 ARCNavigationEvent.navigateProject(document.body, 'project id', 'detail');
 ```
@@ -51,7 +51,7 @@ Other events are dispatched via `ARCNavigationEvent.navigate()` helper function 
 It contains the base route and optional route options.
 
 ```js
-import { ARCNavigationEvent } from '@advanced-rest-client/arc-events';
+import { ARCNavigationEvent } from '@advanced-rest-client/events';
 
 ARCNavigationEvent.navigate(document.body, 'request', {
   // route params.
@@ -61,8 +61,8 @@ ARCNavigationEvent.navigate(document.body, 'request', {
 ## Development
 
 ```sh
-git clone https://github.com/advanced-rest-client/arc-events
-cd arc-events
+git clone https://github.com/advanced-rest-client/events
+cd events
 npm install
 ```
 

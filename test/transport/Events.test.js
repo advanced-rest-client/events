@@ -1,5 +1,4 @@
 import { assert } from '@open-wc/testing';
-import { ArcMock } from '@advanced-rest-client/arc-data-generator';
 import { generateEditorRequest, generateTransportRequest } from './Utils.js';
 import { 
   TransportEventTypes, 
@@ -13,10 +12,9 @@ import {
 
 /** @typedef {import('../../').WebSocket.WebsocketRequest} WebsocketRequest */
 /** @typedef {import('../../').ArcRequest.ArcBaseRequest} ArcBaseRequest */
+/** @typedef {import('../../').ArcResponse.Response} Response */
 
 describe('Transport', () => {
-  const generator = new ArcMock();
-
   describe('Events', () => {
     describe('ApiRequestEvent', () => {
       const request = generateEditorRequest();
@@ -48,10 +46,10 @@ describe('Transport', () => {
     });
 
     describe('ApiResponseEvent', () => {
-      const source = generator.http.history();
-      const response = generator.http.response.arcResponse();
+      const source = /** @type ArcBaseRequest */ ({ url: 'https://', method: 'GET', });
+      const response = /** @type Response */ ({ loadingTime: 0, status: 200,  });
       const request = generateTransportRequest();
-      const id = generator.types.uuid();
+      const id = '1234';
       const type = TransportEventTypes.response;
 
       it('has the correct type', () => {
@@ -84,8 +82,8 @@ describe('Transport', () => {
     });
 
     describe('ApiTransportEvent', () => {
-      const request = generator.http.saved();
-      const id = generator.types.uuid();
+      const request = /** @type ArcBaseRequest */ ({ url: 'https://', method: 'GET', });
+      const id = '1234';
       const config = { enabled: false };
 
       it('has the correct type', () => {
@@ -117,7 +115,7 @@ describe('Transport', () => {
     });
 
     describe('ApiAbortEvent', () => {
-      const id = generator.types.uuid();
+      const id = '1234';
 
       it('has the correct type', () => {
         const e = new ApiAbortEvent(id);

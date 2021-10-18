@@ -1,16 +1,13 @@
-import { ArcMock } from '@advanced-rest-client/arc-data-generator';
-
 /** @typedef {import('../../').ArcRequest.ArcEditorRequest} ArcEditorRequest */
 /** @typedef {import('../../').ArcRequest.TransportRequest} TransportRequest */
-
-const generator = new ArcMock();
+/** @typedef {import('../../').ArcRequest.ArcBaseRequest} ArcBaseRequest */
 
 /**
  * @returns {ArcEditorRequest}
  */
 export function generateEditorRequest() {
-  const request = generator.http.saved();
-  const id = generator.types.uuid();
+  const request = /** @type ArcBaseRequest */ ({ url: 'https://', method: 'GET', });
+  const id = '1234568';
   return {
     id,
     request,
@@ -20,10 +17,10 @@ export function generateEditorRequest() {
  * @returns {TransportRequest}
  */
 export function generateTransportRequest() {
-  const request = generator.http.saved();
+  const request = /** @type ArcBaseRequest */ ({ url: 'https://', method: 'GET', });
   return {
     endTime: Date.now(),
-    httpMessage: generator.lorem.paragraph(),
+    httpMessage: 'GET /test HTTP 1.1\n\n',
     startTime: Date.now() - 100,
     method: request.method,
     url: request.url,

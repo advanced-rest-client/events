@@ -1,5 +1,4 @@
 import { assert } from '@open-wc/testing';
-import { ArcMock } from '@advanced-rest-client/arc-data-generator';
 import {
   ARCClientCertificateReadEvent,
   ARCClientCertificateInsertEvent,
@@ -10,9 +9,9 @@ import {
 } from '../../src/models/CertificatesEvents.js';
 import { ArcModelEventTypes } from '../../src/models/ArcModelEventTypes.js';
 
-describe('CertificatesEvents', () => {
-  const generator = new ArcMock();
+/** @typedef {import('../../').ClientCertificate.ClientCertificate} ClientCertificate */
 
+describe('CertificatesEvents', () => {
   describe('ARCClientCertificateReadEvent', () => {
     const id = 'test-cc-id';
     const rev = 'test-cc-rev-id';
@@ -43,7 +42,7 @@ describe('CertificatesEvents', () => {
 
   describe('ARCClientCertificateInsertEvent', () => {
     it('has readonly certificate property', () => {
-      const item = generator.certificates.clientCertificate();
+      const item = /** @type ClientCertificate */ ({ name: 'test' });
       const e = new ARCClientCertificateInsertEvent(item);
       assert.deepEqual(e.certificate, item);
       assert.throws(() => {
@@ -53,7 +52,7 @@ describe('CertificatesEvents', () => {
     });
 
     it('has the correct type', () => {
-      const item = generator.certificates.clientCertificate();
+      const item = /** @type ClientCertificate */ ({ name: 'test' });
       const e = new ARCClientCertificateInsertEvent(item);
       assert.equal(e.type, ArcModelEventTypes.ClientCertificate.insert);
     });
@@ -63,7 +62,7 @@ describe('CertificatesEvents', () => {
     const record = {
       id: 'cc-id',
       rev: 'cc-rev',
-      item: generator.certificates.clientCertificate(),
+      item: /** @type ClientCertificate */ ({ name: 'test' }),
     };
 
     it('has readonly changeRecord property', () => {

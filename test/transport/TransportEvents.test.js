@@ -1,15 +1,14 @@
 import { assert, fixture, html } from '@open-wc/testing';
 import sinon from 'sinon';
-import { ArcMock } from '@advanced-rest-client/arc-data-generator';
 import { TransportEvents, TransportEventTypes } from  '../../index.js';
 import { generateEditorRequest, generateTransportRequest } from './Utils.js';
 
 /** @typedef {import('../../').WebSocket.WebsocketRequest} WebsocketRequest */
 /** @typedef {import('../../').ArcRequest.ArcBaseRequest} ArcBaseRequest */
+/** @typedef {import('../../').ArcRequest.TransportRequest} TransportRequest */
+/** @typedef {import('../../').ArcResponse.Response} Response */
 
 describe('Transport', () => {
-  const generator = new ArcMock();
-
   /**
    * @return {Promise<HTMLDivElement>}
    */
@@ -39,10 +38,10 @@ describe('Transport', () => {
     });
 
     describe('response()', () => {
-      const source = generator.http.history();
-      const response = generator.http.response.arcResponse();
+      const source = /** @type ArcBaseRequest */ ({ url: 'https://', method: 'GET', });
+      const response = /** @type Response */ ({ loadingTime: 0, status: 200,  });
       const request = generateTransportRequest();
-      const id = generator.types.uuid();
+      const id = '1234';
 
       it('dispatches the event', async () => {
         const et = await etFixture();
@@ -65,8 +64,8 @@ describe('Transport', () => {
     });
 
     describe('transport()', () => {
-      const request = generator.http.saved();
-      const id = generator.types.uuid();
+      const request = /** @type ArcBaseRequest */ ({ url: 'https://', method: 'GET', });
+      const id = '1234';
       const config = { enabled: false };
 
       it('dispatches the event', async () => {
@@ -90,10 +89,10 @@ describe('Transport', () => {
     });
 
     describe('processResponse()', () => {
-      const source = generator.http.history();
-      const response = generator.http.response.arcResponse();
+      const source = /** @type ArcBaseRequest */ ({ url: 'https://', method: 'GET', });
+      const response = /** @type Response */ ({ loadingTime: 0, status: 200,  });
       const request = generateTransportRequest();
-      const id = generator.types.uuid();
+      const id = '1234';
 
       it('dispatches the event', async () => {
         const et = await etFixture();
@@ -116,7 +115,7 @@ describe('Transport', () => {
     });
 
     describe('abort()', () => {
-      const id = generator.types.uuid();
+      const id = '1234';
 
       it('dispatches the event', async () => {
         const et = await etFixture();

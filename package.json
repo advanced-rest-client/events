@@ -21,7 +21,6 @@
     "email": "arc@mulesoft.com"
   },
   "devDependencies": {
-    "@advanced-rest-client/arc-data-generator": "^4.0.1",
     "@open-wc/eslint-config": "^6.0.0",
     "@open-wc/testing": "^3.0.1",
     "@web/test-runner": "^0.13.20",

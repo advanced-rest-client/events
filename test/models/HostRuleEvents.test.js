@@ -1,5 +1,4 @@
 import { assert } from '@open-wc/testing';
-import { ArcMock } from '@advanced-rest-client/arc-data-generator';
 import {
   ARCHostRuleUpdateEvent,
   ARCHostRuleUpdateBulkEvent,
@@ -13,11 +12,9 @@ import { ArcModelEventTypes } from '../../src/models/ArcModelEventTypes.js';
 /** @typedef {import('../../').HostRule.ARCHostRule} ARCHostRule */
 
 describe('HostRuleEvents', () => {
-  const generator = new ArcMock();
-
   describe('ARCHostRuleUpdateEvent', () => {
     it('has readonly rule property', () => {
-      const rule = /** @type ARCHostRule */ (generator.hostRules.rule());
+      const rule = /** @type ARCHostRule */ ({ from: '123' });
       const e = new ARCHostRuleUpdateEvent(rule);
       assert.deepEqual(e.rule, rule, 'has the rule');
       assert.throws(() => {
@@ -35,7 +32,7 @@ describe('HostRuleEvents', () => {
     });
 
     it('has the correct type', () => {
-      const rule = /** @type ARCHostRule */ (generator.hostRules.rule());
+      const rule = /** @type ARCHostRule */ ({});
       const e = new ARCHostRuleUpdateEvent(rule);
       assert.equal(e.type, ArcModelEventTypes.HostRules.update);
     });
@@ -43,7 +40,7 @@ describe('HostRuleEvents', () => {
 
   describe('ARCHostRuleUpdateBulkEvent', () => {
     it('has readonly rules property', () => {
-      const rule = /** @type ARCHostRule */ (generator.hostRules.rule());
+      const rule = /** @type ARCHostRule */ ({ from: '123' });
       const e = new ARCHostRuleUpdateBulkEvent([rule]);
       assert.deepEqual(e.rules, [rule], 'has the rules');
       assert.throws(() => {
@@ -61,7 +58,7 @@ describe('HostRuleEvents', () => {
     });
 
     it('has the correct type', () => {
-      const rule = /** @type ARCHostRule */ (generator.hostRules.rule());
+      const rule = /** @type ARCHostRule */ ({ from: '123' });
       const e = new ARCHostRuleUpdateBulkEvent([rule]);
       assert.equal(e.type, ArcModelEventTypes.HostRules.updateBulk);
     });
@@ -71,7 +68,7 @@ describe('HostRuleEvents', () => {
     const record = {
       id: 'cc-id',
       rev: 'cc-rev',
-      item: /** @type ARCHostRule */ (generator.hostRules.rule()),
+      item: /** @type ARCHostRule */ ({ from: '123' }),
     };
 
     it('has readonly changeRecord property', () => {
