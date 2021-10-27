@@ -42,7 +42,8 @@
     "lint": "npm run lint:eslint",
     "format": "npm run format:eslint",
     "test": "web-test-runner test/**/*.test.js --coverage --node-resolve --playwright --browsers chromium firefox webkit",
-    "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
+    "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
