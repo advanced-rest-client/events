@@ -1,3 +1,6 @@
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 declare interface UiEventTypes {
   /** 
    * Tells the application to trigger a context menu with the passed arguments.

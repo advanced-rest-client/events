@@ -1,5 +1,5 @@
 /**
- * Event types for ARC transport (usually HTTP)
+ * @deprecated Use `EventTypes` instead.
  */
 export const TransportEventTypes = {
   beforeRequest: 'apibeforerequest',

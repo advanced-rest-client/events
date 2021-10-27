@@ -1,3 +1,6 @@
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 declare interface TransportEventTypes {
   beforeRequest: string;
   beforeRedirect: string;

@@ -1,11 +1,18 @@
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 declare interface DataExportEventTypes {
   customData: string;
   nativeData: string;
   fileSave: string;
 }
-
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 export const DataExportEventTypes: Readonly<DataExportEventTypes>;
-
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 declare interface DataImportEventTypes {
   normalize: string;
   dataImport: string;
@@ -14,5 +21,7 @@ declare interface DataImportEventTypes {
   inspect: string;
   dataImported: string;
 }
-
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 export const DataImportEventTypes: Readonly<DataImportEventTypes>;

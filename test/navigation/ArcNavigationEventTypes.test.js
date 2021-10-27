@@ -2,7 +2,7 @@ import { assert } from '@open-wc/testing';
 import { ArcNavigationEventTypes } from  '../../index.js';
 import { ensureUnique } from '../helpers/EventHelper.js';
 
-describe('ArcModelEventTypes', () => {
+describe('ArcNavigationEventTypes', () => {
   it('is frozen', () => {
     assert.throws(() => {
       // @ts-ignore

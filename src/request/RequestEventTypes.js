@@ -1,7 +1,5 @@
 /**
- * Event types for ARC request object.
- * These only represent the events dispatched globally (events that bubble).
- * They do not have events that are specific to any part of the request editor.
+ * @deprecated Use `EventTypes` instead.
  */
 export const RequestEventTypes = {
   send: 'arcrequestsend',

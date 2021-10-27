@@ -1,5 +1,5 @@
 /**
- * Event types for analytics implementation.
+ * @deprecated Use `EventTypes` instead.
  */
 export const TelemetryEventTypes = {
   view: 'telemetryscreenview',

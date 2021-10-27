@@ -1,3 +1,6 @@
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 export const GoogleDriveEventTypes = {
   save: 'googledrivesave',
   listAppFolders: 'googledrivelistappfolders',

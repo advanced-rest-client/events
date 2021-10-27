@@ -1,9 +1,9 @@
-declare interface ProjectStateEvents {
+declare interface IProjectStateEvents {
   update: string;
   delete: string;
 }
 
-declare interface ProjectEvents {
+declare interface IProjectEvents {
   read: string;
   readBulk: string;
   update: string;
@@ -14,15 +14,15 @@ declare interface ProjectEvents {
   moveTo: string;
   addTo: string;
   removeFrom: string;
-  State: ProjectStateEvents;
+  State: IProjectStateEvents;
 }
 
-declare interface RequestStateEvents {
+declare interface IRequestStateEvents {
   update: string;
   delete: string;
 }
 
-declare interface RequestEvents {
+declare interface IRequestEvents {
   read: string;
   readBulk: string;
   update: string;
@@ -34,119 +34,119 @@ declare interface RequestEvents {
   query: string;
   list: string;
   projectlist: string;
-  State: RequestStateEvents;
+  State: IRequestStateEvents;
 }
 
-declare interface UrlIndexerStateEvents {
+declare interface IUrlIndexerStateEvents {
   finished: string;
 }
 
-declare interface UrlIndexerEvents {
+declare interface IUrlIndexerEvents {
   update: string;
   query: string;
-  State: UrlIndexerStateEvents;
+  State: IUrlIndexerStateEvents;
 }
 
-declare interface AuthDataStateEvents {
+declare interface IAuthDataStateEvents {
   update: string;
 }
 
-declare interface AuthDataEvents {
+declare interface IAuthDataEvents {
   update: string;
   query: string;
-  State: AuthDataStateEvents;
+  State: IAuthDataStateEvents;
 }
 
-declare interface HostRulesStateEvents {
+declare interface IHostRulesStateEvents {
   update: string;
   delete: string;
 }
 
-declare interface HostRulesEvents {
+declare interface IHostRulesEvents {
   update: string;
   updateBulk: string;
   delete: string;
   list: string;
-  State: HostRulesStateEvents;
+  State: IHostRulesStateEvents;
 }
 
-declare interface ClientCertificateStateEvents {
+declare interface IClientCertificateStateEvents {
   update: string;
   delete: string;
 }
 
-declare interface ClientCertificateEvents {
+declare interface IClientCertificateEvents {
   read: string;
   list: string;
   delete: string;
   update: string;
   insert: string;
-  State: ClientCertificateStateEvents;
+  State: IClientCertificateStateEvents;
 }
 
-declare interface WSUrlHistoryStateEvents {
+declare interface IWSUrlHistoryStateEvents {
   update: string;
 }
 
-declare interface WSUrlHistoryEvents {
+declare interface IWSUrlHistoryEvents {
   // read: string;
   list: string;
   insert: string;
   query: string;
-  State: WSUrlHistoryStateEvents;
+  State: IWSUrlHistoryStateEvents;
 }
 
-declare interface UrlHistoryStateEvents {
+declare interface IUrlHistoryStateEvents {
   update: string;
   delete: string;
 }
 
-declare interface UrlHistoryEvents {
+declare interface IUrlHistoryEvents {
   // read: string;
   list: string;
   insert: string;
   query: string;
   delete: string;
-  State: UrlHistoryStateEvents;
+  State: IUrlHistoryStateEvents;
 }
 
-declare interface EnvironmentStateEvents {
+declare interface IEnvironmentStateEvents {
   update: string;
   delete: string;
   select: string;
 }
 
-declare interface EnvironmentEvents {
+declare interface IEnvironmentEvents {
   read: string;
   update: string;
   delete: string;
   list: string;
   current: string;
   select: string;
-  State: EnvironmentStateEvents;
+  State: IEnvironmentStateEvents;
 }
 
-declare interface VariableStateEvents {
+declare interface IVariableStateEvents {
   update: string;
   delete: string;
 }
 
-declare interface VariableEvents {
+declare interface IVariableEvents {
   update: string;
   delete: string;
   list: string;
   set: string;
-  State: VariableStateEvents;
+  State: IVariableStateEvents;
 }
 
-declare interface RestApiStateEvents {
+declare interface IRestApiStateEvents {
   update: string;
   dataUpdate: string;
   delete: string;
   versionDelete: string;
 }
 
-declare interface RestApiEvents {
+declare interface IRestApiEvents {
   list: string;
   read: string;
   dataRead: string;
@@ -155,23 +155,23 @@ declare interface RestApiEvents {
   updateBulk: string;
   delete: string;
   versionDelete: string;
-  State: RestApiStateEvents;
+  State: IRestApiStateEvents;
 }
 
-declare interface ArcModelEventTypes {
+export declare interface IArcModelEventTypes {
   destroy: string;
   destroyed: string;
-  Project: ProjectEvents;
-  Request: RequestEvents;
-  UrlIndexer: UrlIndexerEvents;
-  AuthData: AuthDataEvents;
-  HostRules: HostRulesEvents;
-  ClientCertificate: ClientCertificateEvents;
-  WSUrlHistory: WSUrlHistoryEvents;
-  UrlHistory: UrlHistoryEvents;
-  Environment: EnvironmentEvents;
-  Variable: VariableEvents;
-  RestApi: RestApiEvents;
+  Project: Readonly<IProjectEvents>;
+  Request: Readonly<IRequestEvents>;
+  UrlIndexer: Readonly<IUrlIndexerEvents>;
+  AuthData: Readonly<IAuthDataEvents>;
+  HostRules: Readonly<IHostRulesEvents>;
+  ClientCertificate: Readonly<IClientCertificateEvents>;
+  WSUrlHistory: Readonly<IWSUrlHistoryEvents>;
+  UrlHistory: Readonly<IUrlHistoryEvents>;
+  Environment: Readonly<IEnvironmentEvents>;
+  Variable: Readonly<IVariableEvents>;
+  RestApi: Readonly<IRestApiEvents>;
 }
 
-export const ArcModelEventTypes: ArcModelEventTypes;
+export const ArcModelEventTypes: Readonly<IArcModelEventTypes>;

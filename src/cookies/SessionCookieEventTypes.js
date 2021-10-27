@@ -1,5 +1,5 @@
 /**
- * Event types for session cookies store.
+ * @deprecated Use `EventTypes` instead.
  */
 export const SessionCookieEventTypes = {
   listAll: 'sessioncookielistall',
@@ -9,6 +9,9 @@ export const SessionCookieEventTypes = {
   deleteUrl: 'sessioncookiedeleteurl',
   update: 'sessioncookieupdate',
   updateBulk: 'sessioncookieupdatebulk',
+  /**
+   * @deprecated Use `EventTypes` instead.
+   */
   State: {
     delete: 'sessioncookiestatedelete',
     update: 'sessioncookiestateupdate',

@@ -1,5 +1,5 @@
 /**
- * Event types for data encryption module
+ * @deprecated Use `EventTypes` instead.
  */
 export const EncryptionEventTypes = {
   encrypt: 'encryptionencrypt',

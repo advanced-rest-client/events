@@ -1,3 +1,6 @@
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 export const ArcNavigationEventTypes = {
   navigate: 'arcnavigate',
   navigateExternal: 'arcnavigateexternal',

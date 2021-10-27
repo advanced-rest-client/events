@@ -1,5 +1,6 @@
 /**
  * General UI related events.
+ * @deprecated Use `EventTypes` instead.
  */
 export const UiEventTypes = {
   /** 

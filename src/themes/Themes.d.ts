@@ -66,3 +66,9 @@ export declare interface InstalledTheme {
    */
   updateCheck?: number;
 }
+
+export declare interface SystemThemeInfo {
+  shouldUseDarkColors: boolean;
+  shouldUseHighContrastColors: boolean;
+  shouldUseInvertedColorScheme: boolean;
+}

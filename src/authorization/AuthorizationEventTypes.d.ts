@@ -1,3 +1,6 @@
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 declare interface OAuth2EventTypes {
   /** 
    * Authorization with auth configuration on detail
@@ -8,6 +11,9 @@ declare interface OAuth2EventTypes {
    */
   removeToken: string;
 }
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 declare interface OidcEventTypes {
   /** 
    * Authorization the user with the provided configuration.
@@ -18,10 +24,14 @@ declare interface OidcEventTypes {
    */
   removeTokens: string;
 }
-
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 declare interface AuthorizationEventTypes {
   OAuth2: OAuth2EventTypes;
   Oidc: OidcEventTypes;
 }
-
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 export declare const AuthorizationEventTypes: Readonly<AuthorizationEventTypes>;

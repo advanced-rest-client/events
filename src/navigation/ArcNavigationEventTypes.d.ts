@@ -1,3 +1,6 @@
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 declare interface ArcNavigationEventTypes {
   navigate: string;
   navigateExternal: string;
@@ -7,5 +10,7 @@ declare interface ArcNavigationEventTypes {
   popupMenu: string;
   helpTopic: string;
 }
-
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 export const ArcNavigationEventTypes: Readonly<ArcNavigationEventTypes>;

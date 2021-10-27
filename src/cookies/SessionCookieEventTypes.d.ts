@@ -1,9 +1,12 @@
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 declare interface SessionCookieStateEventTypes {
   delete: string;
   update: string;
 }
 /**
- * The event names in the ARC cookie module.
+ * @deprecated Use `EventTypes` instead.
  */
 declare interface SessionCookieEventTypes {
   listAll: string;
@@ -15,5 +18,7 @@ declare interface SessionCookieEventTypes {
   updateBulk: string;
   State: SessionCookieStateEventTypes;
 }
-
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 export declare const SessionCookieEventTypes: Readonly<SessionCookieEventTypes>;
