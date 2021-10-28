@@ -79,6 +79,14 @@ export const EventTypes = Object.freeze({
       read: 'googledriveread',
     }),
   }),
+  Menu: Object.freeze({
+    popup: 'appmenupopup',
+    navigate: 'appmenunavigate',
+    State: Object.freeze({
+      open: 'appmenustateopen',
+      close: 'appmenustateclose',
+    }),
+  }),
   Model: ArcModelEventTypes,
   Navigation: Object.freeze({
     navigate: 'arcnavigate',

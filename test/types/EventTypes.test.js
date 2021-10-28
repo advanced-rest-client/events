@@ -231,7 +231,44 @@ describe('EventTypes', () => {
         ensureUnique('EventTypes.Google.Drive', EventTypes.Google.Drive);
       });
     });
+  });
 
+  describe('Menu', () => {
+    it('has the namespace', () => {
+      assert.typeOf(EventTypes.Menu, 'object');
+    });
+
+    [
+      ['popup', 'appmenupopup'],
+      ['navigate', 'appmenunavigate'],
+    ].forEach(([prop, value]) => {
+      it(`has ${prop} property`, () => {
+        assert.equal(EventTypes.Menu[prop], value);
+      });
+    });
+
+    it('has unique events for the namespace', () => {
+      ensureUnique('EventTypes.Menu', EventTypes.Menu);
+    });
+  });
+
+  describe('Menu.State', () => {
+    it('has the namespace', () => {
+      assert.typeOf(EventTypes.Menu.State, 'object');
+    });
+
+    [
+      ['open', 'appmenustateopen'],
+      ['close', 'appmenustateclose'],
+    ].forEach(([prop, value]) => {
+      it(`has ${prop} property`, () => {
+        assert.equal(EventTypes.Menu.State[prop], value);
+      });
+    });
+
+    it('has unique events for the namespace', () => {
+      ensureUnique('EventTypes.Menu.State', EventTypes.Menu.State);
+    });
   });
 
   describe('Navigation', () => {

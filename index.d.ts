@@ -305,6 +305,7 @@ import * as Theme from './src/theme/Themes';
 import * as WebSocket from './src/request/WebSocket';
 import * as Application from './src/application/Application';
 import * as Search from './src/search/Search';
+import * as Menu from './src/menu/Menu';
 
 export {
   Application,
@@ -334,5 +335,6 @@ export {
   Theme,
   WebSocket,
   Search,
+  Menu,
 };
 export * as Model from './src/models/base';

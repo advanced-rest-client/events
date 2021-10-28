@@ -18,6 +18,7 @@ import { UiEvents } from './ui/UiEvents.js';
 import { UpdaterEvents } from './updater/UpdaterEvents.js';
 import { WorkspaceEvents } from './workspace/WorkspaceEvents.js';
 import { SearchEvents } from './search/SearchEvents.js';
+import { MenuEvents } from './menu/MenuEvents.js';
 
 export const Events = {
   App: ApplicationEvents,
@@ -30,6 +31,7 @@ export const Events = {
   Google: Object.freeze({
     Drive: GoogleDriveEvents,
   }),
+  Menu: MenuEvents,
   Model: ArcModelEvents,
   Navigation: ArcNavigationEvents,
   Process: ProcessEvents,

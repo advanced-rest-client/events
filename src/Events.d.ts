@@ -18,6 +18,7 @@ import { IUiEvents } from './ui/UiEvents';
 import { IUpdaterEvents } from './updater/UpdaterEvents';
 import { IWorkspaceEvents } from './workspace/WorkspaceEvents';
 import { ISearchEvents } from './search/SearchEvents';
+import { IMenuEvents } from './menu/MenuEvents';
 
 declare interface IGoogleEvents {
   Drive: IGoogleDriveEvents;
@@ -32,6 +33,7 @@ declare interface IEvents {
   DataImport: IImportEvents;
   Encryption: IEncryptionEvents;
   Google: Readonly<IGoogleEvents>;
+  Menu: Readonly<IMenuEvents>;
   Model: IArcModelEvents;
   Navigation: IArcNavigationEvents;
   Process: IProcessEvents;

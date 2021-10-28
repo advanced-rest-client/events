@@ -232,6 +232,17 @@ declare interface ISearchEvents {
   State: Readonly<ISearchStateEvents>;
 }
 
+declare interface IMenuStateEvents {
+  open: string;
+  close: string;
+}
+
+declare interface IMenuEvents {
+  popup: string;
+  navigate: string;
+  State: Readonly<IMenuStateEvents>;
+}
+
 interface IEventTypes {
   App: Readonly<IAppEvents>;
   Authorization: Readonly<IAuthorizationEvents>;
@@ -241,6 +252,7 @@ interface IEventTypes {
   DataImport: Readonly<IDataImportEvents>;
   Encryption: Readonly<IEncryptionEvents>;
   Google: Readonly<GoogleEvents>;
+  Menu: Readonly<IMenuEvents>;
   Model: Readonly<IArcModelEventTypes>;
   Navigation: Readonly<INavigationEvents>;
   Process: Readonly<IProcessEvents>;
