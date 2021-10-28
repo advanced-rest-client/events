@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { ReportingEventTypes } from './ReportingEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 
 /**
  * An event to be dispatched when an error occurs in any component.
@@ -12,7 +12,7 @@ export class ApiErrorEvent extends CustomEvent {
    * @param {string=} component Optional component name that triggered the exception.
    */
   constructor(error, description, component) {
-    super(ReportingEventTypes.error, {
+    super(EventTypes.Reporting.error, {
       bubbles: true,
       composed: true,
       cancelable: true,

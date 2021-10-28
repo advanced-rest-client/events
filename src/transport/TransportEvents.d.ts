@@ -1,7 +1,7 @@
 import { ArcRequest, ArcResponse } from '../../';
 import { WebsocketEditorRequest } from "../request/WebSocket";
 
-declare interface TransportEvents {
+export interface ITransportEvents {
   /**
    * @param target A target on which to dispatch the event
    * @param request The request configuration to transport.
@@ -63,4 +63,4 @@ declare interface TransportEvents {
   httpTransport(target: EventTarget, request: ArcRequest.ArcBaseRequest): Promise<ArcResponse.HTTPResponse>;
 }
 
-export const TransportEvents: TransportEvents;
+export const TransportEvents: ITransportEvents;

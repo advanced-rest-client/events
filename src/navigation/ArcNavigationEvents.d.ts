@@ -1,6 +1,6 @@
 import { ExternalNavigationOptions, ProjectActionType, RequestActionType } from "./NavigationEvents";
 
-declare interface ArcNavigationEvents {
+export interface IArcNavigationEvents {
   /**
    * Dispatches an event to trigger a navigation in Advanced REST Client.
    * Use other events matching the navigation type before using this event.
@@ -73,4 +73,4 @@ declare interface ArcNavigationEvents {
   helpTopic(target: EventTarget, topic: string): void;
 }
 
-export declare const ArcNavigationEvents: ArcNavigationEvents;
+export declare const ArcNavigationEvents: IArcNavigationEvents;

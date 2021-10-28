@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { ConfigEventTypes } from './ConfigEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 
 /** @typedef {import('../../').Config.ARCConfig} ARCConfig */
 
@@ -8,7 +8,7 @@ import { ConfigEventTypes } from './ConfigEventTypes.js';
  */
 export class ConfigReadEvent extends CustomEvent {
   constructor() {
-    super(ConfigEventTypes.readAll, {
+    super(EventTypes.Config.readAll, {
       bubbles: true,
       composed: true,
       detail: {},
@@ -24,7 +24,7 @@ export class ConfigPropertyReadEvent extends CustomEvent {
    * @param {string} key The key path where the value is stored.
    */
   constructor(key) {
-    super(ConfigEventTypes.read, {
+    super(EventTypes.Config.read, {
       bubbles: true,
       composed: true,
       detail: {
@@ -44,7 +44,7 @@ export class ConfigUpdateEvent extends CustomEvent {
    * @param {any} value The value to store.
    */
   constructor(key, value) {
-    super(ConfigEventTypes.update, {
+    super(EventTypes.Config.update, {
       bubbles: true,
       composed: true,
       detail: {
@@ -64,7 +64,7 @@ export class ConfigStateUpdateEvent extends CustomEvent {
    * @param {any} value The value to store.
    */
   constructor(key, value) {
-    super(ConfigEventTypes.State.update, {
+    super(EventTypes.Config.State.update, {
       bubbles: true,
       composed: true,
       detail: {

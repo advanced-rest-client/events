@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { ArcModelEventTypes } from './ArcModelEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 import { ARCEntityDeletedEvent, ARCEntityListEvent } from './BaseEvents.js';
 
 /** @typedef {import('../../').RestApi.ARCRestApiIndex} ARCRestApiIndex */
@@ -39,7 +39,7 @@ export class ARCRestApiReadEvent extends CustomEvent {
    * @param {string=} rev The entity revision
    */
   constructor(id, rev) {
-    super(ArcModelEventTypes.RestApi.read, {
+    super(EventTypes.Model.RestApi.read, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -65,7 +65,7 @@ export class ARCRestApiUpdateEvent extends CustomEvent {
    * @param {ARCRestApiIndex} entity The entity to update.
    */
   constructor(entity) {
-    super(ArcModelEventTypes.RestApi.update, {
+    super(EventTypes.Model.RestApi.update, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -90,7 +90,7 @@ export class ARCRestApiUpdateBulkEvent extends CustomEvent {
    * @param {ARCRestApiIndex[]} entities A list of entities to update.
    */
   constructor(entities) {
-    super(ArcModelEventTypes.RestApi.updateBulk, {
+    super(EventTypes.Model.RestApi.updateBulk, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -108,7 +108,7 @@ export class ARCRestApiUpdatedEvent extends Event {
    * @param {ARCEntityChangeRecord} record Change record for the updated entity
    */
   constructor(record) {
-    super(ArcModelEventTypes.RestApi.State.update, {
+    super(EventTypes.Model.RestApi.State.update, {
       bubbles: true,
       composed: true,
     });
@@ -146,7 +146,7 @@ export class ARCRestApiDeleteEvent extends CustomEvent {
    * @param {string=} rev The optional revision of the entity
    */
   constructor(id, rev) {
-    super(ArcModelEventTypes.RestApi.delete, {
+    super(EventTypes.Model.RestApi.delete, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -166,7 +166,7 @@ export class ARCRestApiDeletedEvent extends ARCEntityDeletedEvent {
    * @param {string} rev Updated revision
    */
   constructor(id, rev) {
-    super(ArcModelEventTypes.RestApi.State.delete, id, rev);
+    super(EventTypes.Model.RestApi.State.delete, id, rev);
   }
 }
 
@@ -178,7 +178,7 @@ export class ARCRestApiListEvent extends ARCEntityListEvent {
    * @param {ARCModelListOptions=} opts Query options.
    */
   constructor(opts) {
-    super(ArcModelEventTypes.RestApi.list, opts);
+    super(EventTypes.Model.RestApi.list, opts);
   }
 }
 
@@ -205,7 +205,7 @@ export class ARCRestApiDataReadEvent extends CustomEvent {
    * @param {string=} rev The entity revision
    */
   constructor(id, rev) {
-    super(ArcModelEventTypes.RestApi.dataRead, {
+    super(EventTypes.Model.RestApi.dataRead, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -231,7 +231,7 @@ export class ARCRestApiDataUpdateEvent extends CustomEvent {
    * @param {ARCRestApi} entity The entity to update.
    */
   constructor(entity) {
-    super(ArcModelEventTypes.RestApi.dataUpdate, {
+    super(EventTypes.Model.RestApi.dataUpdate, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -249,7 +249,7 @@ export class ARCRestApiDataUpdatedEvent extends Event {
    * @param {ARCEntityChangeRecord} record Change record for the updated entity
    */
   constructor(record) {
-    super(ArcModelEventTypes.RestApi.State.dataUpdate, {
+    super(EventTypes.Model.RestApi.State.dataUpdate, {
       bubbles: true,
       composed: true,
     });
@@ -287,7 +287,7 @@ export class ARCRestApiVersionDeleteEvent extends CustomEvent {
    * @param {string} version The version of the API to delete
    */
   constructor(id, version) {
-    super(ArcModelEventTypes.RestApi.versionDelete, {
+    super(EventTypes.Model.RestApi.versionDelete, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -323,7 +323,7 @@ export class ARCRestApiVersionDeletedEvent extends ARCEntityDeletedEvent {
    * @param {string} version Removed version name
    */
   constructor(id, rev, indexId, version) {
-    super(ArcModelEventTypes.RestApi.State.versionDelete, id, rev);
+    super(EventTypes.Model.RestApi.State.versionDelete, id, rev);
     this[idValue] = indexId;
     this[versionValue] = version;
   }

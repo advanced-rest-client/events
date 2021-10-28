@@ -97,9 +97,9 @@ declare interface INavigationEvents {
 }
 
 declare interface IProcessEvents {
-  loadingstart: string;
-  loadingstop: string;
-  loadingerror: string;
+  loadingStart: string;
+  loadingStop: string;
+  loadingError: string;
 }
 
 declare interface IRestApiLegacyEvents {
@@ -129,6 +129,20 @@ declare interface ITelemetryEvents {
   exception: string;
   social: string;
   timing: string;
+}
+
+declare interface IThemeEvents {
+  loadApplicationTheme: string;
+  loadTheme: string;
+  readSate: string;
+  readActiveThemeInfo: string;
+  activate: string;
+  install: string;
+  uninstall: string;
+  setSystemPreferred: string;
+  readSystemThemeInfo: string;
+  loadSystemPreferred: string;
+  loadUserPreferred: string;
 }
 
 declare interface ITransportEvents {
@@ -199,6 +213,7 @@ interface IEventTypes {
   Reporting: Readonly<IReportingEventTypes>;
   Request: Readonly<IRequestEvents>;
   Telemetry: Readonly<ITelemetryEvents>;
+  Theme: Readonly<IThemeEvents>;
   Transport: Readonly<ITransportEvents>;
   Ui: Readonly<IUiEvents>;
   Workspace: Readonly<IWorkspaceEvents>;

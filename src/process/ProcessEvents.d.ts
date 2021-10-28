@@ -1,4 +1,4 @@
-declare interface ProcessEvents {
+export interface IProcessEvents {
   /**
    * @param target
    * @param pid Process id
@@ -9,4 +9,4 @@ declare interface ProcessEvents {
   loadingerror(target: EventTarget, pid: string, error: Error): void;
 }
 
-export const ProcessEvents: ProcessEvents;
+export const ProcessEvents: IProcessEvents;

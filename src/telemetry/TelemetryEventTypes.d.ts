@@ -8,5 +8,7 @@ declare interface TelemetryEventTypes {
   social: string;
   timing: string;
 }
-
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 export declare const TelemetryEventTypes: Readonly<TelemetryEventTypes>;

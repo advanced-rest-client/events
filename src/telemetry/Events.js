@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { TelemetryEventTypes } from './TelemetryEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 
 /** @typedef {import('./Events').TelemetryDetail } TelemetryDetail */
 /** @typedef {import('./Events').TelemetryScreenViewDetail } TelemetryScreenViewDetail */
@@ -34,7 +34,7 @@ export class TelemetryScreenEvent extends TelemetryEvent {
    * @param {TelemetryScreenViewDetail} detail Screen view details
    */
   constructor(detail) {
-    super(TelemetryEventTypes.view, detail);
+    super(EventTypes.Telemetry.view, detail);
   }
 }
 
@@ -46,7 +46,7 @@ export class TelemetryEventEvent extends TelemetryEvent {
    * @param {TelemetryEventDetail} detail Analytics event details
    */
   constructor(detail) {
-    super(TelemetryEventTypes.event, detail);
+    super(EventTypes.Telemetry.event, detail);
   }
 }
 
@@ -58,7 +58,7 @@ export class TelemetryExceptionEvent extends TelemetryEvent {
    * @param {TelemetryExceptionDetail} detail Exception details
    */
   constructor(detail) {
-    super(TelemetryEventTypes.exception, detail);
+    super(EventTypes.Telemetry.exception, detail);
   }
 }
 
@@ -70,7 +70,7 @@ export class TelemetrySocialEvent extends TelemetryEvent {
    * @param {TelemetrySocialDetail} detail Social action details
    */
   constructor(detail) {
-    super(TelemetryEventTypes.social, detail);
+    super(EventTypes.Telemetry.social, detail);
   }
 }
 
@@ -82,7 +82,7 @@ export class TelemetryTimingEvent extends TelemetryEvent {
    * @param {TelemetryTimingDetail} detail Timing details
    */
   constructor(detail) {
-    super(TelemetryEventTypes.timing, detail);
+    super(EventTypes.Telemetry.timing, detail);
   }
 }
 

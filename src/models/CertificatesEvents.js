@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { ArcModelEventTypes } from './ArcModelEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 import { ARCEntityDeletedEvent, ARCEntityListEvent } from './BaseEvents.js';
 
 /** @typedef {import('../../').ClientCertificate.ClientCertificate} ClientCertificate */
@@ -37,7 +37,7 @@ export class ARCClientCertificateReadEvent extends CustomEvent {
    * @param {string=} rev The client certificate revision
    */
   constructor(id, rev) {
-    super(ArcModelEventTypes.ClientCertificate.read, {
+    super(EventTypes.Model.ClientCertificate.read, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -56,7 +56,7 @@ export class ARCClientCertificateInsertEvent extends CustomEvent {
    * @param {ClientCertificate} certificate The certificate to create.
    */
   constructor(certificate) {
-    super(ArcModelEventTypes.ClientCertificate.insert, {
+    super(EventTypes.Model.ClientCertificate.insert, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -81,7 +81,7 @@ export class ARCClientCertificateUpdatedEvent extends Event {
    * @param {ARCEntityChangeRecord} record Client certificate change record.
    */
   constructor(record) {
-    super(ArcModelEventTypes.ClientCertificate.State.update, {
+    super(EventTypes.Model.ClientCertificate.State.update, {
       bubbles: true,
       composed: true,
     });
@@ -105,7 +105,7 @@ export class ARCClientCertificateDeleteEvent extends CustomEvent {
    * @param {string=} rev The client certificate's revision
    */
   constructor(id, rev) {
-    super(ArcModelEventTypes.ClientCertificate.delete, {
+    super(EventTypes.Model.ClientCertificate.delete, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -139,7 +139,7 @@ export class ARCClientCertificateDeletedEvent extends ARCEntityDeletedEvent {
    * @param {string} rev Updated revision
    */
   constructor(id, rev) {
-    super(ArcModelEventTypes.ClientCertificate.State.delete, id, rev);
+    super(EventTypes.Model.ClientCertificate.State.delete, id, rev);
   }
 }
 
@@ -151,7 +151,7 @@ export class ARCClientCertificateListEvent extends ARCEntityListEvent {
    * @param {ARCModelListOptions=} opts Query options.
    */
   constructor(opts) {
-    super(ArcModelEventTypes.ClientCertificate.list, opts);
+    super(EventTypes.Model.ClientCertificate.list, opts);
   }
 }
 

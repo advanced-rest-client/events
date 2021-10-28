@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { ArcModelEventTypes } from './ArcModelEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 import { ARCEntityDeletedEvent, ARCEntityListEvent } from './BaseEvents.js';
 
 /** @typedef {import('./RequestEvents').ARCRequestEventRequestOptions} ARCRequestEventRequestOptions */
@@ -35,7 +35,7 @@ export class ARCRequestReadEvent extends CustomEvent {
     if (!id) {
       throw new Error('The request ID is missing.');
     }
-    super(ArcModelEventTypes.Request.read, {
+    super(EventTypes.Model.Request.read, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -85,7 +85,7 @@ export class ARCRequestReadBulkEvent extends CustomEvent {
     if (!requestType) {
       throw new Error('The requestType is missing.');
     }
-    super(ArcModelEventTypes.Request.readBulk, {
+    super(EventTypes.Model.Request.readBulk, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -133,7 +133,7 @@ export class ARCRequestUpdateEvent extends CustomEvent {
     if (!request) {
       throw new Error('The request is missing.');
     }
-    super(ArcModelEventTypes.Request.update, {
+    super(EventTypes.Model.Request.update, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -177,7 +177,7 @@ export class ARCRequestStoreEvent extends CustomEvent {
     if (!request) {
       throw new Error('The request is missing.');
     }
-    super(ArcModelEventTypes.Request.store, {
+    super(EventTypes.Model.Request.store, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -226,7 +226,7 @@ export class ARCRequestUpdateBulkEvent extends CustomEvent {
     if (!requests) {
       throw new Error('The request is missing.');
     }
-    super(ArcModelEventTypes.Request.updateBulk, {
+    super(EventTypes.Model.Request.updateBulk, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -266,7 +266,7 @@ export class ARCRequestUpdatedEvent extends CustomEvent {
     if (!record) {
       throw new Error('The record is missing.');
     }
-    super(ArcModelEventTypes.Request.State.update, {
+    super(EventTypes.Model.Request.State.update, {
       bubbles: true,
       composed: true,
     });
@@ -305,7 +305,7 @@ export class ARCRequestDeleteEvent extends CustomEvent {
     if (!id) {
       throw new Error('The request ID is missing.');
     }
-    super(ArcModelEventTypes.Request.delete, {
+    super(EventTypes.Model.Request.delete, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -354,7 +354,7 @@ export class ARCRequestDeleteBulkEvent extends CustomEvent {
     if (!ids) {
       throw new Error('The list of ids is missing.');
     }
-    super(ArcModelEventTypes.Request.deleteBulk, {
+    super(EventTypes.Model.Request.deleteBulk, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -394,7 +394,7 @@ export class ARCRequestUndeleteBulkEvent extends CustomEvent {
     if (!requests) {
       throw new Error('The requests list is missing.');
     }
-    super(ArcModelEventTypes.Request.undeleteBulk, {
+    super(EventTypes.Model.Request.undeleteBulk, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -435,7 +435,7 @@ export class ARCRequestDeletedEvent extends ARCEntityDeletedEvent {
     if (!requestType) {
       throw new Error('The requestType is missing.');
     }
-    super(ArcModelEventTypes.Request.State.delete, id, rev);
+    super(EventTypes.Model.Request.State.delete, id, rev);
     this[typeValue] = requestType;
   }
 
@@ -459,7 +459,7 @@ export class ARCRequestListEvent extends ARCEntityListEvent {
     if (!requestType) {
       throw new Error('The request type is missing.');
     }
-    super(ArcModelEventTypes.Request.list, opts);
+    super(EventTypes.Model.Request.list, opts);
     this[typeValue] = requestType;
   }
 
@@ -486,7 +486,7 @@ export class ARCRequestQueryEvent extends CustomEvent {
     if (!term) {
       throw new Error('The term is missing.');
     }
-    super(ArcModelEventTypes.Request.query, {
+    super(EventTypes.Model.Request.query, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -532,7 +532,7 @@ export class ARCRequestListProjectRequestsEvent extends CustomEvent {
     if (!id) {
       throw new Error('The project id is missing.');
     }
-    super(ArcModelEventTypes.Request.projectlist, {
+    super(EventTypes.Model.Request.projectlist, {
       bubbles: true,
       composed: true,
       cancelable: true,

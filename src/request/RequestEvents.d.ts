@@ -13,7 +13,7 @@ declare interface RequestStateEvents {
   contentTypeChange(target: EventTarget, value: string): void;
 }
 
-declare interface RequestEvents {
+export interface IRequestEvents {
   /**
  * Dispatches an event to inform the request logic to send current request.
  * @param {EventTarget} target A node on which to dispatch the event
@@ -22,4 +22,4 @@ declare interface RequestEvents {
   State: RequestStateEvents;
 }
 
-export const RequestEvents: RequestEvents;
+export const RequestEvents: IRequestEvents;

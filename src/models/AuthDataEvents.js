@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { ArcModelEventTypes } from './ArcModelEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 
 /** @typedef {import('../../').AuthData.ARCAuthData} ARCAuthData */
 /** @typedef {import('../../').Model.ARCEntityChangeRecord} ARCEntityChangeRecord */
@@ -49,7 +49,7 @@ export class ARCAuthDataUpdateEvent extends CustomEvent {
     if (!authData) {
       throw new Error('Expected authData argument as an object.');
     }
-    super(ArcModelEventTypes.AuthData.update, {
+    super(EventTypes.Model.AuthData.update, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -90,7 +90,7 @@ export class ARCAuthDataQueryEvent extends CustomEvent {
     if (typeof method !== 'string') {
       throw new Error('Expected method argument as string.');
     }
-    super(ArcModelEventTypes.AuthData.query, {
+    super(EventTypes.Model.AuthData.query, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -119,7 +119,7 @@ export class ARCAuthDataUpdatedEvent extends Event {
     if (!record) {
       throw new Error('Expected record argument as object.');
     }
-    super(ArcModelEventTypes.AuthData.State.update, {
+    super(EventTypes.Model.AuthData.State.update, {
       bubbles: true,
       composed: true,
     });

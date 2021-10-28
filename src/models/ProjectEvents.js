@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { ArcModelEventTypes } from './ArcModelEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 import { ARCEntityDeletedEvent, ARCEntityListEvent } from './BaseEvents.js';
 
 /** @typedef {import('../../').Project.ARCProject} ARCProject */
@@ -29,7 +29,7 @@ export class ARCProjectReadEvent extends CustomEvent {
     if (!id) {
       throw new Error('The ID must be set on the detail object.');
     }
-    super(ArcModelEventTypes.Project.read, {
+    super(EventTypes.Model.Project.read, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -74,7 +74,7 @@ export class ARCProjectReadBulkEvent extends CustomEvent {
     if (!Array.isArray(ids)) {
       throw new Error('The projects lists is missing.');
     }
-    super(ArcModelEventTypes.Project.readBulk, {
+    super(EventTypes.Model.Project.readBulk, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -92,7 +92,7 @@ export class ARCProjectUpdateEvent extends CustomEvent {
    * @param {ARCProject} project A project to update.
    */
   constructor(project) {
-    super(ArcModelEventTypes.Project.update, {
+    super(EventTypes.Model.Project.update, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -117,7 +117,7 @@ export class ARCProjectUpdateBulkEvent extends CustomEvent {
    * @param {ARCProject[]} projects A list of projects to update.
    */
   constructor(projects) {
-    super(ArcModelEventTypes.Project.updateBulk, {
+    super(EventTypes.Model.Project.updateBulk, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -142,7 +142,7 @@ export class ARCProjectUpdatedEvent extends Event {
    * @param {ARCEntityChangeRecord} record Project change record.
    */
   constructor(record) {
-    super(ArcModelEventTypes.Project.State.update, {
+    super(EventTypes.Model.Project.State.update, {
       bubbles: true,
       composed: true,
     });
@@ -166,7 +166,7 @@ export class ARCProjectDeleteEvent extends CustomEvent {
    * @param {string=} rev Project revision id
    */
   constructor(id, rev) {
-    super(ArcModelEventTypes.Project.delete, {
+    super(EventTypes.Model.Project.delete, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -202,7 +202,7 @@ export class ARCProjectDeletedEvent extends ARCEntityDeletedEvent {
    * @param {string} rev Updated revision id
    */
   constructor(id, rev) {
-    super(ArcModelEventTypes.Project.State.delete, id, rev);
+    super(EventTypes.Model.Project.State.delete, id, rev);
   }
 }
 
@@ -214,7 +214,7 @@ export class ARCProjectListEvent extends ARCEntityListEvent {
    * @param {ARCModelListOptions=} opts Query options.
    */
   constructor(opts) {
-    super(ArcModelEventTypes.Project.list, opts);
+    super(EventTypes.Model.Project.list, opts);
   }
 }
 
@@ -234,7 +234,7 @@ export class ARCProjectListAllEvent extends CustomEvent {
    * @param {string[]=} keys Project keys to read. When not set it reads all projects
    */
   constructor(keys) {
-    super(ArcModelEventTypes.Project.listAll, {
+    super(EventTypes.Model.Project.listAll, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -401,7 +401,7 @@ export async function listAllAction(target, keys) {
  * @return {Promise<void>} Promise resolved when the operation commits.
  */
 export async function moveToAction(target, projectId, requestId, requestType, position) {
-  const e = new ARCProjectMoveEvent(ArcModelEventTypes.Project.moveTo, projectId, requestId, requestType, position);
+  const e = new ARCProjectMoveEvent(EventTypes.Model.Project.moveTo, projectId, requestId, requestType, position);
   target.dispatchEvent(e);
   return e.detail.result;
 }
@@ -417,7 +417,7 @@ export async function moveToAction(target, projectId, requestId, requestType, po
  * @return {Promise<void>} Promise resolved when the operation commits.
  */
 export async function addToAction(target, projectId, requestId, requestType, position) {
-  const e = new ARCProjectMoveEvent(ArcModelEventTypes.Project.addTo, projectId, requestId, requestType, position);
+  const e = new ARCProjectMoveEvent(EventTypes.Model.Project.addTo, projectId, requestId, requestType, position);
   target.dispatchEvent(e);
   return e.detail.result;
 }
@@ -431,7 +431,7 @@ export async function addToAction(target, projectId, requestId, requestType, pos
  * @return {Promise<void>} Promise resolved when the operation commits.
  */
 export async function removeFromAction(target, projectId, requestId) {
-  const e = new ARCProjectMoveEvent(ArcModelEventTypes.Project.removeFrom, projectId, requestId, 'saved');
+  const e = new ARCProjectMoveEvent(EventTypes.Model.Project.removeFrom, projectId, requestId, 'saved');
   target.dispatchEvent(e);
   return e.detail.result;
 }

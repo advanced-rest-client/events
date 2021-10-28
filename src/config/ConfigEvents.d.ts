@@ -11,7 +11,7 @@ declare interface ConfigStateEvents {
   update(target: EventTarget, key: string, value: any): void;
 }
 
-declare interface ConfigEvents {
+export declare interface IConfigEvents {
   /**
    * Reads a single config value.
    * @param target The target on which to dispatch the event
@@ -37,4 +37,4 @@ declare interface ConfigEvents {
   State: ConfigStateEvents;
 }
 
-export const ConfigEvents: Readonly<ConfigEvents>;
+export const ConfigEvents: Readonly<IConfigEvents>;

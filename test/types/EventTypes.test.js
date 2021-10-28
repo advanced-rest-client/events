@@ -346,7 +346,35 @@ describe('EventTypes', () => {
     });
 
     it('has unique events for the namespace', () => {
-      ensureUnique('RequestEventTypes', EventTypes.Telemetry);
+      ensureUnique('EventTypes.Request', EventTypes.Telemetry);
+    });
+  });
+
+  describe('Theme', () => {
+    it('has the namespace', () => {
+      assert.typeOf(EventTypes.Theme, 'object');
+    });
+
+    [
+      ['loadApplicationTheme', 'themeloadapplication'],
+      ['loadTheme', 'themeload'],
+      ['readSate', 'themereadsate'],
+      ['readActiveThemeInfo', 'themereadactiveinfo'],
+      ['activate', 'themeactivate'],
+      ['install', 'themeinstall'],
+      ['uninstall', 'themeuninstall'],
+      ['setSystemPreferred', 'themesetsystempreferred'],
+      ['readSystemThemeInfo', 'themereadsystemthemeinfo'],
+      ['loadSystemPreferred', 'themeloadsystempreferred'],
+      ['loadUserPreferred', 'themeloaduserpreferred'],
+    ].forEach(([prop, value]) => {
+      it(`has ${prop} property`, () => {
+        assert.equal(EventTypes.Theme[prop], value);
+      });
+    });
+
+    it('has unique events for the namespace', () => {
+      ensureUnique('EventTypes.Theme', EventTypes.Theme);
     });
   });
 

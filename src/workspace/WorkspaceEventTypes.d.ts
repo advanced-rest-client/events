@@ -7,5 +7,7 @@ declare interface WorkspaceEventTypes {
   read: string;
   write: string;
 }
-
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 export const WorkspaceEventTypes: Readonly<WorkspaceEventTypes>;

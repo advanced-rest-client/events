@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { RequestEventTypes } from './RequestEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 
 export const propertyValue = Symbol('propertyValue');
 export const valueValue = Symbol('valueValue');
@@ -46,7 +46,7 @@ export class RequestChangeEvent extends Event {
  * @param {EventTarget} target A node on which to dispatch the event
  */
 export function informSendAction(target) {
-  const e = new Event(RequestEventTypes.send, {
+  const e = new Event(EventTypes.Request.send, {
     bubbles: true,
     cancelable: true,
     composed: true,
@@ -60,7 +60,7 @@ export function informSendAction(target) {
  * @param {string} value The new URL value
  */
 export function stateUrlChangeAction(target, value) {
-  const e = new RequestChangeEvent(RequestEventTypes.State.urlChange, 'url', value);
+  const e = new RequestChangeEvent(EventTypes.Request.State.urlChange, 'url', value);
   target.dispatchEvent(e);
 }
 
@@ -70,6 +70,6 @@ export function stateUrlChangeAction(target, value) {
  * @param {string} value The new content-type value
  */
 export function stateContentTypeAction(target, value) {
-  const e = new RequestChangeEvent(RequestEventTypes.State.contentTypeChange, 'content-type', value);
+  const e = new RequestChangeEvent(EventTypes.Request.State.contentTypeChange, 'content-type', value);
   target.dispatchEvent(e);
 }

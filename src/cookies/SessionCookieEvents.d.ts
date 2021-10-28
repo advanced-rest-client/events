@@ -13,7 +13,7 @@ declare interface SessionStateEvents {
   update(target: EventTarget, cookie: Cookies.ARCCookie): void;
 }
 
-declare interface SessionCookieEvents {
+export interface ISessionCookieEvents {
   /**
    * @param target A node on which to dispatch the event.
    * @returns Promise resolved to the export result
@@ -59,4 +59,4 @@ declare interface SessionCookieEvents {
   State: SessionStateEvents;
 }
 
-export const SessionCookieEvents: SessionCookieEvents;
+export const SessionCookieEvents: ISessionCookieEvents;

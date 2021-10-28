@@ -1,8 +1,8 @@
 import { RestApiFileProcessingResult } from './Events';
 
-declare interface RestApiEvents {
+export interface IRestApiEvents {
   processFile(target: EventTarget, file: File): Promise<RestApiFileProcessingResult>;
   dataReady(target: EventTarget, model: any, type: string): void;
 }
 
-export const RestApiEvents: RestApiEvents;
+export const RestApiEvents: IRestApiEvents;

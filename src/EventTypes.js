@@ -120,6 +120,19 @@ export const EventTypes = Object.freeze({
     social: 'telemetrysocial',
     timing: 'telemetrytiming',
   }),
+  Theme: Object.freeze({
+    loadApplicationTheme: 'themeloadapplication',
+    loadTheme: 'themeload',
+    readSate: 'themereadsate',
+    readActiveThemeInfo: 'themereadactiveinfo',
+    activate: 'themeactivate',
+    install: 'themeinstall',
+    uninstall: 'themeuninstall',
+    setSystemPreferred: 'themesetsystempreferred',
+    readSystemThemeInfo: 'themereadsystemthemeinfo',
+    loadSystemPreferred: 'themeloadsystempreferred',
+    loadUserPreferred: 'themeloaduserpreferred',
+  }),
   /**
    * Event types for ARC transport (usually HTTP)
    */

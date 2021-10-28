@@ -1,4 +1,4 @@
-declare interface EncryptionEvents {
+export interface IEncryptionEvents {
   /**
    * Dispatches an event handled by the export factory to export ARC's native data.
    *
@@ -21,4 +21,4 @@ declare interface EncryptionEvents {
   decrypt(target: EventTarget, data: string, passphrase: string, method: string): Promise<string>;
 }
 
-export const EncryptionEvents: EncryptionEvents;
+export const EncryptionEvents: IEncryptionEvents;

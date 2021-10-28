@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { ProcessEventTypes } from './ProcessEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 
 /**
  * An event to be dispatched when the application is stating a long running process
@@ -12,7 +12,7 @@ export class ProcessStartEvent extends CustomEvent {
    * @param {string=} message Optional message rendered in the UI.
    */
   constructor(pid, message) {
-    super(ProcessEventTypes.loadingstart, {
+    super(EventTypes.Process.loadingStart, {
       bubbles: true,
       composed: true,
       detail: {
@@ -32,7 +32,7 @@ export class ProcessStopEvent extends CustomEvent {
    * @param {string} pid The id of the process used to start it.
    */
   constructor(pid) {
-    super(ProcessEventTypes.loadingstop, {
+    super(EventTypes.Process.loadingStop, {
       bubbles: true,
       composed: true,
       detail: {
@@ -52,7 +52,7 @@ export class ProcessErrorEvent extends CustomEvent {
    * @param {Error} error The error object caused the event
    */
   constructor(pid, error) {
-    super(ProcessEventTypes.loadingerror, {
+    super(EventTypes.Process.loadingError, {
       bubbles: true,
       composed: true,
       detail: {

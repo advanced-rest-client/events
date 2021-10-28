@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { AuthorizationEventTypes } from './AuthorizationEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 
 /** @typedef {import('../../').Authorization.OAuth2Authorization} OAuth2Authorization */
 /** @typedef {import('../../').Authorization.TokenRemoveOptions} TokenRemoveOptions */
@@ -16,7 +16,7 @@ export class OAuth2AuthorizeEvent extends CustomEvent {
    * @param {OAuth2Authorization} detail Authorization options.
    */
   constructor(detail) {
-    super(AuthorizationEventTypes.OAuth2.authorize, {
+    super(EventTypes.Authorization.OAuth2.authorize, {
       bubbles: true,
       cancelable: true,
       composed: true,
@@ -33,7 +33,7 @@ export class OAuth2RemoveTokenEvent extends CustomEvent {
    * @param {TokenRemoveOptions} detail Token remove options.
    */
   constructor(detail) {
-    super(AuthorizationEventTypes.OAuth2.removeToken, {
+    super(EventTypes.Authorization.OAuth2.removeToken, {
       bubbles: true,
       cancelable: true,
       composed: true,
@@ -49,7 +49,7 @@ export class OidcAuthorizeEvent extends CustomEvent {
    * @param {OAuth2Authorization} detail Authorization options.
    */
   constructor(detail) {
-    super(AuthorizationEventTypes.Oidc.authorize, {
+    super(EventTypes.Authorization.Oidc.authorize, {
       bubbles: true,
       cancelable: true,
       composed: true,
@@ -66,7 +66,7 @@ export class OidcRemoveTokensEvent extends CustomEvent {
    * @param {TokenRemoveOptions} detail Token remove options.
    */
   constructor(detail) {
-    super(AuthorizationEventTypes.Oidc.removeTokens, {
+    super(EventTypes.Authorization.Oidc.removeTokens, {
       bubbles: true,
       cancelable: true,
       composed: true,

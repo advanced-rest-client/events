@@ -1,7 +1,7 @@
 import { DataExport } from '../../';
 import { FileImportOptions } from './Events';
 
-declare interface ExportEvents {
+export interface IExportEvents {
   /**
    * Dispatches an event handled by the export factory to export any data.
    *
@@ -33,9 +33,9 @@ declare interface ExportEvents {
   fileSave(target: EventTarget, data: any, options: DataExport.ProviderOptions): Promise<DataExport.ArcExportResult>;
 }
 
-export const ExportEvents: ExportEvents;
+export const ExportEvents: IExportEvents;
 
-declare interface ImportEvents {
+export interface IImportEvents {
   /**
    * Dispatches an event handled by the import factory to normalize import data to ARC export object.
    *
@@ -86,4 +86,4 @@ declare interface ImportEvents {
   dataImported(target: EventTarget): void;
 }
 
-export const ImportEvents: ImportEvents;
+export const ImportEvents: IImportEvents;

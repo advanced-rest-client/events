@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { SessionCookieEventTypes } from './SessionCookieEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 
 /** @typedef {import('../../').Cookies.ARCCookie} ARCCookie */
 
@@ -14,7 +14,7 @@ export const nameValue = Symbol('nameValue');
  */
 export class SessionCookiesListEvent extends CustomEvent {
   constructor() {
-    super(SessionCookieEventTypes.listAll, {
+    super(EventTypes.Cookie.listAll, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -48,7 +48,7 @@ export class SessionCookiesListDomainEvent extends CustomEvent {
    * @param {string} domain The cookies domain
    */
   constructor(domain) {
-    super(SessionCookieEventTypes.listDomain, {
+    super(EventTypes.Cookie.listDomain, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -84,7 +84,7 @@ export class SessionCookiesListUrlEvent extends CustomEvent {
    * @param {string} domain The cookies domain
    */
   constructor(domain) {
-    super(SessionCookieEventTypes.listUrl, {
+    super(EventTypes.Cookie.listUrl, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -120,7 +120,7 @@ export class SessionCookiesRemoveEvent extends CustomEvent {
    * @param {ARCCookie[]} cookies The list of cookies to remove
    */
   constructor(cookies) {
-    super(SessionCookieEventTypes.delete, {
+    super(EventTypes.Cookie.delete, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -165,7 +165,7 @@ export class SessionCookiesRemoveDomainEvent extends CustomEvent {
    * @param {string=} name The name of the cookie to remove. When not set all cookies are removed for the given URL.
    */
   constructor(url, name) {
-    super(SessionCookieEventTypes.deleteUrl, {
+    super(EventTypes.Cookie.deleteUrl, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -203,7 +203,7 @@ export class SessionCookieUpdateEvent extends CustomEvent {
    * @param {ARCCookie} cookie The cookie to update
    */
   constructor(cookie) {
-    super(SessionCookieEventTypes.update, {
+    super(EventTypes.Cookie.update, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -238,7 +238,7 @@ export class SessionCookieUpdateBulkEvent extends CustomEvent {
    * @param {ARCCookie[]} cookies The cookies to update
    */
   constructor(cookies) {
-    super(SessionCookieEventTypes.updateBulk, {
+    super(EventTypes.Cookie.updateBulk, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -266,7 +266,7 @@ export class SessionCookieUpdatedEvent extends CustomEvent {
    * @param {ARCCookie} cookie The updated cookie
    */
   constructor(cookie) {
-    super(SessionCookieEventTypes.State.update, {
+    super(EventTypes.Cookie.State.update, {
       bubbles: true,
       composed: true,
       detail: cookie,
@@ -282,7 +282,7 @@ export class SessionCookieDeletedEvent extends CustomEvent {
    * @param {ARCCookie} cookie The deleted cookie
    */
   constructor(cookie) {
-    super(SessionCookieEventTypes.State.delete, {
+    super(EventTypes.Cookie.State.delete, {
       bubbles: true,
       composed: true,
       detail: cookie,

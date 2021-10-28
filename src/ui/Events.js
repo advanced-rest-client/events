@@ -1,4 +1,4 @@
-import { UiEventTypes } from './UiEventTypes.js'
+import { EventTypes } from '../EventTypes.js';
 
 /** @typedef {import('./Events').ContextMenuActionDetail} ContextMenuActionDetail */
 
@@ -7,7 +7,7 @@ import { UiEventTypes } from './UiEventTypes.js'
  * @param {ContextMenuActionDetail} detail The context menu action init.
  */
 export function contextMenuAction(target, detail) {
-  const e = new CustomEvent(UiEventTypes.contextMenu, {
+  const e = new CustomEvent(EventTypes.Ui.contextMenu, {
     bubbles: true,
     composed: true,
     cancelable: true,

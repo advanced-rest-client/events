@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { ArcModelEventTypes } from './ArcModelEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 import { ARCEntityDeletedEvent, ARCEntityListEvent } from './BaseEvents.js';
 
 /** @typedef {import('../../').UrlHistory.ARCUrlHistory} ARCUrlHistory */
@@ -28,7 +28,7 @@ export class ARCHistoryUrlInsertEvent extends CustomEvent {
    * @param {string} url The URL to store
    */
   constructor(url) {
-    super(ArcModelEventTypes.UrlHistory.insert, {
+    super(EventTypes.Model.UrlHistory.insert, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -46,7 +46,7 @@ export class ARCHistoryUrlUpdatedEvent extends Event {
    * @param {ARCEntityChangeRecord} record URL change record.
    */
   constructor(record) {
-    super(ArcModelEventTypes.UrlHistory.State.update, {
+    super(EventTypes.Model.UrlHistory.State.update, {
       bubbles: true,
       composed: true,
     });
@@ -69,7 +69,7 @@ export class ARCHistoryUrlListEvent extends ARCEntityListEvent {
    * @param {ARCModelListOptions=} opts Query options.
    */
   constructor(opts) {
-    super(ArcModelEventTypes.UrlHistory.list, opts);
+    super(EventTypes.Model.UrlHistory.list, opts);
   }
 }
 
@@ -88,7 +88,7 @@ export class ARCHistoryUrlQueryEvent extends CustomEvent {
    * @param {string} term The search term for the query function
    */
   constructor(term) {
-    super(ArcModelEventTypes.UrlHistory.query, {
+    super(EventTypes.Model.UrlHistory.query, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -116,7 +116,7 @@ export class ARCHistoryUrlDeleteEvent extends CustomEvent {
     if (typeof id !== 'string') {
       throw new Error('Expected id argument to be a string.');
     }
-    super(ArcModelEventTypes.UrlHistory.delete, {
+    super(EventTypes.Model.UrlHistory.delete, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -138,7 +138,7 @@ export class ARCHistoryUrlDeletedEvent extends ARCEntityDeletedEvent {
     if (typeof id !== 'string') {
       throw new Error('Expected id argument to be a string.');
     }
-    super(ArcModelEventTypes.UrlHistory.State.delete, id, rev);
+    super(EventTypes.Model.UrlHistory.State.delete, id, rev);
   }
 }
 

@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { EncryptionEventTypes } from './EncryptionEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 
 export const dataValue = Symbol('dataValue');
 export const passphraseValue = Symbol('passphraseValue');
@@ -36,7 +36,7 @@ export class ArcEncryptEvent extends CustomEvent {
    * @param {string} method Encryption method to use
    */
   constructor(data, passphrase, method) {
-    super(EncryptionEventTypes.encrypt, {
+    super(EventTypes.Encryption.encrypt, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -79,7 +79,7 @@ export class ArcDecryptEvent extends CustomEvent {
    * @param {string} method Method used to encrypt the data
    */
   constructor(data, passphrase, method) {
-    super(EncryptionEventTypes.decrypt, {
+    super(EventTypes.Encryption.decrypt, {
       bubbles: true,
       composed: true,
       cancelable: true,

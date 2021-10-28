@@ -1,6 +1,6 @@
 import { TelemetryDetail, TelemetryEventDetail } from './Events';
 
-declare interface TelemetryEvents {
+export interface ITelemetryEvents {
   /**
    * Sends application screen view event
    * @param target A node on which to dispatch the event
@@ -43,4 +43,4 @@ declare interface TelemetryEvents {
   timing(target: EventTarget, category: string, variable: string, value: number, label?: string, detail?: TelemetryDetail): void;
 }
 
-export const TelemetryEvents: TelemetryEvents;
+export const TelemetryEvents: ITelemetryEvents;

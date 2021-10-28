@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { ArcModelEventTypes } from './ArcModelEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 import { ARCEntityListEvent } from './BaseEvents.js';
 
 /** @typedef {import('../../').UrlHistory.ARCWebsocketUrlHistory} ARCWebsocketUrlHistory */
@@ -26,7 +26,7 @@ export class ARCWSUrlInsertEvent extends CustomEvent {
    * @param {string} url The URL to store
    */
   constructor(url) {
-    super(ArcModelEventTypes.WSUrlHistory.insert, {
+    super(EventTypes.Model.WSUrlHistory.insert, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -44,7 +44,7 @@ export class ARCWSUrlUpdatedEvent extends Event {
    * @param {ARCEntityChangeRecord} record URL change record.
    */
   constructor(record) {
-    super(ArcModelEventTypes.WSUrlHistory.State.update, {
+    super(EventTypes.Model.WSUrlHistory.State.update, {
       bubbles: true,
       composed: true,
     });
@@ -67,7 +67,7 @@ export class ARCWSUrlListEvent extends ARCEntityListEvent {
    * @param {ARCModelListOptions=} opts Query options.
    */
   constructor(opts) {
-    super(ArcModelEventTypes.WSUrlHistory.list, opts);
+    super(EventTypes.Model.WSUrlHistory.list, opts);
   }
 }
 
@@ -86,7 +86,7 @@ export class ARCWSUrlQueryEvent extends CustomEvent {
    * @param {string} term The search term for the query function
    */
   constructor(term) {
-    super(ArcModelEventTypes.WSUrlHistory.query, {
+    super(EventTypes.Model.WSUrlHistory.query, {
       bubbles: true,
       composed: true,
       cancelable: true,

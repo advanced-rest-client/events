@@ -39,5 +39,7 @@ declare interface TransportEventTypes {
    */
   httpTransport: string;
 }
-
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 export declare const TransportEventTypes: Readonly<TransportEventTypes>;

@@ -775,7 +775,7 @@ export declare interface RestApiFunctions {
   State: RestApiStateFunctions;
 }
 
-declare interface ArcModelEvents {
+export interface IArcModelEvents {
   /**
    * Dispatches an event handled by the data store to destroy a data store.
    *
@@ -804,5 +804,5 @@ declare interface ArcModelEvents {
   RestApi: RestApiFunctions;
 }
 
-declare const events: ArcModelEvents;
+declare const events: IArcModelEvents;
 export { events as  ArcModelEvents };

@@ -1,6 +1,6 @@
 /* eslint-disable max-classes-per-file */
 import { ArcExportProviderEvent } from '../dataexport/Events.js';
-import { GoogleDriveEventTypes } from './GoogleDriveEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 
 /** @typedef {import('../../').DataExport.ProviderOptions} ProviderOptions */
 /** @typedef {import('../../').DataExport.ArcExportResult} ArcExportResult */
@@ -17,7 +17,7 @@ export class GoogleDriveSaveEvent extends ArcExportProviderEvent {
    * @param {ProviderOptions} providerOptions Options passed to the Google Drive provider
    */
   constructor(data, providerOptions) {
-    super(GoogleDriveEventTypes.save, data, providerOptions);
+    super(EventTypes.Google.Drive.save, data, providerOptions);
   }
 }
 
@@ -26,7 +26,7 @@ export class GoogleDriveSaveEvent extends ArcExportProviderEvent {
  */
 export class GoogleDriveListFolderEvent extends CustomEvent {
   constructor() {
-    super(GoogleDriveEventTypes.listAppFolders, {
+    super(EventTypes.Google.Drive.listAppFolders, {
       bubbles: true,
       cancelable: true,
       composed: true,
@@ -50,7 +50,7 @@ export class GoogleDriveReadEvent extends CustomEvent {
    * @param {string} id The id of the file to read.
    */
   constructor(id) {
-    super(GoogleDriveEventTypes.read, {
+    super(EventTypes.Google.Drive.read, {
       bubbles: true,
       cancelable: true,
       composed: true,

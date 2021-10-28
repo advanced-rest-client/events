@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { ArcModelEventTypes } from './ArcModelEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 import { ARCEntityDeletedEvent, ARCEntityListEvent } from './BaseEvents.js';
 
 /** @typedef {import('../../').Model.ARCModelListResult} ARCModelListResult */
@@ -34,7 +34,7 @@ export class ARCEnvironmentReadEvent extends CustomEvent {
    * @param {string} name The name of the environment
    */
   constructor(name) {
-    super(ArcModelEventTypes.Environment.read, {
+    super(EventTypes.Model.Environment.read, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -59,7 +59,7 @@ export class ARCEnvironmentUpdateEvent extends CustomEvent {
    * @param {ARCEnvironment} environment An environment to update.
    */
   constructor(environment) {
-    super(ArcModelEventTypes.Environment.update, {
+    super(EventTypes.Model.Environment.update, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -84,7 +84,7 @@ export class ARCEnvironmentUpdatedEvent extends Event {
    * @param {ARCEntityChangeRecord} record Entity change record.
    */
   constructor(record) {
-    super(ArcModelEventTypes.Environment.State.update, {
+    super(EventTypes.Model.Environment.State.update, {
       bubbles: true,
       composed: true,
     });
@@ -107,7 +107,7 @@ export class ARCEnvironmentDeleteEvent extends CustomEvent {
    * @param {string} id The environment id
    */
   constructor(id) {
-    super(ArcModelEventTypes.Environment.delete, {
+    super(EventTypes.Model.Environment.delete, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -126,7 +126,7 @@ export class ARCEnvironmentDeletedEvent extends ARCEntityDeletedEvent {
    * @param {string} rev Updated revision
    */
   constructor(id, rev) {
-    super(ArcModelEventTypes.Environment.State.delete, id, rev);
+    super(EventTypes.Model.Environment.State.delete, id, rev);
   }
 }
 
@@ -146,7 +146,7 @@ export class ARCEnvironmentListEvent extends ARCEntityListEvent {
    * @param {ARCVariablesListOptions=} opts Query options.
    */
   constructor(opts={}) {
-    super(ArcModelEventTypes.Environment.list, opts);
+    super(EventTypes.Model.Environment.list, opts);
     this[readallValue] = opts.readall;
   }
 }
@@ -156,7 +156,7 @@ export class ARCEnvironmentListEvent extends ARCEntityListEvent {
  */
 export class ARCEnvironmentCurrentEvent extends CustomEvent {
   constructor() {
-    super(ArcModelEventTypes.Environment.current, {
+    super(EventTypes.Model.Environment.current, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -175,7 +175,7 @@ export class ARCEnvironmentSelectEvent extends CustomEvent {
    * @param {string=} id The ID of the environment to select. When not set it selects the default environment.
    */
   constructor(id) {
-    super(ArcModelEventTypes.Environment.select, {
+    super(EventTypes.Model.Environment.select, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -193,7 +193,7 @@ export class ARCEnvironmentStateSelectEvent extends CustomEvent {
    * @param {EnvironmentStateDetail} detail The change record for the environment
    */
   constructor(detail) {
-    super(ArcModelEventTypes.Environment.State.select, {
+    super(EventTypes.Model.Environment.State.select, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -217,7 +217,7 @@ export class ARCVariableUpdateEvent extends CustomEvent {
    * @param {ARCVariable} variable A variable to update.
    */
   constructor(variable) {
-    super(ArcModelEventTypes.Variable.update, {
+    super(EventTypes.Model.Variable.update, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -250,7 +250,7 @@ export class ARCVariableSetEvent extends CustomEvent {
    * @param {string} value The value to set on the variable.
    */
   constructor(name, value) {
-    super(ArcModelEventTypes.Variable.set, {
+    super(EventTypes.Model.Variable.set, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -276,7 +276,7 @@ export class ARCVariableUpdatedEvent extends Event {
    * @param {ARCEntityChangeRecord} record Entity change record.
    */
   constructor(record) {
-    super(ArcModelEventTypes.Variable.State.update, {
+    super(EventTypes.Model.Variable.State.update, {
       bubbles: true,
       composed: true,
     });
@@ -299,7 +299,7 @@ export class ARCVariableDeleteEvent extends CustomEvent {
    * @param {string} id The variable id
    */
   constructor(id) {
-    super(ArcModelEventTypes.Variable.delete, {
+    super(EventTypes.Model.Variable.delete, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -318,7 +318,7 @@ export class ARCVariableDeletedEvent extends ARCEntityDeletedEvent {
    * @param {string} rev Updated revision
    */
   constructor(id, rev) {
-    super(ArcModelEventTypes.Variable.State.delete, id, rev);
+    super(EventTypes.Model.Variable.State.delete, id, rev);
   }
 }
 
@@ -346,7 +346,7 @@ export class ARCVariableListEvent extends ARCEntityListEvent {
    * @param {ARCVariablesListOptions=} opts Query options.
    */
   constructor(name, opts={}) {
-    super(ArcModelEventTypes.Variable.list, opts);
+    super(EventTypes.Model.Variable.list, opts);
     this[nameValue] = name;
     this[readallValue] = opts.readall;
   }

@@ -1,4 +1,5 @@
 export { EventTypes } from './src/EventTypes.js';
+export { Events } from './src/Events.js';
 
 export { ArcNavigationEventTypes } from './src/navigation/ArcNavigationEventTypes.js';
 export { ArcNavigationEvents } from './src/navigation/ArcNavigationEvents.js';

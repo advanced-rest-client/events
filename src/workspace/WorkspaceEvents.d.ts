@@ -1,7 +1,7 @@
 import { DataExport, ArcRequest } from '../../';
 import { DomainWorkspace } from '../domain/Workspace';
 
-declare interface WorkspaceEvents {
+export interface IWorkspaceEvents {
   appendExport(target: EventTarget, data: DataExport.ArcExportObject): void;
   appendRequest(target: EventTarget, request: ArcRequest.ARCSavedRequest|ArcRequest.ARCHistoryRequest): void;
   /**
@@ -17,4 +17,4 @@ declare interface WorkspaceEvents {
   write(target: EventTarget, contents: DomainWorkspace, id?: string): Promise<void>;
 }
 
-export const WorkspaceEvents: WorkspaceEvents;
+export const WorkspaceEvents: IWorkspaceEvents;

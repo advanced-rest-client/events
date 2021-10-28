@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { ArcModelEventTypes } from './ArcModelEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 
 export const requestsValue = Symbol('requestsValue');
 export const typeValue = Symbol('typeValue');
@@ -20,7 +20,7 @@ export class ARCUrlIndexUpdateEvent extends CustomEvent {
     if (!Array.isArray(requests)) {
       throw new Error('The requests expected to be an array.');
     }
-    super(ArcModelEventTypes.UrlIndexer.update, {
+    super(EventTypes.Model.UrlIndexer.update, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -53,7 +53,7 @@ export class ARCUrlIndexQueryEvent extends CustomEvent {
     if (!term) {
       throw new Error('The term is missing.');
     }
-    super(ArcModelEventTypes.UrlIndexer.query, {
+    super(EventTypes.Model.UrlIndexer.query, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -123,7 +123,7 @@ export async function queryAction(target, term, requestType, detailed) {
  * @param {EventTarget} target A node on which to dispatch the event.
  */
 export async function finishedState(target) {
-  const e = new Event(ArcModelEventTypes.UrlIndexer.State.finished, {
+  const e = new Event(EventTypes.Model.UrlIndexer.State.finished, {
     bubbles: true,
     composed: true,
   });

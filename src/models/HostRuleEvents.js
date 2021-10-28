@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { ArcModelEventTypes } from './ArcModelEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 import { ARCEntityDeletedEvent, ARCEntityListEvent } from './BaseEvents.js';
 
 /** @typedef {import('../../').HostRule.ARCHostRule} ARCHostRule */
@@ -31,7 +31,7 @@ export class ARCHostRuleUpdateEvent extends CustomEvent {
     if (!rule) {
       throw new Error('Expected rule argument as object.');
     }
-    super(ArcModelEventTypes.HostRules.update, {
+    super(EventTypes.Model.HostRules.update, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -59,7 +59,7 @@ export class ARCHostRuleUpdateBulkEvent extends CustomEvent {
     if (!Array.isArray(rules)) {
       throw new Error('Expected rules argument as an array.');
     }
-    super(ArcModelEventTypes.HostRules.updateBulk, {
+    super(EventTypes.Model.HostRules.updateBulk, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -87,7 +87,7 @@ export class ARCHostRuleUpdatedEvent extends Event {
     if (!record) {
       throw new Error('Expected record argument to be an object.');
     }
-    super(ArcModelEventTypes.HostRules.State.update, {
+    super(EventTypes.Model.HostRules.State.update, {
       bubbles: true,
       composed: true,
     });
@@ -121,7 +121,7 @@ export class ARCHostRuleDeleteEvent extends CustomEvent {
     if (typeof id !== 'string') {
       throw new Error('Expected id argument to be a string.');
     }
-    super(ArcModelEventTypes.HostRules.delete, {
+    super(EventTypes.Model.HostRules.delete, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -144,7 +144,7 @@ export class ARCHostRuleDeletedEvent extends ARCEntityDeletedEvent {
     if (typeof id !== 'string') {
       throw new Error('Expected id argument to be a string.');
     }
-    super(ArcModelEventTypes.HostRules.State.delete, id, rev);
+    super(EventTypes.Model.HostRules.State.delete, id, rev);
   }
 }
 
@@ -156,7 +156,7 @@ export class ARCHostRulesListEvent extends ARCEntityListEvent {
    * @param {ARCModelListOptions=} opts Query options.
    */
   constructor(opts) {
-    super(ArcModelEventTypes.HostRules.list, opts);
+    super(EventTypes.Model.HostRules.list, opts);
   }
 }
 

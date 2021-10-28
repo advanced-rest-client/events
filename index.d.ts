@@ -1,4 +1,5 @@
 export { EventTypes } from './src/EventTypes';
+export { Events } from './src/Events';
 
 export { ArcNavigationEventTypes } from './src/navigation/ArcNavigationEventTypes';
 export { ArcNavigationEvents } from './src/navigation/ArcNavigationEvents';
@@ -21,7 +22,7 @@ export {
   RequestActionType,
 } from './src/navigation/NavigationEvents';
 export { SessionCookieEventTypes } from './src/cookies/SessionCookieEventTypes';
-export { SessionCookieEvents } from './src/cookies/SessionCookieEvents';
+export { ISessionCookieEvents as SessionCookieEvents } from './src/cookies/SessionCookieEvents';
 export {
   DataExportEventTypes,
   DataImportEventTypes,
@@ -104,7 +105,7 @@ export {
   ApiErrorEventDetail,
 } from './src/reporting/ReportingEvents.js';
 export { TelemetryEventTypes } from './src/telemetry/TelemetryEventTypes';
-export { TelemetryEvents } from './src/telemetry/TelemetryEvents';
+export { ITelemetryEvents as TelemetryEvents } from './src/telemetry/TelemetryEvents';
 export {
   TelemetryEvent,
   TelemetryScreenEvent,
@@ -300,7 +301,7 @@ import * as ArcState from './src/config/ArcState';
 import * as Actions from './src/actions/Actions';
 import * as Workspace from './src/domain/Workspace';
 import * as Meta from './src/domain/Meta';
-import * as Themes from './src/themes/Themes';
+import * as Themes from './src/theme/Themes';
 import * as WebSocket from './src/request/WebSocket';
 
 export {

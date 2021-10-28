@@ -1,6 +1,6 @@
 import { DataExport, GoogleDrive } from '../../';
 
-declare interface GoogleDriveEvents {
+export interface IGoogleDriveEvents {
   /**
    * Dispatches an event handled by the Google Drive provider to store data on the drive.
    *
@@ -27,4 +27,4 @@ declare interface GoogleDriveEvents {
   read(target: EventTarget, id: string): Promise<string>;
 }
 
-export declare const GoogleDriveEvents: GoogleDriveEvents;
+export declare const GoogleDriveEvents: IGoogleDriveEvents;

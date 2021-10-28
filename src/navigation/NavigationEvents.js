@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { ArcNavigationEventTypes } from './ArcNavigationEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 
 /** @typedef {import('./NavigationEvents').ExternalNavigationOptions} ExternalNavigationOptions */
 /** @typedef {import('./NavigationEvents').RequestActionType} RequestActionType */
@@ -60,7 +60,7 @@ export class ARCNavigationEvent extends CustomEvent {
    * @param {any=} opts Additional route parameters
    */
   constructor(route, opts) {
-    super(ArcNavigationEventTypes.navigate, {
+    super(EventTypes.Navigation.navigate, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -85,7 +85,7 @@ export class ARCMenuPopupEvent extends CustomEvent {
    * @param {string} menu The name of the menu
    */
   constructor(menu) {
-    super(ArcNavigationEventTypes.popupMenu, {
+    super(EventTypes.Navigation.popupMenu, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -132,7 +132,7 @@ export class ARCRequestNavigationEvent extends ARCNavigationRouteEvent {
    * @param {RequestActionType=} action Optional navigation action. Default to "open" action.
    */
   constructor(requestId, requestType, action) {
-    super(ArcNavigationEventTypes.navigateRequest, REQUESTROUTE);
+    super(EventTypes.Navigation.navigateRequest, REQUESTROUTE);
     this[idValue] = requestId;
     this[typeValue] = requestType;
     this[actionValue] = action || 'open';
@@ -170,7 +170,7 @@ export class ARCRestApiNavigationEvent extends ARCNavigationRouteEvent {
    * @param {string} action The action type: list, documentation
    */
   constructor(api, version, action) {
-    super(ArcNavigationEventTypes.navigateRestApi, RESTAPIROUTE);
+    super(EventTypes.Navigation.navigateRestApi, RESTAPIROUTE);
     this[idValue] = api;
     this[actionValue] = action;
     this[versionValue] = version;
@@ -220,7 +220,7 @@ export class ARCProjectNavigationEvent extends ARCNavigationRouteEvent {
    * @param {ProjectActionType=} action The action type: `open`, `edit`. Default to `open`.
    */
   constructor(id, action) {
-    super(ArcNavigationEventTypes.navigateProject, PROJECTROUTE);
+    super(EventTypes.Navigation.navigateProject, PROJECTROUTE);
     this[idValue] = id;
     this[actionValue] = action || 'open';
   }
@@ -244,7 +244,7 @@ export class ARCExternalNavigationEvent extends CustomEvent {
    * @param {ExternalNavigationOptions=} detail Additional request parameters
    */
   constructor(url, detail={}) {
-    super(ArcNavigationEventTypes.navigateExternal, {
+    super(EventTypes.Navigation.navigateExternal, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -269,7 +269,7 @@ export class ARCHelpTopicEvent extends Event {
    * @param {string} topic The help topic to open.
    */
   constructor(topic) {
-    super(ArcNavigationEventTypes.helpTopic, {
+    super(EventTypes.Navigation.helpTopic, {
       bubbles: true,
       composed: true,
       cancelable: true,

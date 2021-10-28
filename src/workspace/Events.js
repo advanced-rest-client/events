@@ -1,5 +1,6 @@
 /* eslint-disable max-classes-per-file */
-import { WorkspaceEventTypes } from './WorkspaceEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
+
 /** @typedef {import('../../').DataExport.ArcExportObject} ArcExportObject */
 /** @typedef {import('../../').ArcRequest.ARCSavedRequest} ARCSavedRequest */
 /** @typedef {import('../../').ArcRequest.ARCHistoryRequest} ARCHistoryRequest */
@@ -14,7 +15,7 @@ export class WorkspaceAppendExportEvent extends CustomEvent {
    * @param {ArcExportObject} data The ARC export object
    */
   constructor(data) {
-    super(WorkspaceEventTypes.appendExport, {
+    super(EventTypes.Workspace.appendExport, {
       bubbles: true,
       composed: true,
       detail: {
@@ -32,7 +33,7 @@ export class WorkspaceAppendRequestEvent extends CustomEvent {
    * @param {ARCSavedRequest|ARCHistoryRequest} request The request to append
    */
   constructor(request) {
-    super(WorkspaceEventTypes.appendRequest, {
+    super(EventTypes.Workspace.appendRequest, {
       bubbles: true,
       composed: true,
       detail: {
@@ -53,7 +54,7 @@ export class WorkspaceReadEvent extends CustomEvent {
    * @param {string=} id Optional identifier of the workspace used with the communication with the back-end. Used only when the back-end issued a workspace identifier.
    */
   constructor(id) {
-    super(WorkspaceEventTypes.read, {
+    super(EventTypes.Workspace.read, {
       bubbles: true,
       composed: true,
       detail: {
@@ -72,7 +73,7 @@ export class WorkspaceWriteEvent extends CustomEvent {
    * @param {string=} id Optional identifier of the workspace used with the communication with the back-end. Used only when the back-end issued a workspace identifier.
    */
   constructor(contents, id) {
-    super(WorkspaceEventTypes.write, {
+    super(EventTypes.Workspace.write, {
       bubbles: true,
       composed: true,
       detail: {

@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { TransportEventTypes } from './TransportEventTypes.js';
+import { EventTypes } from '../EventTypes.js';
 
 /** @typedef {import('../../').ArcRequest.ArcEditorRequest} ArcEditorRequest */
 /** @typedef {import('../../').ArcRequest.TransportRequest} TransportRequest */
@@ -21,7 +21,7 @@ export class ApiRequestEvent extends CustomEvent {
    * @param {ArcEditorRequest} request The request configuration to transport.
    */
   constructor(request) {
-    super(TransportEventTypes.request, {
+    super(EventTypes.Transport.request, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -40,7 +40,7 @@ export class ApiTransportEvent extends CustomEvent {
    * @param {RequestConfig=} config The transport configuration to use. Request configuration overrides the values.
    */
   constructor(id, request, config={enabled: false}) {
-    super(TransportEventTypes.transport, {
+    super(EventTypes.Transport.transport, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -59,7 +59,7 @@ export class ApiAbortEvent extends CustomEvent {
    * @param {string} id The id of the request to abort
    */
   constructor(id) {
-    super(TransportEventTypes.abort, {
+    super(EventTypes.Transport.abort, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -123,7 +123,7 @@ export class HttpTransportEvent extends CustomEvent {
    * @param {ArcBaseRequest} request The request configuration to transport.
    */
   constructor(request) {
-    super(TransportEventTypes.httpTransport, {
+    super(EventTypes.Transport.httpTransport, {
       bubbles: true,
       composed: true,
       cancelable: true,
@@ -152,7 +152,7 @@ export function sendAction(target, request) {
  * @param {Response|ErrorResponse} response The response object
  */
 export function responseAction(target, id, source, request, response) {
-  const e = new ApiResponseEvent(TransportEventTypes.response, id, source, request, response);
+  const e = new ApiResponseEvent(EventTypes.Transport.response, id, source, request, response);
   target.dispatchEvent(e);
 }
 
@@ -175,7 +175,7 @@ export function transportAction(target, id, request, config) {
  * @param {Response|ErrorResponse} response The response object
  */
 export function processResponseAction(target, id, source, request, response) {
-  const e = new ApiResponseEvent(TransportEventTypes.processResponse, id, source, request, response);
+  const e = new ApiResponseEvent(EventTypes.Transport.processResponse, id, source, request, response);
   target.dispatchEvent(e);
 }
 
@@ -194,7 +194,7 @@ export function abortAction(target, id) {
  * @param {WebsocketEditorRequest} editorRequest The editor web socket request associated with the event
  */
 export function informConnectAction(target, editorRequest) {
-  const e = new WebsocketRequestEvent(TransportEventTypes.connect, editorRequest);
+  const e = new WebsocketRequestEvent(EventTypes.Transport.connect, editorRequest);
   target.dispatchEvent(e);
 }
 
@@ -204,7 +204,7 @@ export function informConnectAction(target, editorRequest) {
  * @param {WebsocketEditorRequest} editorRequest The editor web socket request associated with the event
  */
 export function informDisconnectAction(target, editorRequest) {
-  const e = new WebsocketRequestEvent(TransportEventTypes.disconnect, editorRequest);
+  const e = new WebsocketRequestEvent(EventTypes.Transport.disconnect, editorRequest);
   target.dispatchEvent(e);
 }
 
@@ -214,7 +214,7 @@ export function informDisconnectAction(target, editorRequest) {
  * @param {WebsocketEditorRequest} editorRequest The editor web socket request associated with the event
  */
 export function informWebSocketSendAction(target, editorRequest) {
-  const e = new WebsocketRequestEvent(TransportEventTypes.connectionSend, editorRequest);
+  const e = new WebsocketRequestEvent(EventTypes.Transport.connectionSend, editorRequest);
   target.dispatchEvent(e);
 }
 

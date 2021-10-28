@@ -30,9 +30,9 @@ declare interface OidcEvents {
   removeTokens(target: EventTarget, config: TokenRemoveOptions): Promise<void>;
 }
 
-declare interface AuthorizationEvents {
+export declare interface IAuthorizationEvents {
   OAuth2: OAuth2Events;
   Oidc: OidcEvents;
 }
 
-export declare const AuthorizationEvents: Readonly<AuthorizationEvents>;
+export declare const AuthorizationEvents: Readonly<IAuthorizationEvents>;

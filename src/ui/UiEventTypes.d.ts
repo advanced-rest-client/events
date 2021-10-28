@@ -7,5 +7,7 @@ declare interface UiEventTypes {
    */
   contextMenu: string,
 }
-
+/**
+ * @deprecated Use `EventTypes` instead.
+ */
 export declare const UiEventTypes: Readonly<UiEventTypes>;
