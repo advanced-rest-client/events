@@ -301,9 +301,10 @@ import * as ArcState from './src/config/ArcState';
 import * as Actions from './src/actions/Actions';
 import * as Workspace from './src/domain/Workspace';
 import * as Meta from './src/domain/Meta';
-import * as Themes from './src/theme/Themes';
+import * as Theme from './src/theme/Themes';
 import * as WebSocket from './src/request/WebSocket';
 import * as Application from './src/application/Application';
+import * as Search from './src/search/Search';
 
 export {
   Application,
@@ -330,7 +331,8 @@ export {
   Actions,
   Workspace,
   Meta,
-  Themes,
+  Theme,
   WebSocket,
+  Search,
 };
 export * as Model from './src/models/base';

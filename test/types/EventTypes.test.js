@@ -328,6 +328,43 @@ describe('EventTypes', () => {
     });
   });
 
+  describe('Search', () => {
+    it('has the namespace', () => {
+      assert.typeOf(EventTypes.Search, 'object');
+    });
+
+    [
+      ['find', 'appsearchfind'],
+      ['clear', 'appsearchclear'],
+    ].forEach(([prop, value]) => {
+      it(`has ${prop} property`, () => {
+        assert.equal(EventTypes.Search[prop], value);
+      });
+    });
+
+    it('has unique events for the namespace', () => {
+      ensureUnique('EventTypes.Search', EventTypes.Search);
+    });
+  });
+
+  describe('Search.State', () => {
+    it('has the namespace', () => {
+      assert.typeOf(EventTypes.Search.State, 'object');
+    });
+
+    [
+      ['foundInPage', 'appsearchfoundinpage'],
+    ].forEach(([prop, value]) => {
+      it(`has ${prop} property`, () => {
+        assert.equal(EventTypes.Search.State[prop], value);
+      });
+    });
+
+    it('has unique events for the namespace', () => {
+      ensureUnique('EventTypes.Search.State', EventTypes.Search.State);
+    });
+  });
+
   describe('Telemetry', () => {
     it('has the namespace', () => {
       assert.typeOf(EventTypes.Telemetry, 'object');

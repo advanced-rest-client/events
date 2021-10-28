@@ -17,6 +17,7 @@ import { TransportEvents } from './transport/TransportEvents.js';
 import { UiEvents } from './ui/UiEvents.js';
 import { UpdaterEvents } from './updater/UpdaterEvents.js';
 import { WorkspaceEvents } from './workspace/WorkspaceEvents.js';
+import { SearchEvents } from './search/SearchEvents.js';
 
 export const Events = {
   App: ApplicationEvents,
@@ -35,6 +36,7 @@ export const Events = {
   RestApiLegacy: RestApiEvents,
   Reporting: ReportingEvents,
   Request: RequestEvents,
+  Search: SearchEvents,
   Telemetry: TelemetryEvents,
   Theme: ThemeEvents,
   Transport: TransportEvents,

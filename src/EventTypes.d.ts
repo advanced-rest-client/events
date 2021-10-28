@@ -222,6 +222,16 @@ declare interface IWorkspaceEvents {
   write: string;
 }
 
+declare interface ISearchStateEvents {
+  foundInPage: string;
+}
+
+declare interface ISearchEvents {
+  find: string;
+  clear: string;
+  State: Readonly<ISearchStateEvents>;
+}
+
 interface IEventTypes {
   App: Readonly<IAppEvents>;
   Authorization: Readonly<IAuthorizationEvents>;
@@ -237,6 +247,7 @@ interface IEventTypes {
   RestApiLegacy: Readonly<IRestApiLegacyEvents>;
   Reporting: Readonly<IReportingEventTypes>;
   Request: Readonly<IRequestEvents>;
+  Search: Readonly<ISearchEvents>;
   Telemetry: Readonly<ITelemetryEvents>;
   Theme: Readonly<IThemeEvents>;
   Transport: Readonly<ITransportEvents>;

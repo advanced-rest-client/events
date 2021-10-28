@@ -113,6 +113,14 @@ export const EventTypes = Object.freeze({
       contentTypeChange: 'arcrequeststatecontenttypechange',
     }),
   }),
+  // ARC electron app search events.
+  Search: Object.freeze({
+    find: 'appsearchfind',
+    clear: 'appsearchclear',
+    State: Object.freeze({
+      foundInPage: 'appsearchfoundinpage',
+    }),
+  }),
   /**
    * Event types for analytics implementation.
    */

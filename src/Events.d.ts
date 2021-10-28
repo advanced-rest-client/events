@@ -17,6 +17,7 @@ import { ITransportEvents } from './transport/TransportEvents';
 import { IUiEvents } from './ui/UiEvents';
 import { IUpdaterEvents } from './updater/UpdaterEvents';
 import { IWorkspaceEvents } from './workspace/WorkspaceEvents';
+import { ISearchEvents } from './search/SearchEvents';
 
 declare interface IGoogleEvents {
   Drive: IGoogleDriveEvents;
@@ -37,6 +38,7 @@ declare interface IEvents {
   RestApiLegacy: IRestApiEvents;
   Reporting: IReportingEvents;
   Request: IRequestEvents;
+  Search: ISearchEvents,
   Telemetry: ITelemetryEvents;
   Theme: IThemeEvents;
   Transport: ITransportEvents;
