@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 import { EventTypes } from '../EventTypes.js';
 import { ArcContextVoidEvent, ArcContextEvent } from '../BaseEvents.js';
 

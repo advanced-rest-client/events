@@ -303,8 +303,10 @@ import * as Workspace from './src/domain/Workspace';
 import * as Meta from './src/domain/Meta';
 import * as Themes from './src/theme/Themes';
 import * as WebSocket from './src/request/WebSocket';
+import * as Application from './src/application/Application';
 
 export {
+  Application,
   DataExport,
   Cookies,
   GoogleDrive,

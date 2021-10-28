@@ -1,3 +1,4 @@
+import { IApplicationEvents } from './application/ApplicationEvents';
 import { IAuthorizationEvents } from './authorization/AuthorizationEvents';
 import { IConfigEvents } from './config/ConfigEvents';
 import { ISessionCookieEvents } from './cookies/SessionCookieEvents';
@@ -14,6 +15,7 @@ import { ITelemetryEvents } from './telemetry/TelemetryEvents';
 import { IThemeEvents } from './theme/ThemeEvents';
 import { ITransportEvents } from './transport/TransportEvents';
 import { IUiEvents } from './ui/UiEvents';
+import { IUpdaterEvents } from './updater/UpdaterEvents';
 import { IWorkspaceEvents } from './workspace/WorkspaceEvents';
 
 declare interface IGoogleEvents {
@@ -21,6 +23,7 @@ declare interface IGoogleEvents {
 }
 
 declare interface IEvents {
+  App: IApplicationEvents;
   Authorization: IAuthorizationEvents;
   Config: IConfigEvents;
   Cookie: ISessionCookieEvents;
@@ -38,6 +41,7 @@ declare interface IEvents {
   Theme: IThemeEvents;
   Transport: ITransportEvents;
   Ui: IUiEvents;
+  Updater: IUpdaterEvents;
   Workspace: IWorkspaceEvents;
 }
 export const Events: Readonly<IEvents>;

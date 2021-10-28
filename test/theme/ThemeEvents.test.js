@@ -4,8 +4,8 @@ import { Events, EventTypes } from '../../index.js'
 
 describe('Events', () => {
   /**
-     * @return {Promise<HTMLDivElement>}
-     */
+   * @return {Promise<HTMLDivElement>}
+   */
   async function etFixture() {
     return fixture(html`<div></div>`);
   }

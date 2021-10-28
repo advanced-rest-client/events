@@ -1,5 +1,24 @@
 import { IArcModelEventTypes } from './models/ArcModelEventTypes';
 
+declare interface IAppEvents {
+  versionInfo: string;
+}
+
+declare interface IUpdaterStateEvents {
+  checkingForUpdate: string;
+  updateAvailable: string;
+  updateNotAvailable: string;
+  autoUpdateError: string;
+  downloadProgress: string;
+  updateDownloaded: string;
+}
+
+declare interface IUpdaterEvents {
+  checkForUpdate: string;
+  installUpdate: string;
+  State: IUpdaterStateEvents;
+}
+
 declare interface GoogleDriveEvents {
   save: string;
   listAppFolders: string;
@@ -204,6 +223,7 @@ declare interface IWorkspaceEvents {
 }
 
 interface IEventTypes {
+  App: Readonly<IAppEvents>;
   Authorization: Readonly<IAuthorizationEvents>;
   Config: Readonly<IConfigEvents>;
   Cookie: Readonly<ICookieEvents>;
@@ -222,6 +242,7 @@ interface IEventTypes {
   Transport: Readonly<ITransportEvents>;
   Ui: Readonly<IUiEvents>;
   Workspace: Readonly<IWorkspaceEvents>;
+  Updater: Readonly<IUpdaterEvents>;
 }
 
 export const EventTypes: Readonly<IEventTypes>;

@@ -10,6 +10,9 @@
     "apiresentauth",
     "apiresponse",
     "apitransport",
+    "appupdatercheckforupdate",
+    "appupdaterinstallupdate",
+    "appversioninfo",
     "arcapirequest",
     "arcapiresponse",
     "arcconfigread",
@@ -186,6 +189,12 @@
     "transportconnect",
     "transportconnectionsend",
     "transportdisconnect",
-    "transportdisconnectsend"
+    "transportdisconnectsend",
+    "updaterstateautoupdateerror",
+    "updaterstatecheckingforupdate",
+    "updaterstatedownloadprogress",
+    "updaterstateupdateavailable",
+    "updaterstateupdatedownloaded",
+    "updaterstateupdatenotavailable"
   ]
 }

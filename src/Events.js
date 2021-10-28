@@ -1,3 +1,4 @@
+import { ApplicationEvents } from './application/ApplicationEvents.js';
 import { AuthorizationEvents } from './authorization/AuthorizationEvents.js';
 import { ConfigEvents } from './config/ConfigEvents.js';
 import { SessionCookieEvents } from './cookies/SessionCookieEvents.js';
@@ -14,9 +15,11 @@ import { TelemetryEvents } from './telemetry/TelemetryEvents.js';
 import { ThemeEvents } from './theme/ThemeEvents.js';
 import { TransportEvents } from './transport/TransportEvents.js';
 import { UiEvents } from './ui/UiEvents.js';
+import { UpdaterEvents } from './updater/UpdaterEvents.js';
 import { WorkspaceEvents } from './workspace/WorkspaceEvents.js';
 
 export const Events = {
+  App: ApplicationEvents,
   Authorization: AuthorizationEvents,
   Config: ConfigEvents,
   Cookie: SessionCookieEvents,
@@ -36,6 +39,7 @@ export const Events = {
   Theme: ThemeEvents,
   Transport: TransportEvents,
   Ui: UiEvents,
+  Updater: UpdaterEvents,
   Workspace: WorkspaceEvents,
 };
 Object.freeze(Events);

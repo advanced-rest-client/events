@@ -3,6 +3,9 @@ import { ArcModelEventTypes } from './models/ArcModelEventTypes.js';
  * The definition of ARC's event types.
  */
 export const EventTypes = Object.freeze({
+  App:Object.freeze({
+    versionInfo: 'appversioninfo',
+  }),
   Authorization: Object.freeze({
     OAuth2: Object.freeze({
       /** 
@@ -183,6 +186,18 @@ export const EventTypes = Object.freeze({
      * Tells the application to trigger a context menu with the passed arguments.
      */
     contextMenu: 'arccontextmenu',
+  }),
+  Updater: Object.freeze({
+    checkForUpdate: 'appupdatercheckforupdate',
+    installUpdate: 'appupdaterinstallupdate',
+    State: {
+      checkingForUpdate: 'updaterstatecheckingforupdate',
+      updateAvailable: 'updaterstateupdateavailable',
+      updateNotAvailable: 'updaterstateupdatenotavailable',
+      autoUpdateError: 'updaterstateautoupdateerror',
+      downloadProgress: 'updaterstatedownloadprogress',
+      updateDownloaded: 'updaterstateupdatedownloaded',
+    },
   }),
   Workspace: Object.freeze({
     appendExport: 'domainworkspaceappendexport',
