@@ -378,6 +378,24 @@ describe('EventTypes', () => {
     });
   });
 
+  describe('Theme.State', () => {
+    it('has the namespace', () => {
+      assert.typeOf(EventTypes.Theme.State, 'object');
+    });
+
+    [
+      ['activated', 'themestateactivated'],
+    ].forEach(([prop, value]) => {
+      it(`has ${prop} property`, () => {
+        assert.equal(EventTypes.Theme.State[prop], value);
+      });
+    });
+
+    it('has unique events for the namespace', () => {
+      ensureUnique('EventTypes.Theme.State', EventTypes.Theme.State);
+    });
+  });
+
   describe('Transport', () => {
     it('has the namespace', () => {
       assert.typeOf(EventTypes.Transport, 'object');

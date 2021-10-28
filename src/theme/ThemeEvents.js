@@ -124,4 +124,18 @@ export const ThemeEvents = {
     target.dispatchEvent(e);
     return e.detail.result;
   },
+
+  /**
+   * Dispatched when a theme has been activated.
+   * @param {EventTarget} target 
+   * @param {string} id The id of the activated theme
+   */
+  themeActivated: (target, id) => {
+    const e = new CustomEvent(EventTypes.Theme.State.activated, {
+      detail: { id },
+      bubbles: true,
+      composed: true,
+    });
+    target.dispatchEvent(e);
+  }
 };

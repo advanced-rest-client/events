@@ -29,9 +29,9 @@ export const EventTypes = Object.freeze({
     read: 'arcconfigread',
     readAll: 'arcconfigreadall',
     update: 'arcconfigupdate',
-    State: {
+    State: Object.freeze({
       update: 'arcconfigstateupdate',
-    },
+    }),
   }),
   /**
    * Event types for session cookies store.
@@ -132,6 +132,9 @@ export const EventTypes = Object.freeze({
     readSystemThemeInfo: 'themereadsystemthemeinfo',
     loadSystemPreferred: 'themeloadsystempreferred',
     loadUserPreferred: 'themeloaduserpreferred',
+    State: Object.freeze({
+      activated: 'themestateactivated',
+    }),
   }),
   /**
    * Event types for ARC transport (usually HTTP)

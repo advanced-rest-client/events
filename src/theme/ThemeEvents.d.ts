@@ -66,6 +66,12 @@ declare interface IThemeEvents {
    * @param target The node on which to dispatch the event.
    */
   loadUserPreferred(target: EventTarget): Promise<string>;
+  /**
+   * Dispatched when a theme has been activated.
+   * @param target 
+   * @param id The id of the activated theme
+   */
+  themeActivated(target: EventTarget, id: string): void;
 }
 
 export declare const ThemeEvents: Readonly<IThemeEvents>;

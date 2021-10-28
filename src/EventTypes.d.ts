@@ -131,6 +131,10 @@ declare interface ITelemetryEvents {
   timing: string;
 }
 
+interface IThemeStateEvents {
+  activated: string;
+}
+
 declare interface IThemeEvents {
   loadApplicationTheme: string;
   loadTheme: string;
@@ -143,6 +147,7 @@ declare interface IThemeEvents {
   readSystemThemeInfo: string;
   loadSystemPreferred: string;
   loadUserPreferred: string;
+  State: Readonly<IThemeStateEvents>;
 }
 
 declare interface ITransportEvents {

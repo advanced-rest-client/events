@@ -22,7 +22,7 @@ export {
   RequestActionType,
 } from './src/navigation/NavigationEvents';
 export { SessionCookieEventTypes } from './src/cookies/SessionCookieEventTypes';
-export { ISessionCookieEvents as SessionCookieEvents } from './src/cookies/SessionCookieEvents';
+export { SessionCookieEvents } from './src/cookies/SessionCookieEvents';
 export {
   DataExportEventTypes,
   DataImportEventTypes,
@@ -105,7 +105,7 @@ export {
   ApiErrorEventDetail,
 } from './src/reporting/ReportingEvents.js';
 export { TelemetryEventTypes } from './src/telemetry/TelemetryEventTypes';
-export { ITelemetryEvents as TelemetryEvents } from './src/telemetry/TelemetryEvents';
+export { TelemetryEvents } from './src/telemetry/TelemetryEvents';
 export {
   TelemetryEvent,
   TelemetryScreenEvent,
