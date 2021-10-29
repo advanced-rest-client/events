@@ -71,6 +71,14 @@ export interface IArcNavigationEvents {
    * @param topic The help topic name
    */
   helpTopic(target: EventTarget, topic: string): void;
+  /**
+   * Opens an URL withing ARC's session management area.
+   *
+   * @param target A node on which to dispatch the event.
+   * @param url The URL to open
+   * @param purpose The purpose of the URL.
+   */
+  openWebUrl(target: EventTarget, url: string, purpose: string): void;
 }
 
 export declare const ArcNavigationEvents: IArcNavigationEvents;

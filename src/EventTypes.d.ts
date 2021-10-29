@@ -2,6 +2,8 @@ import { IArcModelEventTypes } from './models/ArcModelEventTypes';
 
 declare interface IAppEvents {
   versionInfo: string;
+  command: string;
+  requestAction: string;
 }
 
 declare interface IUpdaterStateEvents {
@@ -23,6 +25,7 @@ declare interface GoogleDriveEvents {
   save: string;
   listAppFolders: string;
   read: string;
+  notifyFilePicked: string;
 }
 
 declare interface GoogleEvents {
@@ -113,6 +116,7 @@ declare interface INavigationEvents {
   navigateProject: string;
   popupMenu: string;
   helpTopic: string;
+  openWebUrl: string;
 }
 
 declare interface IProcessEvents {
@@ -142,12 +146,17 @@ declare interface IRequestEvents {
   State: Readonly<IRequestStateEvents>;
 }
 
+declare interface ITelemetryStateEvents {
+  set: string;
+}
+
 declare interface ITelemetryEvents {
   view: string;
   event: string;
   exception: string;
   social: string;
   timing: string;
+  State: Readonly<ITelemetryStateEvents>;
 }
 
 interface IThemeStateEvents {

@@ -1,6 +1,6 @@
 import { assert, fixture, html } from '@open-wc/testing';
 import sinon from 'sinon';
-import { Events, EventTypes } from '../../index.js'
+import { Events, EventTypes } from '../../index.js';
 
 describe('Events', () => {
   /**
@@ -109,6 +109,6 @@ describe('Events', () => {
           assert.deepEqual(detail.activeMatchOrdinal, activeMatchOrdinal, 'activeMatchOrdinal is set');
         });
       });
-    })
+    });
   });
 });

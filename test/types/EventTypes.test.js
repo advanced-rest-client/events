@@ -3,6 +3,26 @@ import { EventTypes } from  '../../index.js';
 import { ensureUnique } from './UniqueEvents.js';
 
 describe('EventTypes', () => {
+  describe('App', () => {
+    it('has the namespace', () => {
+      assert.typeOf(EventTypes.App, 'object');
+    });
+
+    [
+      ['versionInfo', 'appversioninfo'],
+      ['command', 'appcommand'],
+      ['requestAction', 'apprequestaction'],
+    ].forEach(([prop, value]) => {
+      it(`has ${prop} property`, () => {
+        assert.equal(EventTypes.App[prop], value);
+      });
+    });
+
+    it('has unique events for the namespace', () => {
+      ensureUnique('EventTypes.App', EventTypes.App);
+    });
+  });
+
   describe('Authorization', () => {
     it('has the namespace', () => {
       assert.typeOf(EventTypes.Authorization, 'object');
@@ -221,6 +241,7 @@ describe('EventTypes', () => {
         ['save', 'googledrivesave'],
         ['listAppFolders', 'googledrivelistappfolders'],
         ['read', 'googledriveread'],
+        ['notifyFilePicked', 'googledrivefilepicked'],
       ].forEach(([prop, value]) => {
         it(`has ${prop} property`, () => {
           assert.equal(EventTypes.Google.Drive[prop], value);
@@ -287,6 +308,7 @@ describe('EventTypes', () => {
       ['navigateProject', 'arcnavigateproject'],
       ['popupMenu', 'arcpopupmenu'],
       ['helpTopic', 'arcnavigatehelptopic'],
+      ['openWebUrl', 'arcnavigateopenweburl'],
     ].forEach(([prop, value]) => {
       it(`has ${prop} property`, () => {
         assert.equal(EventTypes.Navigation[prop], value);
@@ -421,6 +443,24 @@ describe('EventTypes', () => {
 
     it('has unique events for the namespace', () => {
       ensureUnique('EventTypes.Request', EventTypes.Telemetry);
+    });
+  });
+
+  describe('Telemetry.State', () => {
+    it('has the namespace', () => {
+      assert.typeOf(EventTypes.Telemetry.State, 'object');
+    });
+
+    [
+      ['set', 'telemetrystateset'],
+    ].forEach(([prop, value]) => {
+      it(`has ${prop} property`, () => {
+        assert.equal(EventTypes.Telemetry.State[prop], value);
+      });
+    });
+
+    it('has unique events for the namespace', () => {
+      ensureUnique('EventTypes.Request', EventTypes.Telemetry.State);
     });
   });
 

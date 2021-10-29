@@ -1,6 +1,6 @@
 import { assert, fixture, html } from '@open-wc/testing';
 import sinon from 'sinon';
-import { GoogleDriveEvents, GoogleDriveEventTypes } from  '../../index.js';
+import { Events, EventTypes } from '../../index.js';
 
 describe('Google Drive', () => {
   /**
@@ -17,16 +17,16 @@ describe('Google Drive', () => {
     it('dispatches navigation event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(GoogleDriveEventTypes.save, spy);
-      GoogleDriveEvents.save(et, data, options);
+      et.addEventListener(EventTypes.Google.Drive.save, spy);
+      Events.Google.Drive.save(et, data, options);
       assert.isTrue(spy.calledOnce);
     });
 
     it('has the data on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(GoogleDriveEventTypes.save, spy);
-      GoogleDriveEvents.save(et, data, options);
+      et.addEventListener(EventTypes.Google.Drive.save, spy);
+      Events.Google.Drive.save(et, data, options);
       const e = spy.args[0][0];
       assert.equal(e.data, data);
     });
@@ -34,8 +34,8 @@ describe('Google Drive', () => {
     it('has the passphrase on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(GoogleDriveEventTypes.save, spy);
-      GoogleDriveEvents.save(et, data, options);
+      et.addEventListener(EventTypes.Google.Drive.save, spy);
+      Events.Google.Drive.save(et, data, options);
       const e = spy.args[0][0];
       assert.deepEqual(e.providerOptions, options);
     });
@@ -47,16 +47,16 @@ describe('Google Drive', () => {
     it('dispatches navigation event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(GoogleDriveEventTypes.read, spy);
-      GoogleDriveEvents.read(et, id);
+      et.addEventListener(EventTypes.Google.Drive.read, spy);
+      Events.Google.Drive.read(et, id);
       assert.isTrue(spy.calledOnce);
     });
 
     it('has the data on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(GoogleDriveEventTypes.read, spy);
-      GoogleDriveEvents.read(et, id);
+      et.addEventListener(EventTypes.Google.Drive.read, spy);
+      Events.Google.Drive.read(et, id);
       const e = spy.args[0][0];
       assert.equal(e.id, id);
     });
@@ -66,9 +66,30 @@ describe('Google Drive', () => {
     it('dispatches navigation event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(GoogleDriveEventTypes.listAppFolders, spy);
-      GoogleDriveEvents.listAppFolders(et);
+      et.addEventListener(EventTypes.Google.Drive.listAppFolders, spy);
+      Events.Google.Drive.listAppFolders(et);
       assert.isTrue(spy.calledOnce);
+    });
+  });
+
+  describe('notifyFilePicked()', () => {
+    const id = 'test id'; 
+
+    it('dispatches the event', async () => {
+      const et = await etFixture();
+      const spy = sinon.spy();
+      et.addEventListener(EventTypes.Google.Drive.notifyFilePicked, spy);
+      Events.Google.Drive.notifyFilePicked(et, id);
+      assert.isTrue(spy.calledOnce);
+    });
+
+    it('sets the arguments on the detail object', async () => {
+      const et = await etFixture();
+      const spy = sinon.spy();
+      et.addEventListener(EventTypes.Google.Drive.notifyFilePicked, spy);
+      Events.Google.Drive.notifyFilePicked(et, id);
+      const { detail } = spy.args[0][0];
+      assert.equal(detail.id, id, 'id is set');
     });
   });
 });

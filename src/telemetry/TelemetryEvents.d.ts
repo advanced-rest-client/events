@@ -1,5 +1,14 @@
 import { TelemetryDetail, TelemetryEventDetail } from './Events';
 
+export interface ITelemetryStateEvents {
+  /** 
+   * Dispatched by the renderer process when the user made the initial telemetry settings.
+   * 
+   * @param target The node on which to dispatch the event.
+   */
+  set(target: EventTarget): void;
+}
+
 export interface ITelemetryEvents {
   /**
    * Sends application screen view event
@@ -41,6 +50,7 @@ export interface ITelemetryEvents {
    * @param detail Analytics base configuration
    */
   timing(target: EventTarget, category: string, variable: string, value: number, label?: string, detail?: TelemetryDetail): void;
+  State: ITelemetryStateEvents;
 }
 
 export const TelemetryEvents: ITelemetryEvents;

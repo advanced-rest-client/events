@@ -1,4 +1,7 @@
 import * as NavigationEvents from './NavigationEvents.js';
+import { ArcContextVoidEvent } from '../BaseEvents.js';
+import { EventTypes } from '../EventTypes.js';
+
 /** @typedef {import('./NavigationEvents').ExternalNavigationOptions} ExternalNavigationOptions */
 /** @typedef {import('./NavigationEvents').RequestActionType} RequestActionType */
 /** @typedef {import('./NavigationEvents').ProjectActionType} ProjectActionType */
@@ -90,6 +93,20 @@ export const ArcNavigationEvents = {
    */
   helpTopic: (target, topic) => {
     const e = new NavigationEvents.ARCHelpTopicEvent(topic);
+    target.dispatchEvent(e);
+  },
+
+  /**
+   * Opens an URL withing ARC's session management area.
+   *
+   * @param {EventTarget} target A node on which to dispatch the event.
+   * @param {string} url The URL to open
+   * @param {string} purpose The purpose of the URL.
+   */
+  openWebUrl: (target, url, purpose) => {
+    const e = new ArcContextVoidEvent(EventTypes.Navigation.openWebUrl, {
+      url, purpose,
+    });
     target.dispatchEvent(e);
   },
 };

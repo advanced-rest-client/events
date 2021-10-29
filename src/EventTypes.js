@@ -5,6 +5,8 @@ import { ArcModelEventTypes } from './models/ArcModelEventTypes.js';
 export const EventTypes = Object.freeze({
   App:Object.freeze({
     versionInfo: 'appversioninfo',
+    command: 'appcommand',
+    requestAction: 'apprequestaction',
   }),
   Authorization: Object.freeze({
     OAuth2: Object.freeze({
@@ -77,6 +79,7 @@ export const EventTypes = Object.freeze({
       save: 'googledrivesave',
       listAppFolders: 'googledrivelistappfolders',
       read: 'googledriveread',
+      notifyFilePicked: 'googledrivefilepicked',
     }),
   }),
   Menu: Object.freeze({
@@ -95,7 +98,8 @@ export const EventTypes = Object.freeze({
     navigateRestApi: 'arcnavigaterestapi',
     navigateProject: 'arcnavigateproject',
     popupMenu: 'arcpopupmenu',
-    helpTopic: 'arcnavigatehelptopic'
+    helpTopic: 'arcnavigatehelptopic',
+    openWebUrl: 'arcnavigateopenweburl',
   }),
   Process: Object.freeze({
     loadingStart: 'arcprocessloadingstart',
@@ -138,6 +142,9 @@ export const EventTypes = Object.freeze({
     exception: 'telemetryexception',
     social: 'telemetrysocial',
     timing: 'telemetrytiming',
+    State: Object.freeze({
+      set: 'telemetrystateset',
+    }),
   }),
   Theme: Object.freeze({
     loadApplicationTheme: 'themeloadapplication',

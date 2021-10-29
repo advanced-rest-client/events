@@ -25,6 +25,14 @@ export interface IGoogleDriveEvents {
    * @returns Promise resolved to the list of folders
    */
   read(target: EventTarget, id: string): Promise<string>;
+  /** 
+   * Notifies application's main process that a Google Drive file has been picked
+   * by the user. The application should take action when needed.
+   * 
+   * @param target The node on which to dispatch the event.
+   * @param id The Google Drive file id
+   */
+  notifyFilePicked(target: EventTarget, id: string): void;
 }
 
 export declare const GoogleDriveEvents: IGoogleDriveEvents;

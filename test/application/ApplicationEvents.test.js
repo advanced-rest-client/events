@@ -36,5 +36,53 @@ describe('Events', () => {
         assert.equal(result, info);
       });
     });
+
+    describe('command()', () => {
+      const action = 'term'; 
+      const arg1 = { forward: true };
+      const arg2 = 'test';
+
+      it('dispatches the event', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(EventTypes.App.command, spy);
+        Events.App.command(et, action);
+        assert.isTrue(spy.calledOnce);
+      });
+
+      it('sets the arguments on the detail object', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(EventTypes.App.command, spy);
+        Events.App.command(et, action, arg1, arg2);
+        const { detail } = spy.args[0][0];
+        assert.equal(detail.action, action, 'action is set');
+        assert.deepEqual(detail.args, [arg1, arg2], 'args is set');
+      });
+    });
+
+    describe('requestAction()', () => {
+      const action = 'term'; 
+      const arg1 = { forward: true };
+      const arg2 = 'test';
+
+      it('dispatches the event', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(EventTypes.App.requestAction, spy);
+        Events.App.requestAction(et, action);
+        assert.isTrue(spy.calledOnce);
+      });
+
+      it('sets the arguments on the detail object', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(EventTypes.App.requestAction, spy);
+        Events.App.requestAction(et, action, arg1, arg2);
+        const { detail } = spy.args[0][0];
+        assert.equal(detail.action, action, 'action is set');
+        assert.deepEqual(detail.args, [arg1, arg2], 'args is set');
+      });
+    });
   });
 });

@@ -1,8 +1,8 @@
 import { assert, fixture, html } from '@open-wc/testing';
 import sinon from 'sinon';
 import {
-  ArcNavigationEventTypes,
-  ArcNavigationEvents,
+  EventTypes,
+  Events,
   REQUESTROUTE,
   RESTAPIROUTE,
   PROJECTROUTE,
@@ -10,7 +10,7 @@ import {
   RequestActions,
 } from  '../../index.js';
 
-describe('ArcNavigationEvents', () => {
+describe('Events.Navigation', () => {
   /**
    * @return {Promise<HTMLDivElement>}
    */
@@ -25,23 +25,23 @@ describe('ArcNavigationEvents', () => {
     it('is frozen', () => {
       assert.throws(() => {
         // @ts-ignore
-        ArcNavigationEvents.navigate = 'test';
+        Events.Navigation.navigate = 'test';
       });
     });
 
     it('dispatches navigation event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigate, spy);
-      ArcNavigationEvents.navigate(et, route);
+      et.addEventListener(EventTypes.Navigation.navigate, spy);
+      Events.Navigation.navigate(et, route);
       assert.isTrue(spy.calledOnce);
     });
 
     it('has the route on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigate, spy);
-      ArcNavigationEvents.navigate(et, route);
+      et.addEventListener(EventTypes.Navigation.navigate, spy);
+      Events.Navigation.navigate(et, route);
       const e = spy.args[0][0];
       assert.equal(e.route, route);
     });
@@ -49,8 +49,8 @@ describe('ArcNavigationEvents', () => {
     it('has the opts on the detail', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigate, spy);
-      ArcNavigationEvents.navigate(et, route, opts);
+      et.addEventListener(EventTypes.Navigation.navigate, spy);
+      Events.Navigation.navigate(et, route, opts);
       const e = spy.args[0][0];
       assert.deepEqual(e.detail, opts);
     });
@@ -62,23 +62,23 @@ describe('ArcNavigationEvents', () => {
     it('is frozen', () => {
       assert.throws(() => {
         // @ts-ignore
-        ArcNavigationEvents.popupMenu = 'test';
+        Events.Navigation.popupMenu = 'test';
       });
     });
 
     it('dispatches popupmenu event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.popupMenu, spy);
-      ArcNavigationEvents.popupMenu(et, menu);
+      et.addEventListener(EventTypes.Navigation.popupMenu, spy);
+      Events.Navigation.popupMenu(et, menu);
       assert.isTrue(spy.calledOnce);
     });
 
     it('has the menu on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.popupMenu, spy);
-      ArcNavigationEvents.popupMenu(et, menu);
+      et.addEventListener(EventTypes.Navigation.popupMenu, spy);
+      Events.Navigation.popupMenu(et, menu);
       const e = spy.args[0][0];
       assert.equal(e.menu, menu);
     });
@@ -91,23 +91,23 @@ describe('ArcNavigationEvents', () => {
     it('is frozen', () => {
       assert.throws(() => {
         // @ts-ignore
-        ArcNavigationEvents.navigateRequest = 'test';
+        Events.Navigation.navigateRequest = 'test';
       });
     });
 
     it('dispatches navigation event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateRequest, spy);
-      ArcNavigationEvents.navigateRequest(et, rid, tr);
+      et.addEventListener(EventTypes.Navigation.navigateRequest, spy);
+      Events.Navigation.navigateRequest(et, rid, tr);
       assert.isTrue(spy.calledOnce);
     });
 
     it('has the route on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateRequest, spy);
-      ArcNavigationEvents.navigateRequest(et, rid, tr);
+      et.addEventListener(EventTypes.Navigation.navigateRequest, spy);
+      Events.Navigation.navigateRequest(et, rid, tr);
       const e = spy.args[0][0];
       assert.equal(e.route, REQUESTROUTE);
     });
@@ -115,8 +115,8 @@ describe('ArcNavigationEvents', () => {
     it('has the requestId on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateRequest, spy);
-      ArcNavigationEvents.navigateRequest(et, rid, tr);
+      et.addEventListener(EventTypes.Navigation.navigateRequest, spy);
+      Events.Navigation.navigateRequest(et, rid, tr);
       const e = spy.args[0][0];
       assert.equal(e.requestId, rid);
     });
@@ -124,8 +124,8 @@ describe('ArcNavigationEvents', () => {
     it('has the requestType on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateRequest, spy);
-      ArcNavigationEvents.navigateRequest(et, rid, tr);
+      et.addEventListener(EventTypes.Navigation.navigateRequest, spy);
+      Events.Navigation.navigateRequest(et, rid, tr);
       const e = spy.args[0][0];
       assert.equal(e.requestType, tr);
     });
@@ -133,8 +133,9 @@ describe('ArcNavigationEvents', () => {
     it('has the action property on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateRequest, spy);
-      ArcNavigationEvents.navigateRequest(et, rid, tr, RequestActions.edit);
+      et.addEventListener(EventTypes.Navigation.navigateRequest, spy);
+      // @ts-ignore
+      Events.Navigation.navigateRequest(et, rid, tr, RequestActions.edit);
       const e = spy.args[0][0];
       assert.equal(e.action, RequestActions.edit);
     });
@@ -142,8 +143,8 @@ describe('ArcNavigationEvents', () => {
     it('has the default action', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateRequest, spy);
-      ArcNavigationEvents.navigateRequest(et, rid, tr);
+      et.addEventListener(EventTypes.Navigation.navigateRequest, spy);
+      Events.Navigation.navigateRequest(et, rid, tr);
       const e = spy.args[0][0];
       assert.equal(e.action, RequestActions.open);
     });
@@ -157,23 +158,23 @@ describe('ArcNavigationEvents', () => {
     it('is frozen', () => {
       assert.throws(() => {
         // @ts-ignore
-        ArcNavigationEvents.navigateRestApi = 'test';
+        Events.Navigation.navigateRestApi = 'test';
       });
     });
 
     it('dispatches navigation event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateRestApi, spy);
-      ArcNavigationEvents.navigateRestApi(et, api, version, action);
+      et.addEventListener(EventTypes.Navigation.navigateRestApi, spy);
+      Events.Navigation.navigateRestApi(et, api, version, action);
       assert.isTrue(spy.calledOnce);
     });
 
     it('has the route on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateRestApi, spy);
-      ArcNavigationEvents.navigateRestApi(et, api, version, action);
+      et.addEventListener(EventTypes.Navigation.navigateRestApi, spy);
+      Events.Navigation.navigateRestApi(et, api, version, action);
       const e = spy.args[0][0];
       assert.equal(e.route, RESTAPIROUTE);
     });
@@ -181,8 +182,8 @@ describe('ArcNavigationEvents', () => {
     it('has the api on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateRestApi, spy);
-      ArcNavigationEvents.navigateRestApi(et, api, version, action);
+      et.addEventListener(EventTypes.Navigation.navigateRestApi, spy);
+      Events.Navigation.navigateRestApi(et, api, version, action);
       const e = spy.args[0][0];
       assert.deepEqual(e.api, api);
     });
@@ -190,8 +191,8 @@ describe('ArcNavigationEvents', () => {
     it('has the action on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateRestApi, spy);
-      ArcNavigationEvents.navigateRestApi(et, api, version, action);
+      et.addEventListener(EventTypes.Navigation.navigateRestApi, spy);
+      Events.Navigation.navigateRestApi(et, api, version, action);
       const e = spy.args[0][0];
       assert.deepEqual(e.action, action);
     });
@@ -199,8 +200,8 @@ describe('ArcNavigationEvents', () => {
     it('has the version on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateRestApi, spy);
-      ArcNavigationEvents.navigateRestApi(et, api, version, action);
+      et.addEventListener(EventTypes.Navigation.navigateRestApi, spy);
+      Events.Navigation.navigateRestApi(et, api, version, action);
       const e = spy.args[0][0];
       assert.deepEqual(e.version, version);
     });
@@ -212,23 +213,23 @@ describe('ArcNavigationEvents', () => {
     it('is frozen', () => {
       assert.throws(() => {
         // @ts-ignore
-        ArcNavigationEvents.navigateRestApi = 'test';
+        Events.Navigation.navigateRestApi = 'test';
       });
     });
 
     it('dispatches navigation event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateProject, spy);
-      ArcNavigationEvents.navigateProject(et, id);
+      et.addEventListener(EventTypes.Navigation.navigateProject, spy);
+      Events.Navigation.navigateProject(et, id);
       assert.isTrue(spy.calledOnce);
     });
 
     it('has the route on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateProject, spy);
-      ArcNavigationEvents.navigateProject(et, id);
+      et.addEventListener(EventTypes.Navigation.navigateProject, spy);
+      Events.Navigation.navigateProject(et, id);
       const e = spy.args[0][0];
       assert.equal(e.route, PROJECTROUTE);
     });
@@ -236,8 +237,8 @@ describe('ArcNavigationEvents', () => {
     it('has the id on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateProject, spy);
-      ArcNavigationEvents.navigateProject(et, id);
+      et.addEventListener(EventTypes.Navigation.navigateProject, spy);
+      Events.Navigation.navigateProject(et, id);
       const e = spy.args[0][0];
       assert.deepEqual(e.id, id);
     });
@@ -245,8 +246,9 @@ describe('ArcNavigationEvents', () => {
     it('has the action on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateProject, spy);
-      ArcNavigationEvents.navigateProject(et, id, ProjectActions.edit);
+      et.addEventListener(EventTypes.Navigation.navigateProject, spy);
+      // @ts-ignore
+      Events.Navigation.navigateProject(et, id, ProjectActions.edit);
       const e = spy.args[0][0];
       assert.deepEqual(e.action, ProjectActions.edit);
     });
@@ -254,8 +256,8 @@ describe('ArcNavigationEvents', () => {
     it('has the default action', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateProject, spy);
-      ArcNavigationEvents.navigateProject(et, id);
+      et.addEventListener(EventTypes.Navigation.navigateProject, spy);
+      Events.Navigation.navigateProject(et, id);
       const e = spy.args[0][0];
       assert.deepEqual(e.action, ProjectActions.open);
     });
@@ -267,23 +269,23 @@ describe('ArcNavigationEvents', () => {
     it('is frozen', () => {
       assert.throws(() => {
         // @ts-ignore
-        ArcNavigationEvents.navigateExternal = 'test';
+        Events.Navigation.navigateExternal = 'test';
       });
     });
 
     it('dispatches the navigation event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateExternal, spy);
-      ArcNavigationEvents.navigateExternal(et, url);
+      et.addEventListener(EventTypes.Navigation.navigateExternal, spy);
+      Events.Navigation.navigateExternal(et, url);
       assert.isTrue(spy.calledOnce);
     });
 
     it('has the url property on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateExternal, spy);
-      ArcNavigationEvents.navigateExternal(et, url);
+      et.addEventListener(EventTypes.Navigation.navigateExternal, spy);
+      Events.Navigation.navigateExternal(et, url);
       const e = spy.args[0][0];
       assert.equal(e.url, url);
     });
@@ -291,8 +293,8 @@ describe('ArcNavigationEvents', () => {
     it('has the default detail object', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateExternal, spy);
-      ArcNavigationEvents.navigateExternal(et, url);
+      et.addEventListener(EventTypes.Navigation.navigateExternal, spy);
+      Events.Navigation.navigateExternal(et, url);
       const e = spy.args[0][0];
       assert.deepEqual(e.detail, {});
     });
@@ -300,9 +302,9 @@ describe('ArcNavigationEvents', () => {
     it('has the passed detail object', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.navigateExternal, spy);
+      et.addEventListener(EventTypes.Navigation.navigateExternal, spy);
       const cnf = { purpose: 'test' };
-      ArcNavigationEvents.navigateExternal(et, url, cnf);
+      Events.Navigation.navigateExternal(et, url, cnf);
       const e = spy.args[0][0];
       assert.deepEqual(e.detail, cnf);
     });
@@ -314,25 +316,56 @@ describe('ArcNavigationEvents', () => {
     it('is frozen', () => {
       assert.throws(() => {
         // @ts-ignore
-        ArcNavigationEvents.helpTopic = 'test';
+        Events.Navigation.helpTopic = 'test';
       });
     });
 
     it('dispatches the help navigation event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.helpTopic, spy);
-      ArcNavigationEvents.helpTopic(et, topic);
+      et.addEventListener(EventTypes.Navigation.helpTopic, spy);
+      Events.Navigation.helpTopic(et, topic);
       assert.isTrue(spy.calledOnce);
     });
 
     it('has the topic property on the event', async () => {
       const et = await etFixture();
       const spy = sinon.spy();
-      et.addEventListener(ArcNavigationEventTypes.helpTopic, spy);
-      ArcNavigationEvents.helpTopic(et, topic);
+      et.addEventListener(EventTypes.Navigation.helpTopic, spy);
+      Events.Navigation.helpTopic(et, topic);
       const e = spy.args[0][0];
       assert.equal(e.topic, topic);
+    });
+  });
+
+  describe('openWebUrl()', () => {
+    const url = 'test-url';
+    const purpose = 'a purpose';
+
+    it('dispatches the help navigation event', async () => {
+      const et = await etFixture();
+      const spy = sinon.spy();
+      et.addEventListener(EventTypes.Navigation.openWebUrl, spy);
+      Events.Navigation.openWebUrl(et, url, purpose);
+      assert.isTrue(spy.calledOnce);
+    });
+
+    it('has the topic property on the event', async () => {
+      const et = await etFixture();
+      const spy = sinon.spy();
+      et.addEventListener(EventTypes.Navigation.openWebUrl, spy);
+      Events.Navigation.openWebUrl(et, url, purpose);
+      const e = spy.args[0][0];
+      assert.equal(e.detail.url, url);
+    });
+
+    it('has the purpose property on the event', async () => {
+      const et = await etFixture();
+      const spy = sinon.spy();
+      et.addEventListener(EventTypes.Navigation.openWebUrl, spy);
+      Events.Navigation.openWebUrl(et, url, purpose);
+      const e = spy.args[0][0];
+      assert.equal(e.detail.purpose, purpose);
     });
   });
 });
