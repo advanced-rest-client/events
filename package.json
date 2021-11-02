@@ -1,7 +1,7 @@
 {
   "name": "@advanced-rest-client/events",
   "description": "A library adding navigation events definitions to Advanced REST Client",
-  "version": "0.2.27",
+  "version": "0.2.28",
   "license": "Apache-2.0",
   "main": "index.js",
   "module": "index.js",
@@ -21,8 +21,8 @@
     "email": "arc@mulesoft.com"
   },
   "devDependencies": {
-    "@open-wc/eslint-config": "^6.0.0",
-    "@open-wc/testing": "^3.0.1",
+    "@open-wc/eslint-config": "^7.0.0",
+    "@open-wc/testing": "^3.0.2",
     "@web/test-runner": "^0.13.20",
     "@web/test-runner-playwright": "^0.8.8",
     "eslint": "^8.1.0",

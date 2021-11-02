@@ -1,4 +1,5 @@
 import { AppVersionInfo } from './Application';
+import { ARCState } from '../config/ArcState';
 
 export interface IApplicationEvents {
   /** 
@@ -25,5 +26,21 @@ export interface IApplicationEvents {
    * @param args The arguments to pass to the application.
    */
   requestAction(target: EventTarget, action: string, ...args: any): void;
+
+  /** 
+   * Reads the application state file.
+   * 
+   * @param target The node on which to dispatch the event.
+   */
+  readState(target: EventTarget): Promise<ARCState>;
+
+  /**
+   * Updates a single state value
+   * 
+   * @param target The node on which to dispatch the event.
+   * @param name Path to the state preference
+   * @param value State value
+   */
+  updateStateProperty(target: EventTarget, name: string, value: any): Promise<void>;
 }
 export const ApplicationEvents: Readonly<IApplicationEvents>;

@@ -4,6 +4,8 @@ declare interface IAppEvents {
   versionInfo: string;
   command: string;
   requestAction: string;
+  readState: string;
+  updateStateProperty: string;
 }
 
 declare interface IUpdaterStateEvents {
@@ -224,11 +226,19 @@ declare interface IUiEvents {
   contextMenu: string,
 }
 
+declare interface IWorkspaceStateEvents {
+  idChange: string;
+  write: string;
+}
+
 declare interface IWorkspaceEvents {
   appendExport: string;
   appendRequest: string;
   read: string;
   write: string;
+  setId: string;
+  triggerWrite: string;
+  State: IWorkspaceStateEvents;
 }
 
 declare interface ISearchStateEvents {

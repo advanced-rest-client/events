@@ -7,6 +7,8 @@ export const EventTypes = Object.freeze({
     versionInfo: 'appversioninfo',
     command: 'appcommand',
     requestAction: 'apprequestaction',
+    readState: 'appreadstate',
+    updateStateProperty: 'appupdatestateproperty',
   }),
   Authorization: Object.freeze({
     OAuth2: Object.freeze({
@@ -227,5 +229,11 @@ export const EventTypes = Object.freeze({
     appendRequest: 'domainworkspaceappendrequest',
     read: 'domainworkspaceread',
     write: 'domainworkspacewrite',
+    setId: 'domainworkspacesetid',
+    triggerWrite: 'domainworkspacetriggerwrite',
+    State: Object.freeze({
+      idChange: 'domainworkspacestateidchange',
+      write: 'domainworkspacestatewrite'
+    }),
   }),
 });

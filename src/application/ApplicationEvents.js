@@ -2,6 +2,7 @@ import { EventTypes } from '../EventTypes.js';
 import { ArcContextEvent } from '../BaseEvents.js';
 
 /** @typedef {import('./Application').AppVersionInfo } AppVersionInfo */
+/** @typedef {import('../config/ArcState').ARCState} ARCState */
 
 export const ApplicationEvents = {
   /** 
@@ -43,5 +44,31 @@ export const ApplicationEvents = {
       action, args,
     });
     target.dispatchEvent(e);
+  },
+
+  /** 
+   * Reads the application state file.
+   * 
+   * @param {EventTarget} target The node on which to dispatch the event.
+   * @returns {Promise<ARCState>}
+   */
+  readState: async (target) => {
+    const e = new ArcContextEvent(EventTypes.App.readState, {});
+    target.dispatchEvent(e);
+    return e.detail.result;
+  },
+
+  /**
+   * Updates a single state value
+   * 
+   * @param {EventTarget} target The node on which to dispatch the event.
+   * @param {string} name Path to the state preference
+   * @param {any} value State value
+   * @returns {Promise<void>}
+   */
+  updateStateProperty: async (target, name, value) => {
+    const e = new ArcContextEvent(EventTypes.App.updateStateProperty, { name, value });
+    target.dispatchEvent(e);
+    await e.detail.result;
   },
 };

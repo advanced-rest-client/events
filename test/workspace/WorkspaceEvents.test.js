@@ -1,10 +1,10 @@
 import { assert, fixture, html } from '@open-wc/testing';
 import sinon from 'sinon';
-import { WorkspaceEvents, WorkspaceEventTypes } from  '../../index.js';
+import { EventTypes, Events } from  '../../index.js';
 
 /** @typedef {import('../../').Workspace.DomainWorkspace} DomainWorkspace */
 
-describe('Workspace', () => {
+describe('Events', () => {
   /**
    * @return {Promise<HTMLDivElement>}
    */
@@ -12,7 +12,7 @@ describe('Workspace', () => {
     return fixture(html`<div></div>`);
   }
 
-  describe('WorkspaceEvents', () => {
+  describe('Workspace', () => {
     describe('appendExport()', () => {
       const data = {
         createdAt: new Date().toISOString(),
@@ -23,16 +23,16 @@ describe('Workspace', () => {
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(WorkspaceEventTypes.appendExport, spy);
-        WorkspaceEvents.appendExport(et, data);
+        et.addEventListener(EventTypes.Workspace.appendExport, spy);
+        Events.Workspace.appendExport(et, data);
         assert.isTrue(spy.calledOnce);
       });
 
       it('has the pid on the detail', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(WorkspaceEventTypes.appendExport, spy);
-        WorkspaceEvents.appendExport(et, data);
+        et.addEventListener(EventTypes.Workspace.appendExport, spy);
+        Events.Workspace.appendExport(et, data);
         const e = spy.args[0][0];
         assert.deepEqual(e.detail.data, data);
       });
@@ -48,44 +48,32 @@ describe('Workspace', () => {
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(WorkspaceEventTypes.appendRequest, spy);
-        WorkspaceEvents.appendRequest(et, request);
+        et.addEventListener(EventTypes.Workspace.appendRequest, spy);
+        Events.Workspace.appendRequest(et, request);
         assert.isTrue(spy.calledOnce);
       });
 
       it('has the pid on the detail', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(WorkspaceEventTypes.appendRequest, spy);
-        WorkspaceEvents.appendRequest(et, request);
+        et.addEventListener(EventTypes.Workspace.appendRequest, spy);
+        Events.Workspace.appendRequest(et, request);
         const e = spy.args[0][0];
         assert.equal(e.detail.request, request);
       });
     });
 
     describe('read()', () => {
-      const id = 'test-id';
-
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(WorkspaceEventTypes.read, spy);
-        WorkspaceEvents.read(et);
+        et.addEventListener(EventTypes.Workspace.read, spy);
+        Events.Workspace.read(et);
         assert.isTrue(spy.calledOnce);
-      });
-
-      it('has the optional id on the detail', async () => {
-        const et = await etFixture();
-        const spy = sinon.spy();
-        et.addEventListener(WorkspaceEventTypes.read, spy);
-        WorkspaceEvents.read(et, id);
-        const e = spy.args[0][0];
-        assert.equal(e.detail.id, id);
       });
     });
 
     describe('write()', () => {
-      const id = 'test-id';
       const workspace = /** @type DomainWorkspace */ ({
         kind: 'ARC#DomainWorkspace',
         id: 'test-workspace',
@@ -94,27 +82,82 @@ describe('Workspace', () => {
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(WorkspaceEventTypes.write, spy);
-        WorkspaceEvents.write(et, workspace);
+        et.addEventListener(EventTypes.Workspace.write, spy);
+        Events.Workspace.write(et, workspace);
         assert.isTrue(spy.calledOnce);
       });
 
       it('has the contents on the detail', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(WorkspaceEventTypes.write, spy);
-        WorkspaceEvents.write(et, workspace, id);
+        et.addEventListener(EventTypes.Workspace.write, spy);
+        Events.Workspace.write(et, workspace);
         const e = spy.args[0][0];
         assert.deepEqual(e.detail.contents, workspace);
       });
+    });
 
-      it('has the optional id on the detail', async () => {
+    describe('setId()', () => {
+      const id = 'test-id';
+
+      it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(WorkspaceEventTypes.write, spy);
-        WorkspaceEvents.write(et, workspace, id);
+        et.addEventListener(EventTypes.Workspace.setId, spy);
+        Events.Workspace.setId(et, id);
+        assert.isTrue(spy.calledOnce);
+      });
+
+      it('has the id on the detail', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(EventTypes.Workspace.setId, spy);
+        Events.Workspace.setId(et, id);
         const e = spy.args[0][0];
-        assert.equal(e.detail.id, id);
+        assert.deepEqual(e.detail.id, id);
+      });
+    });
+
+    describe('triggerWrite()', () => {
+      it('dispatches the event', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(EventTypes.Workspace.triggerWrite, spy);
+        Events.Workspace.triggerWrite(et);
+        assert.isTrue(spy.calledOnce);
+      });
+    });
+
+    describe('State', () => {
+      describe('setId()', () => {
+        const id = 'test-id';
+  
+        it('dispatches the event', async () => {
+          const et = await etFixture();
+          const spy = sinon.spy();
+          et.addEventListener(EventTypes.Workspace.State.idChange, spy);
+          Events.Workspace.State.idChange(et, id);
+          assert.isTrue(spy.calledOnce);
+        });
+  
+        it('has the id on the detail', async () => {
+          const et = await etFixture();
+          const spy = sinon.spy();
+          et.addEventListener(EventTypes.Workspace.State.idChange, spy);
+          Events.Workspace.State.idChange(et, id);
+          const e = spy.args[0][0];
+          assert.deepEqual(e.detail.id, id);
+        });
+      });
+
+      describe('write()', () => {
+        it('dispatches the event', async () => {
+          const et = await etFixture();
+          const spy = sinon.spy();
+          et.addEventListener(EventTypes.Workspace.State.write, spy);
+          Events.Workspace.State.write(et);
+          assert.isTrue(spy.calledOnce);
+        });
       });
     });
   });
