@@ -1,5 +1,6 @@
 export { EventTypes } from './src/EventTypes';
 export { Events } from './src/Events';
+export * as Amf from './src/amf/Amf';
 
 export { ArcNavigationEventTypes } from './src/navigation/ArcNavigationEventTypes';
 export { ArcNavigationEvents } from './src/navigation/ArcNavigationEvents';

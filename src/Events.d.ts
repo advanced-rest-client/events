@@ -19,12 +19,14 @@ import { IUpdaterEvents } from './updater/UpdaterEvents';
 import { IWorkspaceEvents } from './workspace/WorkspaceEvents';
 import { ISearchEvents } from './search/SearchEvents';
 import { IMenuEvents } from './menu/MenuEvents';
+import { IAmfEvents } from './amf/AmfEvents';
 
 declare interface IGoogleEvents {
   Drive: IGoogleDriveEvents;
 }
 
 declare interface IEvents {
+  Amf: IAmfEvents;
   App: IApplicationEvents;
   Authorization: IAuthorizationEvents;
   Config: IConfigEvents;

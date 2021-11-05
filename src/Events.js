@@ -19,8 +19,10 @@ import { UpdaterEvents } from './updater/UpdaterEvents.js';
 import { WorkspaceEvents } from './workspace/WorkspaceEvents.js';
 import { SearchEvents } from './search/SearchEvents.js';
 import { MenuEvents } from './menu/MenuEvents.js';
+import { AmfEvents } from './amf/AmfEvents.js';
 
 export const Events = {
+  Amf: AmfEvents,
   App: ApplicationEvents,
   Authorization: AuthorizationEvents,
   Config: ConfigEvents,

@@ -1,5 +1,9 @@
 {
   "cSpell.words": [
+    "amfprocessapifile",
+    "amfprocessapilink",
+    "amfprocessbuffer",
+    "amfselectapimainfile",
     "apibeforeredirect",
     "apibeforerequest",
     "apifirstbytereceived",

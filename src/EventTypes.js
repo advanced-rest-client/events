@@ -3,7 +3,13 @@ import { ArcModelEventTypes } from './models/ArcModelEventTypes.js';
  * The definition of ARC's event types.
  */
 export const EventTypes = Object.freeze({
-  App:Object.freeze({
+  Amf: Object.freeze({
+    processApiLink: 'amfprocessapilink',
+    processBuffer: 'amfprocessbuffer',
+    processApiFile: 'amfprocessapifile',
+    selectApiMainFile: 'amfselectapimainfile',
+  }),
+  App: Object.freeze({
     versionInfo: 'appversioninfo',
     command: 'appcommand',
     requestAction: 'apprequestaction',

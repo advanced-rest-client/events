@@ -1,5 +1,12 @@
 import { IArcModelEventTypes } from './models/ArcModelEventTypes';
 
+declare interface IAmfEvents {
+  processApiLink: string;
+  processBuffer: string;
+  processApiFile: string;
+  selectApiMainFile: string;
+}
+
 declare interface IAppEvents {
   versionInfo: string;
   command: string;
@@ -263,6 +270,7 @@ declare interface IMenuEvents {
 }
 
 interface IEventTypes {
+  Amf: Readonly<IAmfEvents>;
   App: Readonly<IAppEvents>;
   Authorization: Readonly<IAuthorizationEvents>;
   Config: Readonly<IConfigEvents>;

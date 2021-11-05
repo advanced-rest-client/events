@@ -3,6 +3,27 @@ import { EventTypes } from  '../../index.js';
 import { ensureUnique } from './UniqueEvents.js';
 
 describe('EventTypes', () => {
+  describe('Amf', () => {
+    it('has the namespace', () => {
+      assert.typeOf(EventTypes.Amf, 'object');
+    });
+
+    [
+      ['processApiLink', 'amfprocessapilink'],
+      ['processBuffer', 'amfprocessbuffer'],
+      ['processApiFile', 'amfprocessapifile'],
+      ['selectApiMainFile', 'amfselectapimainfile'],
+    ].forEach(([prop, value]) => {
+      it(`has ${prop} property`, () => {
+        assert.equal(EventTypes.Amf[prop], value);
+      });
+    });
+
+    it('has unique events for the namespace', () => {
+      ensureUnique('EventTypes.Amf', EventTypes.Amf);
+    });
+  });
+
   describe('App', () => {
     it('has the namespace', () => {
       assert.typeOf(EventTypes.App, 'object');
