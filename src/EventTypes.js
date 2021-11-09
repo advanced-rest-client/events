@@ -174,25 +174,25 @@ export const EventTypes = Object.freeze({
    * Event types for ARC transport (usually HTTP)
    */
   Transport: Object.freeze({
-    beforeRequest: 'apibeforerequest',
-    beforeRedirect: 'apibeforeredirect',
-    headersReceived: 'apiheadersreceived',
-    firstByte: 'apifirstbytereceived',
+    beforeRequest: 'arcbeforerequest',
+    beforeRedirect: 'arcbeforeredirect',
+    headersReceived: 'archeadersreceived',
+    firstByte: 'arcfirstbytereceived',
     // used by the UI to initiate the request transport
-    request: 'apirequest',
+    request: 'arcrequest',
     // used by the UI to report a response
-    response: 'apiresponse',
+    response: 'arcresponse',
     // used by the application logic, dispatched when the request has been
     // pre-processed by any listeners (variables, actions) and can be transported.
     // The HTTP transport library is listening to this event
-    transport: 'apitransport',
-    resendAuth: 'apiresendauth',
+    transport: 'arctransport',
+    resendAuth: 'arcresendauth',
     // used by the application logic, dispatched when the HTTP transport library 
     // has finished processing the request. This is handled by the logic that
     // performs operations before the request is reported back to the UI
     // like authorization and actions.
-    processResponse: 'apiprocessresponse',
-    abort: 'apiabort',
+    processResponse: 'arcprocessresponse',
+    abort: 'arcabort',
 
     /** 
      * Informs to make a connection. Used by web sockets.

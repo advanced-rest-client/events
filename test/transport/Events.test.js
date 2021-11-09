@@ -1,7 +1,7 @@
 import { assert } from '@open-wc/testing';
 import { generateEditorRequest, generateTransportRequest } from './Utils.js';
 import { 
-  TransportEventTypes, 
+  EventTypes, 
   ApiRequestEvent, 
   ApiResponseEvent, 
   ApiTransportEvent, 
@@ -21,7 +21,7 @@ describe('Transport', () => {
 
       it('has the correct type', () => {
         const e = new ApiRequestEvent(request);
-        assert.equal(e.type, TransportEventTypes.request);
+        assert.equal(e.type, EventTypes.Transport.request);
       });
 
       it('has the detail property', () => {
@@ -50,7 +50,7 @@ describe('Transport', () => {
       const response = /** @type Response */ ({ loadingTime: 0, status: 200,  });
       const request = generateTransportRequest();
       const id = '1234';
-      const type = TransportEventTypes.response;
+      const type = EventTypes.Transport.response;
 
       it('has the correct type', () => {
         const e = new ApiResponseEvent(type, id, source, request, response);
@@ -88,7 +88,7 @@ describe('Transport', () => {
 
       it('has the correct type', () => {
         const e = new ApiTransportEvent(id, request);
-        assert.equal(e.type, TransportEventTypes.transport);
+        assert.equal(e.type, EventTypes.Transport.transport);
       });
 
       it('has the detail property', () => {
@@ -119,7 +119,7 @@ describe('Transport', () => {
 
       it('has the correct type', () => {
         const e = new ApiAbortEvent(id);
-        assert.equal(e.type, TransportEventTypes.abort);
+        assert.equal(e.type, EventTypes.Transport.abort);
       });
 
       it('has the detail property', () => {
@@ -186,7 +186,7 @@ describe('Transport', () => {
 
       it('has the type', () => {
         const e = new HttpTransportEvent(request);
-        assert.equal(e.type, TransportEventTypes.httpTransport);
+        assert.equal(e.type, EventTypes.Transport.httpTransport);
       });
 
       it('has the passed request', () => {

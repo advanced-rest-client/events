@@ -1,6 +1,6 @@
 import { assert, fixture, html } from '@open-wc/testing';
 import sinon from 'sinon';
-import { TransportEvents, TransportEventTypes } from  '../../index.js';
+import { Events, EventTypes } from  '../../index.js';
 import { generateEditorRequest, generateTransportRequest } from './Utils.js';
 
 /** @typedef {import('../../').WebSocket.WebsocketRequest} WebsocketRequest */
@@ -8,7 +8,7 @@ import { generateEditorRequest, generateTransportRequest } from './Utils.js';
 /** @typedef {import('../../').ArcRequest.TransportRequest} TransportRequest */
 /** @typedef {import('../../').ArcResponse.Response} Response */
 
-describe('Transport', () => {
+describe('Events', () => {
   /**
    * @return {Promise<HTMLDivElement>}
    */
@@ -16,23 +16,23 @@ describe('Transport', () => {
     return fixture(html`<div></div>`);
   }
 
-  describe('TransportEvents', () => {
+  describe('Transport', () => {
     describe('request()', () => {
       const request = generateEditorRequest();
 
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.request, spy);
-        TransportEvents.request(et, request);
+        et.addEventListener(EventTypes.Transport.request, spy);
+        Events.Transport.request(et, request);
         assert.isTrue(spy.calledOnce);
       });
 
       it('has the detail property', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.request, spy);
-        TransportEvents.request(et, request);
+        et.addEventListener(EventTypes.Transport.request, spy);
+        Events.Transport.request(et, request);
         assert.deepEqual(spy.args[0][0].detail, request);
       });
     });
@@ -46,16 +46,16 @@ describe('Transport', () => {
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.response, spy);
-        TransportEvents.response(et, id, source, request, response);
+        et.addEventListener(EventTypes.Transport.response, spy);
+        Events.Transport.response(et, id, source, request, response);
         assert.isTrue(spy.calledOnce);
       });
 
       it('has the detail property', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.response, spy);
-        TransportEvents.response(et, id, source, request, response);
+        et.addEventListener(EventTypes.Transport.response, spy);
+        Events.Transport.response(et, id, source, request, response);
         const e = spy.args[0][0];
         assert.deepEqual(e.detail.request, request);
         assert.deepEqual(e.detail.response, response);
@@ -71,16 +71,16 @@ describe('Transport', () => {
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.transport, spy);
-        TransportEvents.transport(et, id, request);
+        et.addEventListener(EventTypes.Transport.transport, spy);
+        Events.Transport.transport(et, id, request);
         assert.isTrue(spy.calledOnce);
       });
 
       it('has the "changedProperty" property', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.transport, spy);
-        TransportEvents.transport(et, id, request, config);
+        et.addEventListener(EventTypes.Transport.transport, spy);
+        Events.Transport.transport(et, id, request, config);
         const e = spy.args[0][0];
         assert.deepEqual(e.detail.request, request);
         assert.deepEqual(e.detail.config, config);
@@ -97,16 +97,16 @@ describe('Transport', () => {
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.processResponse, spy);
-        TransportEvents.processResponse(et, id, source, request, response);
+        et.addEventListener(EventTypes.Transport.processResponse, spy);
+        Events.Transport.processResponse(et, id, source, request, response);
         assert.isTrue(spy.calledOnce);
       });
 
       it('has the detail property', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.processResponse, spy);
-        TransportEvents.processResponse(et, id, source, request, response);
+        et.addEventListener(EventTypes.Transport.processResponse, spy);
+        Events.Transport.processResponse(et, id, source, request, response);
         const e = spy.args[0][0];
         assert.deepEqual(e.detail.request, request);
         assert.deepEqual(e.detail.response, response);
@@ -120,16 +120,16 @@ describe('Transport', () => {
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.abort, spy);
-        TransportEvents.abort(et, id);
+        et.addEventListener(EventTypes.Transport.abort, spy);
+        Events.Transport.abort(et, id);
         assert.isTrue(spy.calledOnce);
       });
 
       it('has the detail property', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.abort, spy);
-        TransportEvents.abort(et, id);
+        et.addEventListener(EventTypes.Transport.abort, spy);
+        Events.Transport.abort(et, id);
         const e = spy.args[0][0];
         assert.deepEqual(e.detail.id, id);
       });
@@ -146,16 +146,16 @@ describe('Transport', () => {
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.connect, spy);
-        TransportEvents.connect(et, editorRequest);
+        et.addEventListener(EventTypes.Transport.connect, spy);
+        Events.Transport.connect(et, editorRequest);
         assert.isTrue(spy.calledOnce);
       });
 
       it('the event bubbles', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.connect, spy);
-        TransportEvents.connect(et, editorRequest);
+        et.addEventListener(EventTypes.Transport.connect, spy);
+        Events.Transport.connect(et, editorRequest);
         const e = spy.args[0][0];
         assert.isTrue(e.bubbles);
       });
@@ -163,8 +163,8 @@ describe('Transport', () => {
       it('the event is cancelable', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.connect, spy);
-        TransportEvents.connect(et, editorRequest);
+        et.addEventListener(EventTypes.Transport.connect, spy);
+        Events.Transport.connect(et, editorRequest);
         const e = spy.args[0][0];
         assert.isTrue(e.cancelable);
       });
@@ -172,8 +172,8 @@ describe('Transport', () => {
       it('the event has the detail', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.connect, spy);
-        TransportEvents.connect(et, editorRequest);
+        et.addEventListener(EventTypes.Transport.connect, spy);
+        Events.Transport.connect(et, editorRequest);
         const e = spy.args[0][0];
         assert.deepEqual(e.detail, editorRequest);
       });
@@ -190,16 +190,16 @@ describe('Transport', () => {
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.disconnect, spy);
-        TransportEvents.disconnect(et, editorRequest);
+        et.addEventListener(EventTypes.Transport.disconnect, spy);
+        Events.Transport.disconnect(et, editorRequest);
         assert.isTrue(spy.calledOnce);
       });
 
       it('the event bubbles', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.disconnect, spy);
-        TransportEvents.disconnect(et, editorRequest);
+        et.addEventListener(EventTypes.Transport.disconnect, spy);
+        Events.Transport.disconnect(et, editorRequest);
         const e = spy.args[0][0];
         assert.isTrue(e.bubbles);
       });
@@ -207,8 +207,8 @@ describe('Transport', () => {
       it('the event is cancelable', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.disconnect, spy);
-        TransportEvents.disconnect(et, editorRequest);
+        et.addEventListener(EventTypes.Transport.disconnect, spy);
+        Events.Transport.disconnect(et, editorRequest);
         const e = spy.args[0][0];
         assert.isTrue(e.cancelable);
       });
@@ -216,8 +216,8 @@ describe('Transport', () => {
       it('the event has the detail', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.disconnect, spy);
-        TransportEvents.disconnect(et, editorRequest);
+        et.addEventListener(EventTypes.Transport.disconnect, spy);
+        Events.Transport.disconnect(et, editorRequest);
         const e = spy.args[0][0];
         assert.deepEqual(e.detail, editorRequest);
       });
@@ -234,16 +234,16 @@ describe('Transport', () => {
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.connectionSend, spy);
-        TransportEvents.connectionSend(et, editorRequest);
+        et.addEventListener(EventTypes.Transport.connectionSend, spy);
+        Events.Transport.connectionSend(et, editorRequest);
         assert.isTrue(spy.calledOnce);
       });
 
       it('the event bubbles', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.connectionSend, spy);
-        TransportEvents.connectionSend(et, editorRequest);
+        et.addEventListener(EventTypes.Transport.connectionSend, spy);
+        Events.Transport.connectionSend(et, editorRequest);
         const e = spy.args[0][0];
         assert.isTrue(e.bubbles);
       });
@@ -251,8 +251,8 @@ describe('Transport', () => {
       it('the event is cancelable', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.connectionSend, spy);
-        TransportEvents.connectionSend(et, editorRequest);
+        et.addEventListener(EventTypes.Transport.connectionSend, spy);
+        Events.Transport.connectionSend(et, editorRequest);
         const e = spy.args[0][0];
         assert.isTrue(e.cancelable);
       });
@@ -260,8 +260,8 @@ describe('Transport', () => {
       it('the event has the detail', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.connectionSend, spy);
-        TransportEvents.connectionSend(et, editorRequest);
+        et.addEventListener(EventTypes.Transport.connectionSend, spy);
+        Events.Transport.connectionSend(et, editorRequest);
         const e = spy.args[0][0];
         assert.deepEqual(e.detail, editorRequest);
       });
@@ -276,16 +276,16 @@ describe('Transport', () => {
       it('dispatches the event', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.httpTransport, spy);
-        TransportEvents.httpTransport(et, request);
+        et.addEventListener(EventTypes.Transport.httpTransport, spy);
+        Events.Transport.httpTransport(et, request);
         assert.isTrue(spy.calledOnce);
       });
 
       it('the event bubbles', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.httpTransport, spy);
-        TransportEvents.httpTransport(et, request);
+        et.addEventListener(EventTypes.Transport.httpTransport, spy);
+        Events.Transport.httpTransport(et, request);
         const e = spy.args[0][0];
         assert.isTrue(e.bubbles);
       });
@@ -293,8 +293,8 @@ describe('Transport', () => {
       it('the event is cancelable', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.httpTransport, spy);
-        TransportEvents.httpTransport(et, request);
+        et.addEventListener(EventTypes.Transport.httpTransport, spy);
+        Events.Transport.httpTransport(et, request);
         const e = spy.args[0][0];
         assert.isTrue(e.cancelable);
       });
@@ -302,8 +302,8 @@ describe('Transport', () => {
       it('the event has the detail', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
-        et.addEventListener(TransportEventTypes.httpTransport, spy);
-        TransportEvents.httpTransport(et, request);
+        et.addEventListener(EventTypes.Transport.httpTransport, spy);
+        Events.Transport.httpTransport(et, request);
         const e = spy.args[0][0];
         assert.deepEqual(e.detail.request, request);
       });
