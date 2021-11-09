@@ -9,6 +9,7 @@ import { EventTypes } from '../EventTypes.js';
 /** @typedef {import('../../').ArcResponse.ErrorResponse} ErrorResponse */
 /** @typedef {import('../../').ArcResponse.HTTPResponse} HTTPResponse */
 /** @typedef {import('../../').WebSocket.WebsocketEditorRequest} WebsocketEditorRequest */
+/** @typedef {import('./Events').TransportRequestSource} TransportRequestSource */
 
 /**
  * An event dispatched by the UI when requesting to make a HTTP request
@@ -38,14 +39,15 @@ export class ApiTransportEvent extends CustomEvent {
    * @param {string} id The id of the request
    * @param {ArcBaseRequest} request The request configuration to transport.
    * @param {RequestConfig=} config The transport configuration to use. Request configuration overrides the values.
+   * @param {TransportRequestSource=} source The source of the request. Default to `arc`.
    */
-  constructor(id, request, config={enabled: false}) {
+  constructor(id, request, config={enabled: false}, source='arc') {
     super(EventTypes.Transport.transport, {
       bubbles: true,
       composed: true,
       cancelable: true,
       detail: {
-        id, request, config,
+        id, request, config, source,
       },
     });
   }
@@ -161,9 +163,10 @@ export function responseAction(target, id, source, request, response) {
  * @param {string} id The id of the request
  * @param {ArcBaseRequest} request The request configuration to transport.
  * @param {RequestConfig=} config The transport configuration to use. Request configuration overrides the values.
+ * @param {TransportRequestSource=} source The source of the request. Default to `arc`.
  */
-export function transportAction(target, id, request, config) {
-  const e = new ApiTransportEvent(id, request, config);
+export function transportAction(target, id, request, config, source) {
+  const e = new ApiTransportEvent(id, request, config, source);
   target.dispatchEvent(e);
 }
 

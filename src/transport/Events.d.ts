@@ -1,5 +1,6 @@
 import { ArcRequest, ArcResponse } from '../../';
 import { WebsocketEditorRequest } from "../request/WebSocket";
+import { TransportRequestSource } from './TransportEvents'
 
 /**
  * An event dispatched when requesting to make a HTTP request
@@ -18,6 +19,7 @@ export declare interface ApiTransportEventDetail {
   id: string;
   request: ArcRequest.ArcBaseRequest;
   config: ArcRequest.RequestConfig;
+  source: TransportRequestSource;
 }
 
 /**
@@ -25,11 +27,12 @@ export declare interface ApiTransportEventDetail {
  */
 export declare class ApiTransportEvent extends CustomEvent<ApiTransportEventDetail> {
   /**
-   * @param {string} id The id of the request
-   * @param {ArcBaseRequest} request The request configuration to transport.
-   * @param {RequestConfig} config The transport configuration to use. Request configuration overrides the values.
+   * @param id The id of the request
+   * @param request The request configuration to transport.
+   * @param config The transport configuration to use. Request configuration overrides the values.
+   * @param source The source of the request. Default to `arc`.
    */
-  constructor(id: string, request: ArcRequest.ArcBaseRequest, config?: ArcRequest.RequestConfig);
+  constructor(id: string, request: ArcRequest.ArcBaseRequest, config?: ArcRequest.RequestConfig, source?: TransportRequestSource);
 }
 
 export declare interface ApiAbortEventDetail {
@@ -125,8 +128,9 @@ export declare function responseAction(target: EventTarget, id: string, source: 
  * @param id The id of the request
  * @param request The request configuration to transport.
  * @param config The transport configuration to use. Request configuration overrides the values.
+ * @param source The source of the request. Default to `arc`.
  */
-export declare function transportAction(target: EventTarget, id: string, request: ArcRequest.ArcBaseRequest, config?: ArcRequest.RequestConfig): void;
+export declare function transportAction(target: EventTarget, id: string, request: ArcRequest.ArcBaseRequest, config?: ArcRequest.RequestConfig, source?: TransportRequestSource): void;
 
 /**
  * @param target A target on which to dispatch the event

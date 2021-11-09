@@ -67,6 +67,7 @@ describe('Events', () => {
       const request = /** @type ArcBaseRequest */ ({ url: 'https://', method: 'GET', });
       const id = '1234';
       const config = { enabled: false };
+      const source = 'api-console';
 
       it('dispatches the event', async () => {
         const et = await etFixture();
@@ -76,7 +77,7 @@ describe('Events', () => {
         assert.isTrue(spy.calledOnce);
       });
 
-      it('has the "changedProperty" property', async () => {
+      it('has the "detail" property', async () => {
         const et = await etFixture();
         const spy = sinon.spy();
         et.addEventListener(EventTypes.Transport.transport, spy);
@@ -84,7 +85,17 @@ describe('Events', () => {
         const e = spy.args[0][0];
         assert.deepEqual(e.detail.request, request);
         assert.deepEqual(e.detail.config, config);
-        assert.deepEqual(e.detail.id, id);
+        assert.equal(e.detail.id, id);
+        assert.equal(e.detail.source, 'arc', 'has the default source');
+      });
+
+      it('has the "detail.source" property', async () => {
+        const et = await etFixture();
+        const spy = sinon.spy();
+        et.addEventListener(EventTypes.Transport.transport, spy);
+        Events.Transport.transport(et, id, request, config, source);
+        const e = spy.args[0][0];
+        assert.equal(e.detail.source, source);
       });
     });
 

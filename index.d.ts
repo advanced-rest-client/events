@@ -124,7 +124,7 @@ export {
   TelemetryTimingDetail,
 } from './src/telemetry/Events';
 export { TransportEventTypes } from './src/transport/TransportEventTypes';
-export { TransportEvents } from './src/transport/TransportEvents';
+export { TransportEvents, TransportRequestSource, } from './src/transport/TransportEvents';
 export { 
   ApiRequestEvent, 
   ApiResponseEvent, 

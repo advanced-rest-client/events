@@ -1,6 +1,8 @@
 import { ArcRequest, ArcResponse } from '../../';
 import { WebsocketEditorRequest } from "../request/WebSocket";
 
+export type TransportRequestSource = 'arc' | 'api-console';
+
 export interface ITransportEvents {
   /**
    * @param target A target on which to dispatch the event
@@ -20,8 +22,9 @@ export interface ITransportEvents {
    * @param id The id of the request
    * @param request The request configuration to transport.
    * @param config The transport configuration to use. Request configuration overrides the values.
+   * @param source The source of the request. Default to `arc`.
    */
-  transport(target: EventTarget, id: string, request: ArcRequest.ArcBaseRequest, config?: ArcRequest.RequestConfig): void;
+  transport(target: EventTarget, id: string, request: ArcRequest.ArcBaseRequest, config?: ArcRequest.RequestConfig, source?: TransportRequestSource): void;
   /**
    * @param target A target on which to dispatch the event
    * @param id The id of the request
