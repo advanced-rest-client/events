@@ -9,6 +9,7 @@ export declare interface RequestEditorConfig {
    * Due to dependency and memory management changing this options requires restart or
    * opening a new application window.
    * @default Monaco
+   * @deprecated Since version 17 ARC supports Monaco editor only.
    */
   bodyEditor?: 'CodeMirror' | 'Monaco';
   /**
@@ -193,6 +194,7 @@ export declare interface ARCUpdaterConfig {
   /**
    * The release channel to use.
    * @default stable
+   * @deprecated Since version 17 ARC drops support for channels. Use `allowPreRelease` instead.
    */
   channel?: string;
   /**
@@ -200,6 +202,10 @@ export declare interface ARCUpdaterConfig {
    * @default true
    */
   auto?: boolean;
+  /**
+   * When set the application instructs the auto updater library to install pre-release version.
+   */
+  allowPreRelease?: boolean;
 }
 
 export declare interface BaseProxyConfig {
