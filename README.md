@@ -7,6 +7,10 @@ Use this library when building a component that triggers the navigation via DOM 
 
 [![tests](https://github.com/advanced-rest-client/events/actions/workflows/deployment.yml/badge.svg)](https://github.com/advanced-rest-client/events/actions/workflows/deployment.yml)
 
+## EOL
+
+This package at some point will be merged with `@api-client/core` and matched with the new architecture.
+
 ## Usage
 
 ### Installation
