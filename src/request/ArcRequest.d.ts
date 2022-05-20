@@ -342,6 +342,7 @@ export declare interface ARCSavedRequest extends ArcStoredRequest, Entity {
   description?: string;
   /**
    * A list of projects this request is assigned to.
+   * @deprecated This is no longer in use (since v18) and previously created requests are copied to the project.
    */
   projects?: string[];
 }

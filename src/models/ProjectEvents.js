@@ -245,59 +245,6 @@ export class ARCProjectListAllEvent extends CustomEvent {
 }
 
 /**
- * This is an event that performs request copy/move/remove operations on a project
- */
-export class ARCProjectMoveEvent extends CustomEvent {
-  /**
-   * @returns {string} The target project id
-   */
-  get projectId() {
-    return this[projectIdValue];
-  }
-
-  /**
-   * @returns {string} The target project id
-   */
-  get requestId() {
-    return this[requestIdValue];
-  }
-
-  /**
-   * @returns {string} The target project id
-   */
-  get requestType() {
-    return this[requestTypeValue];
-  }
-
-  /**
-   * @returns {number} The index at which to add the request.
-   */
-  get position() {
-    return this[positionValue];
-  }
-
-  /**
-   * @param {string} type The event type
-   * @param {string} projectId The target project id
-   * @param {string} requestId The request that is being moved/copied
-   * @param {string} requestType The request type
-   * @param {number=} position The index at which to add the request. When not set it add the request to the end of the list.
-   */
-  constructor(type, projectId, requestId, requestType, position) {
-    super(type, {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {},
-    });
-    this[projectIdValue] = projectId;
-    this[requestIdValue] = requestId;
-    this[requestTypeValue] = requestType;
-    this[positionValue] = position;
-  }
-}
-
-/**
  * Dispatches an event handled by the data store to read the project metadata.
  *
  * @param {EventTarget} target A node on which to dispatch the event.
@@ -386,52 +333,6 @@ export async function listAction(target, opts) {
  */
 export async function listAllAction(target, keys) {
   const e = new ARCProjectListAllEvent(keys);
-  target.dispatchEvent(e);
-  return e.detail.result;
-}
-
-/**
- * Moves a request to a project and removes the request from other projects.
- *
- * @param {EventTarget} target A node on which to dispatch the event.
- * @param {string} projectId The target project id
- * @param {string} requestId The request that is being moved/copied
- * @param {string} requestType The request type
- * @param {number=} position The index at which to add the request. When not set it add the request to the end of the list.
- * @return {Promise<void>} Promise resolved when the operation commits.
- */
-export async function moveToAction(target, projectId, requestId, requestType, position) {
-  const e = new ARCProjectMoveEvent(EventTypes.Model.Project.moveTo, projectId, requestId, requestType, position);
-  target.dispatchEvent(e);
-  return e.detail.result;
-}
-
-/**
- * Adds a request to a project.
- *
- * @param {EventTarget} target A node on which to dispatch the event.
- * @param {string} projectId The target project id
- * @param {string} requestId The request that is being moved/copied
- * @param {string} requestType The request type
- * @param {number=} position The index at which to add the request. When not set it add the request to the end of the list.
- * @return {Promise<void>} Promise resolved when the operation commits.
- */
-export async function addToAction(target, projectId, requestId, requestType, position) {
-  const e = new ARCProjectMoveEvent(EventTypes.Model.Project.addTo, projectId, requestId, requestType, position);
-  target.dispatchEvent(e);
-  return e.detail.result;
-}
-
-/**
- * Removes a request from a project.
- *
- * @param {EventTarget} target A node on which to dispatch the event.
- * @param {string} projectId The target project id
- * @param {string} requestId The request that is being moved/copied
- * @return {Promise<void>} Promise resolved when the operation commits.
- */
-export async function removeFromAction(target, projectId, requestId) {
-  const e = new ARCProjectMoveEvent(EventTypes.Model.Project.removeFrom, projectId, requestId, 'saved');
   target.dispatchEvent(e);
   return e.detail.result;
 }

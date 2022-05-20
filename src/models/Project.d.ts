@@ -1,18 +1,90 @@
-import { Entity } from './base';
+import { ArcStoredRequest } from '../request/ArcRequest.js';
+import { Entity } from './base.js';
 
-export declare interface Project extends ProjectFolder {
+/**
+ * @deprecated This is used in ARC < 18.
+ */
+export interface IArcLegacyProject extends Entity {
+  /**
+   * The list of all requests defined in the project.
+   */
+  requests: string[];
+  /**
+   * The name of the project
+   */
+  name: string;
+  /**
+   * The description of the project
+   */
+  description?: string;
   /**
    * Project order
+   * @deprecated This was never used and there's no plan to use it.
    */
   order?: number;
   error?: boolean;
+  /**
+   * Timestamp when the project was last updated.
+   */
+  updated?: number;
+  /**
+   * Timestamp when the project was created.
+   */
+  created?: number;
 }
 
-export declare interface ARCProject extends Project, Entity {
+export const ProjectKind = 'ARC#Project';
+export const ProjectFolderKind = 'ARC#ProjectFolder';
+export const ProjectRequestKind = 'ARC#ProjectRequest';
+
+export interface IArcProjectRequest extends ArcStoredRequest {
+  /**
+   * The auto-generated key for the request object
+   */
+  key: string;
+  /**
+   * The name of the request
+   */
+  name: string;
+  /**
+   * The description of the request
+   */
+  description?: string;
 }
 
-export interface ProjectFolder {
-  kind: 'ARC#Project' | 'ARC#ProjectFolder';
+export interface IArcProjectItem {
+  kind: typeof ProjectFolderKind | typeof ProjectRequestKind;
+  key: string;
+}
+
+export interface IProjectDefinitions {
+  /**
+   * The list of all folders defined in the project.
+   */
+  folders?: IArcProjectFolder[];
+  /**
+   * The list of all requests defined in the project.
+   */
+  requests?: IArcProjectRequest[];
+}
+
+export interface IProject extends IArcProjectFolder {
+  /**
+   * Project order
+   * @deprecated This was never used and there's no plan to use it.
+   */
+  order?: number;
+  error?: boolean;
+
+  definitions: IProjectDefinitions;
+}
+
+export interface IArcProjectFolder {
+  /**
+   * The auto-generated key for the folder object.
+   * For the project root this is the same as the `_id`.
+   */
+  kind: typeof ProjectKind | typeof ProjectFolderKind;
   /**
    * The name of the folder
    */
@@ -22,13 +94,11 @@ export interface ProjectFolder {
    */
   description?: string;
   /**
-   * List of requests associated with the project.
+   * The list of items in the folder.
+   * It is an ordered list of requests and folders.
+   * The actual definition is kept in the root's `definitions`.
    */
-  requests?: string[];
-  /**
-   * The list of sub-folders relative to this folder.
-   */
-  folders: ProjectFolder[];
+  items: IArcProjectItem[];
   /**
    * Timestamp when the project was last updated.
    */
@@ -37,4 +107,7 @@ export interface ProjectFolder {
    * Timestamp when the project was created.
    */
   created?: number;
+}
+
+export declare interface ARCProject extends IProject, Entity {
 }

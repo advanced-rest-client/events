@@ -124,7 +124,6 @@ export {
   ARCProjectListEvent,
   ARCProjectReadBulkEvent,
   ARCProjectListAllEvent,
-  ARCProjectMoveEvent,
 } from './src/models/ProjectEvents.js';
 export {
   ARCRequestReadEvent,

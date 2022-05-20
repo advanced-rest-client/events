@@ -138,41 +138,6 @@ export declare class ARCProjectListAllEvent extends CustomEvent<ARCModelReadBulk
   constructor(keys?: string[]);
 }
 
-
-/**
- * This is an event that performs request copy/move/remove operations on a project
- */
-export class ARCProjectMoveEvent extends CustomEvent<ARCModelVoidResultEventDetail> {
-  /**
-   * The target project id
-   */
-  get projectId(): string;
-
-  /**
-   * The target project id
-   */
-  get requestId(): string;
-
-  /**
-   * The target project id
-   */
-  get requestType(): string;
-  
-  /**
-   * The index at which to add the request.
-   */
-  get position(): number|undefined;
-
-  /**
-   * @param type The event type
-   * @param projectId The target project id
-   * @param requestId The request that is being moved/copied
-   * @param requestType The request type
-   * @param position The index at which to add the request. When not set it add the request to the end of the list.
-   */
-  constructor(type: string, projectId: string, requestId: string, requestType: string, position?: number);
-}
-
 /**
  * Dispatches an event handled by the data store to read the project metadata.
  *
@@ -237,40 +202,6 @@ export declare function listAction(target: EventTarget, opts?: Model.ARCModelLis
  * @return List of projects.
  */
 export declare function listAllAction(target: EventTarget, keys?: string[]): Promise<Project.ARCProject[]>;
-
-/**
- * Moves a request to a project and removes the request from other projects.
- *
- * @param target A node on which to dispatch the event.
- * @param projectId The target project id
- * @param requestId The request that is being moved/copied
- * @param requestType The request type
- * @param position The index at which to add the request. When not set it add the request to the end of the list.
- * @returns Promise resolved when the operation commits.
- */
-export declare function moveToAction(target: EventTarget, projectId: string, requestId: string, requestType: string, position?: number): Promise<void>;
-
-/**
- * Adds a request to a project.
- *
- * @param target A node on which to dispatch the event.
- * @param projectId The target project id
- * @param requestId The request that is being moved/copied
- * @param requestType The request type
- * @param position The index at which to add the request. When not set it add the request to the end of the list.
- * @returns Promise resolved when the operation commits.
- */
-export declare function addToAction(target: EventTarget, projectId: string, requestId: string, requestType: string, position?: number): Promise<void>;
-
-/**
- * Removes a request from a project.
- *
- * @param target A node on which to dispatch the event.
- * @param projectId The target project id
- * @param requestId The request that is being moved/copied
- * @returns Promise resolved when the operation commits.
- */
-export declare function removeFromAction(target: EventTarget, projectId: string, requestId: string): Promise<void>;
 
 /**
  * Dispatches an event after a project was updated

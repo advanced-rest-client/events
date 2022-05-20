@@ -2,6 +2,8 @@ import { assert } from '@open-wc/testing';
 import sinon from 'sinon';
 import { ArcModelEvents, ArcModelEventTypes } from '../../index.js';
 
+/** @typedef {import('../../').Project.IProject} IProject */
+
 describe('ArcModelEvents', () => {
   describe('destroy()', () => {
     const stores = ['a', 'b'];
@@ -94,7 +96,7 @@ describe('ArcModelEvents', () => {
     });
 
     describe('Project.update()', () => {
-      const object = { name: 'test',  };
+      const object = /** @type IProject */ ({ name: 'test', definitions: {}, kind: 'ARC#Project', items: [] });
 
       it('dispatches the event', () => {
         const spy = sinon.spy();
@@ -114,7 +116,7 @@ describe('ArcModelEvents', () => {
     });
 
     describe('Project.updateBulk()', () => {
-      const objects = [{ name: 'test',  }];
+      const objects = [/** @type IProject */ ({ name: 'test', definitions: {}, kind: 'ARC#Project', items: [] })];
 
       it('dispatches the event', () => {
         const spy = sinon.spy();
@@ -204,129 +206,6 @@ describe('ArcModelEvents', () => {
         ArcModelEvents.Project.listAll(document.body, keys);
         window.removeEventListener(ArcModelEventTypes.Project.listAll, spy);
         assert.equal(spy.args[0][0].keys, keys);
-      });
-    });
-
-    describe('Project.moveTo()', () => {
-      const projectId = 'pid';
-      const requestId = 'rid';
-      const requestType = 'rt';
-      const position = 12;
-
-      it('dispatches the event', () => {
-        const spy = sinon.spy();
-        window.addEventListener(ArcModelEventTypes.Project.moveTo, spy);
-        ArcModelEvents.Project.moveTo(document.body, projectId, requestId, requestType);
-        window.removeEventListener(ArcModelEventTypes.Project.moveTo, spy);
-        assert.isTrue(spy.calledOnce);
-      });
-  
-      it('has the projectId property', () => {
-        const spy = sinon.spy();
-        window.addEventListener(ArcModelEventTypes.Project.moveTo, spy);
-        ArcModelEvents.Project.moveTo(document.body, projectId, requestId, requestType);
-        window.removeEventListener(ArcModelEventTypes.Project.moveTo, spy);
-        assert.equal(spy.args[0][0].projectId, projectId);
-      });
-  
-      it('has the requestId property', () => {
-        const spy = sinon.spy();
-        window.addEventListener(ArcModelEventTypes.Project.moveTo, spy);
-        ArcModelEvents.Project.moveTo(document.body, projectId, requestId, requestType);
-        window.removeEventListener(ArcModelEventTypes.Project.moveTo, spy);
-        assert.equal(spy.args[0][0].requestId, requestId);
-      });
-  
-      it('has the requestType property', () => {
-        const spy = sinon.spy();
-        window.addEventListener(ArcModelEventTypes.Project.moveTo, spy);
-        ArcModelEvents.Project.moveTo(document.body, projectId, requestId, requestType);
-        window.removeEventListener(ArcModelEventTypes.Project.moveTo, spy);
-        assert.equal(spy.args[0][0].requestType, requestType);
-      });
-  
-      it('has the position property', () => {
-        const spy = sinon.spy();
-        window.addEventListener(ArcModelEventTypes.Project.moveTo, spy);
-        ArcModelEvents.Project.moveTo(document.body, projectId, requestId, requestType, position);
-        window.removeEventListener(ArcModelEventTypes.Project.moveTo, spy);
-        assert.equal(spy.args[0][0].position, position);
-      });
-    });
-
-    describe('Project.addTo()', () => {
-      const projectId = 'pid';
-      const requestId = 'rid';
-      const requestType = 'rt';
-      const position = 12;
-
-      it('dispatches the event', () => {
-        const spy = sinon.spy();
-        window.addEventListener(ArcModelEventTypes.Project.addTo, spy);
-        ArcModelEvents.Project.addTo(document.body, projectId, requestId, requestType);
-        window.removeEventListener(ArcModelEventTypes.Project.addTo, spy);
-        assert.isTrue(spy.calledOnce);
-      });
-  
-      it('has the projectId property', () => {
-        const spy = sinon.spy();
-        window.addEventListener(ArcModelEventTypes.Project.addTo, spy);
-        ArcModelEvents.Project.addTo(document.body, projectId, requestId, requestType);
-        window.removeEventListener(ArcModelEventTypes.Project.addTo, spy);
-        assert.equal(spy.args[0][0].projectId, projectId);
-      });
-  
-      it('has the requestId property', () => {
-        const spy = sinon.spy();
-        window.addEventListener(ArcModelEventTypes.Project.addTo, spy);
-        ArcModelEvents.Project.addTo(document.body, projectId, requestId, requestType);
-        window.removeEventListener(ArcModelEventTypes.Project.addTo, spy);
-        assert.equal(spy.args[0][0].requestId, requestId);
-      });
-  
-      it('has the requestType property', () => {
-        const spy = sinon.spy();
-        window.addEventListener(ArcModelEventTypes.Project.addTo, spy);
-        ArcModelEvents.Project.addTo(document.body, projectId, requestId, requestType);
-        window.removeEventListener(ArcModelEventTypes.Project.addTo, spy);
-        assert.equal(spy.args[0][0].requestType, requestType);
-      });
-  
-      it('has the position property', () => {
-        const spy = sinon.spy();
-        window.addEventListener(ArcModelEventTypes.Project.addTo, spy);
-        ArcModelEvents.Project.addTo(document.body, projectId, requestId, requestType, position);
-        window.removeEventListener(ArcModelEventTypes.Project.addTo, spy);
-        assert.equal(spy.args[0][0].position, position);
-      });
-    });
-
-    describe('Project.removeFromAction()', () => {
-      const projectId = 'pid';
-      const requestId = 'rid';
-
-      it('dispatches the event', () => {
-        const spy = sinon.spy();
-        window.addEventListener(ArcModelEventTypes.Project.removeFrom, spy);
-        ArcModelEvents.Project.removeFrom(document.body, projectId, requestId);
-        window.removeEventListener(ArcModelEventTypes.Project.removeFrom, spy);
-        assert.isTrue(spy.calledOnce);
-      });
-  
-      it('has the projectId property', () => {
-        const spy = sinon.spy();
-        window.addEventListener(ArcModelEventTypes.Project.removeFrom, spy);
-        ArcModelEvents.Project.removeFrom(document.body, projectId, requestId);
-        window.removeEventListener(ArcModelEventTypes.Project.removeFrom, spy);
-        assert.equal(spy.args[0][0].projectId, projectId);
-      });
-  
-      it('has the requestId property', () => {
-        const spy = sinon.spy();
-        window.addEventListener(ArcModelEventTypes.Project.removeFrom, spy);
-        ArcModelEvents.Project.removeFrom(document.body, projectId, requestId);
-        window.removeEventListener(ArcModelEventTypes.Project.removeFrom, spy);
-        assert.equal(spy.args[0][0].requestId, requestId);
       });
     });
 
