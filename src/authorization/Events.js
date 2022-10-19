@@ -84,6 +84,7 @@ export class OidcRemoveTokensEvent extends CustomEvent {
 export async function authorizeOauth2Action(target, config) {
   const e = new OAuth2AuthorizeEvent(config);
   target.dispatchEvent(e);
+  await new Promise(resolve => setTimeout(resolve, 0));
   return e.detail.result;
 }
 
