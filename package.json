@@ -1,5 +1,5 @@
 {
-  "name": "@advanced-rest-client/events",
+  "name": "@advanced-rest-client/arc-events",
   "description": "A library adding navigation events definitions to Advanced REST Client",
   "version": "0.2.33",
   "license": "Apache-2.0",
